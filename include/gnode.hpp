@@ -433,6 +433,15 @@ public:
   }
 
   /**
+   * @brief Force update of the current node by updating not matter
+   * the state of "is_up_to_date" (can be useful when a node parameter
+   * if changed).
+   *
+   * @note `auto_update` can still prevent the update.
+   */
+  void force_update();
+  
+  /**
    * @brief Update current node: first trigger the update of surrounding nodes
    * before being able to compute.
    *

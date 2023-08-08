@@ -151,6 +151,13 @@ void Node::update_links()
 // computing
 //----------------------------------------
 
+void Node::force_update()
+{
+  this->is_up_to_date = false;
+  if (this->auto_update)
+    this->update();
+}
+  
 void Node::update()
 {
   if (!this->is_up_to_date)
@@ -213,6 +220,7 @@ void Node::infos()
   LOG_INFO("- id: %s", this->id.c_str());
   LOG_INFO("- label: %s", this->label.c_str());
   LOG_INFO("- category: %s", this->category.c_str());
+  LOG_INFO("- node_type: %s", this->node_type.c_str());
   LOG_INFO("- frozen_outputs: %d", this->frozen_outputs);
   LOG_INFO("- thru: %d", this->thru);
   LOG_INFO("- state");
