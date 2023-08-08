@@ -453,7 +453,10 @@ public:
    * node).
    *
    */
-  virtual void update_inner_bindings() {}
+  virtual void update_inner_bindings()
+  {
+    LOG_DEBUG("No inner bindings for node [%s]", this->id.c_str());
+  }
 
   //----------------------------------------
   // displaying infos
