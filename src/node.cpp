@@ -8,7 +8,11 @@ namespace gnode
 
 Node::Node(){};
 
-Node::Node(std::string id) : id(id) { this->label = id_to_label(this->id); };
+Node::Node(std::string id) : id(id)
+{
+  this->label = id_to_label(this->id);
+  this->hash_id = id_to_hash(id);
+};
 
 //----------------------------------------
 // getters / setters
@@ -73,7 +77,10 @@ void Node::set_thru(bool new_thru)
 void Node::add_port(const Port port)
 {
   if (!this->is_port_id_in_keys(port.id))
+  {
     this->ports[port.id] = port;
+    this->ports[port.id].hash_id = id_to_hash(this->id + port.id);
+  }
   else
   {
     LOG_ERROR("port id [%s] already used", port.id.c_str());
@@ -219,6 +226,7 @@ void Node::infos()
   LOG_INFO("node infos");
   LOG_INFO("- id: %s", this->id.c_str());
   LOG_INFO("- label: %s", this->label.c_str());
+  LOG_INFO("- hash_id: %d", this->hash_id);
   LOG_INFO("- category: %s", this->category.c_str());
   LOG_INFO("- node_type: %s", this->node_type.c_str());
   LOG_INFO("- frozen_outputs: %d", this->frozen_outputs);

@@ -98,6 +98,7 @@ void Port::infos()
   LOG_INFO("port infos");
   LOG_INFO("+ id: %s", this->id.c_str());
   LOG_INFO("+ label: %s", this->label.c_str());
+  LOG_INFO("+ hash_id: %d", this->hash_id);
   LOG_INFO("+ direction: %d", this->direction);
   LOG_INFO("+ dtype: %d", this->dtype);
   LOG_INFO("+ is_connected: %d", this->is_connected);

@@ -51,6 +51,14 @@ enum optional : bool
 };
 
 /**
+ * @brief Return an integer hash based on an `id`.
+ *
+ * @param id Input Id.
+ * @return int Hash.
+ */
+int id_to_hash(const std::string &id);
+
+/**
  * @brief Return a `label` based on an `id`.
  *
  * Label is the Id with eveything after the two characters `##` removed.
@@ -58,7 +66,7 @@ enum optional : bool
  * @param id Input Id.
  * @return std::string Output label.
  */
-std::string id_to_label(const std::string id);
+std::string id_to_label(const std::string &id);
 
 class Node; // forward declaration for Port class
 
@@ -79,6 +87,11 @@ public:
    * Label is the Id with eveything after the two characters `##` removed.
    */
   std::string label;
+
+  /**
+   * @brief Integer Id based on the string Id hash.
+   */
+  int hash_id = 0;
 
   /**
    * @brief Port direction: input or output.
@@ -200,6 +213,11 @@ public:
    * @brief Node label.
    */
   std::string label;
+
+  /**
+   * @brief Integer Id based on the string Id hash.
+   */
+  int hash_id;
 
   /**
    * @brief Node category.
