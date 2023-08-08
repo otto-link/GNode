@@ -508,7 +508,7 @@ public:
    *
    * @return std::map<std::string, std::shared_ptr<Node>> Nodes.
    */
-  std::map<std::string, std::shared_ptr<Node>> get_p_nodes();
+  std::map<std::string, std::shared_ptr<Node>> get_nodes_map();
 
   //----------------------------------------
   // nodes management
@@ -614,7 +614,7 @@ private:
   /**
    * @brief Nodes of the tree, as a mapping (Id, Node shared pointer).
    */
-  std::map<std::string, std::shared_ptr<Node>> p_nodes = {};
+  std::map<std::string, std::shared_ptr<Node>> nodes_map = {};
 
   /**
    * @brief Return the shared pointer the node 'Id'.

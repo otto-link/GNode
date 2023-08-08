@@ -16,13 +16,19 @@ Tree::Tree(std::string id) : id(id) { this->label = id_to_label(this->id); }
 
 void Tree::add_node(std::shared_ptr<Node> p_node)
 {
-  this->p_nodes[p_node.get()->id] = p_node;
+  if (!this->is_node_id_in_keys(p_node.get()->id))
+    this->nodes_map[p_node.get()->id] = p_node;
+  else
+  {
+    LOG_ERROR("node [%s] already used", p_node.get()->id.c_str());
+    throw std::runtime_error("node id alreayd used");
+  }
 }
 
 std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id)
 {
   if (this->is_node_id_in_keys(node_id))
-    return this->p_nodes[node_id];
+    return this->nodes_map[node_id];
   else
   {
     LOG_ERROR("node [%s] not found", node_id.c_str());
@@ -35,14 +41,14 @@ Node *Tree::get_node_ref_by_id(const std::string node_id)
   return this->get_node_sptr_by_id(node_id).get();
 }
 
-std::map<std::string, std::shared_ptr<Node>> Tree::get_p_nodes()
+std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map()
 {
-  return p_nodes;
+  return nodes_map;
 }
 
 bool Tree::is_node_id_in_keys(const std::string node_id)
 {
-  return this->p_nodes.contains(node_id);
+  return this->nodes_map.contains(node_id);
 }
 
 void Tree::remove_node(std::string node_id)
@@ -51,7 +57,7 @@ void Tree::remove_node(std::string node_id)
   if (this->is_node_id_in_keys(node_id))
   {
     this->get_node_ref_by_id(node_id)->disconnect_all_ports();
-    this->p_nodes.erase(node_id);
+    this->nodes_map.erase(node_id);
   }
   else
   {
@@ -113,14 +119,14 @@ void Tree::update()
   LOG_INFO("updating tree [%s]...", this->id.c_str());
 
   // set all the nodes to a "to be updated" state
-  for (auto &[key, n] : this->p_nodes)
+  for (auto &[key, n] : this->nodes_map)
     n->is_up_to_date = false;
 
   // trigger nodes with no inputs
 
   // TODO fix: actually first trigger the nodes with no inputs, or
   // only unconnected optional inputs
-  for (auto &[key, n] : this->p_nodes)
+  for (auto &[key, n] : this->nodes_map)
   {
     LOG_DEBUG("[%s] ninputs: %d",
               key.c_str(),
@@ -148,21 +154,21 @@ void Tree::infos()
 {
   LOG_INFO("tree infos");
   LOG_INFO("- label: %s", this->label.c_str());
-  for (auto &[key, n] : this->p_nodes)
+  for (auto &[key, n] : this->nodes_map)
     n.get()->infos();
 }
 
 void Tree::print_node_links()
 {
   std::cout << "tree node links" << std::endl;
-  for (auto &[key, n] : this->p_nodes)
+  for (auto &[key, n] : this->nodes_map)
     n.get()->print_links();
 }
 
 void Tree::print_node_list()
 {
   std::cout << "tree nodes" << std::endl;
-  for (auto &[key, n] : this->p_nodes)
+  for (auto &[key, n] : this->nodes_map)
     std::cout << " - " << key << ": " << n.get()->id << std::endl;
 }
 
@@ -171,7 +177,7 @@ void Tree::export_csv(std::string fname_nodes, std::string fname_links)
   std::fstream f;
 
   f.open(fname_nodes, std::ios::out);
-  for (auto &[kn, n] : this->p_nodes)
+  for (auto &[kn, n] : this->nodes_map)
     for (auto &[kp, p] : n.get()->get_ports())
       f << n.get()->id.c_str() << "," << p.direction << "," << p.id.c_str()
         << "\n";
@@ -179,7 +185,7 @@ void Tree::export_csv(std::string fname_nodes, std::string fname_links)
 
   f.open(fname_links, std::ios::out);
 
-  for (auto &[kn, n] : this->p_nodes)
+  for (auto &[kn, n] : this->nodes_map)
     for (auto &[kp, p] : n.get()->get_ports())
       if (p.is_connected & (p.direction == direction::out))
         f << n.get()->id.c_str() << "," << p.id.c_str() << ","
