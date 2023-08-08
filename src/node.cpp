@@ -157,7 +157,7 @@ void Node::force_update()
   if (this->auto_update)
     this->update();
 }
-  
+
 void Node::update()
 {
   if (!this->is_up_to_date)

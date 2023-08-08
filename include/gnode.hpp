@@ -10,7 +10,6 @@
  * @date 2023-08-07
  *
  * @copyright Copyright (c) 2023
- *
  */
 #pragma once
 #include <iostream>
@@ -23,7 +22,6 @@
 
 /**
  * @brief Library namespace (GNode for "Generic Node").
- *
  */
 namespace gnode
 {
@@ -36,7 +34,6 @@ enum dtype : int
 
 /**
  * @brief Port direction, input or output.
- *
  */
 enum direction : int
 {
@@ -46,7 +43,6 @@ enum direction : int
 
 /**
  * @brief Port mandate, optional or not.
- *
  */
 enum optional : bool
 {
@@ -68,14 +64,12 @@ class Node; // forward declaration for Port class
 
 /**
  * @brief Port class, to handle the node "pins" (inputs and outputs).
- *
  */
 class Port
 {
 public:
   /**
    * @brief Port Id.
-   *
    */
   std::string id;
 
@@ -109,21 +103,18 @@ public:
 
   /**
    * @brief Is the port connected.
-   *
    */
   bool is_connected = false;
 
   /**
    * @brief Reference to the node on the other end of any link connected to the
    * current port.
-   *
    */
   Node *p_linked_node = nullptr;
 
   /**
    * @brief Reference to the port on the other end of any link connected to the
    * current port.
-   *
    */
   Port *p_linked_port = nullptr;
 
@@ -174,73 +165,62 @@ public:
 
   /**
    * @brief Disconnect the port.
-   *
    */
   void disconnect();
 
   /**
    * @brief Reset the port (used for instance during a disconnection).
-   *
    */
   void reset();
 
   /**
    * @brief Display some informations on the port.
-   *
    */
   void infos();
 
 private:
   /**
    * @brief Reference to the data carried out by the port.
-   *
    */
   void *p_data = nullptr;
 };
 
 /**
  * @brief Node class, to handle nodes.
- *
  */
 class Node
 {
 public:
   /**
    * @brief Node Id.
-   *
    */
   std::string id;
 
   /**
    * @brief Node label.
-   *
    */
   std::string label;
 
   /**
    * @brief Node category.
-   *
    */
   std::string category = "";
 
   /**
    * @brief Defined whether the outputs are frozen, i.e. they are not triggering
    * downstream nodes when updated.
-   *
    */
   bool frozen_outputs = false;
 
   /**
    * @brief Defined whether the node "auto-update", i.e. it's update can be
    * triggered by an update of any upstream node.
-   *
    */
   bool auto_update = true;
 
   /**
    * @brief Defined whether the node is up to date or not (i.e. needs to be
    * recomputed).
-   *
    */
   bool is_up_to_date = false;
 
@@ -390,7 +370,6 @@ public:
 
   /**
    * @brief Disconnect all the ports.
-   *
    */
   void disconnect_all_ports();
 
@@ -412,7 +391,6 @@ public:
 
   /**
    * @brief Update links by refreshing data pointer of the outputs.
-   *
    */
   void update_links();
 
@@ -422,7 +400,6 @@ public:
 
   /**
    * @brief Compute current node.
-   *
    */
   virtual void compute()
   {
@@ -440,18 +417,16 @@ public:
    * @note `auto_update` can still prevent the update.
    */
   void force_update();
-  
+
   /**
    * @brief Update current node: first trigger the update of surrounding nodes
    * before being able to compute.
-   *
    */
   void update();
 
   /**
    * @brief Update inner bindings (e.g. links between inputs and outputs of the
    * node).
-   *
    */
   virtual void update_inner_bindings()
   {
@@ -464,26 +439,22 @@ public:
 
   /**
    * @brief Display some informations on the node.
-   *
    */
   void infos();
 
   /**
    * @brief Print node links.
-   *
    */
   void print_links();
 
   /**
    * @brief Print node treeview.
-   *
    */
   void treeview();
 
 protected:
   /**
    * @brief Node type.
-   *
    */
   std::string node_type = "";
 
@@ -491,13 +462,11 @@ private:
   /**
    * @brief Thru state. If set to true, the node does not make any copy of the
    * incoming data and acts directly on them.
-   *
    */
   bool thru = false;
 
   /**
    * @brief Ports of the node, as a mapping (Id, Port).
-   *
    */
   std::map<std::string, Port> ports = {};
 };
@@ -505,20 +474,17 @@ private:
 /**
  * @brief Tree object, to manipulate collection of nodes connected between each
  * other.
- *
  */
 class Tree
 {
 public:
   /**
    * @brief Tree Id.
-   *
    */
   std::string id;
 
   /**
    * @brief Tree label.
-   *
    */
   std::string label;
 
@@ -607,7 +573,6 @@ public:
 
   /**
    * @brief Update the whole tree.
-   *
    */
   void update();
 
@@ -624,19 +589,16 @@ public:
 
   /**
    * @brief Display some informations of the tree.
-   *
    */
   void infos();
 
   /**
    * @brief Print node links.
-   *
    */
   void print_node_links();
 
   /**
    * @brief Print node list.
-   *
    */
   void print_node_list();
 
@@ -651,7 +613,6 @@ public:
 private:
   /**
    * @brief Nodes of the tree, as a mapping (Id, Node shared pointer).
-   *
    */
   std::map<std::string, std::shared_ptr<Node>> p_nodes = {};
 
