@@ -10,7 +10,11 @@ namespace gnode
 
 int id_to_hash(const std::string &id)
 {
-  return (int)std::hash<std::string>{}(id); // TODO check int conversion
+  // https://stackoverflow.com/questions/8094790
+  int h = 0;
+  for (size_t i = 0; i < id.size(); ++i)
+    h = h * 31 + static_cast<int>(id[i]);
+  return h;
 }
 
 std::string id_to_label(const std::string &id)
@@ -18,4 +22,5 @@ std::string id_to_label(const std::string &id)
   std::size_t pos = id.find("##");
   return id.substr(0, pos);
 }
+
 } // namespace gnode
