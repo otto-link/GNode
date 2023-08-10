@@ -123,9 +123,6 @@ void Tree::update()
     n->is_up_to_date = false;
 
   // trigger nodes with no inputs
-
-  // TODO fix: actually first trigger the nodes with no inputs, or
-  // only unconnected optional inputs
   for (auto &[key, n] : this->nodes_map)
   {
     LOG_DEBUG("[%s] ninputs: %d",
