@@ -86,6 +86,7 @@ void Node::add_port(const Port port)
   {
     this->ports[port.id] = port;
     this->ports[port.id].hash_id = id_to_hash(this->id + port.id);
+    this->ports[port.id].p_node = this;
   }
   else
   {

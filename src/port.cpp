@@ -83,6 +83,7 @@ void Port::reset()
 {
   LOG_DEBUG("reset port [%s]", this->id.c_str());
   this->is_connected = false;
+  this->p_node = nullptr;
   this->p_linked_node = nullptr;
   this->p_linked_port = nullptr;
 

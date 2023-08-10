@@ -121,6 +121,11 @@ public:
   bool is_connected = false;
 
   /**
+   * @brief Reference to the node carrying the port.
+   */
+  Node *p_node = nullptr;
+
+  /**
    * @brief Reference to the node on the other end of any link connected to the
    * current port.
    */
