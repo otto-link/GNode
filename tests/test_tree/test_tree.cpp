@@ -1,10 +1,25 @@
+#include <iostream>
+
 #include "gnode.hpp"
+
+struct MyNode : public gnode::Node
+{
+  MyNode(std::string id) : gnode::Node(id) {}
+
+  void compute() { std::cout << id.c_str() << ": computing node...\n"; }
+};
+
+void my_callback(gnode::Node *p_node)
+{
+  std::cout << "node: " << p_node->id.c_str() << "\n";
+  std::cout << "CALLBACK!\n";
+}
 
 int main()
 {
 
   // 1st node 'A'
-  gnode::Node node = gnode::Node("nodeA");
+  MyNode node = MyNode("nodeA");
 
   {
     gnode::Port p1 = gnode::Port("input##hidden_id",
@@ -30,20 +45,23 @@ int main()
   node.treeview();
 
   // other node
-  gnode::Node node2 = gnode::Node("node_2");
+  MyNode node2 = MyNode("node_2");
 
   {
     gnode::Port p = gnode::Port("output",
                                 gnode::direction::out,
                                 gnode::dtype::dfloat);
     node2.add_port(p);
+
+    node2.set_post_update_callback(
+        (std::function<void(gnode::Node *)>)&my_callback);
   }
 
   // tree
   gnode::Tree tree = gnode::Tree("mytree");
 
-  tree.add_node(std::make_shared<gnode::Node>(node));
-  tree.add_node(std::make_shared<gnode::Node>(node2));
+  tree.add_node(std::make_shared<MyNode>(node));
+  tree.add_node(std::make_shared<MyNode>(node2));
 
   tree.link("node_2", "output", "nodeA", "input2");
 

@@ -12,6 +12,7 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
+#include <functional>
 #include <iostream>
 #include <map>
 #include <memory>
@@ -319,6 +320,9 @@ public:
    */
   void set_p_data(const std::string port_id, void *new_p_data);
 
+  void set_post_update_callback(
+      std::function<void(Node *)> new_post_update_callback);
+
   /**
    * @brief Set the "thru" state of the node.
    *
@@ -487,6 +491,8 @@ private:
    * @brief Ports of the node, as a mapping (Id, Port).
    */
   std::map<std::string, Port> ports = {};
+
+  std::function<void(Node *)> post_update_callback;
 };
 
 /**
