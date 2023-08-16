@@ -24,5 +24,6 @@ target_include_directories(${PROJECT_NAME}
 # Link libraries
 target_link_libraries(${PROJECT_NAME})
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
+add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
+add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
