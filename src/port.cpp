@@ -39,20 +39,24 @@ void Port::connect_in(Node *p_linked_node,
     throw std::runtime_error("port already connected");
   }
 
-  if (this->direction == direction::in)
-  {
-    this->set_p_data(ptr_to_incoming_data);
-    this->p_linked_node = p_linked_node;
-    this->p_linked_port = p_linked_port;
-    this->is_connected = true;
-  }
-  else
+  if (this->direction != direction::in)
   {
     LOG_ERROR("port direction mismatch while linking: port id [%s] is not "
               "an input",
               this->id.c_str());
     throw std::runtime_error("port direction mismatch while linking");
   }
+
+  if (this->dtype != p_linked_port->dtype)
+  {
+    LOG_ERROR("port id [%s] type is not compatible", this->id.c_str());
+    throw std::runtime_error("port type mismatch while linking");
+  }
+
+  this->set_p_data(ptr_to_incoming_data);
+  this->p_linked_node = p_linked_node;
+  this->p_linked_port = p_linked_port;
+  this->is_connected = true;
 }
 
 void Port::connect_out(Node *p_linked_node, Port *p_linked_port)
@@ -63,19 +67,23 @@ void Port::connect_out(Node *p_linked_node, Port *p_linked_port)
     throw std::runtime_error("port already connected");
   }
 
-  if (this->direction == direction::out)
-  {
-    this->p_linked_node = p_linked_node;
-    this->p_linked_port = p_linked_port;
-    this->is_connected = true;
-  }
-  else
+  if (this->direction != direction::out)
   {
     LOG_ERROR("port direction mismatch while linking: port id [%s] is not "
               "an output",
               this->id.c_str());
     throw std::runtime_error("port direction mismatch while linking");
   }
+
+  if (this->dtype != p_linked_port->dtype)
+  {
+    LOG_ERROR("port id [%s] type is not compatible", this->id.c_str());
+    throw std::runtime_error("port type mismatch while linking");
+  }
+
+  this->p_linked_node = p_linked_node;
+  this->p_linked_port = p_linked_port;
+  this->is_connected = true;
 }
 
 void Port::disconnect()
