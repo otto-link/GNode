@@ -64,7 +64,7 @@ int main()
   tree.add_node(std::make_shared<MyNode>(node2));
 
   tree.link("node_2", "output", "nodeA", "input2");
-
+ 
   tree.print_node_list();
   tree.print_node_links();
 

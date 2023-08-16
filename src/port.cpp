@@ -33,6 +33,12 @@ void Port::connect_in(Node *p_linked_node,
                       Port *p_linked_port,
                       void *ptr_to_incoming_data)
 {
+  if (this->is_connected)
+  {
+    LOG_ERROR("port id [%s] is already connected", this->id.c_str());
+    throw std::runtime_error("port already connected");
+  }
+
   if (this->direction == direction::in)
   {
     this->set_p_data(ptr_to_incoming_data);
@@ -51,6 +57,12 @@ void Port::connect_in(Node *p_linked_node,
 
 void Port::connect_out(Node *p_linked_node, Port *p_linked_port)
 {
+  if (this->is_connected)
+  {
+    LOG_ERROR("port id [%s] is already connected", this->id.c_str());
+    throw std::runtime_error("port already connected");
+  }
+
   if (this->direction == direction::out)
   {
     this->p_linked_node = p_linked_node;
