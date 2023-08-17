@@ -1,3 +1,5 @@
+![gnode_banner](https://github.com/otto-link/GNode/assets/121820229/32885341-e59d-4914-ad37-5dc326aec006)
+
 # GNode
 
 A generic node-based data structure for node graph programming in C++  
