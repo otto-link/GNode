@@ -31,3 +31,6 @@ make doc_gnode
 ### Usage examples
 
 Examples are provided in the `examples` folder.
+
+## Dependencies
+- Macro-Logger: https://github.com/dmcrodrigues/macro-logger
