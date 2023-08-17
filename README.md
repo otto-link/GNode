@@ -1,9 +1,9 @@
 ![gnode_banner](https://github.com/otto-link/GNode/assets/121820229/32885341-e59d-4914-ad37-5dc326aec006)
-(this is just a nice picture)
+_This is just a nice picture._
 
 # GNode
 
-A generic node-based data structure for node graph programming in C++  
+A generic node-based data structure for node graph programming in C++.
 
 ## License
 
