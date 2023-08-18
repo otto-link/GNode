@@ -25,6 +25,33 @@ void Tree::add_node(std::shared_ptr<Node> p_node)
   }
 }
 
+std::string Tree::get_node_id_by_hash_id(int node_hash_id)
+{
+  gnode::Node *p_node = this->get_node_ref_by_hash_id(node_hash_id);
+  return p_node->id;
+}
+
+Node *Tree::get_node_ref_by_hash_id(int node_hash_id)
+{
+  Node *p_node = nullptr;
+
+  // scan control nodes and their ports to find the
+  for (auto &[id, node] : this->get_nodes_map())
+    if (node.get()->hash_id == node_hash_id)
+    {
+      p_node = node.get();
+      break;
+    }
+
+  if (!p_node)
+  {
+    LOG_ERROR("node hash id [%d] is not known", node_hash_id);
+    throw std::runtime_error("unknonw node hash_id");
+  }
+
+  return p_node;
+}
+
 std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id)
 {
   if (this->is_node_id_in_keys(node_id))
@@ -44,6 +71,21 @@ Node *Tree::get_node_ref_by_id(const std::string node_id)
 std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map()
 {
   return nodes_map;
+}
+
+void Tree::get_ids_by_port_hash_id(int          port_hash_id,
+                                   std::string &node_id,
+                                   std::string &port_id)
+{
+  // scan control nodes and their ports to find the
+  for (auto &[nid, node] : this->get_nodes_map())
+    for (auto &[pid, port] : node.get()->get_ports())
+      if (port.hash_id == port_hash_id)
+      {
+        node_id = nid;
+        port_id = pid;
+        break;
+      }
 }
 
 bool Tree::is_node_id_in_keys(const std::string node_id)

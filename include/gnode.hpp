@@ -325,6 +325,11 @@ public:
    */
   void set_p_data(const std::string port_id, void *new_p_data);
 
+  /**
+   * @brief Set the post update callback function.
+   *
+   * @param new_post_update_callback Callback.
+   */
   void set_post_update_callback(
       std::function<void(Node *)> new_post_update_callback);
 
@@ -497,6 +502,9 @@ private:
    */
   std::map<std::string, Port> ports = {};
 
+  /**
+   * @brief Reference to the post-update callback.
+   */
   std::function<void(Node *)> post_update_callback;
 };
 
@@ -525,6 +533,22 @@ public:
   Tree(std::string id);
 
   /**
+   * @brief Get the node id corresponding to a hash id.
+   *
+   * @param node_hash_id Hash id.
+   * @return std::string Node id.
+   */
+  std::string get_node_id_by_hash_id(int node_hash_id);
+
+  /**
+   * @brief Return the reference of the node with the given hash id.
+   *
+   * @param node_hash_id Hash Id.
+   * @return Node* Pointer.
+   */
+  Node *get_node_ref_by_hash_id(int node_hash_id);
+
+  /**
    * @brief Return the reference of the node 'Id'.
    *
    * @param node_id Node Id.
@@ -538,6 +562,17 @@ public:
    * @return std::map<std::string, std::shared_ptr<Node>> Nodes.
    */
   std::map<std::string, std::shared_ptr<Node>> get_nodes_map();
+
+  /**
+   * @brief Get the node and port Id corresponding to a given port hash Id.
+   *
+   * @param port_hash_id Port hash Id.
+   * @param node_id Node Id.
+   * @param port_id Port Id.
+   */
+  void get_ids_by_port_hash_id(int          port_hash_id,
+                               std::string &node_id,
+                               std::string &port_id);
 
   //----------------------------------------
   // nodes management
