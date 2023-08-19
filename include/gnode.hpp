@@ -539,9 +539,6 @@ public:
    */
   Tree(std::string id);
 
-  std::vector<gnode::Point> compute_graph_layout(int   iterations = 300,
-                                                 float k = 15.f);
-
   /**
    * @brief Return the adjacency matrix of the tree.
    *
@@ -602,6 +599,17 @@ public:
    * @param p_node Shared reference to the node.
    */
   void add_node(std::shared_ptr<Node> p_node);
+
+  /**
+   * @brief Return the grpah layout using the Fruchterman-Reingold algorithm
+   * (https://github.com/olvb/nodesoup)
+   *
+   * @param iterations Maximum number of iterations.
+   * @param k Force coefficient.
+   * @return std::vector<gnode::Point> Node positions.
+   */
+  std::vector<gnode::Point> compute_graph_layout(int   iterations = 300,
+                                                 float k = 15.f);
 
   /**
    * @brief Return true if the 'Id' is in the node mapping.
