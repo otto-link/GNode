@@ -62,7 +62,7 @@ std::vector<std::vector<size_t>> Tree::get_adjacency_matrix()
     g.push_back({});
     for (auto &[port_id, port] : node.get()->get_ports())
     {
-      if (port.is_connected)
+      if (port.is_connected & (port.direction == direction::out))
       {
         std::string linked_node_id = port.p_linked_node->id;
         size_t      node_idx = 0;
@@ -162,6 +162,8 @@ void Tree::remove_node(std::string node_id)
     throw std::runtime_error("unknown node id");
   }
 }
+
+size_t Tree::size() { return this->get_nodes_map().size(); }
 
 //----------------------------------------
 // linking

@@ -589,6 +589,11 @@ public:
                                std::string &node_id,
                                std::string &port_id);
 
+  /**
+   * @brief Return the number of nodes.
+   */
+  size_t size();
+
   //----------------------------------------
   // nodes management
   //----------------------------------------
