@@ -69,6 +69,13 @@ int id_to_hash(const std::string &id);
  */
 std::string id_to_label(const std::string &id);
 
+struct Point
+{
+  float x;
+  float y;
+  Point() : x(0), y(0){};
+};
+
 class Node; // forward declaration for Port class
 
 /**
@@ -531,6 +538,9 @@ public:
    * @param id Tree Id.
    */
   Tree(std::string id);
+
+  std::vector<gnode::Point> compute_graph_layout(int   iterations = 300,
+                                                 float k = 15.f);
 
   /**
    * @brief Return the adjacency matrix of the tree.

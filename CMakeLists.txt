@@ -7,6 +7,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
+add_subdirectory(${PROJECT_SOURCE_DIR}/external/nodesoup)
 
 # sources
 file(GLOB_RECURSE SOURCES
@@ -22,7 +23,7 @@ target_include_directories(${PROJECT_NAME}
 			     )
 
 # Link libraries
-target_link_libraries(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} nodesoup)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
 add_subdirectory(${PROJECT_SOURCE_DIR}/examples)

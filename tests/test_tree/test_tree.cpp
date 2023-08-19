@@ -1,6 +1,6 @@
-#include <iostream>
-
 #include "gnode.hpp"
+#include "nodesoup.hpp"
+#include <iostream>
 
 struct MyNode : public gnode::Node
 {
@@ -83,15 +83,11 @@ int main()
 
   tree.update();
 
-  std::vector<std::vector<size_t>> g = tree.get_adjacency_matrix();
+  std::cout << "Node layout:\n";
+  std::vector<gnode::Point> positions = tree.compute_graph_layout();
 
-  for (size_t i = 0; i < g.size(); i++)
-  {
-    std::cout << i << ": ";
-    for (size_t j = 0; j < g[i].size(); j++)
-      std::cout << g[i][j] << ", ";
-    std::cout << std::endl;
-  }
+  for (auto &p : positions)
+    std::cout << p.x << " " << p.y << "\n";
 
   return 0;
 }

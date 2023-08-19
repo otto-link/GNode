@@ -3,6 +3,8 @@
  * this software. */
 #include <fstream>
 
+#include "nodesoup.hpp"
+
 #include "gnode.hpp"
 
 namespace gnode
@@ -23,6 +25,29 @@ void Tree::add_node(std::shared_ptr<Node> p_node)
     LOG_ERROR("node [%s] already used", p_node.get()->id.c_str());
     throw std::runtime_error("node id alreayd used");
   }
+}
+
+std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
+{
+  std::vector<std::vector<size_t>> g = this->get_adjacency_matrix();
+
+  std::vector<nodesoup::Point2D> positions = nodesoup::fruchterman_reingold(
+      this->get_adjacency_matrix(),
+      1,
+      1,
+      (double)k,
+      iterations);
+
+  // convert to gnode::Point2d
+  std::vector<gnode::Point> pts(positions.size());
+
+  for (size_t k = 0; k < positions.size(); k++)
+  {
+    pts[k].x = positions[k].x;
+    pts[k].y = positions[k].y;
+  }
+
+  return pts;
 }
 
 std::vector<std::vector<size_t>> Tree::get_adjacency_matrix()
