@@ -25,6 +25,36 @@ void Tree::add_node(std::shared_ptr<Node> p_node)
   }
 }
 
+std::vector<std::vector<size_t>> Tree::get_adjacency_matrix()
+{
+  // simple adjacency list graph structure (see nodesoup for
+  // example https://github.com/olvb/nodesoup)
+  std::vector<std::vector<size_t>> g = {};
+
+  // for each node scan outputs to seek connections with other nodes
+  for (auto &[id, node] : this->get_nodes_map())
+  {
+    g.push_back({});
+    for (auto &[port_id, port] : node.get()->get_ports())
+    {
+      if (port.is_connected)
+      {
+        std::string linked_node_id = port.p_linked_node->id;
+        size_t      node_idx = 0;
+        for (auto &[search_id, search_node] : this->get_nodes_map())
+        {
+          if (linked_node_id == search_id)
+            break;
+          node_idx++;
+        }
+        g.back().push_back(node_idx);
+      }
+    }
+  }
+
+  return g;
+}
+
 std::string Tree::get_node_id_by_hash_id(int node_hash_id)
 {
   gnode::Node *p_node = this->get_node_ref_by_hash_id(node_hash_id);

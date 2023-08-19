@@ -57,18 +57,41 @@ int main()
         (std::function<void(gnode::Node *)>)&my_callback);
   }
 
+  MyNode node3 = MyNode("node_3");
+  {
+    gnode::Port p = gnode::Port("output",
+                                gnode::direction::out,
+                                gnode::dtype::dfloat);
+    node3.add_port(p);
+
+    node3.set_post_update_callback(
+        (std::function<void(gnode::Node *)>)&my_callback);
+  }
+
   // tree
   gnode::Tree tree = gnode::Tree("mytree");
 
   tree.add_node(std::make_shared<MyNode>(node));
   tree.add_node(std::make_shared<MyNode>(node2));
+  tree.add_node(std::make_shared<MyNode>(node3));
 
   tree.link("node_2", "output", "nodeA", "input2");
+  tree.link("node_3", "output", "nodeA", "input##hidden_id");
 
   tree.print_node_list();
   tree.print_node_links();
 
   tree.update();
+
+  std::vector<std::vector<size_t>> g = tree.get_adjacency_matrix();
+
+  for (size_t i = 0; i < g.size(); i++)
+  {
+    std::cout << i << ": ";
+    for (size_t j = 0; j < g[i].size(); j++)
+      std::cout << g[i][j] << ", ";
+    std::cout << std::endl;
+  }
 
   return 0;
 }
