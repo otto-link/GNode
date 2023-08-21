@@ -52,8 +52,7 @@ std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
 
 std::vector<std::vector<size_t>> Tree::get_adjacency_list()
 {
-  // simple adjacency list graph structure (see nodesoup for
-  // example https://github.com/olvb/nodesoup)
+  // simple adjacency list graph structure
   std::vector<std::vector<size_t>> g = {};
 
   // for each node scan outputs to seek connections with other nodes
@@ -162,6 +161,45 @@ void Tree::remove_node(std::string node_id)
     throw std::runtime_error("unknown node id");
   }
 }
+
+// helper, not a Tree method
+bool is_subgraph_cyclic(size_t                                  i,
+                        std::vector<bool>                      &visited,
+                        std::vector<bool>                      &stack,
+                        const std::vector<std::vector<size_t>> &adj)
+{
+  if (!visited[i])
+  {
+    // Mark the current node as visited and part of recursion stack
+    visited[i] = true;
+    stack[i] = true;
+
+    for (auto &k : adj[i])
+      if (!visited[k] && is_subgraph_cyclic(k, visited, stack, adj))
+        return true;
+      else if (stack[k])
+        return true;
+  }
+
+  // Remove the vertex from recursion stack
+  stack[i] = false;
+  return false;
+}
+
+bool is_graph_cyclic(const std::vector<std::vector<size_t>> &adj)
+{
+  // https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+  std::vector<bool> visited(adj.size());
+  std::vector<bool> stack(adj.size());
+
+  for (size_t i = 0; i < adj.size(); i++)
+    if ((!visited[i]) and is_subgraph_cyclic(i, visited, stack, adj))
+      return true;
+
+  return false;
+}
+
+bool Tree::is_cyclic() { return is_graph_cyclic(this->get_adjacency_list()); }
 
 size_t Tree::size() { return this->get_nodes_map().size(); }
 

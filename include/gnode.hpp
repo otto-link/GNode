@@ -590,6 +590,11 @@ public:
                                std::string &port_id);
 
   /**
+   * @brief Return true if the tree graph is cyclic.
+   */
+  bool is_cyclic();
+
+  /**
    * @brief Return the number of nodes.
    */
   size_t size();
@@ -719,5 +724,8 @@ private:
    */
   std::shared_ptr<Node> get_node_sptr_by_id(const std::string node_id);
 };
+
+// helper
+bool is_graph_cyclic(const std::vector<std::vector<size_t>> &adj);
 
 } // namespace gnode
