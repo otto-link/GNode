@@ -29,10 +29,10 @@ void Tree::add_node(std::shared_ptr<Node> p_node)
 
 std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
 {
-  std::vector<std::vector<size_t>> g = this->get_adjacency_matrix();
+  std::vector<std::vector<size_t>> g = this->get_adjacency_list();
 
   std::vector<nodesoup::Point2D> positions = nodesoup::fruchterman_reingold(
-      this->get_adjacency_matrix(),
+      this->get_adjacency_list(),
       1,
       1,
       (double)k,
@@ -50,7 +50,7 @@ std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
   return pts;
 }
 
-std::vector<std::vector<size_t>> Tree::get_adjacency_matrix()
+std::vector<std::vector<size_t>> Tree::get_adjacency_list()
 {
   // simple adjacency list graph structure (see nodesoup for
   // example https://github.com/olvb/nodesoup)

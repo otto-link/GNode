@@ -540,12 +540,12 @@ public:
   Tree(std::string id);
 
   /**
-   * @brief Return the adjacency matrix of the tree.
+   * @brief Return the adjacency list of the tree.
    *
    * @return std::vector<std::vector<size_t>> List of node indices (index
    * corresponds to the node index in the tree node mapping)
    */
-  std::vector<std::vector<size_t>> get_adjacency_matrix();
+  std::vector<std::vector<size_t>> get_adjacency_list();
 
   /**
    * @brief Get the node id corresponding to a hash id.
