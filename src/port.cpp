@@ -20,12 +20,7 @@ Port::Port(std::string id, int direction, int dtype, bool is_optional)
   this->label = id_to_label(this->id);
 }
 
-void *Port::get_p_data()
-{
-  if (!p_data)
-    LOG_DEBUG("warning: null pointer, port id [%s]", this->id.c_str());
-  return this->p_data;
-}
+void *Port::get_p_data() { return this->p_data; }
 
 void Port::set_p_data(void *new_p_data) { this->p_data = new_p_data; }
 
