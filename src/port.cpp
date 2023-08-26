@@ -26,9 +26,10 @@ void Port::set_p_data(void *new_p_data) { this->p_data = new_p_data; }
 
 void Port::connect_in(Node *p_linked_node,
                       Port *p_linked_port,
-                      void *ptr_to_incoming_data)
+                      void *ptr_to_incoming_data,
+                      bool  ignore_is_connected)
 {
-  if (this->is_connected)
+  if (this->is_connected && !ignore_is_connected)
   {
     LOG_ERROR("port id [%s] is already connected", this->id.c_str());
     throw std::runtime_error("port already connected");

@@ -176,10 +176,12 @@ public:
    * @param p_linked_node Reference to the node on the other end of the link.
    * @param p_linked_port Reference to the port on the other end of the link.
    * @param ptr_to_incoming_data Reference to the incoming data.
+   * @param ignore_is_connected Connect even if it is already connected.
    */
   void connect_in(Node *p_linked_node,
                   Port *p_linked_port,
-                  void *ptr_to_incoming_data);
+                  void *ptr_to_incoming_data,
+                  bool  ignore_is_connected = false);
 
   /**
    * @brief Connect port, as an output, to another port.

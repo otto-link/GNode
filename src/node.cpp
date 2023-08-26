@@ -137,6 +137,7 @@ void Node::connect_port_out(std::string port_id,
 void Node::disconnect_port(std::string port_id)
 {
   this->get_port_ref_by_id(port_id)->disconnect();
+  this->update_inner_bindings();
 }
 
 void Node::disconnect_all_ports()
@@ -158,7 +159,8 @@ void Node::update_links()
   // update data pointer on this other end of the link
   for (auto &[key, port] : this->ports)
     if ((port.direction == direction::out) & port.is_connected)
-      port.p_linked_port->connect_in(this, &port, port.get_p_data());
+      // 'true' to connect even if it is already connected
+      port.p_linked_port->connect_in(this, &port, port.get_p_data(), true);
 }
 
 //----------------------------------------
