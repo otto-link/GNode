@@ -291,9 +291,12 @@ public:
    *
    * @param direction Direction (in or out).
    * @param skip_optional Count optional or not.
+   * @param skip_unconnected Count unconnected or not.
    * @return int Number of ports.
    */
-  int get_nports_by_direction(int direction, bool skip_optional = true);
+  int get_nports_by_direction(int  direction,
+                              bool skip_optional = true,
+                              bool skip_connected = false);
 
   /**
    * @brief Return the reference to the data carried out by the port 'Id'.

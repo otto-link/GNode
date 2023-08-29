@@ -27,12 +27,15 @@ std::string Node::get_node_type()
   return this->node_type;
 };
 
-int Node::get_nports_by_direction(int direction, bool skip_optional)
+int Node::get_nports_by_direction(int  direction,
+                                  bool skip_optional,
+                                  bool skip_unconnected)
 {
   int n = 0;
   for (auto &[key, p] : this->ports)
     if ((p.direction == direction) & !(skip_optional & p.is_optional))
-      n++;
+      if (p.is_connected || !skip_unconnected)
+        n++;
   return n;
 }
 
