@@ -55,7 +55,9 @@ std::vector<gnode::Point> Tree::compute_graph_layout_fruchterman_reingold(
 
 std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
 {
-  std::vector<gnode::Point>        pts; //(this->size()); // output
+  std::vector<gnode::Point> pts; // output
+  pts.reserve(this->size());
+
   std::vector<std::vector<size_t>> adj = this->get_adjacency_list();
 
   graph_builder gb = graph_builder();
@@ -67,12 +69,19 @@ std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
       gb.add_edge(i, j);
     }
 
-  graph           graph = gb.build();
-  attributes      attr;
+  graph graph = gb.build();
+
+  attributes attr;
+  attr.node_size = 0;
+  attr.node_dist = 1;
+  attr.layer_dist = 1;
+
   sugiyama_layout layout(graph, attr);
 
   for (auto &vertex : layout.vertices())
-    pts.push_back(Point(vertex.pos.x, vertex.pos.y));
+    // reverse x and y to get an horizontal layout by default
+    pts.push_back(Point(vertex.pos.y - 0.5f * layout.height(),
+                        vertex.pos.x - 0.5f * layout.width()));
 
   return pts;
 }
