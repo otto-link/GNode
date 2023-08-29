@@ -64,10 +64,7 @@ std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
 
   for (size_t i = 0; i < adj.size(); i++)
     for (auto &j : adj[i])
-    {
-      LOG_DEBUG("%ld %ld", i, j);
       gb.add_edge(i, j);
-    }
 
   graph graph = gb.build();
 
