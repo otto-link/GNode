@@ -4,3 +4,6 @@
 [submodule "external/nodesoup"]
 	path = external/nodesoup
 	url = git@github.com:olvb/nodesoup.git
+[submodule "external/demekgraph"]
+	path = external/demekgraph
+	url = git@github.com:gml4gtk/demekgraph.git

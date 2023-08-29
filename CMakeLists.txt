@@ -17,6 +17,7 @@ add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
 target_include_directories(${PROJECT_NAME}
                            PUBLIC
+			     ${PROJECT_SOURCE_DIR}/external
                              ${PROJECT_SOURCE_DIR}/include
 			     ${PROJECT_SOURCE_DIR}/external/macro-logger
 			   PRIVATE

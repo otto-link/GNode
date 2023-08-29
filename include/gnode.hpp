@@ -74,6 +74,7 @@ struct Point
   float x;
   float y;
   Point() : x(0), y(0){};
+  Point(float x, float y) : x(x), y(y){};
 };
 
 class Node; // forward declaration for Port class
@@ -616,15 +617,24 @@ public:
   void add_node(std::shared_ptr<Node> p_node);
 
   /**
-   * @brief Return the grpah layout using the Fruchterman-Reingold algorithm
+   * @brief Return the graph layout using the Fruchterman-Reingold algorithm
    * (https://github.com/olvb/nodesoup)
    *
    * @param iterations Maximum number of iterations.
    * @param k Force coefficient.
    * @return std::vector<gnode::Point> Node positions.
    */
-  std::vector<gnode::Point> compute_graph_layout(int   iterations = 300,
-                                                 float k = 15.f);
+  std::vector<gnode::Point> compute_graph_layout_fruchterman_reingold(
+      int   iterations = 300,
+      float k = 15.f);
+
+  /**
+   * @brief Return the graph layout using the Sugiyama's algorithm for
+   * layered graph layout
+   *
+   * @return std::vector<gnode::Point> Node positions.
+   */
+  std::vector<gnode::Point> compute_graph_layout_sugiyama();
 
   /**
    * @brief Return true if the 'Id' is in the node mapping.

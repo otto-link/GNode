@@ -3,6 +3,7 @@
  * this software. */
 #include <fstream>
 
+#include "demekgraph/updated/include/interface.hpp"
 #include "nodesoup.hpp"
 
 #include "gnode.hpp"
@@ -27,7 +28,9 @@ void Tree::add_node(std::shared_ptr<Node> p_node)
   }
 }
 
-std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
+std::vector<gnode::Point> Tree::compute_graph_layout_fruchterman_reingold(
+    int   iterations,
+    float k)
 {
   std::vector<std::vector<size_t>> g = this->get_adjacency_list();
 
@@ -46,6 +49,30 @@ std::vector<gnode::Point> Tree::compute_graph_layout(int iterations, float k)
     pts[k].x = positions[k].x;
     pts[k].y = positions[k].y;
   }
+
+  return pts;
+}
+
+std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
+{
+  std::vector<gnode::Point>        pts; //(this->size()); // output
+  std::vector<std::vector<size_t>> adj = this->get_adjacency_list();
+
+  graph_builder gb = graph_builder();
+
+  for (size_t i = 0; i < adj.size(); i++)
+    for (auto &j : adj[i])
+    {
+      LOG_DEBUG("%ld %ld", i, j);
+      gb.add_edge(i, j);
+    }
+
+  graph           graph = gb.build();
+  attributes      attr;
+  sugiyama_layout layout(graph, attr);
+
+  for (auto &vertex : layout.vertices())
+    pts.push_back(Point(vertex.pos.x, vertex.pos.y));
 
   return pts;
 }

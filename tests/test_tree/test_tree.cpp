@@ -52,7 +52,6 @@ int main()
                                 gnode::direction::out,
                                 gnode::dtype::dfloat);
     node2.add_port(p);
-
     node2.set_post_update_callback(
         (std::function<void(gnode::Node *)>)&my_callback);
   }
@@ -63,9 +62,16 @@ int main()
                                 gnode::direction::out,
                                 gnode::dtype::dfloat);
     node3.add_port(p);
-
     node3.set_post_update_callback(
         (std::function<void(gnode::Node *)>)&my_callback);
+  }
+
+  MyNode node4 = MyNode("node_4");
+  {
+    gnode::Port p = gnode::Port("input",
+                                gnode::direction::in,
+                                gnode::dtype::dfloat);
+    node4.add_port(p);
   }
 
   // tree
@@ -74,17 +80,27 @@ int main()
   tree.add_node(std::make_shared<MyNode>(node));
   tree.add_node(std::make_shared<MyNode>(node2));
   tree.add_node(std::make_shared<MyNode>(node3));
+  tree.add_node(std::make_shared<MyNode>(node4));
 
   tree.link("node_2", "output", "nodeA", "input2");
   tree.link("node_3", "output", "nodeA", "input##hidden_id");
+  tree.link("nodeA", "output", "node_4", "input");
 
   tree.print_node_list();
   tree.print_node_links();
 
   tree.update();
 
-  std::cout << "Node layout:\n";
-  std::vector<gnode::Point> positions = tree.compute_graph_layout();
+  std::cout << "Node layout (Fruchterman Reingold):\n";
+  std::vector<gnode::Point> positions =
+      tree.compute_graph_layout_fruchterman_reingold();
+
+  for (auto &p : positions)
+    std::cout << p.x << " " << p.y << "\n";
+
+  //
+  std::cout << "Node layout (Sugiyama):\n";
+  positions = tree.compute_graph_layout_sugiyama();
 
   for (auto &p : positions)
     std::cout << p.x << " " << p.y << "\n";
