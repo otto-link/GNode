@@ -652,6 +652,11 @@ public:
    */
   void remove_node(std::string node_id);
 
+  /**
+   * @brief Remove all the nodes.
+   */
+  void remove_all_nodes();
+
   //----------------------------------------
   // linking
   //----------------------------------------

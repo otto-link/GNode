@@ -195,6 +195,8 @@ void Tree::remove_node(std::string node_id)
   }
 }
 
+void Tree::remove_all_nodes() { this->nodes_map.clear(); }
+
 // helper, not a Tree method
 bool is_subgraph_cyclic(size_t                                  i,
                         std::vector<bool>                      &visited,
