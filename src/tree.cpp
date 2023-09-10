@@ -139,10 +139,10 @@ Node *Tree::get_node_ref_by_hash_id(int node_hash_id)
   return p_node;
 }
 
-std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id)
+std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id) const
 {
   if (this->is_node_id_in_keys(node_id))
-    return this->nodes_map[node_id];
+    return this->get_nodes_map().at(node_id);
   else
   {
     LOG_ERROR("node [%s] not found", node_id.c_str());
@@ -150,7 +150,7 @@ std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id)
   }
 }
 
-Node *Tree::get_node_ref_by_id(const std::string node_id)
+Node *Tree::get_node_ref_by_id(const std::string node_id) const
 {
   return this->get_node_sptr_by_id(node_id).get();
 }
@@ -175,7 +175,7 @@ void Tree::get_ids_by_port_hash_id(int          port_hash_id,
       }
 }
 
-bool Tree::is_node_id_in_keys(const std::string node_id)
+bool Tree::is_node_id_in_keys(const std::string node_id) const
 {
   return this->nodes_map.contains(node_id);
 }

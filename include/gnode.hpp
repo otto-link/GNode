@@ -575,7 +575,7 @@ public:
    * @param node_id Node Id.
    * @return Node* Pointer.
    */
-  Node *get_node_ref_by_id(const std::string node_id);
+  Node *get_node_ref_by_id(const std::string node_id) const;
 
   /**
    * @brief Return all the nodes, as a mapping.
@@ -643,7 +643,7 @@ public:
    * @return true
    * @return false
    */
-  bool is_node_id_in_keys(const std::string node_id);
+  bool is_node_id_in_keys(const std::string node_id) const;
 
   /**
    * @brief Remove node 'Id'.
@@ -743,7 +743,7 @@ private:
    * @param node_id Node Id.
    * @return std::shared_ptr<Node> Shared pointer.
    */
-  std::shared_ptr<Node> get_node_sptr_by_id(const std::string node_id);
+  std::shared_ptr<Node> get_node_sptr_by_id(const std::string node_id) const;
 };
 
 // helper
