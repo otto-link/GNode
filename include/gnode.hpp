@@ -730,12 +730,13 @@ public:
    */
   void export_csv(std::string fname_nodes, std::string fname_links);
 
-private:
+protected:
   /**
    * @brief Nodes of the tree, as a mapping (Id, Node shared pointer).
    */
   std::map<std::string, std::shared_ptr<Node>> nodes_map = {};
 
+private:
   /**
    * @brief Return the shared pointer the node 'Id'.
    *
