@@ -155,7 +155,7 @@ Node *Tree::get_node_ref_by_id(const std::string node_id)
   return this->get_node_sptr_by_id(node_id).get();
 }
 
-std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map()
+std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map() const
 {
   return nodes_map;
 }

@@ -582,7 +582,7 @@ public:
    *
    * @return std::map<std::string, std::shared_ptr<Node>> Nodes.
    */
-  std::map<std::string, std::shared_ptr<Node>> get_nodes_map();
+  std::map<std::string, std::shared_ptr<Node>> get_nodes_map() const;
 
   /**
    * @brief Get the node and port Id corresponding to a given port hash Id.
