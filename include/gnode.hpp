@@ -323,14 +323,6 @@ public:
   Port *get_port_ref_by_id(const std::string port_id);
 
   /**
-   * @brief Return the "thru" state of the node.
-   *
-   * @return true
-   * @return false
-   */
-  bool get_thru();
-
-  /**
    * @brief Set the reference to the data carried out by the port 'Id'.
    *
    * @param port_id Port Id.
@@ -345,13 +337,6 @@ public:
    */
   void set_post_update_callback(
       std::function<void(Node *)> new_post_update_callback);
-
-  /**
-   * @brief Set the "thru" state of the node.
-   *
-   * @param new_thru
-   */
-  void set_thru(bool new_thru);
 
   //----------------------------------------
   // ports management
@@ -504,12 +489,6 @@ protected:
   std::string node_type = "";
 
 private:
-  /**
-   * @brief Thru state. If set to true, the node does not make any copy of the
-   * incoming data and acts directly on them.
-   */
-  bool thru = false;
-
   /**
    * @brief Ports of the node, as a mapping (Id, Port).
    */

@@ -57,8 +57,6 @@ Port *Node::get_port_ref_by_id(const std::string port_id)
   }
 }
 
-bool Node::get_thru() { return this->thru; }
-
 void Node::set_p_data(const std::string port_id, void *new_p_data)
 {
   this->get_port_ref_by_id(port_id)->set_p_data(new_p_data);
@@ -68,15 +66,6 @@ void Node::set_post_update_callback(
     std::function<void(Node *)> new_post_update_callback)
 {
   this->post_update_callback = new_post_update_callback;
-}
-
-void Node::set_thru(bool new_thru)
-{
-  if (this->thru != new_thru)
-  {
-    this->thru = new_thru;
-    this->update_inner_bindings();
-  }
 }
 
 //----------------------------------------
@@ -197,21 +186,8 @@ void Node::update()
       }
       else
       {
-        // update upstream nodes first (only if the node is 'thru'
-        // and does not store data, so that it needs the data
-        // upstream to be updated), update current node, then update
-        // downstream nodes
+        // update current node, then update downstream nodes
         this->is_up_to_date = true;
-
-        if (this->thru)
-          for (auto &[key, p] : this->ports)
-            if ((p.direction == direction::in) & p.is_connected)
-            {
-              LOG_DEBUG("node [%s] triggers node [%s]",
-                        this->id.c_str(),
-                        p.p_linked_node->id.c_str());
-              p.p_linked_node->update();
-            }
 
         this->compute();
         if (this->post_update_callback)
@@ -246,7 +222,6 @@ void Node::infos()
   LOG_INFO("- category: %s", this->category.c_str());
   LOG_INFO("- node_type: %s", this->node_type.c_str());
   LOG_INFO("- frozen_outputs: %d", this->frozen_outputs);
-  LOG_INFO("- thru: %d", this->thru);
   LOG_INFO("- state");
   LOG_INFO("  - are_inputs_ready: %d", are_inputs_ready());
   LOG_INFO("- ports");
