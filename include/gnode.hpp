@@ -78,6 +78,7 @@ struct Point
 };
 
 class Node; // forward declaration for Port class
+class Tree; // forward declaration for Node class
 
 /**
  * @brief Port class, to handle the node "pins" (inputs and outputs).
@@ -257,6 +258,11 @@ public:
    * recomputed).
    */
   bool is_up_to_date = false;
+
+  /**
+   * @brief Reference to the Tree to which this node belongs to.
+   */
+  Tree *p_tree = nullptr;
 
   /**
    * @brief Construct a new Node object.
@@ -449,10 +455,15 @@ public:
   void force_update();
 
   /**
-   * @brief Update current node: first trigger the update of surrounding nodes
-   * before being able to compute.
+   * @brief Update current node.
    */
   void update();
+
+  /**
+   * @brief Update current node and trigger the update of the nodes connected to
+   * the output.
+   */
+  void update_and_propagate();
 
   /**
    * @brief Update inner bindings (e.g. links between inputs and outputs of the
@@ -672,6 +683,10 @@ public:
 
   /**
    * @brief Update the whole tree.
+   *
+   * It is much slower than `update_node` but is necessary to
+   * initialize the state of the tree before using `update_node`, which
+   * is used to propagate local changes to he tree.
    */
   void update();
 

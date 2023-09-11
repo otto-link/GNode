@@ -20,7 +20,10 @@ Tree::Tree(std::string id) : id(id) { this->label = id_to_label(this->id); }
 void Tree::add_node(std::shared_ptr<Node> p_node)
 {
   if (!this->is_node_id_in_keys(p_node.get()->id))
+  {
     this->nodes_map[p_node.get()->id] = p_node;
+    p_node->p_tree = this;
+  }
   else
   {
     LOG_ERROR("node [%s] already used", p_node.get()->id.c_str());
@@ -296,13 +299,8 @@ void Tree::update()
 
   // trigger nodes with no inputs
   for (auto &[key, n] : this->nodes_map)
-  {
-    LOG_DEBUG("[%s] ninputs: %d",
-              key.c_str(),
-              n.get()->get_nports_by_direction(direction::in));
     if (n.get()->get_nports_by_direction(direction::in) == 0)
-      n.get()->update();
-  }
+      this->update_node(n.get()->id);
 }
 
 void Tree::update_node(std::string node_id)
@@ -311,8 +309,46 @@ void Tree::update_node(std::string node_id)
            this->id.c_str(),
            node_id.c_str());
 
-  this->get_node_ref_by_id(node_id)->is_up_to_date = false;
-  this->get_node_ref_by_id(node_id)->update();
+  // use a depth-first search to update the nodes in an optimized
+  // order
+  std::vector<std::string>    stack = {node_id};
+  std::map<std::string, bool> is_discovered = {};
+  std::vector<std::string>    update_queue = {}; // storage for the
+                                                 // update procedure
+                                                 // coming after
+
+  for (auto &[key, n] : this->nodes_map)
+    is_discovered[key] = false;
+
+  while (stack.size())
+  {
+    std::string nid = stack.back();
+    stack.pop_back();
+
+    Node *p_node = this->get_node_ref_by_id(nid);
+
+    // store and mark for update
+    update_queue.push_back(nid);
+    p_node->is_up_to_date = false;
+
+    LOG_DEBUG("%s", nid.c_str());
+
+    if (!is_discovered[nid])
+    {
+      is_discovered[nid] = true;
+
+      // add 'downstream' nodes to the DFS stack
+      for (auto &[key, p] : p_node->get_ports())
+        if ((p.direction == direction::out) & p.is_connected)
+          stack.push_back(p.p_linked_node->id);
+    }
+  }
+
+  for (auto &nid : update_queue)
+  {
+    LOG_DEBUG("UPDATE: %s", nid.c_str());
+    this->get_node_ref_by_id(nid)->update();
+  }
 }
 
 //----------------------------------------

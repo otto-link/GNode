@@ -130,6 +130,8 @@ int main()
   // compute (PRINT should print '6')
   tree.update();
 
+  tree.print_node_links();
+
   // change 'value c', this will automatically update only necessary
   // nodes (not all the tree), and PRINT should print 10
 

@@ -162,11 +162,30 @@ void Node::update_links()
 void Node::force_update()
 {
   this->is_up_to_date = false;
-  if (this->auto_update)
-    this->update();
+  this->p_tree->update_node(this->id);
 }
 
 void Node::update()
+{
+  if (!this->is_up_to_date && this->auto_update)
+  {
+    if (!this->are_inputs_ready() | !this->are_inputs_up_to_date())
+      LOG_INFO("node id [%s] cannot compute: inputs not up-to-date or set up",
+               this->id.c_str());
+    else
+    {
+      // update the current node and do not propagate update
+      this->compute();
+      if (this->post_update_callback)
+        this->post_update_callback(this);
+      this->is_up_to_date = true;
+    }
+  }
+  else
+    LOG_DEBUG("node [%s] is up-to-date", this->id.c_str());
+}
+
+void Node::update_and_propagate()
 {
   if (!this->is_up_to_date)
   {
