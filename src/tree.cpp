@@ -331,15 +331,14 @@ void Tree::update_node(std::string node_id)
     update_queue.push_back(nid);
     p_node->is_up_to_date = false;
 
-    LOG_DEBUG("%s", nid.c_str());
-
     if (!is_discovered[nid])
     {
       is_discovered[nid] = true;
 
       // add 'downstream' nodes to the DFS stack
       for (auto &[key, p] : p_node->get_ports())
-        if ((p.direction == direction::out) & p.is_connected)
+        if (p.direction == direction::out && p.is_connected &&
+            !(p_node->frozen_outputs))
           stack.push_back(p.p_linked_node->id);
     }
   }
