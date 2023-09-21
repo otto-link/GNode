@@ -301,6 +301,8 @@ void Tree::update()
   for (auto &[key, n] : this->nodes_map)
     if (n.get()->get_nports_by_direction(direction::in) == 0)
       n.get()->update_and_propagate();
+
+  this->post_update();
 }
 
 void Tree::update_node(std::string node_id)
@@ -348,7 +350,11 @@ void Tree::update_node(std::string node_id)
     LOG_DEBUG("UPDATE: %s", nid.c_str());
     this->get_node_ref_by_id(nid)->update();
   }
+
+  this->post_update();
 }
+
+void Tree::post_update() { LOG_DEBUG("empty Tree::post_update"); }
 
 //----------------------------------------
 // displaying infos

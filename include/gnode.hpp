@@ -697,6 +697,11 @@ public:
    */
   void update_node(std::string node_id);
 
+  /**
+   * @brief Method called at the end of the tree update.
+   */
+  virtual void post_update();
+
   //----------------------------------------
   // displaying infos
   //----------------------------------------
