@@ -300,7 +300,7 @@ void Tree::update()
   // trigger nodes with no inputs
   for (auto &[key, n] : this->nodes_map)
     if (n.get()->get_nports_by_direction(direction::in) == 0)
-      this->update_node(n.get()->id);
+      n.get()->update_and_propagate();
 }
 
 void Tree::update_node(std::string node_id)
