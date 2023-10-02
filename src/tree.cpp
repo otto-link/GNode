@@ -345,10 +345,21 @@ void Tree::update_node(std::string node_id)
     }
   }
 
-  for (auto &nid : update_queue)
+  // update the nodes (TODO: optimize?)
+  while (update_queue.size())
   {
+    std::string nid = update_queue.front();
+
     LOG_DEBUG("UPDATE: %s", nid.c_str());
     this->get_node_ref_by_id(nid)->update();
+
+    if (this->get_node_ref_by_id(nid)->is_up_to_date)
+      update_queue.erase(update_queue.begin());
+    else
+    {
+      update_queue.erase(update_queue.begin());
+      update_queue.push_back(nid);
+    }
   }
 
   this->post_update();
