@@ -170,19 +170,8 @@ void Node::update()
   if (!this->is_up_to_date && this->auto_update)
   {
     if (!this->are_inputs_ready() | !this->are_inputs_up_to_date())
-    {
       LOG_INFO("node id [%s] cannot compute: inputs not up-to-date or set up",
                this->id.c_str());
-
-      for (auto &[key, p] : this->ports)
-        if ((p.direction == direction::in) & p.is_connected)
-        {
-          LOG_DEBUG("node [%s] triggers node [%s]",
-                    this->id.c_str(),
-                    p.p_linked_node->id.c_str());
-          p.p_linked_node->update_and_propagate();
-        }
-    }
     else
     {
       // update the current node and do not propagate update
@@ -230,6 +219,7 @@ void Node::update_and_propagate()
                       this->id.c_str(),
                       p.p_linked_node->id.c_str());
             p.p_linked_node->update_and_propagate();
+            this->is_up_to_date = false;
           }
       }
     }

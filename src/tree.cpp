@@ -345,7 +345,21 @@ void Tree::update_node(std::string node_id)
     }
   }
 
-  this->get_node_ref_by_id(node_id)->update_and_propagate();
+  // update the nodes (TODO: optimize?)
+  while (update_queue.size())
+  {
+    std::string nid = update_queue.front();
+    update_queue.erase(update_queue.begin());
+
+    LOG_DEBUG("UPDATE: %s", nid.c_str());
+    this->get_node_ref_by_id(nid)->update();
+
+    // if the node can be updated but has not be updated here, keep it
+    // in the stack, it should be eventually updated
+    if (!this->get_node_ref_by_id(nid)->is_up_to_date &&
+        this->get_node_ref_by_id(nid)->are_inputs_ready())
+      update_queue.push_back(nid);
+  }
 
   this->post_update();
 }
