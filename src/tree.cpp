@@ -311,8 +311,8 @@ void Tree::update_node(std::string node_id)
            this->id.c_str(),
            node_id.c_str());
 
-  // use a depth-first search to update the nodes in an optimized
-  // order
+  // use a depth-first search to mark the nodes that need to be
+  // updated
   std::vector<std::string>    stack = {node_id};
   std::map<std::string, bool> is_discovered = {};
   std::vector<std::string>    update_queue = {}; // storage for the
@@ -345,22 +345,7 @@ void Tree::update_node(std::string node_id)
     }
   }
 
-  // update the nodes (TODO: optimize?)
-  while (update_queue.size())
-  {
-    std::string nid = update_queue.front();
-
-    LOG_DEBUG("UPDATE: %s", nid.c_str());
-    this->get_node_ref_by_id(nid)->update();
-
-    if (this->get_node_ref_by_id(nid)->is_up_to_date)
-      update_queue.erase(update_queue.begin());
-    else
-    {
-      update_queue.erase(update_queue.begin());
-      update_queue.push_back(nid);
-    }
-  }
+  this->get_node_ref_by_id(node_id)->update_and_propagate();
 
   this->post_update();
 }
