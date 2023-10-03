@@ -311,57 +311,73 @@ void Tree::update_node(std::string node_id)
            this->id.c_str(),
            node_id.c_str());
 
-  // use a depth-first search to mark the nodes that need to be
-  // updated
-  std::vector<std::string>    stack = {node_id};
-  std::map<std::string, bool> is_discovered = {};
-  std::vector<std::string>    update_queue = {}; // storage for the
-                                                 // update procedure
-                                                 // coming after
+  // --- first check that the nodes upstream are up to date, if not
+  // --- there is no need to perform the update
+  bool upstream_ok = true;
 
-  for (auto &[key, n] : this->nodes_map)
-    is_discovered[key] = false;
+  for (auto &[port_id, port] : this->get_node_ref_by_id(node_id)->get_ports())
+    if ((port.direction == direction::in) && port.is_connected &&
+        (!port.is_optional))
+      upstream_ok &= port.p_linked_node->is_up_to_date;
 
-  while (stack.size())
+  if (upstream_ok)
   {
-    std::string nid = stack.back();
-    stack.pop_back();
 
-    Node *p_node = this->get_node_ref_by_id(nid);
+    // --- use a depth-first search to mark the nodes that need to be
+    // --- updated
+    std::vector<std::string>    stack = {node_id};
+    std::map<std::string, bool> is_discovered = {};
 
-    // store and mark for update
-    update_queue.push_back(nid);
-    p_node->is_up_to_date = false;
+    // storage for the update procedure coming after
+    std::vector<std::string> update_queue = {};
 
-    if (!is_discovered[nid])
+    for (auto &[key, n] : this->nodes_map)
+      is_discovered[key] = false;
+
+    while (stack.size())
     {
-      is_discovered[nid] = true;
+      std::string nid = stack.back();
+      stack.pop_back();
 
-      // add 'downstream' nodes to the DFS stack
-      for (auto &[key, p] : p_node->get_ports())
-        if (p.direction == direction::out && p.is_connected &&
-            !(p_node->frozen_outputs))
-          stack.push_back(p.p_linked_node->id);
-    }
-  }
+      Node *p_node = this->get_node_ref_by_id(nid);
 
-  // update the nodes (TODO: optimize?)
-  while (update_queue.size())
-  {
-    std::string nid = update_queue.front();
-    update_queue.erase(update_queue.begin());
-
-    LOG_DEBUG("UPDATE: %s", nid.c_str());
-    this->get_node_ref_by_id(nid)->update();
-
-    // if the node can be updated but has not be updated here, keep it
-    // in the stack, it should be eventually updated
-    if (!this->get_node_ref_by_id(nid)->is_up_to_date &&
-        this->get_node_ref_by_id(nid)->are_inputs_ready())
+      // store and mark for update
       update_queue.push_back(nid);
-  }
+      p_node->is_up_to_date = false;
 
-  this->post_update();
+      if (this->get_node_ref_by_id(nid)->are_inputs_ready())
+        if (!is_discovered[nid])
+        {
+          is_discovered[nid] = true;
+
+          // add 'downstream' nodes to the DFS stack
+          for (auto &[key, p] : p_node->get_ports())
+            if (p.direction == direction::out && p.is_connected &&
+                !(p_node->frozen_outputs))
+              stack.push_back(p.p_linked_node->id);
+        }
+    }
+
+    // --- update the nodes (TODO: optimize?)
+    while (update_queue.size())
+    {
+      std::string nid = update_queue.front();
+      update_queue.erase(update_queue.begin());
+
+      LOG_DEBUG("UPDATE: %s", nid.c_str());
+      this->get_node_ref_by_id(nid)->update();
+
+      // if the node can be updated but has not be updated here, keep it
+      // in the stack, it should be eventually updated
+      if (!this->get_node_ref_by_id(nid)->is_up_to_date &&
+          this->get_node_ref_by_id(nid)->are_inputs_ready())
+        update_queue.push_back(nid);
+    }
+
+    this->post_update();
+  }
+  else
+    LOG_DEBUG("no update from node [%], tree not ready", node_id.c_str());
 }
 
 void Tree::post_update() { LOG_DEBUG("empty Tree::post_update"); }
