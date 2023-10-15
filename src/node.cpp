@@ -219,7 +219,6 @@ void Node::update_and_propagate()
                       this->id.c_str(),
                       p.p_linked_node->id.c_str());
             p.p_linked_node->update_and_propagate();
-            this->is_up_to_date = false;
           }
       }
     }
