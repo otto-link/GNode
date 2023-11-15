@@ -15,6 +15,12 @@ void my_callback(gnode::Node *p_node)
   std::cout << "CALLBACK!\n";
 }
 
+void my_callback_pre(gnode::Node *p_node)
+{
+  std::cout << "node: " << p_node->id.c_str() << "\n";
+  std::cout << "CALLBACK! (pre-update)\n";
+}
+
 int main()
 {
 
@@ -62,6 +68,8 @@ int main()
                                 gnode::direction::out,
                                 gnode::dtype::dfloat);
     node3.add_port(p);
+    node3.set_pre_update_callback(
+        (std::function<void(gnode::Node *)>)&my_callback_pre);
     node3.set_post_update_callback(
         (std::function<void(gnode::Node *)>)&my_callback);
   }
@@ -90,6 +98,8 @@ int main()
   tree.print_node_links();
 
   tree.update();
+
+  tree.get_node_ref_by_id("node_3")->force_update();
 
   std::cout << "Node layout (Fruchterman Reingold):\n";
   std::vector<gnode::Point> positions =

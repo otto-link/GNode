@@ -337,6 +337,14 @@ public:
   void set_p_data(const std::string port_id, void *new_p_data);
 
   /**
+   * @brief Set the pre update callback function.
+   *
+   * @param new_pre_update_callback Callback.
+   */
+  void set_pre_update_callback(
+      std::function<void(Node *)> new_pre_update_callback);
+
+  /**
    * @brief Set the post update callback function.
    *
    * @param new_post_update_callback Callback.
@@ -504,6 +512,11 @@ private:
    * @brief Ports of the node, as a mapping (Id, Port).
    */
   std::map<std::string, Port> ports = {};
+
+  /**
+   * @brief Reference to the pre-update callback.
+   */
+  std::function<void(Node *)> pre_update_callback;
 
   /**
    * @brief Reference to the post-update callback.

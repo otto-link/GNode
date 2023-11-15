@@ -62,6 +62,12 @@ void Node::set_p_data(const std::string port_id, void *new_p_data)
   this->get_port_ref_by_id(port_id)->set_p_data(new_p_data);
 }
 
+void Node::set_pre_update_callback(
+    std::function<void(Node *)> new_pre_update_callback)
+{
+  this->pre_update_callback = new_pre_update_callback;
+}
+
 void Node::set_post_update_callback(
     std::function<void(Node *)> new_post_update_callback)
 {
@@ -175,9 +181,14 @@ void Node::update()
     else
     {
       // update the current node and do not propagate update
+      if (this->pre_update_callback)
+        this->pre_update_callback(this);
+
       this->compute();
+
       if (this->post_update_callback)
         this->post_update_callback(this);
+
       this->is_up_to_date = true;
     }
   }
@@ -198,9 +209,14 @@ void Node::update_and_propagate()
       {
         // just update the current node and do not propagate update
         LOG_DEBUG("output frozen");
+        if (this->pre_update_callback)
+          this->pre_update_callback(this);
+
         this->compute();
+
         if (this->post_update_callback)
           this->post_update_callback(this);
+
         this->is_up_to_date = true;
       }
       else
@@ -208,7 +224,11 @@ void Node::update_and_propagate()
         // update current node, then update downstream nodes
         this->is_up_to_date = true;
 
+        if (this->pre_update_callback)
+          this->pre_update_callback(this);
+
         this->compute();
+
         if (this->post_update_callback)
           this->post_update_callback(this);
 
