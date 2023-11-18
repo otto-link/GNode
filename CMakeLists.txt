@@ -5,7 +5,13 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    # MSVC compiler options
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+else()
+    # GNU compiler options
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+endif()
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/external/nodesoup)
 
