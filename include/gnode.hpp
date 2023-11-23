@@ -352,6 +352,25 @@ public:
   void set_post_update_callback(
       std::function<void(Node *)> new_post_update_callback);
 
+  /**
+   * @brief Get a reference to the node and recast it (if possible).
+   *
+   * @tparam T Class recast.
+   * @return T* Reference.
+   */
+  template <class T = Node> T *get_ref()
+  {
+    T *ptr = dynamic_cast<T *>(this);
+    if (ptr)
+      return ptr;
+    else
+    {
+      LOG_ERROR("wrong type, cannot dynamic cast this node (type: %s)",
+                typeid(T).name());
+      throw std::runtime_error("wrong type in dynamic cast");
+    }
+  }
+
   //----------------------------------------
   // ports management
   //----------------------------------------
@@ -567,18 +586,51 @@ public:
   /**
    * @brief Return the reference of the node with the given hash id.
    *
+   * @tparam T Recast type.
    * @param node_hash_id Hash Id.
-   * @return Node* Pointer.
+   * @return T* Pointer
    */
-  Node *get_node_ref_by_hash_id(int node_hash_id);
+  template <class T = Node> T *get_node_ref_by_hash_id(int node_hash_id) const
+  {
+    // scan control nodes and their ports to find the corresponding node_id
+    std::string node_id = "";
+
+    for (auto &[id, node] : this->get_nodes_map())
+      if (node.get()->hash_id == node_hash_id)
+      {
+        node_id = id;
+        break;
+      }
+
+    if (node_id == "")
+    {
+      LOG_ERROR("node hash id [%d] is not known", node_hash_id);
+      throw std::runtime_error("unknonw node hash_id");
+    }
+    else
+      return this->get_node_ref_by_id<T>(node_id);
+  }
 
   /**
-   * @brief Return the reference of the node 'Id'.
+   * @brief Return the reference of the node with the given node id.
    *
+   * @tparam T Recast type.
    * @param node_id Node Id.
-   * @return Node* Pointer.
+   * @return T* Pointer
    */
-  Node *get_node_ref_by_id(const std::string node_id) const;
+  template <class T = Node>
+  T *get_node_ref_by_id(const std::string node_id) const
+  {
+    T *ptr = dynamic_cast<T *>(this->get_node_sptr_by_id(node_id).get());
+    if (ptr)
+      return ptr;
+    else
+    {
+      LOG_ERROR("wrong type, cannot dynamic cast this node (type: %s)",
+                typeid(T).name());
+      throw std::runtime_error("wrong type in dynamic cast");
+    }
+  }
 
   /**
    * @brief Return all the nodes, as a mapping.

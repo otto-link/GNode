@@ -130,21 +130,24 @@ int main()
   // compute (PRINT should print '6')
   tree.update();
 
+  tree.infos();
+
   tree.print_node_links();
 
   // change 'value c', this will automatically update only necessary
   // nodes (not all the tree), and PRINT should print 10
 
-  // NB1 - to access the methods of the derived class, the node
-  // reference needs to be recasted
-  Value *p_node = (Value *)tree.get_node_ref_by_id("value c");
-
-  // NB2 - gnode methods can be accessed directly... this one can be
+  // NB1 - base gnode methods can be accessed directly. This one can be
   // used to a callback called after the node has been updated
   tree.get_node_ref_by_id("value c")->set_post_update_callback(
       (std::function<void(gnode::Node *)>)&my_callback);
 
-  p_node->set_value(7.f);
+  // NB2 - to access the methods of the derived class, the node
+  // reference needs to be recasted (using a template already
+  // implemented)
+  tree.get_node_ref_by_id<Value>("value c")->set_value(7.f);
+
+  tree.get_node_ref_by_hash_id<Value>(231603572)->set_value(10.f);
 
   return 0;
 }

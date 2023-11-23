@@ -121,26 +121,26 @@ std::string Tree::get_node_id_by_hash_id(int node_hash_id)
   return p_node->id;
 }
 
-Node *Tree::get_node_ref_by_hash_id(int node_hash_id)
-{
-  Node *p_node = nullptr;
+// Node *Tree::get_node_ref_by_hash_id(int node_hash_id)
+// {
+//   Node *p_node = nullptr;
 
-  // scan control nodes and their ports to find the
-  for (auto &[id, node] : this->get_nodes_map())
-    if (node.get()->hash_id == node_hash_id)
-    {
-      p_node = node.get();
-      break;
-    }
+//   // scan control nodes and their ports to find the
+//   for (auto &[id, node] : this->get_nodes_map())
+//     if (node.get()->hash_id == node_hash_id)
+//     {
+//       p_node = node.get();
+//       break;
+//     }
 
-  if (!p_node)
-  {
-    LOG_ERROR("node hash id [%d] is not known", node_hash_id);
-    throw std::runtime_error("unknonw node hash_id");
-  }
+//   if (!p_node)
+//   {
+//     LOG_ERROR("node hash id [%d] is not known", node_hash_id);
+//     throw std::runtime_error("unknonw node hash_id");
+//   }
 
-  return p_node;
-}
+//   return p_node;
+// }
 
 std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id) const
 {
@@ -153,10 +153,10 @@ std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id) const
   }
 }
 
-Node *Tree::get_node_ref_by_id(const std::string node_id) const
-{
-  return this->get_node_sptr_by_id(node_id).get();
-}
+// Node *Tree::get_node_ref_by_id(const std::string node_id) const
+// {
+//   return this->get_node_sptr_by_id(node_id).get();
+// }
 
 std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map() const
 {
