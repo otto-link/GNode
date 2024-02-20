@@ -58,8 +58,7 @@ std::vector<gnode::Point> Tree::compute_graph_layout_fruchterman_reingold(
 
 std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
 {
-  std::vector<gnode::Point> pts; // output
-  pts.reserve(this->size());
+  std::vector<gnode::Point> pts(this->size()); // output
 
   std::vector<std::vector<size_t>> adj = this->get_adjacency_list();
 
@@ -78,10 +77,14 @@ std::vector<gnode::Point> Tree::compute_graph_layout_sugiyama()
 
   sugiyama_layout layout(graph, attr);
 
+  int k = 0;
   for (auto &vertex : layout.vertices())
+  {
     // reverse x and y to get an horizontal layout by default
-    pts.push_back(Point(vertex.pos.y - 0.5f * layout.height(),
-                        vertex.pos.x - 0.5f * layout.width()));
+    pts[k] = Point(vertex.pos.y - 0.5f * layout.height(),
+                   vertex.pos.x - 0.5f * layout.width());
+    k++;
+  }
 
   return pts;
 }
@@ -121,27 +124,6 @@ std::string Tree::get_node_id_by_hash_id(int node_hash_id)
   return p_node->id;
 }
 
-// Node *Tree::get_node_ref_by_hash_id(int node_hash_id)
-// {
-//   Node *p_node = nullptr;
-
-//   // scan control nodes and their ports to find the
-//   for (auto &[id, node] : this->get_nodes_map())
-//     if (node.get()->hash_id == node_hash_id)
-//     {
-//       p_node = node.get();
-//       break;
-//     }
-
-//   if (!p_node)
-//   {
-//     LOG_ERROR("node hash id [%d] is not known", node_hash_id);
-//     throw std::runtime_error("unknonw node hash_id");
-//   }
-
-//   return p_node;
-// }
-
 std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id) const
 {
   if (this->is_node_id_in_keys(node_id))
@@ -152,11 +134,6 @@ std::shared_ptr<Node> Tree::get_node_sptr_by_id(const std::string node_id) const
     throw std::runtime_error("unknown node id");
   }
 }
-
-// Node *Tree::get_node_ref_by_id(const std::string node_id) const
-// {
-//   return this->get_node_sptr_by_id(node_id).get();
-// }
 
 std::map<std::string, std::shared_ptr<Node>> Tree::get_nodes_map() const
 {
@@ -322,17 +299,26 @@ void Tree::update_node(std::string node_id)
 
   if (upstream_ok)
   {
-
     // --- use a depth-first search to mark the nodes that need to be
-    // --- updated
-    std::vector<std::string>    stack = {node_id};
-    std::map<std::string, bool> is_discovered = {};
+    // --- updated (and use Sugiyama layered graph layout to determine
+    // --- update order)
+    std::vector<std::string>     stack = {node_id};
+    std::map<std::string, bool>  is_discovered = {};
+    std::map<std::string, float> node_layer = {};
+    std::vector<gnode::Point>    pts = this->compute_graph_layout_sugiyama();
+
+    {
+      int k = 0;
+      for (auto &[key, n] : this->nodes_map)
+      {
+        is_discovered[key] = false;
+        node_layer[key] = pts[k].x;
+        k++;
+      }
+    }
 
     // storage for the update procedure coming after
     std::vector<std::string> update_queue = {};
-
-    for (auto &[key, n] : this->nodes_map)
-      is_discovered[key] = false;
 
     while (stack.size())
     {
@@ -341,8 +327,18 @@ void Tree::update_node(std::string node_id)
 
       Node *p_node = this->get_node_ref_by_id(nid);
 
-      // store and mark for update
-      update_queue.push_back(nid);
+      // store and mark for update, but add the node before or after
+      // the last added node based on their relative layer level
+      if (update_queue.size() > 0 &&
+          node_layer[update_queue.back()] >= node_layer[nid])
+        update_queue.insert(update_queue.end() - 1, nid);
+      else
+        update_queue.push_back(nid);
+
+      LOG_DEBUG("QUEUE");
+      for (auto &s : update_queue)
+        LOG_DEBUG("%s", s.c_str());
+
       p_node->is_up_to_date = false;
 
       if (this->get_node_ref_by_id(nid)->are_inputs_ready())
@@ -366,12 +362,6 @@ void Tree::update_node(std::string node_id)
 
       LOG_DEBUG("UPDATE: %s", nid.c_str());
       this->get_node_ref_by_id(nid)->update();
-
-      // if the node can be updated but has not be updated here, keep it
-      // in the stack, it should be eventually updated
-      if (!this->get_node_ref_by_id(nid)->is_up_to_date &&
-          this->get_node_ref_by_id(nid)->are_inputs_ready())
-        update_queue.push_back(nid);
     }
 
     this->post_update();

@@ -193,7 +193,7 @@ void Node::update()
     }
   }
   else
-    LOG_DEBUG("node [%s] is up-to-date", this->id.c_str());
+    LOG_DEBUG("node [%s] not updated", this->id.c_str());
 }
 
 void Node::update_and_propagate()
