@@ -149,5 +149,9 @@ int main()
 
   tree.get_node_ref_by_hash_id<Value>(231603572)->set_value(10.f);
 
+  // for visual checking use command line
+  // "dot tree.dot -Tsvg > output.svg"
+  tree.export_flowchart_graphviz("tree.dot");
+
   return 0;
 }

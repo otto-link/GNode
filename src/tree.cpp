@@ -386,14 +386,16 @@ void Tree::export_flowchart_graphviz(std::string fname)
 
   f << "digraph root {" << std::endl;
   f << "label=" << this->label << ";" << std::endl;
-  f << "rankdir=LR;" << std::endl;
-  f << "ranksep=0.75;" << std::endl;
+  f << "labelloc=\"t\"" << std::endl;
+  f << "rankdir=TD;" << std::endl;
+  f << "ranksep=0.5;" << std::endl;
 
   for (auto &[key, n] : this->nodes_map)
     for (auto &[key_p, p] : n->get_ports())
       if (p.direction == direction::out && p.is_connected)
-        f << key << "->" << p.p_linked_node->id << "[fontsize=8, label=\""
-          << p.label << " - " << p.p_linked_port->label << "\"]" << std::endl;
+        f << "\"" << n->id << "\" -> \"" << p.p_linked_node->id
+          << "\" [fontsize=8, label=\"" << p.label << " - "
+          << p.p_linked_port->label << "\"]" << std::endl;
 
   f << "}" << std::endl;
 
