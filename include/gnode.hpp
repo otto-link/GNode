@@ -772,6 +772,18 @@ public:
   //----------------------------------------
 
   /**
+   * @brief Export graph node a as graphviz flow chart.
+   * @param File name.
+   */
+  void export_flowchart_graphviz(std::string fname = "export.dot");
+
+  /**
+   * @brief Export graph node a as mermaid flow chart.
+   * @param File name.
+   */
+  void export_flowchart_mermaid(std::string fname = "export.mmd");
+
+  /**
    * @brief Display some informations of the tree.
    */
   void infos();

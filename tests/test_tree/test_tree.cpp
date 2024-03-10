@@ -115,5 +115,9 @@ int main()
   for (auto &p : positions)
     std::cout << p.x << " " << p.y << "\n";
 
+  // export
+  tree.export_flowchart_graphviz("tree.dot");
+  tree.export_flowchart_mermaid("tree.mmd");
+
   return 0;
 }
