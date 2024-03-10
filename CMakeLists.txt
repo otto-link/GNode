@@ -1,37 +1,42 @@
-cmake_minimum_required(VERSION 3.10)
-project(gnode VERSION 0.0.1 LANGUAGES CXX DESCRIPTION "A generic node-based data structure for node graph programming in C++.")
+cmake_minimum_required(VERSION 3.22)
+
+project(gnode-root)
+
+option(GNODE_ENABLE_DOCS "" ON)
+option(GNODE_ENABLE_EXAMPLES "" ON)
+option(GNODE_ENABLE_TESTS "" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
-
-if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    # MSVC compiler options
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  # MSVC compiler options
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 else()
-    # GNU compiler options
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+  # GNU compiler options
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 endif()
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/external/nodesoup)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-# sources
-file(GLOB_RECURSE SOURCES
-     "${PROJECT_SOURCE_DIR}/src/*.cpp")
+# --- dependencies
 
-add_library(${PROJECT_NAME} STATIC ${SOURCES})
+add_subdirectory(external)
 
-target_include_directories(${PROJECT_NAME}
-                           PUBLIC
-			     ${PROJECT_SOURCE_DIR}/external
-                             ${PROJECT_SOURCE_DIR}/include
-			     ${PROJECT_SOURCE_DIR}/external/macro-logger
-			   PRIVATE
-			     )
+# --- library
 
-# Link libraries
-target_link_libraries(${PROJECT_NAME} nodesoup)
+add_subdirectory(GNode)
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
-add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
-add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+# --- everything else...
+
+if(GNODE_ENABLE_DOCS)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
+endif(GNODE_ENABLE_DOCS)
+
+if(GNODE_ENABLE_EXAMPLES)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
+endif(GNODE_ENABLE_EXAMPLES)
+
+if(GNODE_ENABLE_TESTS)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+endif(GNODE_ENABLE_TESTS)
+

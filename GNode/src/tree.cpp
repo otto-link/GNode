@@ -3,7 +3,7 @@
  * this software. */
 #include <fstream>
 
-#include "demekgraph/updated/include/interface.hpp"
+#include "interface.hpp"
 #include "nodesoup.hpp"
 
 #include "gnode.hpp"
