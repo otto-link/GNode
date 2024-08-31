@@ -13,5 +13,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
-target_link_libraries(${PROJECT_NAME} gnode::macro-logger gnode::demekgraph
-                      nodesoup)
+target_link_libraries(${PROJECT_NAME} gnode::macro-logger demekgraph)

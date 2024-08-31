@@ -33,10 +33,9 @@ if(GNODE_ENABLE_DOCS)
 endif(GNODE_ENABLE_DOCS)
 
 if(GNODE_ENABLE_EXAMPLES)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
+  # add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
 endif(GNODE_ENABLE_EXAMPLES)
 
 if(GNODE_ENABLE_TESTS)
   add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 endif(GNODE_ENABLE_TESTS)
-

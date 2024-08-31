@@ -1,7 +1,12 @@
 AlignConsecutiveDeclarations: true
+AlignOperands: true
 AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortFunctionsOnASingleLine: All
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
 
 BasedOnStyle: llvm
 BinPackArguments: false
@@ -10,5 +15,5 @@ BreakBeforeBraces: Allman
 
 ColumnLimit: 80
 
-PenaltyBreakAssignment: 100
-PenaltyReturnTypeOnItsOwnLine : 1000
+PenaltyBreakAssignment: 200
+PenaltyReturnTypeOnItsOwnLine: 1000

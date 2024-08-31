@@ -3,16 +3,24 @@
  * this software. */
 
 /**
- * @file gnode.hpp
+ * @file point.hpp
  * @author Otto Link (otto.link.bv@gmail.com)
- * @brief A generic node-based data structure for node graph programming.
+ * @brief
  * @date 2023-08-07
  *
  * @copyright Copyright (c) 2023
  */
 #pragma once
-#include "gnode/data.hpp"
 
-#include "gnode/graph.hpp"
-#include "gnode/link.hpp"
-#include "gnode/node.hpp"
+namespace gnode
+{
+
+struct Point
+{
+  float x;
+  float y;
+  Point() : x(0), y(0){};
+  Point(float x, float y) : x(x), y(y){};
+};
+
+} // namespace gnode
