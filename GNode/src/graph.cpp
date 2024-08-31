@@ -7,9 +7,9 @@
 
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
-#include "macrologger.h"
 
 #include "gnode/graph.hpp"
+#include "gnode/logger.hpp"
 
 namespace gnode
 {
@@ -245,7 +245,7 @@ bool Graph::update_node(std::string id)
   for (auto &id_up : connectivity_up[id])
     if (this->get_node_ref_by_id(id_up)->is_dirty)
     {
-      LOG_DEBUG("no update of the graph");
+      SPDLOG->trace("no update of the graph");
       return false;
     }
 
@@ -286,9 +286,9 @@ bool Graph::update_node(std::string id)
     else
       update_queue.push_back(nid);
 
-    LOG_DEBUG("QUEUE");
+    SPDLOG->trace("update queue:");
     for (auto &s : update_queue)
-      LOG_DEBUG("%s", s.c_str());
+      SPDLOG->trace("node id: {}", s);
 
     p_node->is_dirty = true;
 
@@ -308,9 +308,9 @@ bool Graph::update_node(std::string id)
     std::string nid = update_queue.front();
     update_queue.erase(update_queue.begin());
 
-    LOG_DEBUG("UPDATING: %s(%s)",
-              this->get_node_ref_by_id(nid)->get_label().c_str(),
-              nid.c_str());
+    SPDLOG->trace("updating: {}({})",
+                  this->get_node_ref_by_id(nid)->get_label(),
+                  nid);
 
     this->get_node_ref_by_id(nid)->update();
   }

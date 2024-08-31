@@ -3,8 +3,6 @@
  * this software. */
 #include <iostream>
 
-#include "macrologger.h"
-
 #include "gnode/link.hpp"
 
 namespace gnode

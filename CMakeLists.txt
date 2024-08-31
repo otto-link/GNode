@@ -20,6 +20,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 # --- dependencies
 
+find_package(spdlog REQUIRED)
+
 add_subdirectory(external)
 
 # --- library

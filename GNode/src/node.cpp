@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
-
 #include "gnode/node.hpp"
+#include "gnode/logger.hpp"
 
 namespace gnode
 {
@@ -16,14 +15,14 @@ void Node::update()
     // 	this->pre_update_callback(this);
 
     this->compute();
-    LOG_DEBUG("node updated");
+    SPDLOG->trace("node updated");
     // if (this->post_update_callback)
     //   this->post_update_callback(this);
 
     this->is_dirty = false;
   }
   else
-    LOG_DEBUG("node not updated");
+    SPDLOG->trace("node not updated");
 }
 
 } // namespace gnode
