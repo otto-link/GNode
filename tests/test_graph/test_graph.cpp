@@ -117,7 +117,6 @@ int main()
 
   g.get_node_ref_by_id<Add>(id_add1)->set_input_data(a, 0);
   g.get_node_ref_by_id<Add>(id_add1)->set_input_data(b, 1);
-  g.get_node_ref_by_id<Add>(id_add1)->update();
 
   g.connect(id_value1, 0, id_add1, 0);
   g.connect(id_value2, 0, id_add1, 1);
@@ -129,11 +128,7 @@ int main()
   g.print();
   g.export_to_graphviz();
 
-  // g.get_node_ref_by_id<Add>(id_add1)->compute();
-
-  g.update_node(id_value1);
-
-  g.print();
+  // g.update_node(id_value1);
 
   return 0;
 }

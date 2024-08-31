@@ -26,18 +26,25 @@ class Graph
 public:
   Graph(){};
 
-  std::string add_node(std::shared_ptr<Node> p_node, std::string id = "");
+  std::string add_node(const std::shared_ptr<Node> &p_node,
+                       std::string                  id = "");
 
   std::vector<Point> compute_graph_layout_sugiyama();
 
   // connect two nodes, note that data types are not verified
-  bool connect(std::string from, int port_from, std::string to, int port_to);
+  bool connect(const std::string &from,
+               int                port_from,
+               const std::string &to,
+               int                port_to);
 
-  bool disconnect(std::string from, int port_from, std::string to, int port_to);
+  bool disconnect(const std::string &from,
+                  int                port_from,
+                  const std::string &to,
+                  int                port_to);
 
   // after export: to convert, command line: dot export.dot -Tsvg > output.svg
-  void export_to_graphviz(std::string fname = "export.dot",
-                          std::string graph_label = "graph");
+  void export_to_graphviz(const std::string &fname = "export.dot",
+                          const std::string &graph_label = "graph");
 
   // downstream means only output to input, i.e which nodes have any input
   // connected to a given node, ie. those nodes take informations from a given
@@ -66,10 +73,10 @@ public:
 
   void print();
 
-  void remove_node(std::string id);
+  void remove_node(const std::string &id);
 
   // set all the nodes to dirty and update everything (can be usefull to reach a
-  // clean state of the graph)
+  // clean state of the graph). algo is really inefficient, very slow
   void update();
 
   bool update_node(std::string id);

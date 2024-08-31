@@ -14,15 +14,22 @@
 namespace gnode
 {
 
-std::string Graph::add_node(std::shared_ptr<Node> p_node, std::string id)
+std::string Graph::add_node(const std::shared_ptr<Node> &p_node, std::string id)
 {
-  // use node pointer as id if none is provided
-  if (id == "") id = std::to_string((unsigned long long)(void **)p_node.get());
+  // Use node pointer as ID if none is provided
+  if (id.empty())
+  {
+    std::ostringstream oss;
+    oss << std::to_string((unsigned long long)(void **)p_node.get());
+    id = oss.str();
+  }
 
-  if (this->is_node_id_available(id))
-    this->nodes[id] = p_node;
-  else
-    throw std::runtime_error("node id already used");
+  // Check if the ID is available
+  if (!this->is_node_id_available(id))
+    throw std::runtime_error("Node ID already used: " + id);
+
+  // Add the node to the map
+  this->nodes[id] = p_node;
 
   return id;
 }
@@ -30,131 +37,153 @@ std::string Graph::add_node(std::shared_ptr<Node> p_node, std::string id)
 std::vector<Point> Graph::compute_graph_layout_sugiyama()
 {
   std::vector<Point> points;
+  const size_t       num_nodes = this->nodes.size();
 
-  // create an adjacency list in order to build a dummy graph for the
-  // Sugiyama procedure
-  std::vector<std::vector<size_t>> adj = {}; // this->get_adjacency_list();
+  // Create an adjacency list for the Sugiyama procedure
+  std::vector<std::vector<size_t>> adj(num_nodes);
 
-  // first build up a node id to node index correspondence
-  std::map<std::string, size_t> node_idx = {};
-  int                           idx = 0;
-  for (auto &[nid, p_node] : this->nodes)
+  // Build a node ID to node index map
+  std::map<std::string, size_t> node_idx;
+  size_t                        idx = 0;
+
+  for (const auto &[nid, p_node] : this->nodes)
     node_idx[nid] = idx++;
 
-  std::map<std::string, std::vector<std::string>> connectivity =
-      this->get_connectivity_downstream();
+  // Populate the adjacency list using downstream connectivity
+  const auto connectivity = this->get_connectivity_downstream();
 
-  adj.resize(this->nodes.size());
-  for (auto &[nid, to_ids] : connectivity)
-    for (auto &to_id : to_ids)
-      adj[node_idx[nid]].push_back(node_idx[to_id]);
+  for (const auto &[nid, to_ids] : connectivity)
+  {
+    size_t from_idx = node_idx.at(nid);
+    for (const auto &to_id : to_ids)
+      adj[from_idx].push_back(node_idx.at(to_id));
+  }
 
-  // compute Sugiyama layout
-  graph_builder gb = graph_builder();
+  // Build the graph using the adjacency list
+  graph_builder gb;
 
-  for (size_t i = 0; i < adj.size(); i++)
-    for (auto &j : adj[i])
+  for (size_t i = 0; i < adj.size(); ++i)
+    for (size_t j : adj[i])
       gb.add_edge(i, j);
 
   graph graph = gb.build();
 
+  // Set Sugiyama layout attributes
   attributes attr;
   attr.node_size = 0;
   attr.node_dist = 1;
   attr.layer_dist = 1;
 
+  // Compute Sugiyama layout
   sugiyama_layout layout(graph, attr);
 
-  for (auto &vertex : layout.vertices())
-  {
-    // reverse x and y to get an horizontal layout by default
-    points.push_back(Point(vertex.pos.y - 0.5f * layout.height(),
-                           vertex.pos.x - 0.5f * layout.width()));
-  }
+  // Convert layout vertices to points (reverse x and y for horizontal layout)
+  points.reserve(layout.vertices().size());
+
+  for (const auto &vertex : layout.vertices())
+    points.emplace_back(vertex.pos.y - 0.5f * layout.height(),
+                        vertex.pos.x - 0.5f * layout.width());
 
   return points;
 }
 
 // connect two nodes, note that data types are not verified
-bool Graph::connect(std::string from,
-                    int         port_from,
-                    std::string to,
-                    int         port_to)
+bool Graph::connect(const std::string &from,
+                    int                port_from,
+                    const std::string &to,
+                    int                port_to)
 {
   Link new_link(from, port_from, to, port_to);
 
-  // check if link already exists
+  // Check if the link already exists
   if (std::find(this->links.begin(), this->links.end(), new_link) !=
       this->links.end())
     return false;
-  else
-  {
-    std::shared_ptr<Data> from_data = this->nodes.at(from)->get_output_data(
-        port_from);
-    this->nodes.at(to)->set_input_data(from_data, port_to);
 
-    this->links.push_back(new_link);
-  }
+  // Get the output data from the source node
+  auto from_node_it = this->nodes.find(from);
+  if (from_node_it == this->nodes.end())
+    throw std::runtime_error("Source node not found: " + from);
+
+  auto to_node_it = this->nodes.find(to);
+  if (to_node_it == this->nodes.end())
+    throw std::runtime_error("Destination node not found: " + to);
+
+  std::shared_ptr<Data> from_data = from_node_it->second->get_output_data(
+      port_from);
+
+  // Set the input data on the destination node
+  to_node_it->second->set_input_data(from_data, port_to);
+
+  // Add the new link to the list of links
+  this->links.push_back(new_link);
 
   return true;
 }
 
-bool Graph::disconnect(std::string from,
-                       int         port_from,
-                       std::string to,
-                       int         port_to)
+bool Graph::disconnect(const std::string &from,
+                       int                port_from,
+                       const std::string &to,
+                       int                port_to)
 {
   Link link(from, port_from, to, port_to);
 
-  if (std::find(this->links.begin(), this->links.end(), link) ==
-      this->links.end())
-    return false;
-  else
-  {
-    // disconnect nodes
-    std::shared_ptr<Data> from_data = std::shared_ptr<Data>();
-    this->nodes.at(to)->set_input_data(from_data, port_to);
+  // Check if the link exists
+  auto link_it = std::find(this->links.begin(), this->links.end(), link);
+  if (link_it == this->links.end()) return false;
 
-    // remove the link from storage
-    this->links.erase(std::remove(this->links.begin(), this->links.end(), link),
-                      this->links.end());
+  // Ensure the destination node exists before attempting to disconnect
+  auto to_node_it = this->nodes.find(to);
+  if (to_node_it == this->nodes.end())
+    throw std::runtime_error("Destination node not found: " + to);
 
-    return true;
-  }
+  // Disconnect nodes by setting the input data to null
+  to_node_it->second->set_input_data(nullptr, port_to);
+
+  // Remove the link from the list of links
+  this->links.erase(link_it);
+
+  return true;
 }
 
-void Graph::export_to_graphviz(std::string fname, std::string graph_label)
+void Graph::export_to_graphviz(const std::string &fname,
+                               const std::string &graph_label)
 {
-  std::fstream f;
-  f.open(fname, std::ios::out);
+  std::ofstream file(fname);
 
-  f << "digraph root {" << std::endl;
-  f << "label=\"" << graph_label << "\";" << std::endl;
-  f << "labelloc=\"t\";" << std::endl;
-  f << "rankdir=TD;" << std::endl;
-  f << "ranksep=0.5;" << std::endl;
-  f << "node [shape=record];" << std::endl;
+  if (!file.is_open())
+    throw std::runtime_error("Failed to open file: " + fname);
 
-  for (auto &[id, p_node] : this->nodes)
-    f << id << "[label=\"" << this->nodes[id]->get_label() << "\"]"
-      << std::endl;
+  file << "digraph root {\n";
+  file << "label=\"" << graph_label << "\";\n";
+  file << "labelloc=\"t\";\n";
+  file << "rankdir=TD;\n";
+  file << "ranksep=0.5;\n";
+  file << "node [shape=record];\n";
 
-  std::map<std::string, std::vector<std::string>> connectivity =
-      this->get_connectivity_downstream();
+  // Output nodes with their labels
+  for (const auto &[id, p_node] : this->nodes)
+    file << id << " [label=\"" << p_node->get_label() << "\"];\n";
 
-  for (auto &[from_id, to_ids] : connectivity)
-    for (auto &to_id : to_ids)
-      f << from_id << " -> " << to_id << std::endl;
+  // Output edges
+  const auto connectivity = this->get_connectivity_downstream();
 
-  f << "}" << std::endl;
+  for (const auto &[from_id, to_ids] : connectivity)
+    for (const auto &to_id : to_ids)
+      file << from_id << " -> " << to_id << ";\n";
 
-  f.close();
+  file << "}\n";
 }
 
 std::map<std::string, std::vector<std::string>> Graph::
     get_connectivity_downstream()
 {
   std::map<std::string, std::vector<std::string>> connectivity;
+
+  // to get all the nodes in the mapping, even if they have no node
+  // downstream
+  for (auto &[nid, _] : this->nodes)
+    connectivity[nid] = {};
 
   for (auto &link : this->links)
     connectivity[link.from].push_back(link.to);
@@ -166,6 +195,11 @@ std::map<std::string, std::vector<std::string>> Graph::
     get_connectivity_upstream()
 {
   std::map<std::string, std::vector<std::string>> connectivity;
+
+  // to get all the nodes in the mapping, even if they have no node
+  // upstream
+  for (auto &[nid, _] : this->nodes)
+    connectivity[nid] = {};
 
   for (auto &link : this->links)
     connectivity[link.to].push_back(link.from);
@@ -193,43 +227,54 @@ void Graph::print()
     link.print();
 }
 
-void Graph::remove_node(std::string id)
+void Graph::remove_node(const std::string &id)
 {
   if (this->is_node_id_available(id))
-    throw std::runtime_error("unknown node id");
-  else
-  {
-    // disconnect node
-    for (auto &link : this->links)
-      if (link.from == id)
-        this->nodes.at(link.to)->set_input_data(std::shared_ptr<Data>(),
-                                                link.port_to);
+    throw std::runtime_error("Unknown node ID: " + id);
 
-    // remove links
-    this->links.erase(std::remove_if(this->links.begin(),
-                                     this->links.end(),
-                                     [&id](Link link) {
-                                       return link.from == id || link.to == id;
-                                     }),
-                      this->links.end());
+  // Disconnect node by clearing input data on connected nodes
+  for (const auto &link : this->links)
+    if (link.from == id)
+    {
+      auto node_it = this->nodes.find(link.to);
+      if (node_it != this->nodes.end())
+      {
+        node_it->second->set_input_data(nullptr, link.port_to);
+      }
+    }
 
-    // remove node
-    this->nodes.erase(id);
-  }
+  // Remove links associated with the node
+  this->links.erase(std::remove_if(this->links.begin(),
+                                   this->links.end(),
+                                   [&id](const Link &link) {
+                                     return link.from == id || link.to == id;
+                                   }),
+                    this->links.end());
+
+  // Remove the node from the graph
+  this->nodes.erase(id);
 }
 
 void Graph::update()
 {
-  // set all the nodes to a "dirty" state
+  SPDLOG->trace("Updating graph...");
+
+  // Set all nodes to a "dirty" state
   for (auto &[nid, p_node] : this->nodes)
     p_node->is_dirty = true;
 
-  // trigger nodes with no inputs
-  std::map<std::string, std::vector<std::string>> connectivity_up =
-      this->get_connectivity_upstream();
+  // Get the upstream connectivity of the graph
+  auto connectivity_up = this->get_connectivity_upstream();
 
-  for (auto &[nid, up_ids] : connectivity_up)
-    if (up_ids.size() == 0) this->update_node(nid);
+  // Trigger nodes with no upstream connections (no inputs)
+  for (const auto &[nid, up_ids] : connectivity_up)
+    if (up_ids.empty())
+    {
+      SPDLOG->trace("Updating node: {}({})",
+                    this->get_node_ref_by_id(nid)->get_label(),
+                    nid);
+      this->update_node(nid);
+    }
 
   this->post_update();
 }
@@ -286,10 +331,6 @@ bool Graph::update_node(std::string id)
     else
       update_queue.push_back(nid);
 
-    SPDLOG->trace("update queue:");
-    for (auto &s : update_queue)
-      SPDLOG->trace("node id: {}", s);
-
     p_node->is_dirty = true;
 
     if (!is_discovered[nid])
@@ -301,6 +342,10 @@ bool Graph::update_node(std::string id)
         stack.push_back(to_id);
     }
   }
+
+  SPDLOG->trace("update queue:");
+  for (auto &s : update_queue)
+    SPDLOG->trace("node id: {}", s);
 
   // --- update the nodes
   while (update_queue.size())
