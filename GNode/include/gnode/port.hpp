@@ -23,13 +23,13 @@ namespace gnode
 class Port
 {
 public:
-  Port(){};
-  Port(std::string label) : label(label){};
+  Port() = default;
+  Port(std::string label) : label(std::move(label)){};
   virtual ~Port() = default;
 
   std::string get_label() const { return this->label; }
 
-  virtual std::shared_ptr<BaseData> get_data_shared_ptr_downcasted()
+  virtual std::shared_ptr<BaseData> get_data_shared_ptr_downcasted() const
   {
     return nullptr;
   };
@@ -44,8 +44,10 @@ private:
 template <typename T> class Input : public Port
 {
 public:
-  Input(){};
-  Input(std::string label) : Port(label){};
+  Input() = default;
+
+  Input(std::string label) : Port(std::move(label)){};
+
   virtual ~Input() = default;
 
   std::string get_type() { return typeid(T).name(); }
@@ -57,7 +59,7 @@ public:
 
   void set_data(std::shared_ptr<BaseData> data)
   {
-    this->data = std::dynamic_pointer_cast<Data<T>>(data);
+    this->data = std::dynamic_pointer_cast<Data<T>>(std::move(data));
   }
 
 private:
@@ -68,21 +70,21 @@ private:
 template <typename T> class Output : public Port
 {
 public:
-  Output() { this->data = std::make_shared<Data<T>>(); };
+  Output() : data(std::make_shared<Data<T>>()) {}
 
-  Output(std::string label) : Port(label)
+  explicit Output(std::string label)
+      : Port(std::move(label)), data(std::make_shared<Data<T>>())
   {
-    this->data = std::make_shared<Data<T>>();
-  };
+  }
 
   virtual ~Output() = default;
 
-  std::shared_ptr<BaseData> get_data_shared_ptr_downcasted() override
+  std::shared_ptr<BaseData> get_data_shared_ptr_downcasted() const override
   {
     return std::static_pointer_cast<BaseData>(this->data);
   }
 
-  std::string get_type() { return typeid(T).name(); }
+  std::string get_type() const { return typeid(T).name(); }
 
   T *get_value_ref() const { return this->data->get_value_ref(); }
 

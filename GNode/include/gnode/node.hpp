@@ -28,9 +28,9 @@ class Node
 public:
   bool is_dirty = false;
 
-  Node(){};
+  Node() = default;
 
-  Node(std::string label) : label(label){};
+  explicit Node(std::string label) : label(std::move(label)) {}
 
   virtual ~Node() = default;
 
@@ -39,26 +39,42 @@ public:
 
   std::string get_label() const { return this->label; }
 
+  // Set input data on a specific port index
   void set_input_data(std::shared_ptr<BaseData> data, int port_index)
   {
-    this->inputs[port_index]->set_data(data);
+    if (port_index < 0 || port_index >= static_cast<int>(inputs.size()))
+      throw std::out_of_range("Invalid input port index");
+
+    inputs[port_index]->set_data(std::move(data));
   }
 
-  std::shared_ptr<BaseData> get_output_data(int port_index)
+  // Get output data from a specific port index
+  std::shared_ptr<BaseData> get_output_data(int port_index) const
   {
-    return this->outputs[port_index]->get_data_shared_ptr_downcasted();
+    if (port_index < 0 || port_index >= static_cast<int>(outputs.size()))
+      throw std::out_of_range("Invalid output port index");
+
+    return outputs[port_index]->get_data_shared_ptr_downcasted();
   }
 
-  template <typename T> T *get_input_value_ref(int port_index)
+  // Get a pointer to the input value at a specific port index
+  template <typename T> T *get_input_value_ref(int port_index) const
   {
-    return std::dynamic_pointer_cast<Input<T>>(this->inputs[port_index])
-        ->get_value_ref();
+    if (port_index < 0 || port_index >= static_cast<int>(inputs.size()))
+      throw std::out_of_range("Invalid input port index");
+
+    auto input = std::dynamic_pointer_cast<Input<T>>(inputs[port_index]);
+    return input ? input->get_value_ref() : nullptr;
   }
 
-  template <typename T> T *get_output_value_ref(int port_index)
+  // Get a pointer to the output value at a specific port index
+  template <typename T> T *get_output_value_ref(int port_index) const
   {
-    return std::dynamic_pointer_cast<Output<T>>(this->outputs[port_index])
-        ->get_value_ref();
+    if (port_index < 0 || port_index >= static_cast<int>(outputs.size()))
+      throw std::out_of_range("Invalid output port index");
+
+    auto output = std::dynamic_pointer_cast<Output<T>>(outputs[port_index]);
+    return output ? output->get_value_ref() : nullptr;
   }
 
   void update();
@@ -68,7 +84,7 @@ protected:
   std::vector<std::shared_ptr<Port>> outputs;
 
 private:
-  std::string label = "";
+  std::string label;
 };
 
 } // namespace gnode
