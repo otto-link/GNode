@@ -16,3 +16,4 @@
 #include "gnode/graph.hpp"
 #include "gnode/link.hpp"
 #include "gnode/node.hpp"
+#include "gnode/port.hpp"

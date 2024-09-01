@@ -26,6 +26,8 @@ class Graph
 public:
   Graph(){};
 
+  virtual ~Graph() = default;
+
   std::string add_node(const std::shared_ptr<Node> &p_node,
                        std::string                  id = "");
 

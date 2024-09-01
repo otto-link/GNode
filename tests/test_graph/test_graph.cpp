@@ -1,40 +1,22 @@
 #include "gnode.hpp"
 #include <iostream>
 
-class FloatData : public gnode::Data
-{
-public:
-  explicit FloatData(float value = 0.f) : gnode::Data("float"), value(value) {}
-
-  float  get_value() const { return value; }
-  float *get_value_ref() { return &value; }
-
-private:
-  float value;
-};
-
-class IntData : public gnode::Data
-{
-public:
-  explicit IntData(int value = 0) : gnode::Data("int"), value(value) {}
-
-  int  get_value() const { return value; }
-  int *get_value_ref() { return &value; }
-
-private:
-  int value;
-};
-
 class Add : public gnode::Node
 {
 public:
-  Add() : gnode::Node("Add") { this->out = std::make_shared<FloatData>(); };
+  Add() : gnode::Node("Add")
+  {
+    this->inputs = {std::make_shared<gnode::Input<float>>("a"),
+                    std::make_shared<gnode::Input<float>>("b")};
+
+    this->outputs = {std::make_shared<gnode::Output<float>>("a + b")};
+  };
 
   void compute()
   {
-    float *p_in1 = GN_GET_POINTER(this->in1);
-    float *p_in2 = GN_GET_POINTER(this->in2);
-    float *p_out = this->out->get_value_ref();
+    float *p_in1 = get_input_value_ref<float>(0);
+    float *p_in2 = get_input_value_ref<float>(1);
+    float *p_out = get_output_value_ref<float>(0);
 
     if (p_in1 && p_in2)
     {
@@ -44,66 +26,28 @@ public:
     else
       std::cout << "not computed\n";
   }
-
-  std::shared_ptr<gnode::Data> get_output_data(int port_index)
-  {
-    switch (port_index)
-    {
-    case 0: return std::static_pointer_cast<gnode::Data>(this->out); break;
-    }
-  }
-
-  void set_input_data(std::shared_ptr<gnode::Data> data, int port_index)
-  {
-    switch (port_index)
-    {
-    case 0: this->in1 = std::dynamic_pointer_cast<FloatData>(data); break;
-    case 1: this->in2 = std::dynamic_pointer_cast<FloatData>(data);
-    }
-  }
-
-private:
-  std::weak_ptr<FloatData>   in1, in2;
-  std::shared_ptr<FloatData> out;
 };
 
 class Value : public gnode::Node
 {
 public:
-  Value() : gnode::Node("Value") { this->out = std::make_shared<FloatData>(); };
+  Value() : gnode::Node("Value")
+  {
+    this->outputs = {std::make_shared<gnode::Output<float>>("value")};
+  };
 
   void compute()
   {
-    float *p_out = this->out->get_value_ref();
+    float *p_out = this->get_output_value_ref<float>(0);
     *p_out = 1.f;
   }
-
-  std::shared_ptr<gnode::Data> get_output_data(int port_index)
-  {
-    switch (port_index)
-    {
-    case 0: return std::static_pointer_cast<gnode::Data>(this->out); break;
-    }
-  }
-
-private:
-  std::shared_ptr<FloatData> out;
 };
 
 int main()
 {
-
-  auto a = std::make_shared<FloatData>(5.f);
-  auto b = std::make_shared<FloatData>(3.f);
-
-  // Add node_add;
-  // node_add.set_input_data(a, 0);
-  // node_add.compute();
-
-  // node_add.set_input_data(b, 1);
-  // node_add.compute();
-
   gnode::Graph g;
+
+  g.print();
 
   auto id_add1 = g.add_node(std::make_shared<Add>());
   auto id_add2 = g.add_node(std::make_shared<Add>());
@@ -115,9 +59,6 @@ int main()
   g.get_node_ref_by_id<Value>(id_value2)->compute();
   g.get_node_ref_by_id<Value>(id_value3)->compute();
 
-  g.get_node_ref_by_id<Add>(id_add1)->set_input_data(a, 0);
-  g.get_node_ref_by_id<Add>(id_add1)->set_input_data(b, 1);
-
   g.connect(id_value1, 0, id_add1, 0);
   g.connect(id_value2, 0, id_add1, 1);
   g.connect(id_add1, 0, id_add2, 0);
@@ -127,8 +68,6 @@ int main()
 
   g.print();
   g.export_to_graphviz();
-
-  // g.update_node(id_value1);
 
   return 0;
 }

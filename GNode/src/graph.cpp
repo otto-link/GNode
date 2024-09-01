@@ -109,7 +109,7 @@ bool Graph::connect(const std::string &from,
   if (to_node_it == this->nodes.end())
     throw std::runtime_error("Destination node not found: " + to);
 
-  std::shared_ptr<Data> from_data = from_node_it->second->get_output_data(
+  std::shared_ptr<BaseData> from_data = from_node_it->second->get_output_data(
       port_from);
 
   // Set the input data on the destination node
