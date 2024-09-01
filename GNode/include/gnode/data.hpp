@@ -42,13 +42,15 @@ private:
 template <typename T> class Data : public BaseData
 {
 public:
-  explicit Data(std::string type) : BaseData(std::move(type)) {}
+  explicit Data() : BaseData(typeid(T).name()) {}
+
+  explicit Data(std::string type) : BaseData(type) {}
 
   T    *get_value_ref() { return &value; }
   void *get_value_ptr() const override { return const_cast<T *>(&value); }
 
 private:
-  T value;
+  T value{};
 };
 
 } // namespace gnode

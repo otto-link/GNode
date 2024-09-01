@@ -48,7 +48,7 @@ public:
   Input(std::string label) : Port(label){};
   virtual ~Input() = default;
 
-  std::string get_type() { return typeid(*this->data->get_value_ref()).name(); }
+  std::string get_type() { return typeid(T).name(); }
 
   T *get_value_ref() const
   {
@@ -68,11 +68,11 @@ private:
 template <typename T> class Output : public Port
 {
 public:
-  Output() { this->data = std::make_shared<Data<T>>(this->get_type()); };
+  Output() { this->data = std::make_shared<Data<T>>(); };
 
   Output(std::string label) : Port(label)
   {
-    this->data = std::make_shared<Data<T>>(this->get_type());
+    this->data = std::make_shared<Data<T>>();
   };
 
   virtual ~Output() = default;
@@ -82,7 +82,7 @@ public:
     return std::static_pointer_cast<BaseData>(this->data);
   }
 
-  std::string get_type() { return typeid(*this->data->get_value_ref()).name(); }
+  std::string get_type() { return typeid(T).name(); }
 
   T *get_value_ref() const { return this->data->get_value_ref(); }
 
