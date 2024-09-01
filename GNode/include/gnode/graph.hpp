@@ -24,7 +24,7 @@ namespace gnode
 class Graph
 {
 public:
-  Graph(){};
+  Graph() = default;
 
   virtual ~Graph() = default;
 
@@ -58,14 +58,19 @@ public:
   // node
   std::map<std::string, std::vector<std::string>> get_connectivity_upstream();
 
-  template <class T = Node>
-  T *get_node_ref_by_id(const std::string node_id) const
+  template <typename T = Node>
+  T *get_node_ref_by_id(const std::string &node_id) const
   {
-    T *ptr = dynamic_cast<T *>(this->nodes.at(node_id).get());
-    if (ptr)
-      return ptr;
-    else
-      throw std::runtime_error("wrong type in dynamic cast");
+    auto it = nodes.find(node_id);
+    if (it == nodes.end())
+      throw std::out_of_range("Node ID not found: " + node_id);
+
+    T *ptr = dynamic_cast<T *>(it->second.get());
+    if (!ptr)
+      throw std::runtime_error("Failed to cast node with ID: " + node_id +
+                               " to the specified type.");
+
+    return ptr;
   }
 
   bool is_node_id_available(std::string id);
@@ -85,9 +90,9 @@ public:
 
 private:
   // Nodes of the tree, as a mapping (Id, Node shared pointer).
-  std::map<std::string, std::shared_ptr<Node>> nodes = {};
+  std::map<std::string, std::shared_ptr<Node>> nodes;
 
-  std::vector<Link> links = {};
+  std::vector<Link> links;
 };
 
 } // namespace gnode
