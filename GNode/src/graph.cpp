@@ -14,24 +14,27 @@
 namespace gnode
 {
 
-std::string Graph::add_node(const std::shared_ptr<Node> &p_node, std::string id)
+std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
+                            const std::string           &id)
 {
+  std::string node_id = id;
+
   // Use node pointer as ID if none is provided
-  if (id.empty())
+  if (node_id.empty())
   {
     std::ostringstream oss;
     oss << std::to_string((unsigned long long)(void **)p_node.get());
-    id = oss.str();
+    node_id = oss.str();
   }
 
   // Check if the ID is available
-  if (!this->is_node_id_available(id))
-    throw std::runtime_error("Node ID already used: " + id);
+  if (!this->is_node_id_available(node_id))
+    throw std::runtime_error("Node ID already used: " + node_id);
 
   // Add the node to the map
-  this->nodes[id] = p_node;
+  this->nodes[node_id] = p_node;
 
-  return id;
+  return node_id;
 }
 
 std::vector<Point> Graph::compute_graph_layout_sugiyama()
@@ -119,6 +122,31 @@ bool Graph::connect(const std::string &from,
   this->links.push_back(new_link);
 
   return true;
+}
+
+bool Graph::connect(const std::string &from,
+                    const std::string &port_label_from,
+                    const std::string &to,
+                    const std::string &port_label_to)
+{
+  // Get port information (index and type) for both 'from' and 'to' nodes
+  std::pair<int, PortType> port_from_info =
+      this->nodes.at(from)->get_port_info_by_label(port_label_from);
+  std::pair<int, PortType> port_to_info =
+      this->nodes.at(to)->get_port_info_by_label(port_label_to);
+
+  // Check that the 'from' port is an output port
+  if (port_from_info.second != PortType::OUT)
+    throw std::invalid_argument("Port '" + port_label_from + "' on node '" +
+                                from + "' must be an output port.");
+
+  // Check that the 'to' port is an input port
+  if (port_to_info.second != PortType::IN)
+    throw std::invalid_argument("Port '" + port_label_to + "' on node '" + to +
+                                "' must be an input port.");
+
+  // Call the existing connect method using the port indices
+  return this->connect(from, port_from_info.first, to, port_to_info.first);
 }
 
 bool Graph::disconnect(const std::string &from,

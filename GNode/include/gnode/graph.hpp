@@ -29,7 +29,13 @@ public:
   virtual ~Graph() = default;
 
   std::string add_node(const std::shared_ptr<Node> &p_node,
-                       std::string                  id = "");
+                       const std::string           &id = "");
+
+  // args used to pass object constructor argument to the method
+  template <typename U, typename... Args> std::string add_node(Args... args)
+  {
+    return this->add_node(std::make_shared<U>(args...));
+  }
 
   std::vector<Point> compute_graph_layout_sugiyama();
 
@@ -38,6 +44,11 @@ public:
                int                port_from,
                const std::string &to,
                int                port_to);
+
+  bool connect(const std::string &from,
+               const std::string &port_label_from,
+               const std::string &to,
+               const std::string &port_label_to);
 
   bool disconnect(const std::string &from,
                   int                port_from,

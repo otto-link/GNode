@@ -19,6 +19,12 @@
 namespace gnode
 {
 
+enum PortType
+{
+  IN,
+  OUT,
+};
+
 // abstract port class
 class Port
 {
