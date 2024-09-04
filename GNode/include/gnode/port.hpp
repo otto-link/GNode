@@ -5,97 +5,199 @@
 /**
  * @file port.hpp
  * @author Otto Link (otto.link.bv@gmail.com)
- * @brief
+ * @brief Defines the Port, Input, and Output classes, along with the PortType
+ * enumeration for handling ports in a graph node structure.
  * @date 2023-08-07
  *
- * @copyright Copyright (c) 2023
+ * @copyright Copyright (c) 2023 Otto Link. Distributed under the terms of the
+ * GNU General Public License. The full license is in the file LICENSE,
+ * distributed with this software.
  */
-#pragma once
-#include <typeinfo>
 
+#pragma once
 #include "gnode/data.hpp"
 #include "gnode/logger.hpp"
+#include <memory>
+#include <string>
+#include <typeinfo>
 
 namespace gnode
 {
 
+/**
+ * @enum PortType
+ * @brief Enumeration for port types, indicating whether a port is an input or
+ * an output.
+ */
 enum PortType
 {
-  IN,
-  OUT,
+  IN, ///< Represents an input port.
+  OUT ///< Represents an output port.
 };
 
-// abstract port class
+/**
+ * @brief Abstract base class representing a port in a node.
+ *
+ * The Port class provides a common interface for input and output ports. Each
+ * port has a label and can hold data.
+ */
 class Port
 {
 public:
+  /**
+   * @brief Default constructor for Port.
+   */
   Port() = default;
-  Port(std::string label) : label(std::move(label)){};
+
+  /**
+   * @brief Constructs a Port with the specified label.
+   * @param label A string representing the label of the port.
+   */
+  Port(std::string label) : label(std::move(label)) {}
+
+  /**
+   * @brief Virtual destructor for Port.
+   */
   virtual ~Port() = default;
 
+  /**
+   * @brief Retrieves the label of the port.
+   * @return A string representing the port's label.
+   */
   std::string get_label() const { return this->label; }
 
+  /**
+   * @brief Retrieves a shared pointer to the data associated with the port
+   * after downcasting.
+   * @return A shared pointer to the BaseData, or nullptr if not applicable.
+   */
   virtual std::shared_ptr<BaseData> get_data_shared_ptr_downcasted() const
   {
     return nullptr;
-  };
+  }
 
+  /**
+   * @brief Sets the data associated with the port.
+   * @param data A shared pointer to the BaseData to set.
+   */
   virtual void set_data(std::shared_ptr<BaseData> /* data */) {}
 
 private:
-  std::string label = "no label";
+  std::string label = "no label"; ///< The label of the port.
 };
 
-// abstract input class
+/**
+ * @brief Template class for input ports, specialized by data type.
+ *
+ * The Input class inherits from Port and provides methods for handling data
+ * specific to input ports.
+ *
+ * @tparam T The data type that this input port will handle.
+ */
 template <typename T> class Input : public Port
 {
 public:
+  /**
+   * @brief Default constructor for Input.
+   */
   Input() = default;
 
-  Input(std::string label) : Port(std::move(label)){};
+  /**
+   * @brief Constructs an Input port with the specified label.
+   * @param label A string representing the label of the input port.
+   */
+  Input(std::string label) : Port(std::move(label)) {}
 
+  /**
+   * @brief Virtual destructor for Input.
+   */
   virtual ~Input() = default;
 
+  /**
+   * @brief Retrieves the type name of the data handled by this input port.
+   * @return A string representing the type name.
+   */
   std::string get_type() { return typeid(T).name(); }
 
+  /**
+   * @brief Retrieves a reference to the data value stored in this input port.
+   * @return A pointer to the data value, or nullptr if the data is not
+   * available.
+   */
   T *get_value_ref() const
   {
     return this->data.lock() ? this->data.lock()->get_value_ref() : nullptr;
   }
 
-  void set_data(std::shared_ptr<BaseData> data)
+  /**
+   * @brief Sets the data associated with this input port.
+   * @param data A shared pointer to the BaseData to set.
+   */
+  void set_data(std::shared_ptr<BaseData> data) override
   {
     this->data = std::dynamic_pointer_cast<Data<T>>(std::move(data));
   }
 
 private:
-  std::weak_ptr<Data<T>> data;
+  std::weak_ptr<Data<T>>
+      data; ///< A weak pointer to the data associated with this input port.
 };
 
-// abstract output class
+/**
+ * @brief Template class for output ports, specialized by data type.
+ *
+ * The Output class inherits from Port and provides methods for handling data
+ * specific to output ports.
+ *
+ * @tparam T The data type that this output port will handle.
+ */
 template <typename T> class Output : public Port
 {
 public:
+  /**
+   * @brief Default constructor for Output.
+   */
   Output() : data(std::make_shared<Data<T>>()) {}
 
+  /**
+   * @brief Constructs an Output port with the specified label.
+   * @param label A string representing the label of the output port.
+   */
   explicit Output(std::string label)
       : Port(std::move(label)), data(std::make_shared<Data<T>>())
   {
   }
 
+  /**
+   * @brief Virtual destructor for Output.
+   */
   virtual ~Output() = default;
 
+  /**
+   * @brief Retrieves a shared pointer to the data associated with this output
+   * port after downcasting.
+   * @return A shared pointer to the BaseData.
+   */
   std::shared_ptr<BaseData> get_data_shared_ptr_downcasted() const override
   {
     return std::static_pointer_cast<BaseData>(this->data);
   }
 
+  /**
+   * @brief Retrieves the type name of the data handled by this output port.
+   * @return A string representing the type name.
+   */
   std::string get_type() const { return typeid(T).name(); }
 
+  /**
+   * @brief Retrieves a reference to the data value stored in this output port.
+   * @return A pointer to the data value.
+   */
   T *get_value_ref() const { return this->data->get_value_ref(); }
 
 private:
-  std::shared_ptr<Data<T>> data;
+  std::shared_ptr<Data<T>>
+      data; ///< A shared pointer to the data associated with this output port.
 };
 
 } // namespace gnode

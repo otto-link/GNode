@@ -6,7 +6,6 @@ class Add : public gnode::Node
 public:
   Add() : gnode::Node("Add")
   {
-    std::cout << "here\n";
     this->add_port<float>(gnode::PortType::IN, "a");
     this->add_port<float>(gnode::PortType::IN, "b");
     this->add_port<float>(gnode::PortType::OUT, "a + b");
@@ -42,18 +41,12 @@ public:
     this->set_value<float>("value", value);
   };
 
-  void compute()
-  {
-    // float *p_out = this->get_value_ref<float>("value");
-    // *p_out = 1.f;
-  }
+  void compute() {}
 };
 
 int main()
 {
   gnode::Graph g;
-
-  g.print();
 
   auto id_add1 = g.add_node<Add>();
   auto id_add2 = g.add_node<Add>();
@@ -61,26 +54,25 @@ int main()
   auto id_value2 = g.add_node<Value>(1.f);
   auto id_value3 = g.add_node<Value>(2.f);
 
-  // std::cout << g.get_node_ref_by_id<Add>(id_add1)->get_nports(
-  //                  gnode::PortType::IN)
-  //           << "\n";
-  // std::cout << g.get_node_ref_by_id<Add>(id_add1)->get_nports(
-  //                  gnode::PortType::OUT)
-  //           << "\n";
-
-  // // // g.get_node_ref_by_id<Value>(id_value1)->compute();
-  // // g.get_node_ref_by_id<Value>(id_value2)->compute();
-  // // g.get_node_ref_by_id<Value>(id_value3)->compute();
-
   g.connect(id_value1, "value", id_add1, "a");
   g.connect(id_value2, "value", id_add1, "b");
   g.connect(id_add1, "a + b", id_add2, "a");
   g.connect(id_value3, "value", id_add2, "b");
 
+  // overall update to ensure a clean graph state (greedy and inefficient)
+  std::cout << "\nOVERALL UPDATE\n";
+
   g.update();
 
-  g.print();
-  g.export_to_graphviz();
+  // change one node state = only update from this node and propagate
+  // changes only where it is necessary
+  std::cout << "\nNODE UPDATE\n";
+
+  g.get_node_ref_by_id<Value>(id_value3)->set_value<float>("value", 10.f);
+  g.update(id_value3);
+
+  // g.print();
+  // g.export_to_graphviz();
 
   return 0;
 }

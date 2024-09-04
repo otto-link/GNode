@@ -301,13 +301,13 @@ void Graph::update()
       SPDLOG->trace("Updating node: {}({})",
                     this->get_node_ref_by_id(nid)->get_label(),
                     nid);
-      this->update_node(nid);
+      this->update(nid);
     }
 
   this->post_update();
 }
 
-bool Graph::update_node(std::string id)
+bool Graph::update(std::string id)
 {
   // --- first check that all the nodes upstream the node to be
   // --- updated are up to date (i.e. no 'dirty'), if not, no need to

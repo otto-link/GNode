@@ -11,18 +11,9 @@ void Node::update()
 {
   if (this->is_dirty)
   {
-    // if (this->pre_update_callback)
-    // 	this->pre_update_callback(this);
-
     this->compute();
-    SPDLOG->trace("node updated");
-    // if (this->post_update_callback)
-    //   this->post_update_callback(this);
-
     this->is_dirty = false;
   }
-  else
-    SPDLOG->trace("node not updated");
 }
 
 } // namespace gnode

@@ -97,7 +97,7 @@ public:
   // clean state of the graph). algo is really inefficient, very slow
   void update();
 
-  bool update_node(std::string id);
+  bool update(std::string id);
 
 private:
   // Nodes of the tree, as a mapping (Id, Node shared pointer).
