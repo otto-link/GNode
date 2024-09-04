@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # directories to be formatted (recursive search)
-DIRS="GNode/include GNode/src tests"
+DIRS="GNode/include GNode/src tests examples"
 FORMAT_CMD="clang-format -style=file:scripts/clang_style -i {}"
 
 for D in ${DIRS}; do
