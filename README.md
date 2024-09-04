@@ -53,5 +53,3 @@ flowchart LR
 95832391012208 --> 95832391013488;
 ```
 
-## Dependencies
-- Macro-Logger: https://github.com/dmcrodrigues/macro-logger
