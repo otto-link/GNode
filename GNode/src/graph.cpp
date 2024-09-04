@@ -203,6 +203,31 @@ void Graph::export_to_graphviz(const std::string &fname,
   file << "}\n";
 }
 
+void Graph::export_to_mermaid(const std::string &fname,
+                              const std::string &graph_label)
+{
+  std::fstream f;
+  f.open(fname, std::ios::out);
+
+  f << "---" << std::endl;
+  f << "title: " << graph_label << std::endl;
+  f << "---" << std::endl;
+  f << "flowchart LR" << std::endl;
+
+  // nodes
+  for (auto &[id, p_node] : this->nodes)
+    f << "    " << id << "([" << p_node->get_label() << "])\n";
+
+  // Output edges
+  const auto connectivity = this->get_connectivity_downstream();
+
+  for (const auto &[from_id, to_ids] : connectivity)
+    for (const auto &to_id : to_ids)
+      f << from_id << " --> " << to_id << ";\n";
+
+  f.close();
+}
+
 std::map<std::string, std::vector<std::string>> Graph::
     get_connectivity_downstream()
 {

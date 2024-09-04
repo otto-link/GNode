@@ -140,7 +140,6 @@ int main()
   auto id_print2 = g.add_node<Print>();
   g.connect(id_add2, "a + b", id_print2, "in");
 
-
   // once the graph is defined, perform an overall update to ensure a
   // clean graph state at the beginning (greedy and inefficient, don't
   // use it after to update the nodes when a single node state is
@@ -148,7 +147,7 @@ int main()
   std::cout << "\nOVERALL UPDATE\n";
 
   g.update();
-  
+
   // --- change one node state = only update from this node and
   // --- propagate changes only where it is necessary
   std::cout << "\nNODE UPDATE\n";
@@ -158,6 +157,7 @@ int main()
 
   // export to check: dot export.dot -Tsvg > output.svg
   g.export_to_graphviz();
+  g.export_to_mermaid();
 
   return 0;
 }

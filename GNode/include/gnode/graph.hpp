@@ -59,6 +59,9 @@ public:
   void export_to_graphviz(const std::string &fname = "export.dot",
                           const std::string &graph_label = "graph");
 
+  void export_to_mermaid(const std::string &fname = "export.mmd",
+                         const std::string &graph_label = "graph");
+
   // downstream means only output to input, i.e which nodes have any input
   // connected to a given node, ie. those nodes take informations from a given
   // node
