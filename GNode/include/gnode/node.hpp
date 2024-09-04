@@ -12,6 +12,7 @@
  */
 #pragma once
 #include <memory>
+#include <stdexcept>
 #include <vector>
 
 #include "gnode/data.hpp"
@@ -48,49 +49,15 @@ public:
 
   std::string get_label() const { return this->label; }
 
-  int get_nports(PortType port_type) const
-  {
-    const auto &ports = (port_type == PortType::IN) ? this->inputs
-                                                    : this->outputs;
-    return static_cast<int>(ports.size());
-  }
+  int get_nports(PortType port_type) const;
 
   // Get output data from a specific port index
-  std::shared_ptr<BaseData> get_output_data(int port_index) const
-  {
-    if (port_index < 0 || port_index >= static_cast<int>(outputs.size()))
-      throw std::out_of_range("Invalid output port index");
-
-    return outputs[port_index]->get_data_shared_ptr_downcasted();
-  }
+  std::shared_ptr<BaseData> get_output_data(int port_index) const;
 
   std::pair<int, PortType> get_port_info_by_label(
-      const std::string &port_label) const
-  {
-    // Search in the inputs vector
-    for (int i = 0; i < static_cast<int>(inputs.size()); ++i)
-      if (inputs[i]->get_label() == port_label) return {i, PortType::IN};
+      const std::string &port_label) const;
 
-    // Search in the outputs vector
-    for (int i = 0; i < static_cast<int>(outputs.size()); ++i)
-      if (outputs[i]->get_label() == port_label) return {i, PortType::OUT};
-
-    // If no matching port is found, throw an exception
-    throw std::runtime_error("Port with label '" + port_label + "' not found.");
-  }
-
-  std::string get_port_label(PortType port_type, int port_index) const
-  {
-    const auto &ports = (port_type == PortType::IN) ? this->inputs
-                                                    : this->outputs;
-
-    if (port_index < 0 || port_index >= static_cast<int>(ports.size()))
-      throw std::out_of_range("Port index is out of range.");
-
-    return ports[port_index]->get_label();
-  }
-
-#include <stdexcept> // Include for std::runtime_error
+  std::string get_port_label(PortType port_type, int port_index) const;
 
   template <typename T> T *get_value_ref(const std::string &port_label) const
   {
@@ -139,13 +106,7 @@ public:
   }
 
   // Set input data on a specific port index
-  void set_input_data(std::shared_ptr<BaseData> data, int port_index)
-  {
-    if (port_index < 0 || port_index >= static_cast<int>(inputs.size()))
-      throw std::out_of_range("Invalid input port index");
-
-    inputs[port_index]->set_data(std::move(data));
-  }
+  void set_input_data(std::shared_ptr<BaseData> data, int port_index);
 
   template <typename T>
   void set_value(const std::string &port_label, T new_value)
