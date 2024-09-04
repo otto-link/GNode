@@ -30,7 +30,28 @@ make doc_gnode
 
 ### Usage examples
 
-Examples are provided in the `examples` folder.
+Examples are available in the examples folder, featuring a calculator that includes both float and 2D vector of floats data types:
+```mermaid
+---
+title: graph
+---
+flowchart LR
+    95832391008960([ValueVec])
+    95832391009376([SumVec])
+    95832391010000([Value])
+    95832391010416([Add])
+    95832391011552([Print])
+    95832391011792([Value])
+    95832391012208([Add])
+    95832391013488([Print])
+95832391008960 --> 95832391009376;
+95832391009376 --> 95832391010416;
+95832391010000 --> 95832391010416;
+95832391010416 --> 95832391011552;
+95832391010416 --> 95832391012208;
+95832391011792 --> 95832391012208;
+95832391012208 --> 95832391013488;
+```
 
 ## Dependencies
 - Macro-Logger: https://github.com/dmcrodrigues/macro-logger
