@@ -77,6 +77,16 @@ public:
   }
 
   /**
+   * @brief Pure virtual function to get the type of the port (IN or OUT).
+   *
+   * This function must be implemented by derived classes to indicate whether
+   * the port is an input (`PortType::IN`) or an output (`PortType::OUT`).
+   *
+   * @return The port type (`PortType::IN` or `PortType::OUT`).
+   */
+  virtual PortType get_port_type() const = 0;
+
+  /**
    * @brief Sets the data associated with the port.
    * @param data A shared pointer to the BaseData to set.
    */
@@ -117,7 +127,17 @@ public:
    * @brief Retrieves the type name of the data handled by this input port.
    * @return A string representing the type name.
    */
-  std::string get_type() { return typeid(T).name(); }
+  std::string get_data_type() { return typeid(T).name(); }
+
+  /**
+   * @brief Returns the type of the port as an input port.
+   *
+   * This method overrides the base class implementation to indicate that this
+   * port is an input (`PortType::IN`).
+   *
+   * @return The port type, which is always `PortType::IN`.
+   */
+  PortType get_port_type() const override { return PortType::IN; }
 
   /**
    * @brief Retrieves a reference to the data value stored in this input port.
@@ -187,7 +207,17 @@ public:
    * @brief Retrieves the type name of the data handled by this output port.
    * @return A string representing the type name.
    */
-  std::string get_type() const { return typeid(T).name(); }
+  std::string get_data_type() const { return typeid(T).name(); }
+
+  /**
+   * @brief Returns the type of the port as an output port.
+   *
+   * This method overrides the base class implementation to indicate that this
+   * port is an output (`PortType::OUT`).
+   *
+   * @return The port type, which is always `PortType::OUT`.
+   */
+  PortType get_port_type() const override { return PortType::OUT; }
 
   /**
    * @brief Retrieves a reference to the data value stored in this output port.
