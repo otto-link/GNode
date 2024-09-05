@@ -51,6 +51,8 @@ public:
 
   int get_nports() const;
 
+  int get_nports(PortType port_type) const;
+
   // Get output data from a specific port index
   std::shared_ptr<BaseData> get_output_data(int port_index) const;
 

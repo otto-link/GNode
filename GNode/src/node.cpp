@@ -9,6 +9,14 @@ namespace gnode
 
 int Node::get_nports() const { return static_cast<int>(this->ports.size()); }
 
+int Node::get_nports(PortType port_type) const
+{
+  int count = 0;
+  for (auto &port : this->ports)
+    if (port->get_port_type() == port_type) count++;
+  return count;
+}
+
 std::shared_ptr<BaseData> Node::get_output_data(int port_index) const
 {
   if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
