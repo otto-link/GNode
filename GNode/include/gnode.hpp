@@ -10,9 +10,10 @@
  *
  * @copyright Copyright (c) 2023
  */
-#pragma once
-#include "gnode/data.hpp"
 
+#pragma once
+
+#include "gnode/data.hpp"
 #include "gnode/graph.hpp"
 #include "gnode/link.hpp"
 #include "gnode/node.hpp"

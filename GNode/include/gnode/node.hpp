@@ -5,11 +5,13 @@
 /**
  * @file data.hpp
  * @author Otto Link (otto.link.bv@gmail.com)
- * @brief
+ * @brief This file defines the Node class used for managing input and output
+ * ports and interacting with data in a graph-based system.
  * @date 2023-08-07
  *
  * @copyright Copyright (c) 2023
  */
+
 #pragma once
 #include <memory>
 #include <stdexcept>
@@ -18,23 +20,47 @@
 #include "gnode/data.hpp"
 #include "gnode/port.hpp"
 
-#define GN_GET_POINTER(X) X.lock() ? X.lock()->get_value_ref() : nullptr
-
 namespace gnode
 {
 
-// abstract node class
+/**
+ * @brief Abstract Node class that represents a basic building block in a
+ * graph-based system. Nodes contain ports, which can be connected to other
+ * nodes for data flow.
+ */
 class Node
 {
 public:
+  /**
+   * @brief Flag indicating whether the node is marked as dirty (requiring an
+   * update).
+   */
   bool is_dirty = false;
 
+  /**
+   * @brief Default constructor for Node.
+   */
   Node() = default;
 
+  /**
+   * @brief Construct a new Node object with a specific label.
+   *
+   * @param label The label for the node.
+   */
   explicit Node(std::string label) : label(std::move(label)) {}
 
+  /**
+   * @brief Virtual destructor for Node.
+   */
   virtual ~Node() = default;
 
+  /**
+   * @brief Add a port to the node, specifying whether it is an input or output.
+   *
+   * @tparam T The data type for the port.
+   * @param port_type The type of port (input or output).
+   * @param port_label The label for the port.
+   */
   template <typename T>
   void add_port(PortType port_type, const std::string &port_label)
   {
@@ -44,24 +70,75 @@ public:
       this->ports.push_back(std::make_shared<gnode::Output<T>>(port_label));
   }
 
-  // to force compute to be defined
+  /**
+   * @brief Pure virtual function that forces derived classes to implement the
+   * compute method, which updates the node's state.
+   */
   virtual void compute() = 0;
 
+  /**
+   * @brief Get the label of the node.
+   *
+   * @return std::string The label of the node.
+   */
   std::string get_label() const { return this->label; }
 
+  /**
+   * @brief Get the total number of ports on the node.
+   *
+   * @return int The number of ports.
+   */
   int get_nports() const;
 
+  /**
+   * @brief Get the number of ports of a specific type (input or output).
+   *
+   * @param port_type The type of port to count (input or output).
+   * @return int The number of ports of the specified type.
+   */
   int get_nports(PortType port_type) const;
 
-  // Get output data from a specific port index
+  /**
+   * @brief Get the output data from a specific port index.
+   *
+   * @param port_index The index of the output port.
+   * @return std::shared_ptr<BaseData> The data from the specified port.
+   */
   std::shared_ptr<BaseData> get_output_data(int port_index) const;
 
+  /**
+   * @brief Get the index of a port by its label.
+   *
+   * @param port_label The label of the port.
+   * @return int The index of the port.
+   */
   int get_port_index(const std::string &port_label) const;
 
+  /**
+   * @brief Get the label of a port by its index.
+   *
+   * @param port_index The index of the port.
+   * @return std::string The label of the port.
+   */
   std::string get_port_label(int port_index) const;
 
+  /**
+   * @brief Get the type of a port (input or output) by its label.
+   *
+   * @param port_label The label of the port.
+   * @return PortType The type of the port.
+   */
   PortType get_port_type(const std::string &port_label) const;
 
+  /**
+   * @brief Get a reference to the value stored in a port by its label.
+   *
+   * @tparam T The type of the value.
+   * @param port_label The label of the port.
+   * @return T* A pointer to the value.
+   * @throws std::runtime_error If the port with the given label is not found,
+   * or if casting the port to the appropriate type fails.
+   */
   template <typename T> T *get_value_ref(const std::string &port_label) const
   {
     // Search for the port in the inputs vector
@@ -84,13 +161,21 @@ public:
     throw std::runtime_error("Port with label '" + port_label + "' not found.");
   }
 
+  /**
+   * @brief Get a reference to the value stored in a port by its index.
+   *
+   * @tparam T The type of the value.
+   * @param port_index The index of the port.
+   * @return T* A pointer to the value.
+   * @throws std::out_of_range If the port index is invalid.
+   */
   template <typename T> T *get_value_ref(int port_index) const
   {
     // Range check for the port index
     if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
       throw std::out_of_range("Invalid port index");
 
-    // Dynamic cast to the appropriate port type (Input or Output) and returns
+    // Dynamic cast to the appropriate port type (Input or Output) and return
     // the value reference if the port is valid, otherwise return nullptr
     if (this->ports[port_index]->get_port_type() == PortType::IN)
     {
@@ -104,9 +189,21 @@ public:
     }
   }
 
-  // Set input data on a specific port index
+  /**
+   * @brief Set input data on a specific port by its index.
+   *
+   * @param data The data to set on the port.
+   * @param port_index The index of the port.
+   */
   void set_input_data(std::shared_ptr<BaseData> data, int port_index);
 
+  /**
+   * @brief Set the value of a port by its label.
+   *
+   * @tparam T The type of the value.
+   * @param port_label The label of the port.
+   * @param new_value The new value to set on the port.
+   */
   template <typename T>
   void set_value(const std::string &port_label, T new_value)
   {
@@ -114,10 +211,21 @@ public:
     *p_value = new_value;
   }
 
+  /**
+   * @brief Update the node, which involves processing its input and output
+   * ports.
+   */
   void update();
 
 private:
-  std::string                        label;
+  /**
+   * @brief The label of the node.
+   */
+  std::string label;
+
+  /**
+   * @brief A vector of shared pointers to the node's ports.
+   */
   std::vector<std::shared_ptr<Port>> ports;
 };
 
