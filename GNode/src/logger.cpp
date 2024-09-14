@@ -13,7 +13,7 @@ std::shared_ptr<spdlog::logger> &Logger::get_logger()
 {
   if (!instance)
   {
-    instance = spdlog::stdout_color_mt("console");
+    instance = spdlog::stdout_color_mt("console_gnode");
     instance->set_pattern("[gnode-] [%H:%M:%S] [%^---%L---%$] %v");
     instance->set_level(spdlog::level::trace);
   }
