@@ -32,8 +32,9 @@ std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
   if (!this->is_node_id_available(node_id))
     throw std::runtime_error("Node ID already used: " + node_id);
 
-  // Add the node to the map
+  // Add the node to the map and store the ID within the node (in case of)
   this->nodes[node_id] = p_node;
+  p_node->set_id(node_id);
 
   return node_id;
 }

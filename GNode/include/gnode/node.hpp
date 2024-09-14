@@ -223,6 +223,17 @@ public:
   }
 
   /**
+   * @brief Set a new identifier for the node.
+   *
+   * @param new_id The new unique identifier to be assigned to the node.
+   *
+   * This method updates the node's identifier with the provided `new_id`. The
+   * identifier is used to uniquely distinguish the node from others in the
+   * system.
+   */
+  void set_id(std::string new_id) { this->id = new_id; }
+
+  /**
    * @brief Set input data on a specific port by its index.
    *
    * @param data The data to set on the port.
