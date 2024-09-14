@@ -47,7 +47,20 @@ public:
    *
    * @param label The label for the node.
    */
-  explicit Node(std::string label) : label(label) {}
+  Node(std::string label) : label(label) {}
+
+  /**
+   * @brief Construct a new Node object with a specific label and identifier.
+   *
+   * @param label The label for the node.
+   * @param id The unique identifier for the node.
+   *
+   * This constructor initializes a `Node` object with both a label and a unique
+   * identifier. The label is used to describe or name the node, while the id
+   * uniquely distinguishes the node from others in the system (storage in the
+   * node itself is generally optional but may be handy).
+   */
+  Node(std::string label, std::string id) : label(label), id(id) {}
 
   /**
    * @brief Virtual destructor for Node.
@@ -95,6 +108,13 @@ public:
    * @return std::string The label of the node.
    */
   std::string get_label() const { return this->label; }
+
+  /**
+   * @brief Get the ID of the node.
+   *
+   * @return std::string The ID of the node.
+   */
+  std::string get_id() const { return this->id; }
 
   /**
    * @brief Get the total number of ports on the node.
@@ -235,6 +255,11 @@ private:
    * @brief The label of the node.
    */
   std::string label;
+
+  /**
+   * @brief The ID of the node.
+   */
+  std::string id;
 
   /**
    * @brief A vector of shared pointers to the node's ports.
