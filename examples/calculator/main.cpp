@@ -43,8 +43,12 @@ public:
 
   ValueVec(float x, float y) : gnode::Node("ValueVec")
   {
-    this->add_port<Vec2>(gnode::PortType::OUT, "value");
-    this->set_value<Vec2>("value", Vec2(x, y));
+    // option 1: pass the object constructor arguments
+    this->add_port<Vec2>(gnode::PortType::OUT, "value", x, y);
+
+    // option 2: set the value manually
+    // this->add_port<Vec2>(gnode::PortType::OUT, "value");
+    // this->set_value<Vec2>("value", Vec2(x, y));
   }
 
   void compute() {}
