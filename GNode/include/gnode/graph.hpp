@@ -65,6 +65,11 @@ public:
   }
 
   /**
+   * @brief Clear the graph, remove all the nodes and the links.
+   */
+  void clear();
+
+  /**
    * @brief Compute the layout of the graph using the Sugiyama algorithm.
    *
    * @return std::vector<Point> A vector of points representing the node

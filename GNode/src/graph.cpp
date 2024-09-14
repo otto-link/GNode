@@ -33,6 +33,13 @@ std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
   return node_id;
 }
 
+void Graph::clear()
+{
+  this->nodes.clear();
+  this->links.clear();
+  this->id_count = 0;
+}
+
 std::vector<Point> Graph::compute_graph_layout_sugiyama()
 {
   std::vector<Point> points;
