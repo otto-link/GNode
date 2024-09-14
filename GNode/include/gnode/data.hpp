@@ -36,7 +36,7 @@ public:
    * @brief Constructs a BaseData object with the specified type.
    * @param type A string representing the type of the data.
    */
-  explicit BaseData(std::string type) : type(std::move(type)) {}
+  explicit BaseData(std::string type) : type(type) {}
 
   /**
    * @brief Virtual destructor for BaseData.

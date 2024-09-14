@@ -48,10 +48,7 @@ struct Link
    * @param port_to Port number on the destination node.
    */
   Link(std::string from, int port_from, std::string to, int port_to)
-      : from(std::move(from)),
-        port_from(port_from),
-        to(std::move(to)),
-        port_to(port_to)
+      : from(from), port_from(port_from), to(to), port_to(port_to)
   {
   }
 

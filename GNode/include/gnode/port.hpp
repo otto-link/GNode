@@ -53,7 +53,7 @@ public:
    * @brief Constructs a Port with the specified label.
    * @param label A string representing the label of the port.
    */
-  Port(std::string label) : label(std::move(label)) {}
+  Port(std::string label) : label(label) {}
 
   /**
    * @brief Virtual destructor for Port.
@@ -116,7 +116,7 @@ public:
    * @brief Constructs an Input port with the specified label.
    * @param label A string representing the label of the input port.
    */
-  Input(std::string label) : Port(std::move(label)) {}
+  Input(std::string label) : Port(label) {}
 
   /**
    * @brief Virtual destructor for Input.
@@ -193,7 +193,7 @@ public:
    */
   template <typename... Args>
   explicit Output(std::string label, Args &&...args)
-      : Port(std::move(label)),
+      : Port(label),
         data(std::make_shared<Data<T>>(std::forward<Args>(args)...))
   {
   }

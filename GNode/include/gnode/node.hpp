@@ -47,7 +47,7 @@ public:
    *
    * @param label The label for the node.
    */
-  explicit Node(std::string label) : label(std::move(label)) {}
+  explicit Node(std::string label) : label(label) {}
 
   /**
    * @brief Virtual destructor for Node.
