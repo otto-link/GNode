@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
