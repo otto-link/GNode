@@ -321,8 +321,8 @@ void Graph::update()
     if (up_ids.empty())
     {
       GLOG->trace("Updating node: {}({})",
-                    this->get_node_ref_by_id(nid)->get_label(),
-                    nid);
+                  this->get_node_ref_by_id(nid)->get_label(),
+                  nid);
       this->update(nid);
     }
 
@@ -404,8 +404,8 @@ bool Graph::update(std::string id)
     update_queue.erase(update_queue.begin());
 
     GLOG->trace("updating: {}({})",
-                  this->get_node_ref_by_id(nid)->get_label(),
-                  nid);
+                this->get_node_ref_by_id(nid)->get_label(),
+                nid);
 
     this->get_node_ref_by_id(nid)->update();
   }

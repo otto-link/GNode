@@ -83,15 +83,22 @@ template <typename T> class Data : public BaseData
 {
 public:
   /**
-   * @brief Constructs a Data object with the type name of T.
+   * @brief Constructs a Data object with the type name of T and initializes its
+   * value.
+   *
+   * @tparam Args Types of the arguments passed to the T constructor.
+   * @param args Arguments forwarded to the constructor of T to initialize the
+   * value.
+   *
+   * This constructor initializes the base class `BaseData` with the type name
+   * of `T` using `typeid(T).name()`. It then constructs `this->value` of type
+   * `T` using the forwarded arguments `args`.
    */
-  explicit Data() : BaseData(typeid(T).name()) {}
-
-  /**
-   * @brief Constructs a Data object with a specified type string.
-   * @param type A string representing the type of the data.
-   */
-  explicit Data(std::string type) : BaseData(std::move(type)) {}
+  template <typename... Args>
+  explicit Data(Args &&...args) : BaseData(typeid(T).name())
+  {
+    this->value = T(std::forward<Args>(args)...);
+  }
 
   /**
    * @brief Retrieves a reference to the stored value.
