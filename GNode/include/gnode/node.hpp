@@ -61,13 +61,17 @@ public:
    * @param port_type The type of port (input or output).
    * @param port_label The label for the port.
    */
-  template <typename T>
-  void add_port(PortType port_type, const std::string &port_label)
+  template <typename T, typename... Args>
+  void add_port(PortType           port_type,
+                const std::string &port_label,
+                Args &&...args)
   {
     if (port_type == PortType::IN)
       this->ports.push_back(std::make_shared<gnode::Input<T>>(port_label));
     else
-      this->ports.push_back(std::make_shared<gnode::Output<T>>(port_label));
+      this->ports.push_back(
+          std::make_shared<gnode::Output<T>>(port_label,
+                                             std::forward<Args>(args)...));
   }
 
   /**
