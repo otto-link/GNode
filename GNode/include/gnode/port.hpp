@@ -180,8 +180,16 @@ public:
   Output() : data(std::make_shared<Data<T>>()) {}
 
   /**
-   * @brief Constructs an Output port with the specified label.
+   * @brief Constructs an Output port with the specified label and additional
+   * arguments.
+   *
+   * @tparam Args Types of the arguments passed to the Data<T> constructor.
    * @param label A string representing the label of the output port.
+   * @param args Additional arguments passed to the Data<T> constructor.
+   *
+   * This constructor initializes an `Output` port with a given `label` and
+   * forwards any additional arguments to the `Data<T>` constructor using
+   * `std::make_shared`.
    */
   template <typename... Args>
   explicit Output(std::string label, Args &&...args)

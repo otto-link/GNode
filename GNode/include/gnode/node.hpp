@@ -58,8 +58,17 @@ public:
    * @brief Add a port to the node, specifying whether it is an input or output.
    *
    * @tparam T The data type for the port.
+   * @tparam Args Types of the arguments passed to the port constructor.
    * @param port_type The type of port (input or output).
    * @param port_label The label for the port.
+   * @param args Additional arguments passed to the output port constructor if
+   * the port type is output.
+   *
+   * This function adds a port of type `T` to the node. If the port type is
+   * `PortType::IN`, it creates an `Input` port with the given `port_label`. If
+   * the port type is `PortType::OUT`, it creates an `Output` port with the
+   * given `port_label` and forwards additional arguments to the `Output` port
+   * constructor.
    */
   template <typename T, typename... Args>
   void add_port(PortType           port_type,
