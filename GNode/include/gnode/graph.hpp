@@ -241,12 +241,12 @@ protected:
    */
   std::map<std::string, std::shared_ptr<Node>> nodes;
 
-private:
   /**
    * @brief A list of links between nodes in the graph.
    */
   std::vector<Link> links;
 
+private:
   /**
    * @brief Keep track of unique identifiers.
    */
