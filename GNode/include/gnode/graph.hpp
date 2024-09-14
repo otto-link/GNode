@@ -235,12 +235,13 @@ public:
    */
   bool update(std::string id);
 
-private:
+protected:
   /**
    * @brief A map of node IDs to shared pointers of Node objects.
    */
   std::map<std::string, std::shared_ptr<Node>> nodes;
 
+private:
   /**
    * @brief A list of links between nodes in the graph.
    */
