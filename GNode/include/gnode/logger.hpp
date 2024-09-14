@@ -34,7 +34,7 @@
  *
  * @see gnode::Logger
  */
-#define SPDLOG gnode::Logger::get_logger()
+#define GLOG gnode::Logger::get_logger()
 
 namespace gnode
 {
