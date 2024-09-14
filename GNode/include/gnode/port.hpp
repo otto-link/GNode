@@ -183,8 +183,10 @@ public:
    * @brief Constructs an Output port with the specified label.
    * @param label A string representing the label of the output port.
    */
-  explicit Output(std::string label)
-      : Port(std::move(label)), data(std::make_shared<Data<T>>())
+  template <typename... Args>
+  explicit Output(std::string label, Args &&...args)
+      : Port(std::move(label)),
+        data(std::make_shared<Data<T>>(std::forward<Args>(args)...))
   {
   }
 
