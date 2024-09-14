@@ -152,6 +152,13 @@ public:
   std::map<std::string, std::vector<std::string>> get_connectivity_upstream();
 
   /**
+   * @brief Get the current count of unique identifiers.
+   *
+   * @return An available unique identifier.
+   * */
+  uint get_id_count() const { return this->id_count; }
+
+  /**
    * @brief Get a pointer to a node by its ID.
    *
    * @tparam T Node type, default is Node.
@@ -205,6 +212,13 @@ public:
   void remove_node(const std::string &id);
 
   /**
+   * @brief Set the current count of unique identifiers.
+   *
+   * @param new_id An available unique identifier.
+   * */
+  void set_id_count(uint new_id_count) { this->id_count = new_id_count; }
+
+  /**
    * @brief Mark all nodes as dirty and update the entire graph.
    *
    * This method forces a complete update of the graph, which may be inefficient
@@ -231,6 +245,11 @@ private:
    * @brief A list of links between nodes in the graph.
    */
   std::vector<Link> links;
+
+  /**
+   * @brief Keep track of unique identifiers.
+   */
+  uint id_count = 0;
 };
 
 } // namespace gnode

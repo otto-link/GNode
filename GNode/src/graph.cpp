@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
@@ -21,12 +20,7 @@ std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
   std::string node_id = id;
 
   // Use node pointer as ID if none is provided
-  if (node_id.empty())
-  {
-    std::ostringstream oss;
-    oss << std::to_string((unsigned long long)(void **)p_node.get());
-    node_id = oss.str();
-  }
+  if (node_id.empty()) node_id = std::to_string(id_count++);
 
   // Check if the ID is available
   if (!this->is_node_id_available(node_id))
