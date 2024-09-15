@@ -103,6 +103,17 @@ public:
   virtual void compute() = 0;
 
   /**
+   * @brief Get the data type of a specific port (input or output).
+   *
+   * This function is pure virtual and must be implemented by derived classes.
+   *
+   * @param port_index The index of the port.
+   * @return A string representing the data type of the node (e.g float, int,
+   * image...).
+   */
+  std::string get_data_type(int port_index) const;
+
+  /**
    * @brief Get the label of the node.
    *
    * @return std::string The label of the node.

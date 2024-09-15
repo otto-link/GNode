@@ -61,6 +61,12 @@ public:
   virtual ~Port() = default;
 
   /**
+   * @brief Retrieves the type name of the data handled by this port.
+   * @return A string representing the type name.
+   */
+  std::string get_data_type() { return this->data_type; }
+
+  /**
    * @brief Retrieves the label of the port.
    * @return A string representing the port's label.
    */
@@ -92,6 +98,9 @@ public:
    */
   virtual void set_data(std::shared_ptr<BaseData> /* data */) {}
 
+protected:
+  std::string data_type; ///< A string representing the type name.
+
 private:
   std::string label = "no label"; ///< The label of the port.
 };
@@ -116,18 +125,12 @@ public:
    * @brief Constructs an Input port with the specified label.
    * @param label A string representing the label of the input port.
    */
-  Input(std::string label) : Port(label) {}
+  Input(std::string label) : Port(label) { this->data_type = typeid(T).name(); }
 
   /**
    * @brief Virtual destructor for Input.
    */
   virtual ~Input() = default;
-
-  /**
-   * @brief Retrieves the type name of the data handled by this input port.
-   * @return A string representing the type name.
-   */
-  std::string get_data_type() { return typeid(T).name(); }
 
   /**
    * @brief Returns the type of the port as an input port.
@@ -177,7 +180,10 @@ public:
   /**
    * @brief Default constructor for Output.
    */
-  Output() : data(std::make_shared<Data<T>>()) {}
+  Output() : data(std::make_shared<Data<T>>())
+  {
+    this->data_type = typeid(T).name();
+  }
 
   /**
    * @brief Constructs an Output port with the specified label and additional
@@ -196,6 +202,7 @@ public:
       : Port(label),
         data(std::make_shared<Data<T>>(std::forward<Args>(args)...))
   {
+    this->data_type = typeid(T).name();
   }
 
   /**

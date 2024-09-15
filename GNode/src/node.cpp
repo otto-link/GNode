@@ -7,6 +7,14 @@
 namespace gnode
 {
 
+std::string Node::get_data_type(int port_index) const
+{
+  if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
+    throw std::out_of_range("Invalid output port index");
+
+  return this->ports[port_index]->get_data_type();
+}
+
 int Node::get_nports() const { return static_cast<int>(this->ports.size()); }
 
 int Node::get_nports(PortType port_type) const
@@ -30,8 +38,8 @@ std::shared_ptr<BaseData> Node::get_output_data(int port_index) const
 
 int Node::get_port_index(const std::string &port_label) const
 {
-  for (int i = 0; i < this->ports.size(); ++i)
-    if (this->ports[i]->get_label() == port_label) return i;
+  for (size_t i = 0; i < this->ports.size(); ++i)
+    if (this->ports[i]->get_label() == port_label) return (int)i;
 
   throw std::runtime_error("Port label '" + port_label + "' not found.");
 }
