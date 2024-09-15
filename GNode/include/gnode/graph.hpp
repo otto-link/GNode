@@ -251,9 +251,8 @@ public:
    *
    * @param id ID of the node to update.
    * @return true If the update was successful.
-   * @return false If the update failed.
    */
-  bool update(std::string id);
+  void update(std::string id);
 
 protected:
   /**

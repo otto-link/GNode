@@ -355,7 +355,7 @@ void Graph::update()
   this->post_update();
 }
 
-bool Graph::update(std::string id)
+void Graph::update(std::string id)
 {
   // --- first check that all the nodes upstream the node to be
   // --- updated are up to date (i.e. no 'dirty'), if not, no need to
@@ -367,7 +367,7 @@ bool Graph::update(std::string id)
     if (this->get_node_ref_by_id(id_up)->is_dirty)
     {
       GLOG->trace("no update of the graph");
-      return false;
+      return;
     }
 
   // --- use a depth-first search to mark the nodes that need to be
@@ -437,8 +437,6 @@ bool Graph::update(std::string id)
   }
 
   this->post_update();
-
-  return true;
 }
 
 } // namespace gnode
