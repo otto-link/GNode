@@ -378,13 +378,22 @@ void Graph::update(std::string id)
   std::map<std::string, float> node_layer = {};
   std::vector<gnode::Point>    points = this->compute_graph_layout_sugiyama();
 
-  auto points_it = points.begin(); // iterator
-  for (const auto &[nid, n] : this->nodes)
+  if (points.size() > 0)
   {
-    is_discovered[nid] = false;
-    node_layer[nid] = points_it->x;
-    ++points_it;
+    auto points_it = points.begin(); // iterator
+    for (const auto &[nid, n] : this->nodes)
+    {
+      is_discovered[nid] = false;
+      node_layer[nid] = points_it->x;
+      ++points_it;
+    }
   }
+  else
+    for (const auto &[nid, n] : this->nodes)
+    {
+      is_discovered[nid] = false;
+      node_layer[nid] = 0;
+    }
 
   // storage for the update procedure coming after
   std::vector<std::string> update_queue = {};
