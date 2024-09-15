@@ -91,8 +91,6 @@ public:
     float *p_sum = this->get_value_ref<float>("sum");
 
     if (p_vec) *p_sum = p_vec->x + p_vec->y;
-
-    std::cout << *p_sum << "\n";
   }
 };
 
@@ -122,27 +120,27 @@ int main()
   auto id_sum_vec = g.add_node<SumVec>();
 
   // sum vector components
-  g.connect(id_value_vec, "value", id_sum_vec, "vec");
+  g.new_link(id_value_vec, "value", id_sum_vec, "vec");
 
   // add the former sum to a float
   auto id_value1 = g.add_node<Value>(3.f);
   auto id_add1 = g.add_node<Add>();
-  g.connect(id_sum_vec, "sum", id_add1, "a");
-  g.connect(id_value1, "value", id_add1, "b");
+  g.new_link(id_sum_vec, "sum", id_add1, "a");
+  g.new_link(id_value1, "value", id_add1, "b");
 
   // print this intermediate value
   auto id_print1 = g.add_node<Print>();
-  g.connect(id_add1, "a + b", id_print1, "in");
+  g.new_link(id_add1, "a + b", id_print1, "in");
 
   // add the former sum to another float...
   auto id_value2 = g.add_node<Value>(4.f);
   auto id_add2 = g.add_node<Add>();
-  g.connect(id_add1, "a + b", id_add2, "a");
-  g.connect(id_value2, "value", id_add2, "b");
+  g.new_link(id_add1, "a + b", id_add2, "a");
+  g.new_link(id_value2, "value", id_add2, "b");
 
   // and print the results
   auto id_print2 = g.add_node<Print>();
-  g.connect(id_add2, "a + b", id_print2, "in");
+  g.new_link(id_add2, "a + b", id_print2, "in");
 
   // once the graph is defined, perform an overall update to ensure a
   // clean graph state at the beginning (greedy and inefficient, don't

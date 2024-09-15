@@ -64,7 +64,7 @@ public:
    * @brief Retrieves the type name of the data handled by this port.
    * @return A string representing the type name.
    */
-  std::string get_data_type() { return this->data_type; }
+  std::string get_data_type() const { return this->data_type; }
 
   /**
    * @brief Retrieves the label of the port.

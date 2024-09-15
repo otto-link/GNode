@@ -54,10 +54,10 @@ int main()
   auto id_value2 = g.add_node<Value>(1.f);
   auto id_value3 = g.add_node<Value>(2.f);
 
-  g.connect(id_value1, "value", id_add1, "a");
-  g.connect(id_value2, "value", id_add1, "b");
-  g.connect(id_add1, "a + b", id_add2, "a");
-  g.connect(id_value3, "value", id_add2, "b");
+  g.new_link(id_value1, "value", id_add1, "a");
+  g.new_link(id_value2, "value", id_add1, "b");
+  g.new_link(id_add1, "a + b", id_add2, "a");
+  g.new_link(id_value3, "value", id_add2, "b");
 
   // overall update to ensure a clean graph state (greedy and inefficient)
   std::cout << "\nOVERALL UPDATE\n";

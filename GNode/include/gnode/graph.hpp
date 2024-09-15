@@ -87,10 +87,10 @@ public:
    * @return true If the connection was successful.
    * @return false If the connection failed.
    */
-  bool connect(const std::string &from,
-               int                port_from,
-               const std::string &to,
-               int                port_to);
+  bool new_link(const std::string &from,
+                int                port_from,
+                const std::string &to,
+                int                port_to);
 
   /**
    * @brief Connect two nodes in the graph using port labels.
@@ -102,10 +102,10 @@ public:
    * @return true If the connection was successful.
    * @return false If the connection failed.
    */
-  bool connect(const std::string &from,
-               const std::string &port_label_from,
-               const std::string &to,
-               const std::string &port_label_to);
+  bool new_link(const std::string &from,
+                const std::string &port_label_from,
+                const std::string &to,
+                const std::string &port_label_to);
 
   /**
    * @brief Disconnect two nodes in the graph using port indices.
@@ -117,10 +117,10 @@ public:
    * @return true If the disconnection was successful.
    * @return false If the disconnection failed.
    */
-  bool disconnect(const std::string &from,
-                  int                port_from,
-                  const std::string &to,
-                  int                port_to);
+  bool remove_link(const std::string &from,
+                   int                port_from,
+                   const std::string &to,
+                   int                port_to);
 
   /**
    * @brief Export the graph to a Graphviz DOT file.

@@ -94,10 +94,10 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
 }
 
 // connect two nodes, note that data types are not verified
-bool Graph::connect(const std::string &from,
-                    int                port_from,
-                    const std::string &to,
-                    int                port_to)
+bool Graph::new_link(const std::string &from,
+                     int                port_from,
+                     const std::string &to,
+                     int                port_to)
 {
   Link new_link(from, port_from, to, port_to);
 
@@ -127,10 +127,10 @@ bool Graph::connect(const std::string &from,
   return true;
 }
 
-bool Graph::connect(const std::string &from,
-                    const std::string &port_label_from,
-                    const std::string &to,
-                    const std::string &port_label_to)
+bool Graph::new_link(const std::string &from,
+                     const std::string &port_label_from,
+                     const std::string &to,
+                     const std::string &port_label_to)
 {
   // Check that the 'from' port is an output port
   if (this->nodes.at(from)->get_port_type(port_label_from) != PortType::OUT)
@@ -143,16 +143,16 @@ bool Graph::connect(const std::string &from,
                                 "' must be an input port.");
 
   // Call the existing connect method using the port indices
-  return this->connect(from,
-                       this->nodes.at(from)->get_port_index(port_label_from),
-                       to,
-                       this->nodes.at(to)->get_port_index(port_label_to));
+  return this->new_link(from,
+                        this->nodes.at(from)->get_port_index(port_label_from),
+                        to,
+                        this->nodes.at(to)->get_port_index(port_label_to));
 }
 
-bool Graph::disconnect(const std::string &from,
-                       int                port_from,
-                       const std::string &to,
-                       int                port_to)
+bool Graph::remove_link(const std::string &from,
+                        int                port_from,
+                        const std::string &to,
+                        int                port_to)
 {
   Link link(from, port_from, to, port_to);
 
