@@ -123,6 +123,21 @@ public:
                    int                port_to);
 
   /**
+   * @brief Disconnect two nodes in the graph using port labels.
+   *
+   * @param from The label of the source node.
+   * @param port_label_from The label of the source node's output port.
+   * @param to The label of the destination node.
+   * @param port_label_to The label of the destination node's input port.
+   * @return true If the disconnection was successful.
+   * @return false If the disconnection failed.
+   */
+  bool remove_link(const std::string &from,
+                   const std::string &port_label_from,
+                   const std::string &to,
+                   const std::string &port_label_to);
+
+  /**
    * @brief Export the graph to a Graphviz DOT file.
    *
    * @param fname Filename of the DOT file.

@@ -174,6 +174,29 @@ bool Graph::remove_link(const std::string &from,
   return true;
 }
 
+bool Graph::remove_link(const std::string &from,
+                        const std::string &port_label_from,
+                        const std::string &to,
+                        const std::string &port_label_to)
+{
+  // Check that the 'from' port is an output port
+  if (this->nodes.at(from)->get_port_type(port_label_from) != PortType::OUT)
+    throw std::invalid_argument("Port '" + port_label_from + "' on node '" +
+                                from + "' must be an output port.");
+
+  // Check that the 'to' port is an input port
+  if (this->nodes.at(to)->get_port_type(port_label_to) != PortType::IN)
+    throw std::invalid_argument("Port '" + port_label_to + "' on node '" + to +
+                                "' must be an input port.");
+
+  // Call the existing connect method using the port indices
+  return this->remove_link(
+      from,
+      this->nodes.at(from)->get_port_index(port_label_from),
+      to,
+      this->nodes.at(to)->get_port_index(port_label_to));
+}
+
 void Graph::export_to_graphviz(const std::string &fname,
                                const std::string &graph_label)
 {
