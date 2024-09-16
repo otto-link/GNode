@@ -7,6 +7,25 @@
 namespace gnode
 {
 
+std::shared_ptr<BaseData> Node::get_base_data(int port_index)
+{
+  // Range check for the port index
+  if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
+    throw std::out_of_range("Invalid port index");
+
+  return this->ports[port_index]->get_data_shared_ptr_downcasted();
+}
+
+std::shared_ptr<BaseData> Node::get_base_data(const std::string &port_label)
+{
+  for (const auto &port : this->ports)
+    if (port->get_label() == port_label)
+      return port->get_data_shared_ptr_downcasted();
+
+  // If no matching port is found, throw an exception
+  throw std::runtime_error("Port with label '" + port_label + "' not found.");
+}
+
 std::string Node::get_data_type(int port_index) const
 {
   if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))

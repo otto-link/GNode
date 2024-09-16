@@ -103,6 +103,22 @@ public:
   virtual void compute() = 0;
 
   /**
+   * @brief Retrieves a shared pointer to the data associated with the port
+   * after downcasting.
+   * @param port_index The index of the port.
+   * @return A shared pointer to the BaseData, or nullptr if not applicable.
+   */
+  std::shared_ptr<BaseData> get_base_data(int port_index);
+
+  /**
+   * @brief Retrieves a shared pointer to the data associated with the port
+   * after downcasting.
+   * @param port_label The label of the port.
+   * @return A shared pointer to the BaseData, or nullptr if not applicable.
+   */
+  std::shared_ptr<BaseData> get_base_data(const std::string &port_label);
+
+  /**
    * @brief Get the data type of a specific port (input or output).
    *
    * This function is pure virtual and must be implemented by derived classes.
