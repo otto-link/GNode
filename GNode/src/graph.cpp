@@ -333,7 +333,7 @@ void Graph::remove_node(const std::string &id)
 
 void Graph::update()
 {
-  GLOG->trace("Updating graph...");
+  Logger::log()->trace("Updating graph...");
 
   // Set all nodes to a "dirty" state
   for (auto &[nid, p_node] : this->nodes)
@@ -346,9 +346,9 @@ void Graph::update()
   for (const auto &[nid, up_ids] : connectivity_up)
     if (up_ids.empty())
     {
-      GLOG->trace("Updating node: {}({})",
-                  this->get_node_ref_by_id(nid)->get_label(),
-                  nid);
+      Logger::log()->trace("Updating node: {}({})",
+                           this->get_node_ref_by_id(nid)->get_label(),
+                           nid);
       this->update(nid);
     }
 
@@ -366,7 +366,7 @@ void Graph::update(std::string id)
   for (auto &id_up : connectivity_up[id])
     if (this->get_node_ref_by_id(id_up)->is_dirty)
     {
-      GLOG->trace("no update of the graph");
+      Logger::log()->trace("no update of the graph");
       return;
     }
 
@@ -428,9 +428,9 @@ void Graph::update(std::string id)
     }
   }
 
-  GLOG->trace("update queue:");
+  Logger::log()->trace("update queue:");
   for (auto &s : update_queue)
-    GLOG->trace("node id: {}", s);
+    Logger::log()->trace("node id: {}", s);
 
   // --- update the nodes
   while (update_queue.size())
@@ -438,9 +438,9 @@ void Graph::update(std::string id)
     std::string nid = update_queue.front();
     update_queue.erase(update_queue.begin());
 
-    GLOG->trace("updating: {}({})",
-                this->get_node_ref_by_id(nid)->get_label(),
-                nid);
+    Logger::log()->trace("updating: {}({})",
+                         this->get_node_ref_by_id(nid)->get_label(),
+                         nid);
 
     this->get_node_ref_by_id(nid)->update();
   }

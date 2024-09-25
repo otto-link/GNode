@@ -23,19 +23,6 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
-/**
- * @def SPDLOG
- * @brief Macro to access the singleton logger instance.
- *
- * Example usage:
- * @code
- * SPDLOG->info("This is a log message.");
- * @endcode
- *
- * @see gnode::Logger
- */
-#define GLOG gnode::Logger::get_logger()
-
 namespace gnode
 {
 
@@ -61,7 +48,7 @@ public:
    * This method returns the singleton logger instance. It is used to access
    * the logger for logging messages.
    */
-  static std::shared_ptr<spdlog::logger> &get_logger();
+  static std::shared_ptr<spdlog::logger> &log();
 
 private:
   // Private constructor to prevent direct instantiation
