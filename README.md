@@ -28,6 +28,24 @@ make doc_gnode
 [YOUR_WEB_BROWSER] doc/doc_doxygen/html/index.html
 ```
 
+### Linking with CMake
+
+Add `GNode` sub-directory in your `CMakeLists.txt`:
+```
+set(GNODE_ENABLE_DOCS OFF)
+set(GNODE_ENABLE_EXAMPLES OFF)
+set(GNODE_ENABLE_TESTS OFF)
+add_subdirectory(GNode)
+```
+
+Then link `GNode` to your target again in your `CMakeLists.txt`:
+```
+target_link_libraries(
+  ${PROJECT_NAME}
+  PRIVATE gnode
+)
+```
+
 ### Usage examples
 
 Examples are available in the examples folder, featuring a calculator that includes both float and 2D vector of floats data types:
