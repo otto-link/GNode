@@ -14,13 +14,14 @@
  */
 
 #pragma once
-#include <cstdint>
 #include <map>
 #include <memory>
 
 #include "gnode/link.hpp"
 #include "gnode/node.hpp"
 #include "gnode/point.hpp"
+
+typedef unsigned int uint;
 
 namespace gnode
 {
