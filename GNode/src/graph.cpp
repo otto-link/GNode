@@ -5,10 +5,6 @@
 #include <fstream>
 #include <iostream>
 
-#ifndef M_PI                        // for Windows port
-#define M_PI 3.14159265358979323846 /* pi */
-#endif
-
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
 
