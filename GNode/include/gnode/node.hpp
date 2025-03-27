@@ -23,6 +23,8 @@
 namespace gnode
 {
 
+class Graph; // forward
+
 /**
  * @brief Abstract Node class that represents a basic building block in a
  * graph-based system. Nodes contain ports, which can be connected to other
@@ -167,6 +169,13 @@ public:
   std::shared_ptr<BaseData> get_output_data(int port_index) const;
 
   /**
+   * @brief Get the reference to the belonging graph.
+   *
+   * @return Graph* Reference.
+   */
+  Graph *get_p_graph() const { return this->p_graph; }
+
+  /**
    * @brief Get the index of a port by its label.
    *
    * @param port_label The label of the port.
@@ -284,6 +293,13 @@ public:
   void set_input_data(std::shared_ptr<BaseData> data, int port_index);
 
   /**
+   * @brief Set the reference to the belonging graph.
+   *
+   * @param new_p_graph Graph reference.
+   */
+  void set_p_graph(Graph *new_p_graph) { this->p_graph = new_p_graph; }
+
+  /**
    * @brief Set the value of a port by its label.
    *
    * @tparam T The type of the value.
@@ -318,6 +334,11 @@ private:
    * @brief A vector of shared pointers to the node's ports.
    */
   std::vector<std::shared_ptr<Port>> ports;
+
+  /**
+   * @brief Reference to the graph the node belong to, if any.
+   */
+  Graph *p_graph = nullptr;
 };
 
 } // namespace gnode

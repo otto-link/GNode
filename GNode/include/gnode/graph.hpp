@@ -39,6 +39,13 @@ public:
   Graph() = default;
 
   /**
+   * @brief Construct a new Graph object.
+   *
+   * @param id Graph ID.
+   */
+  Graph(const std::string &id) : id(id) {}
+
+  /**
    * @brief Destroy the Graph object.
    */
   virtual ~Graph() = default;
@@ -78,6 +85,13 @@ public:
    * positions.
    */
   std::vector<Point> compute_graph_layout_sugiyama();
+
+  /**
+   * @brief Return the graph ID.
+   *
+   * @return std::string ID.
+   */
+  std::string get_id() const { return this->id; };
 
   /**
    * @brief Connect two nodes in the graph using port indices.
@@ -233,6 +247,13 @@ public:
   void remove_node(const std::string &id);
 
   /**
+   * @brief Set the graph ID.
+   *
+   * @param new_id ID.
+   */
+  void set_id(const std::string &new_id) { this->id = new_id; };
+
+  /**
    * @brief Set the current count of unique identifiers.
    *
    * @param new_id An available unique identifier.
@@ -271,6 +292,11 @@ private:
    * @brief Keep track of unique identifiers.
    */
   uint id_count = 0;
+
+  /**
+   * @brief Graph id
+   */
+  std::string id = "";
 };
 
 } // namespace gnode

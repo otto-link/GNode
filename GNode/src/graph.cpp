@@ -30,6 +30,9 @@ std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
   this->nodes[node_id] = p_node;
   p_node->set_id(node_id);
 
+  // keep track of the parent graph
+  p_node->set_p_graph(this);
+
   return node_id;
 }
 
