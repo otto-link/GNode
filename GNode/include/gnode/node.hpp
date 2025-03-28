@@ -132,6 +132,13 @@ public:
   std::string get_data_type(int port_index) const;
 
   /**
+   * @brief Get the id of the graph.
+   *
+   * @return std::string The label of the node.
+   */
+  std::string get_graph_id() const;
+
+  /**
    * @brief Get the label of the node.
    *
    * @return std::string The label of the node.

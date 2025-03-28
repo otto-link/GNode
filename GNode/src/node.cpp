@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "gnode/node.hpp"
+#include "gnode/graph.hpp"
 #include "gnode/logger.hpp"
 
 namespace gnode
@@ -32,6 +33,14 @@ std::string Node::get_data_type(int port_index) const
     throw std::out_of_range("Invalid output port index");
 
   return this->ports[port_index]->get_data_type();
+}
+
+std::string Node::get_graph_id() const
+{
+  if (this->p_graph)
+    return this->p_graph->get_id();
+  else
+    return "";
 }
 
 int Node::get_nports() const { return static_cast<int>(this->ports.size()); }
