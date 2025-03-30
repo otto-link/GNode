@@ -218,6 +218,16 @@ public:
   }
 
   /**
+   * @brief Get a reference to the nodes map.
+   *
+   * @return Nodes map.
+   */
+  const std::map<std::string, std::shared_ptr<Node>> &get_nodes()
+  {
+    return this->nodes;
+  }
+
+  /**
    * @brief Check if a node ID is available in the graph.
    *
    * @param id Node ID to check.
