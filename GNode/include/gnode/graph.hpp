@@ -276,7 +276,7 @@ public:
    * This method forces a complete update of the graph, which may be inefficient
    * for large graphs.
    */
-  void update();
+  virtual void update();
 
   /**
    * @brief Update a specific node by its ID.
@@ -284,7 +284,7 @@ public:
    * @param id ID of the node to update.
    * @return true If the update was successful.
    */
-  void update(std::string id);
+  virtual void update(std::string id);
 
 protected:
   /**
