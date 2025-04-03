@@ -207,6 +207,11 @@ public:
   PortType get_port_type(const std::string &port_label) const;
 
   /**
+   * @brief Get the ports.
+   */
+  const std::vector<std::shared_ptr<Port>> &get_ports() { return this->ports; };
+
+  /**
    * @brief Get a reference to the value stored in a port by its label.
    *
    * @tparam T The type of the value.
