@@ -57,8 +57,8 @@ public:
    * @param id Optional ID for the node. If empty, an ID will be generated.
    * @return std::string The ID of the added node.
    */
-  std::string add_node(const std::shared_ptr<Node> &p_node,
-                       const std::string           &id = "");
+  virtual std::string add_node(const std::shared_ptr<Node> &p_node,
+                               const std::string           &id = "");
 
   /**
    * @brief Add a new node of a specific type to the graph.
