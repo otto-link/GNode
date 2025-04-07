@@ -254,7 +254,7 @@ public:
    *
    * @param id ID of the node to remove.
    */
-  void remove_node(const std::string &id);
+  virtual void remove_node(const std::string &id);
 
   /**
    * @brief Set the graph ID.
