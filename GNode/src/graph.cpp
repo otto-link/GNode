@@ -360,6 +360,12 @@ void Graph::update()
 
 void Graph::update(std::string id)
 {
+  if (this->is_node_id_available(id))
+  {
+    Logger::log()->trace("Graph::update: unknown node id {}", id);
+    return;
+  }
+
   // --- first check that all the nodes upstream the node to be
   // --- updated are up to date (i.e. no 'dirty'), if not, no need to
   // --- update the node
