@@ -195,6 +195,13 @@ public:
   uint get_id_count() const { return this->id_count; }
 
   /**
+   * @brief Get the link storage.
+   *
+   * @return Links.
+   * */
+  const std::vector<Link> &get_links() const { return this->links; }
+
+  /**
    * @brief Get a pointer to a node by its ID.
    *
    * @tparam T Node type, default is Node.
