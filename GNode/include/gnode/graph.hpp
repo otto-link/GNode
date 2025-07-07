@@ -194,6 +194,8 @@ public:
    * */
   uint get_id_count() const { return this->id_count; }
 
+  uint *get_id_count_ref() { return &this->id_count; }
+
   /**
    * @brief Get the link storage.
    *
