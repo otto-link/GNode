@@ -243,7 +243,7 @@ public:
    * @return true If the ID is available.
    * @return false If the ID is already taken.
    */
-  bool is_node_id_available(std::string id);
+  bool is_node_id_available(const std::string &node_id);
 
   /**
    * @brief Method called after the graph update process is completed.
@@ -279,6 +279,10 @@ public:
    * */
   void set_id_count(uint new_id_count) { this->id_count = new_id_count; }
 
+  /** Kahn's algorithm for node sorting for update priority */
+  std::vector<std::string> topological_sort(
+      const std::vector<std::string> &dirty_node_ids);
+
   /**
    * @brief Mark all nodes as dirty and update the entire graph.
    *
@@ -293,7 +297,7 @@ public:
    * @param id ID of the node to update.
    * @return true If the update was successful.
    */
-  virtual void update(std::string id);
+  virtual void update(const std::string &node_id);
 
 protected:
   /**
@@ -317,5 +321,12 @@ private:
    */
   std::string id = "";
 };
+
+// helper
+
+template <typename T> bool contains(const std::vector<T> &vec, const T &value)
+{
+  return std::find(vec.begin(), vec.end(), value) != vec.end();
+}
 
 } // namespace gnode

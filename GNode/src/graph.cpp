@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <queue>
 
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
@@ -13,6 +14,18 @@
 
 namespace gnode
 {
+
+void helper_mark_dirty(
+    const std::string                                     &node_id,
+    std::vector<std::string>                              &visited,
+    const std::map<std::string, std::vector<std::string>> &connectivity_dw)
+{
+  if (contains(visited, node_id)) return;
+
+  visited.push_back(node_id);
+  for (auto dw_id : connectivity_dw.at(node_id))
+    helper_mark_dirty(dw_id, visited, connectivity_dw);
+}
 
 std::string Graph::add_node(const std::shared_ptr<Node> &p_node,
                             const std::string           &id)
@@ -286,9 +299,9 @@ std::map<std::string, std::vector<std::string>> Graph::
   return connectivity;
 }
 
-bool Graph::is_node_id_available(std::string id)
+bool Graph::is_node_id_available(const std::string &node_id)
 {
-  return !this->nodes.contains(id);
+  return !this->nodes.contains(node_id);
 }
 
 void Graph::print()
@@ -334,123 +347,114 @@ void Graph::remove_node(const std::string &id)
   this->nodes.erase(id);
 }
 
+std::vector<std::string> Graph::topological_sort(
+    const std::vector<std::string> &dirty_node_ids)
+{
+  // init
+  std::unordered_map<std::string, int> in_degree;
+  for (auto node_id : dirty_node_ids)
+    in_degree[node_id] = 0;
+
+  // node links
+  const auto connectivity_up = this->get_connectivity_upstream();
+  const auto connectivity_dw = this->get_connectivity_downstream();
+
+  // count number of inputs that are also dirty
+  for (auto node_id : dirty_node_ids)
+    for (auto up_id : connectivity_up.at(node_id))
+      if (contains(dirty_node_ids, up_id)) in_degree[node_id]++;
+
+  // collect nodes with no dirty dependencies
+  std::queue<std::string> ready;
+  for (auto &[node_id, deg] : in_degree)
+    if (deg == 0) ready.push(node_id);
+
+  std::vector<std::string> sorted;
+
+  while (!ready.empty())
+  {
+    std::string node_id = ready.front();
+    ready.pop();
+    sorted.push_back(node_id);
+
+    for (auto dw_id : connectivity_dw.at(node_id))
+    {
+      if (!in_degree.contains(dw_id)) continue;
+
+      in_degree[dw_id]--;
+      if (in_degree[dw_id] == 0) ready.push(dw_id);
+    }
+  }
+
+  return sorted;
+}
+
 void Graph::update()
 {
   Logger::log()->trace("Updating graph...");
 
-  // Set all nodes to a "dirty" state
-  for (auto &[nid, p_node] : this->nodes)
-    p_node->is_dirty = true;
+  // set all nodes to a "dirty" state
+  std::vector<std::string> dirty_node_ids = {};
 
-  // Get the upstream connectivity of the graph
-  auto connectivity_up = this->get_connectivity_upstream();
+  for (auto &[nid, _] : this->nodes)
+  {
+    this->get_node_ref_by_id(nid)->is_dirty = true;
+    dirty_node_ids.push_back(nid);
+  }
 
-  // Trigger nodes with no upstream connections (no inputs)
-  for (const auto &[nid, up_ids] : connectivity_up)
-    if (up_ids.empty())
-    {
-      Logger::log()->trace("Updating node: {}({})",
-                           this->get_node_ref_by_id(nid)->get_label(),
-                           nid);
-      this->update(nid);
-    }
+  //
+  std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
+
+  Logger::log()->trace("Graph::update: update queue:");
+  for (auto &s : sorted_id)
+    Logger::log()->trace("Graph::update: node id: {}", s);
+
+  for (auto nid : sorted_id)
+  {
+    Logger::log()->trace("Updating node: {}({})",
+                         this->get_node_ref_by_id(nid)->get_label(),
+                         nid);
+    this->get_node_ref_by_id(nid)->update();
+  }
 
   this->post_update();
 }
 
-void Graph::update(std::string id)
+void Graph::update(const std::string &node_id)
 {
-  if (this->is_node_id_available(id))
+  if (this->is_node_id_available(node_id))
   {
-    Logger::log()->trace("Graph::update: unknown node id {}", id);
+    Logger::log()->trace("Graph::update: unknown node id {}", node_id);
     return;
   }
 
   // --- first check that all the nodes upstream the node to be
   // --- updated are up to date (i.e. no 'dirty'), if not, no need to
   // --- update the node
-  std::map<std::string, std::vector<std::string>> connectivity_up =
-      this->get_connectivity_upstream();
 
-  for (auto &id_up : connectivity_up[id])
+  auto connectivity_up = this->get_connectivity_upstream();
+
+  for (auto &id_up : connectivity_up[node_id])
     if (this->get_node_ref_by_id(id_up)->is_dirty)
     {
-      Logger::log()->trace("no update of the graph");
+      Logger::log()->trace("Graph::update: no update of the graph");
       return;
     }
 
-  // --- use a depth-first search to mark the nodes that need to be
-  // --- updated (and use Sugiyama layered graph layout to determine
-  // --- update order)
-  std::vector<std::string>     stack = {id};
-  std::map<std::string, bool>  is_discovered = {};
-  std::map<std::string, float> node_layer = {};
-  std::vector<gnode::Point>    points = this->compute_graph_layout_sugiyama();
+  // --- actual update
 
-  if (points.size() > 0)
+  std::vector<std::string> dirty_node_ids = {};
+  auto connectivity_dw = this->get_connectivity_downstream();
+  helper_mark_dirty(node_id, dirty_node_ids, connectivity_dw);
+
+  std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
+
+  for (auto nid : sorted_id)
   {
-    auto points_it = points.begin(); // iterator
-    for (const auto &[nid, n] : this->nodes)
-    {
-      is_discovered[nid] = false;
-      node_layer[nid] = points_it->x;
-      ++points_it;
-    }
-  }
-  else
-    for (const auto &[nid, n] : this->nodes)
-    {
-      is_discovered[nid] = false;
-      node_layer[nid] = 0;
-    }
-
-  // storage for the update procedure coming after
-  std::vector<std::string> update_queue = {};
-
-  std::map<std::string, std::vector<std::string>> connectivity_dw =
-      this->get_connectivity_downstream();
-
-  while (stack.size())
-  {
-    std::string nid = stack.back();
-    stack.pop_back();
-
-    Node *p_node = this->get_node_ref_by_id(nid);
-
-    // store and mark for update, but add the node before or after
-    // the last added node based on their relative layer level
-    if (update_queue.size() > 0 &&
-        node_layer[update_queue.back()] >= node_layer[nid])
-      update_queue.insert(update_queue.end() - 1, nid);
-    else
-      update_queue.push_back(nid);
-
-    p_node->is_dirty = true;
-
-    if (!is_discovered[nid])
-    {
-      is_discovered[nid] = true;
-
-      // add 'downstream' nodes to the DFS stack
-      for (auto &to_id : connectivity_dw[nid])
-        stack.push_back(to_id);
-    }
-  }
-
-  Logger::log()->trace("update queue:");
-  for (auto &s : update_queue)
-    Logger::log()->trace("node id: {}", s);
-
-  // --- update the nodes
-  while (update_queue.size())
-  {
-    std::string nid = update_queue.front();
-    update_queue.erase(update_queue.begin());
-
-    Logger::log()->trace("updating: {}({})",
+    Logger::log()->trace("Graph::update: updating node: {}({})",
                          this->get_node_ref_by_id(nid)->get_label(),
                          nid);
-
+    this->get_node_ref_by_id(nid)->is_dirty = true;
     this->get_node_ref_by_id(nid)->update();
   }
 
