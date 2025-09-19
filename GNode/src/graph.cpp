@@ -103,8 +103,23 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
   points.reserve(layout.vertices().size());
 
   for (const auto &vertex : layout.vertices())
-    points.emplace_back(vertex.pos.y - 0.5f * layout.height(),
-                        vertex.pos.x - 0.5f * layout.width());
+    points.emplace_back(vertex.pos.y, vertex.pos.x);
+
+  // Make coordinates start at zero
+  float min_x = std::numeric_limits<float>::max();
+  float min_y = std::numeric_limits<float>::max();
+
+  for (auto &p : points)
+  {
+    min_x = std::min(min_x, p.x);
+    min_y = std::min(min_y, p.y);
+  }
+
+  for (auto &p : points)
+  {
+    p.x += min_x;
+    p.y += min_y;
+  }
 
   return points;
 }
