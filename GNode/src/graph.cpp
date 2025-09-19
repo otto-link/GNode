@@ -117,8 +117,8 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
 
   for (auto &p : points)
   {
-    p.x += min_x;
-    p.y += min_y;
+    p.x -= min_x;
+    p.y -= min_y;
   }
 
   return points;
