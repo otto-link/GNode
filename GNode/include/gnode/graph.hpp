@@ -14,6 +14,7 @@
  */
 
 #pragma once
+#include <functional>
 #include <map>
 #include <memory>
 
@@ -235,7 +236,7 @@ public:
   {
     return this->nodes;
   }
-  
+
   /** Get node list for update priority */
   std::vector<std::string> get_nodes_to_update(const std::string &node_id);
 
@@ -282,6 +283,13 @@ public:
    * */
   void set_id_count(uint new_id_count) { this->id_count = new_id_count; }
 
+  void set_update_callback(std::function<void(const std::string &,
+                                              const std::vector<std::string> &,
+                                              bool)> new_callback)
+  {
+    this->update_callback = new_callback;
+  }
+
   /** Kahn's algorithm for node sorting for update priority */
   std::vector<std::string> topological_sort(
       const std::vector<std::string> &dirty_node_ids);
@@ -323,6 +331,11 @@ private:
    * @brief Graph id
    */
   std::string id = "";
+
+  std::function<void(const std::string              &current_id,
+                     const std::vector<std::string> &sorted_ids,
+                     bool                            before_update)>
+      update_callback = nullptr;
 };
 
 // helper
