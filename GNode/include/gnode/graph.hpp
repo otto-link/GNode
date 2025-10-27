@@ -235,6 +235,9 @@ public:
   {
     return this->nodes;
   }
+  
+  /** Get node list for update priority */
+  std::vector<std::string> get_nodes_to_update(const std::string &node_id);
 
   /**
    * @brief Check if a node ID is available in the graph.

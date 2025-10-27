@@ -124,6 +124,38 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
   return points;
 }
 
+std::vector<std::string> Graph::get_nodes_to_update(const std::string &node_id)
+{
+  if (this->is_node_id_available(node_id))
+  {
+    Logger::log()->trace("Graph::update: unknown node id {}", node_id);
+    return {};
+  }
+
+  // --- first check that all the nodes upstream the node to be
+  // --- updated are up to date (i.e. no 'dirty'), if not, no need to
+  // --- update the node
+
+  auto connectivity_up = this->get_connectivity_upstream();
+
+  for (auto &id_up : connectivity_up[node_id])
+    if (this->get_node_ref_by_id(id_up)->is_dirty)
+    {
+      Logger::log()->trace("Graph::update: no update of the graph");
+      return {};
+    }
+
+  // --- actual update
+
+  std::vector<std::string> dirty_node_ids = {};
+  auto connectivity_dw = this->get_connectivity_downstream();
+  helper_mark_dirty(node_id, dirty_node_ids, connectivity_dw);
+
+  std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
+
+  return sorted_id;
+}
+
 // connect two nodes, note that data types are not verified
 bool Graph::new_link(const std::string &from,
                      int                port_from,
@@ -443,26 +475,7 @@ void Graph::update(const std::string &node_id)
     return;
   }
 
-  // --- first check that all the nodes upstream the node to be
-  // --- updated are up to date (i.e. no 'dirty'), if not, no need to
-  // --- update the node
-
-  auto connectivity_up = this->get_connectivity_upstream();
-
-  for (auto &id_up : connectivity_up[node_id])
-    if (this->get_node_ref_by_id(id_up)->is_dirty)
-    {
-      Logger::log()->trace("Graph::update: no update of the graph");
-      return;
-    }
-
-  // --- actual update
-
-  std::vector<std::string> dirty_node_ids = {};
-  auto connectivity_dw = this->get_connectivity_downstream();
-  helper_mark_dirty(node_id, dirty_node_ids, connectivity_dw);
-
-  std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
+  std::vector<std::string> sorted_id = this->get_nodes_to_update(node_id);
 
   for (auto nid : sorted_id)
   {
