@@ -458,10 +458,14 @@ void Graph::update()
 
   for (auto nid : sorted_id)
   {
+    if (this->update_callback) this->update_callback(nid, sorted_id, true);
+
     Logger::log()->trace("Updating node: {}({})",
                          this->get_node_ref_by_id(nid)->get_label(),
                          nid);
     this->get_node_ref_by_id(nid)->update();
+
+    if (this->update_callback) this->update_callback(nid, sorted_id, false);
   }
 
   this->post_update();
