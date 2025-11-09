@@ -16,12 +16,15 @@
  * - Type-safe: strong typing of ports and attributes
  * - Extensible: support custom types as long as they are copyable or movable
  *
- *
  * A graph in GNode is composed of:
  * - Nodes: units of logic or data
  * - Ports: typed inputs/outputs on nodes
  * - Links: connections between ports
  * - Graph (supervisor): manager for node creation, registration and update
+ *
+ * @section install Installation
+ *
+ * See the REAMDE in the GitHub repository: https://github.com/otto-link/GNode
  *
  * @section usage_sec Usage Example
  *
