@@ -1,5 +1,0 @@
-\mainpage
-
-############################
-GNode library documentation!
-############################
