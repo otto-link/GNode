@@ -3,12 +3,18 @@
  * this software. */
 
 /**
- * @file gnode.hpp
- * @author Otto Link (otto.link.bv@gmail.com)
- * @brief A generic node-based data structure for node graph programming.
- * @date 2023-08-07
+ * @mainpage GNode
  *
- * @copyright Copyright (c) 2023
+ * @section intro_sec Introduction
+ *
+ * @section usage_sec Usage Example
+ *
+ * @code{.cpp}
+ * @endcode
+ *
+ * @section repo_sec Repository
+ *
+ * GitHub: https://github.com/otto-link/GNode
  */
 
 #pragma once
