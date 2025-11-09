@@ -1,0 +1,56 @@
+\doxysection{data.\+hpp}
+\hypertarget{data_8hpp_source}{}\label{data_8hpp_source}\index{GNode/include/gnode/data.hpp@{GNode/include/gnode/data.hpp}}
+\mbox{\hyperlink{data_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2023\ Otto\ Link.\ Distributed\ under\ the\ terms\ of\ the\ GNU\ General}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Public\ License.\ The\ full\ license\ is\ in\ the\ file\ LICENSE,\ distributed\ with}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ this\ software.\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegnode}{gnode}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1BaseData}{BaseData}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classgnode_1_1BaseData_a1196fccd15119d82c793059e55498c8b}{BaseData}}(std::string\ \mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}})\ :\ \mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}}(\mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}})\ \{\}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgnode_1_1BaseData_a0113f400a7903826c04f81adec405118}{\string~BaseData}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1BaseData_a4f018cf35bc2bcfa95532c47227e134d}{is\_same\_type}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classgnode_1_1BaseData}{BaseData}}\ \&data)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1BaseData_aa3345678604977a07843f5cad1123c88}{get\_type}}()\ ==\ data.\mbox{\hyperlink{classgnode_1_1BaseData_aa3345678604977a07843f5cad1123c88}{get\_type}}();}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1BaseData_aa3345678604977a07843f5cad1123c88}{get\_type}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}};\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1BaseData_a5de897e9fa844f73b123dc42b04dc6de}{get\_value\_ptr}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}};\ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1Data}{Data}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1BaseData}{BaseData}}}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00097\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00098\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classgnode_1_1Data_a86dd8589a154e70880df894179d9ca2b}{Data}}(Args\ \&\&...args)\ :\ \mbox{\hyperlink{classgnode_1_1BaseData}{BaseData}}(typeid(T).name())}
+\DoxyCodeLine{00099\ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}{value}}\ =\ T(std::forward<Args>(args)...);}
+\DoxyCodeLine{00101\ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ T\ *\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{get\_value\_ref}}()\ \{\ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}{value}};\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa}{get\_value\_ptr}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{const\_cast<}T\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}{value}});\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00116\ \ \ T\ \mbox{\hyperlink{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}{value}}\{\};\ }
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
+
+\end{DoxyCode}

@@ -1,0 +1,149 @@
+\doxysection{gnode\+::Data\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classgnode_1_1Data}{}\label{classgnode_1_1Data}\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
+
+
+Template class for holding data of a specific type.  
+
+
+
+
+{\ttfamily \#include $<$data.\+hpp$>$}
+
+
+
+Inheritance diagram for gnode\+::Data\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classgnode_1_1Data__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for gnode\+::Data\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classgnode_1_1Data__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\\mbox{\hyperlink{classgnode_1_1Data_a86dd8589a154e70880df894179d9ca2b}{Data}} (\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{Args}} \&\&...\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{args}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classgnode_1_1Data}{Data} object with the type name of T and initializes its value. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{get\+\_\+value\+\_\+ref}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a reference to the stored value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa}{get\+\_\+value\+\_\+ptr}} () \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{const}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{override}}
+\begin{DoxyCompactList}\small\item\em Retrieves a pointer to the stored value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgnode_1_1BaseData}{gnode\+::\+Base\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgnode_1_1BaseData_a1196fccd15119d82c793059e55498c8b}{Base\+Data}} (std\+::string \mbox{\hyperlink{classgnode_1_1BaseData_a40012d7fe5dcb3d09b1e56c0310e4d96}{type}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classgnode_1_1BaseData}{Base\+Data} object with the specified type. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classgnode_1_1BaseData_a0113f400a7903826c04f81adec405118}{\texorpdfstring{$\sim$}{\string~}\+Base\+Data}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{classgnode_1_1BaseData}{Base\+Data}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgnode_1_1BaseData_a4f018cf35bc2bcfa95532c47227e134d}{is\+\_\+same\+\_\+type}} (const \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}} \&data) const
+\begin{DoxyCompactList}\small\item\em Checks if the type of this data matches the type of another \doxylink{classgnode_1_1BaseData}{Base\+Data} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgnode_1_1BaseData_aa3345678604977a07843f5cad1123c88}{get\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the data as a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} \mbox{\hyperlink{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}{value}} \{\}
+\begin{DoxyCompactList}\small\item\em The value of type T stored in this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{typename}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}}$>$\newline
+class gnode\+::\+Data$<$ T $>$}
+Template class for holding data of a specific type. 
+
+The \doxylink{classgnode_1_1Data}{Data} class template inherits from \doxylink{classgnode_1_1BaseData}{Base\+Data} and provides a concrete implementation for storing and accessing data of type T. It allows retrieval of the stored value as a pointer.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data to be stored. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classgnode_1_1Data_a86dd8589a154e70880df894179d9ca2b}\label{classgnode_1_1Data_a86dd8589a154e70880df894179d9ca2b} 
+\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!Data@{Data}}
+\index{Data@{Data}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{typename}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$ \\
+template$<$typename... Args$>$ \\
+\mbox{\hyperlink{classgnode_1_1Data}{gnode\+::\+Data}}$<$ \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$\+::\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{Args}} \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classgnode_1_1Data}{Data} object with the type name of T and initializes its value. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Args} & Types of the arguments passed to the T constructor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Arguments forwarded to the constructor of T to initialize the value.\\
+\hline
+\end{DoxyParams}
+This constructor initializes the base class {\ttfamily \doxylink{classgnode_1_1BaseData}{Base\+Data}} with the type name of {\ttfamily T} using {\ttfamily typeid(\+T).\doxylink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{name()}}. It then constructs {\ttfamily this-\/\texorpdfstring{$>$}{>}value} of type {\ttfamily T} using the forwarded arguments {\ttfamily args}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa}\label{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa} 
+\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!get\_value\_ptr@{get\_value\_ptr}}
+\index{get\_value\_ptr@{get\_value\_ptr}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_value\_ptr()}{get\_value\_ptr()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{typename}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data}{gnode\+::\+Data}}$<$ \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$\+::get\+\_\+value\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves a pointer to the stored value. 
+
+\begin{DoxyReturn}{Returns}
+A void pointer to the stored value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgnode_1_1BaseData_a5de897e9fa844f73b123dc42b04dc6de}{gnode\+::\+Base\+Data}}.
+
+\Hypertarget{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}\label{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915} 
+\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!get\_value\_ref@{get\_value\_ref}}
+\index{get\_value\_ref@{get\_value\_ref}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_value\_ref()}{get\_value\_ref()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data}{gnode\+::\+Data}}$<$ T $>$\+::get\+\_\+value\+\_\+ref (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a reference to the stored value. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the stored value. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2}\label{classgnode_1_1Data_a7fd6b61024b4fcb851cdebfd5b5bccb2} 
+\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!value@{value}}
+\index{value@{value}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{typename}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} \mbox{\hyperlink{classgnode_1_1Data}{gnode\+::\+Data}}$<$ \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$\+::value \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The value of type T stored in this object. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+GNode/include/gnode/\mbox{\hyperlink{data_8hpp}{data.\+hpp}}\end{DoxyCompactItemize}

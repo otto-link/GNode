@@ -1,0 +1,223 @@
+\doxysection{gnode\+::Input\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classgnode_1_1Input}{}\label{classgnode_1_1Input}\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+
+
+Template class for input ports, specialized by data type.  
+
+
+
+
+{\ttfamily \#include $<$port.\+hpp$>$}
+
+
+
+Inheritance diagram for gnode\+::Input\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classgnode_1_1Input__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for gnode\+::Input\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classgnode_1_1Input__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgnode_1_1Input_a58c38c4a290ad0ddb3a8f2ee5208517e}{Input}} ()=\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{default}}
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classgnode_1_1Input}{Input}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Input_ae4705a89ca7e5379f20ed4a18386a3b7}{Input}} (std\+::string \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{classgnode_1_1Input}{Input} port with the specified label. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{virtual}} \mbox{\hyperlink{classgnode_1_1Input_a7712dfa10d5afc87222c6e2e5ddff95d}{\texorpdfstring{$\sim$}{\string~}\+Input}} ()=\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{default}}
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{classgnode_1_1Input}{Input}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{Port\+Type}} \mbox{\hyperlink{classgnode_1_1Input_aab10e3151eb06a482d0cb0c0f88c4830}{get\+\_\+port\+\_\+type}} () \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{const}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{override}}
+\begin{DoxyCompactList}\small\item\em Returns the type of the port as an input port. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{get\+\_\+value\+\_\+ref}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a reference to the data value stored in this input port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Input_adc96cf2d63ab571aca3b7fe2c6498d6f}{get\+\_\+value\+\_\+ref\+\_\+void}} () \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{const}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{override}}
+\begin{DoxyCompactList}\small\item\em Retrieves a {\ttfamily void\texorpdfstring{$\ast$}{*}} reference to the data value stored in this output port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{void}} \mbox{\hyperlink{classgnode_1_1Input_a24e25b8af8a9f2be182518f3588fa0c6}{set\+\_\+data}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}} $>$ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}) \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{override}}
+\begin{DoxyCompactList}\small\item\em Sets the data associated with this input port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgnode_1_1Port}{gnode\+::\+Port}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgnode_1_1Port_ac809ab0ca7bb9d4ab0a43be36a2a1fa8}{Port}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classgnode_1_1Port}{Port}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Port_aa81243dcac9dcc93eafa982c0f517fd0}{Port}} (std\+::string \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classgnode_1_1Port}{Port} with the specified label. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classgnode_1_1Port_acf1878c3e2da48ea3ed80b8130b8db5d}{\texorpdfstring{$\sim$}{\string~}\+Port}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{classgnode_1_1Port}{Port}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgnode_1_1Port_aedc8d27f2f06ef21483f27574b56983f}{get\+\_\+data\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type name of the data handled by this port. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgnode_1_1Port_ae9d9e4bc60a1f388f804a28046f456b9}{get\+\_\+label}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the label of the port. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}} $>$ \mbox{\hyperlink{classgnode_1_1Port_a34fec20ba62b47cb48574a5eb204dcf4}{get\+\_\+data\+\_\+shared\+\_\+ptr\+\_\+downcasted}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a shared pointer to the data associated with the port after downcasting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Data}{Data}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ $>$ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}
+\begin{DoxyCompactList}\small\item\em A weak pointer to the data associated with this input port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classgnode_1_1Port}{gnode\+::\+Port}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em A string representing the type name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}}$>$\newline
+class gnode\+::\+Input$<$ T $>$}
+Template class for input ports, specialized by data type. 
+
+The \doxylink{classgnode_1_1Input}{Input} class inherits from \doxylink{classgnode_1_1Port}{Port} and provides methods for handling data specific to input ports.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The data type that this input port will handle. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classgnode_1_1Input_a58c38c4a290ad0ddb3a8f2ee5208517e}\label{classgnode_1_1Input_a58c38c4a290ad0ddb3a8f2ee5208517e} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!Input@{Input}}
+\index{Input@{Input}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \doxylink{classgnode_1_1Input}{Input}. 
+
+\Hypertarget{classgnode_1_1Input_ae4705a89ca7e5379f20ed4a18386a3b7}\label{classgnode_1_1Input_ae4705a89ca7e5379f20ed4a18386a3b7} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!Input@{Input}}
+\index{Input@{Input}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::\+Input (\begin{DoxyParamCaption}\item[{std\+::string}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{classgnode_1_1Input}{Input} port with the specified label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & A string representing the label of the input port. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classgnode_1_1Input_a7712dfa10d5afc87222c6e2e5ddff95d}\label{classgnode_1_1Input_a7712dfa10d5afc87222c6e2e5ddff95d} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!````~Input@{\texorpdfstring{$\sim$}{\string~}Input}}
+\index{````~Input@{\texorpdfstring{$\sim$}{\string~}Input}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Input()}{\string~Input()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{virtual}} \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classgnode_1_1Input}{Input}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor for \doxylink{classgnode_1_1Input}{Input}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgnode_1_1Input_aab10e3151eb06a482d0cb0c0f88c4830}\label{classgnode_1_1Input_aab10e3151eb06a482d0cb0c0f88c4830} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!get\_port\_type@{get\_port\_type}}
+\index{get\_port\_type@{get\_port\_type}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_port\_type()}{get\_port\_type()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{Port\+Type}} \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::get\+\_\+port\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the type of the port as an input port. 
+
+This method overrides the base class implementation to indicate that this port is an input ({\ttfamily \doxylink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{Port\+Type\+::\+IN}}).
+
+\begin{DoxyReturn}{Returns}
+The port type, which is always {\ttfamily \doxylink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{Port\+Type\+::\+IN}}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgnode_1_1Port_a9d94a2c3a2a7f6b52b85d8216656d8ab}{gnode\+::\+Port}}.
+
+\Hypertarget{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}\label{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!get\_value\_ref@{get\_value\_ref}}
+\index{get\_value\_ref@{get\_value\_ref}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_value\_ref()}{get\_value\_ref()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ T $>$\+::get\+\_\+value\+\_\+ref (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a reference to the data value stored in this input port. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the data value, or nullptr if the data is not available. 
+\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Input_adc96cf2d63ab571aca3b7fe2c6498d6f}\label{classgnode_1_1Input_adc96cf2d63ab571aca3b7fe2c6498d6f} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!get\_value\_ref\_void@{get\_value\_ref\_void}}
+\index{get\_value\_ref\_void@{get\_value\_ref\_void}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_value\_ref\_void()}{get\_value\_ref\_void()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::get\+\_\+value\+\_\+ref\+\_\+void (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves a {\ttfamily void\texorpdfstring{$\ast$}{*}} reference to the data value stored in this output port. 
+
+\begin{DoxyReturn}{Returns}
+A {\ttfamily void\texorpdfstring{$\ast$}{*}} pointer to the data value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgnode_1_1Port_aa2a5166dcb5e28a84a5ce75bb9a73d85}{gnode\+::\+Port}}.
+
+\Hypertarget{classgnode_1_1Input_a24e25b8af8a9f2be182518f3588fa0c6}\label{classgnode_1_1Input_a24e25b8af8a9f2be182518f3588fa0c6} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!set\_data@{set\_data}}
+\index{set\_data@{set\_data}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{set\_data()}{set\_data()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{void}} \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::set\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the data associated with this input port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A shared pointer to the \doxylink{classgnode_1_1BaseData}{Base\+Data} to set. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classgnode_1_1Port_a94465a64441b1e5f0fccac851ac16f18}{gnode\+::\+Port}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}\label{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4} 
+\index{gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}!data@{data}}
+\index{data@{data}!gnode::Input$<$ T $>$@{gnode::Input$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{typename}} \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$ \\
+std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{classgnode_1_1Data}{Data}}$<$\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}}$>$ $>$ \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input}}$<$ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}} $>$\+::data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A weak pointer to the data associated with this input port. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+GNode/include/gnode/\mbox{\hyperlink{port_8hpp}{port.\+hpp}}\end{DoxyCompactItemize}

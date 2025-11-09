@@ -1,0 +1,70 @@
+\doxysection{gnode Namespace Reference}
+\hypertarget{namespacegnode}{}\label{namespacegnode}\index{gnode@{gnode}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}}
+\begin{DoxyCompactList}\small\item\em Abstract base class representing generic data with type information. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Data}{Data}}
+\begin{DoxyCompactList}\small\item\em Template class for holding data of a specific type. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Graph}{Graph}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classgnode_1_1Graph}{Graph} class provides methods for manipulating nodes and connections in a directed graph structure. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Input}{Input}}
+\begin{DoxyCompactList}\small\item\em Template class for input ports, specialized by data type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgnode_1_1Link}{Link}}
+\begin{DoxyCompactList}\small\item\em Represents a connection between two nodes in a graph. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em Manages logging functionality using the spdlog library. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Node}{Node}}
+\begin{DoxyCompactList}\small\item\em Abstract \doxylink{classgnode_1_1Node}{Node} class that represents a basic building block in a graph-\/based system. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Output}{Output}}
+\begin{DoxyCompactList}\small\item\em Template class for output ports, specialized by data type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgnode_1_1Point}{Point}}
+\begin{DoxyCompactList}\small\item\em Represents a point in a 2D space. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Port}{Port}}
+\begin{DoxyCompactList}\small\item\em Abstract base class representing a port in a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{Port\+Type}} \{ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{IN}}
+, \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{OUT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for port types, indicating whether a port is an input or an output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacegnode_a2146300a69e85fafafd9f597220ca443}{contains}} (const std\+::vector$<$ T $>$ \&vec, const T \&value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}\label{namespacegnode_a14d9d7d98707d0fafaf543221beb0059} 
+\index{gnode@{gnode}!PortType@{PortType}}
+\index{PortType@{PortType}!gnode@{gnode}}
+\doxysubsubsection{\texorpdfstring{PortType}{PortType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{gnode\+::\+Port\+Type}}}
+
+
+
+Enumeration for port types, indicating whether a port is an input or an output. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IN@{IN}!gnode@{gnode}}\index{gnode@{gnode}!IN@{IN}}}\Hypertarget{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}\label{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424} 
+IN&Represents an input port. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUT@{OUT}!gnode@{gnode}}\index{gnode@{gnode}!OUT@{OUT}}}\Hypertarget{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}\label{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164} 
+OUT&Represents an output port. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacegnode_a2146300a69e85fafafd9f597220ca443}\label{namespacegnode_a2146300a69e85fafafd9f597220ca443} 
+\index{gnode@{gnode}!contains@{contains}}
+\index{contains@{contains}!gnode@{gnode}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool gnode\+::contains (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{vec,  }\item[{const T \&}]{value }\end{DoxyParamCaption})}
+

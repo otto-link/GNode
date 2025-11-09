@@ -1,8 +1,8 @@
-PROJECT_NAME          = "PointSampler library (C++)"
+PROJECT_NAME          = "GNode library (C++)"
 GENERATE_HTML         = YES
 OUTPUT_DIRECTORY      = docs
 HTML_OUTPUT           = .
-INPUT                 = PointSampler/include
+INPUT                 = GNode/include
 IMAGE_PATH            = docs/images
 RECURSIVE             = YES
 FILE_PATTERNS         = *.hpp

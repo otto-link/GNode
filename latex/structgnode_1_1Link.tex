@@ -1,0 +1,139 @@
+\doxysection{gnode\+::Link Struct Reference}
+\hypertarget{structgnode_1_1Link}{}\label{structgnode_1_1Link}\index{gnode::Link@{gnode::Link}}
+
+
+Represents a connection between two nodes in a graph.  
+
+
+
+
+{\ttfamily \#include $<$link.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structgnode_1_1Link_a09386fc22bee12749c5223d08b4a320c}{Link}} (std\+::string \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}, int \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\+\_\+from}}, std\+::string \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}, int \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\+\_\+to}})
+\begin{DoxyCompactList}\small\item\em Constructs a {\ttfamily \doxylink{structgnode_1_1Link}{Link}} instance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structgnode_1_1Link_a03cef12ed1d2b558dacd8fd0dab63421}{operator==}} (const \mbox{\hyperlink{structgnode_1_1Link}{Link}} \&other\+\_\+link) const
+\begin{DoxyCompactList}\small\item\em Equality operator for {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structgnode_1_1Link_ab621eaac5f89019016232fc35f94bc15}{print}} ()
+\begin{DoxyCompactList}\small\item\em Prints the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}
+\begin{DoxyCompactList}\small\item\em Identifier of the source node. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\+\_\+from}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Port}{Port} number on the source node. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}
+\begin{DoxyCompactList}\small\item\em Identifier of the destination node. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\+\_\+to}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Port}{Port} number on the destination node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a connection between two nodes in a graph. 
+
+The {\ttfamily \doxylink{structgnode_1_1Link}{Link}} struct holds the details of a connection between two nodes, including the identifiers of the nodes and the ports involved in the connection. This information is used to define and manage the connections within a graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structgnode_1_1Link_a09386fc22bee12749c5223d08b4a320c}\label{structgnode_1_1Link_a09386fc22bee12749c5223d08b4a320c} 
+\index{gnode::Link@{gnode::Link}!Link@{Link}}
+\index{Link@{Link}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{Link()}{Link()}}
+{\footnotesize\ttfamily gnode\+::\+Link\+::\+Link (\begin{DoxyParamCaption}\item[{std\+::string}]{from,  }\item[{int}]{port\+\_\+from,  }\item[{std\+::string}]{to,  }\item[{int}]{port\+\_\+to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a {\ttfamily \doxylink{structgnode_1_1Link}{Link}} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & Identifier of the source node. \\
+\hline
+{\em port\+\_\+from} & \doxylink{classgnode_1_1Port}{Port} number on the source node. \\
+\hline
+{\em to} & Identifier of the destination node. \\
+\hline
+{\em port\+\_\+to} & \doxylink{classgnode_1_1Port}{Port} number on the destination node. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structgnode_1_1Link_a03cef12ed1d2b558dacd8fd0dab63421}\label{structgnode_1_1Link_a03cef12ed1d2b558dacd8fd0dab63421} 
+\index{gnode::Link@{gnode::Link}!operator==@{operator==}}
+\index{operator==@{operator==}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool gnode\+::\+Link\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgnode_1_1Link}{Link}} \&}]{other\+\_\+link }\end{DoxyParamCaption}) const}
+
+
+
+Equality operator for {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\+\_\+link} & Another {\ttfamily \doxylink{structgnode_1_1Link}{Link}} instance to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this {\ttfamily \doxylink{structgnode_1_1Link}{Link}} is equal to {\ttfamily other\+\_\+link}, otherwise {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{structgnode_1_1Link_ab621eaac5f89019016232fc35f94bc15}\label{structgnode_1_1Link_ab621eaac5f89019016232fc35f94bc15} 
+\index{gnode::Link@{gnode::Link}!print@{print}}
+\index{print@{print}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void gnode\+::\+Link\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. 
+
+This function outputs the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}} to the standard output. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}\label{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c} 
+\index{gnode::Link@{gnode::Link}!from@{from}}
+\index{from@{from}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{from}{from}}
+{\footnotesize\ttfamily std\+::string gnode\+::\+Link\+::from}
+
+
+
+Identifier of the source node. 
+
+\Hypertarget{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}\label{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7} 
+\index{gnode::Link@{gnode::Link}!port\_from@{port\_from}}
+\index{port\_from@{port\_from}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{port\_from}{port\_from}}
+{\footnotesize\ttfamily int gnode\+::\+Link\+::port\+\_\+from}
+
+
+
+\doxylink{classgnode_1_1Port}{Port} number on the source node. 
+
+\Hypertarget{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}\label{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29} 
+\index{gnode::Link@{gnode::Link}!port\_to@{port\_to}}
+\index{port\_to@{port\_to}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{port\_to}{port\_to}}
+{\footnotesize\ttfamily int gnode\+::\+Link\+::port\+\_\+to}
+
+
+
+\doxylink{classgnode_1_1Port}{Port} number on the destination node. 
+
+\Hypertarget{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}\label{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842} 
+\index{gnode::Link@{gnode::Link}!to@{to}}
+\index{to@{to}!gnode::Link@{gnode::Link}}
+\doxysubsubsection{\texorpdfstring{to}{to}}
+{\footnotesize\ttfamily std\+::string gnode\+::\+Link\+::to}
+
+
+
+Identifier of the destination node. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+GNode/include/gnode/\mbox{\hyperlink{link_8hpp}{link.\+hpp}}\end{DoxyCompactItemize}

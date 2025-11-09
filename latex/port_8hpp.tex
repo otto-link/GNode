@@ -1,0 +1,42 @@
+\doxysection{GNode/include/gnode/port.hpp File Reference}
+\hypertarget{port_8hpp}{}\label{port_8hpp}\index{GNode/include/gnode/port.hpp@{GNode/include/gnode/port.hpp}}
+
+
+Defines the Port, Input, and Output classes, along with the Port\+Type enumeration for handling ports in a graph node structure.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classgnode_1_1Port}{gnode\+::\+Port}}
+\begin{DoxyCompactList}\small\item\em Abstract base class representing a port in a node. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Input}{gnode\+::\+Input$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for input ports, specialized by data type. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgnode_1_1Output}{gnode\+::\+Output$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for output ports, specialized by data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacegnode}{gnode}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{gnode\+::\+Port\+Type}} \{ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{gnode\+::\+IN}}
+, \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode\+::\+OUT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for port types, indicating whether a port is an input or an output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the Port, Input, and Output classes, along with the Port\+Type enumeration for handling ports in a graph node structure. 
+
+\begin{DoxyAuthor}{Author}
+Otto Link (\href{mailto:otto.link.bv@gmail.com}{\texttt{ otto.\+link.\+bv@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/08-\/07
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General Public License. The full license is in the file LICENSE, distributed with this software. 
+\end{DoxyCopyright}
