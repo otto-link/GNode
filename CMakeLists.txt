@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.22)
 
 project(gnode-root)
 
-option(GNODE_ENABLE_DOCS "" ON)
 option(GNODE_ENABLE_EXAMPLES "" ON)
 option(GNODE_ENABLE_TESTS "" ON)
 
@@ -29,10 +28,6 @@ add_subdirectory(external)
 add_subdirectory(GNode)
 
 # --- everything else...
-
-if(GNODE_ENABLE_DOCS)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
-endif(GNODE_ENABLE_DOCS)
 
 if(GNODE_ENABLE_EXAMPLES)
   add_subdirectory(${PROJECT_SOURCE_DIR}/examples)

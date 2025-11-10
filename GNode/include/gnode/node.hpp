@@ -271,21 +271,6 @@ public:
   }
 
   /**
-   * @brief Get a `void*` reference to the value stored in a port by its index.
-   *
-   * @param port_index The index of the port.
-   * @return A `void*` pointer to the value.
-   * @throws std::out_of_range If the port index is invalid.
-   */
-  void *get_value_ref_void(int port_index) const
-  {
-    if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
-      throw std::out_of_range("Invalid port index");
-
-    return this->ports[port_index]->get_value_ref_void();
-  }
-
-  /**
    * @brief Set a new identifier for the node.
    *
    * @param new_id The new unique identifier to be assigned to the node.
