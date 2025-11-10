@@ -7,6 +7,7 @@ var classgnode_1_1Port =
     [ "get_data_type", "classgnode_1_1Port.html#aedc8d27f2f06ef21483f27574b56983f", null ],
     [ "get_label", "classgnode_1_1Port.html#ae9d9e4bc60a1f388f804a28046f456b9", null ],
     [ "get_port_type", "classgnode_1_1Port.html#a9d94a2c3a2a7f6b52b85d8216656d8ab", null ],
+    [ "get_value_ref_void", "classgnode_1_1Port.html#aa2a5166dcb5e28a84a5ce75bb9a73d85", null ],
     [ "set_data", "classgnode_1_1Port.html#a94465a64441b1e5f0fccac851ac16f18", null ],
     [ "data_type", "classgnode_1_1Port.html#a4590c8988d628d562064e8ea3876ce37", null ],
     [ "label", "classgnode_1_1Port.html#a295aa641f2b36907883051f4e4f1df26", null ]
