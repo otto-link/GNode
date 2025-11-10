@@ -8,7 +8,7 @@
  * @mainpage GNode — Architecture and Overview
  *
  * @section intro Overview
- * @include docs/architecture.md
+ * @include architecture.md
  *
  * @section api Public API
  * See the @ref gnode::Graph and @ref gnode::Node classes.
