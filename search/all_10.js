@@ -7,6 +7,6 @@ var searchData=
   ['set_5fp_5fgraph_4',['set_p_graph',['../classgnode_1_1Node.html#a94eb4880c6bc6ca18bedc64fedc17b48',1,'gnode::Node']]],
   ['set_5fupdate_5fcallback_5',['set_update_callback',['../classgnode_1_1Graph.html#a291d7cbdeb778712b92fb9b2131ec3d5',1,'gnode::Graph']]],
   ['set_5fvalue_6',['set_value',['../classgnode_1_1Node.html#a4754f6c8454eb65d77108ed39a3f232d',1,'gnode::Node']]],
-  ['strategy_7',['Evaluation Strategy',['../md_docs_2architecture.html#autotoc_md24',1,'']]],
-  ['structure_8',['Structure',['../md_docs_2architecture.html#autotoc_md8',1,'']]]
+  ['strategy_7',['Evaluation Strategy',['../index.html#autotoc_md25',1,'']]],
+  ['structure_8',['Structure',['../index.html#autotoc_md9',1,'']]]
 ];

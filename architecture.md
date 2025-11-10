@@ -1,10 +1,11 @@
+# Architecture
+
 # Introduction
 
 **GNode** is a lightweight and extensible C++ framework for building
 node-based graphs. It allows you to define nodes, connect them through
-input/output ports, and process data through a directed graph structure.
-
-**GNode** is designed to be:
+input/output ports, and process data through a directed graph
+structure. GNode is designed to be:
 
 - **Modular**: you create only the nodes you need
 - **Type-safe**: strong typing of ports and attributes  
@@ -16,7 +17,6 @@ A graph in GNode is composed of:
 - **Ports**: typed inputs/outputs on nodes  
 - **Links**: connections between ports  
 - **Graph (supervisor)**: manager for node creation, registration, and update  
-
 
 # Installation
 
@@ -206,9 +206,9 @@ int main()
 }
 ```
 
-## Architecture
+# Architecture
 
-### Overview
+## Overview
 
 - **Nodes** hold logic and expose typed **input/output ports**
 - **Ports** transport typed **data objects**
@@ -217,15 +217,15 @@ int main()
 
 The library is minimal, dependency-free except for `<memory>`, `<vector>`, and optional `spdlog`.
 
-## Key Components
+# Key Components
 
-### `BaseData` and `Data<T>` (in `data.hpp`)
+## BaseData and Data<T> (in data.hpp)
 
-#### Responsibility
+## Responsibility
 
 Represent typed, mutable values transported through ports.
 
-#### Structure
+### Structure
 
 * `BaseData`
 
@@ -242,15 +242,17 @@ Represent typed, mutable values transported through ports.
     * Access via `T*` for internal generic port-level handling
     * Value set by the `GNode::Node` class: `GNode::Node::set_value`
 
-### Role in architecture
+## Role in architecture
 
-`Data<T>` is the foundation of type-safety at the port level. Every output port owns its `Data<T>`, and input ports bind to the same instance when linked.
+`Data<T>` is the foundation of type-safety at the port level. Every
+output port owns its `Data<T>`, and input ports bind to the same
+instance when linked.
 
-### Ports - `InputPort` and `OutputPort` (in `port.hpp`)
+## Ports - InputPort and OutputPort (in port.hpp)
 
 Ports connect nodes.
 
-#### `Port`
+### Port
 
 * Knows:
 
@@ -258,24 +260,25 @@ Ports connect nodes.
   * Node ID
   * Port ID inside the node
 
-#### `OutputPort<T>`
+### OutputPort<T>
 
 * Owns a `shared_ptr<Data<T>>`
 * Always produces data
 * Can be connected to any number of `InputPort`
 
-#### `InputPort<T>`
+### InputPort<T>
 
 * Does **not own data**
 * Holds a pointer to a `Data<T>` owned by an `OutputPort`
 * If unconnected, the data pointer is `nullptr`
 * Can be disconnect to only one `OutputPort`
 
-#### Role
+### Role
 
-Ports are the **typed interface** between nodes. `InputPorts` never store data, they alias data from the upstream `OutputPort`.
+Ports are the **typed interface** between nodes. `InputPorts` never
+store data, they alias data from the upstream `OutputPort`.
 
-### `Link` (in `link.hpp`)
+## Link (in link.hpp)
 
 A **Link** is a simple POD struct:
 
@@ -284,15 +287,16 @@ A **Link** is a simple POD struct:
 * `int from_port_index`
 * `int to_port_index`
 
-#### Purpose
+### Purpose
 
-Represents a connection between two ports in a graph, used by `Graph` to physically link port objects.
+Represents a connection between two ports in a graph, used by `Graph`
+to physically link port objects.
 
-### `Node` (in `node.hpp`)
+## Node (in node.hpp)
 
 The most important unit.
 
-#### Responsibilities
+### Responsibilities
 
 * Represent a computational unit
 * Own ports
@@ -304,28 +308,28 @@ The most important unit.
   * input ports list
   * output ports list
 
-#### Important API
+### Important API
 
 * `add_port<T>(port_type, label, ...)`
 * `compute()` — pure virtual: each node defines its logic
 * `T *get_value_ref<T>(port_label)`
 
-#### Design Pattern
+### Design Pattern
 
 **Nodes use templates to declare typed ports**, but evaluation remains virtual (dynamic).
 
-### `Graph` (in `graph.hpp`)
+## Graph (in graph.hpp)
 
 The orchestrator.
 
-#### Responsibilities
+### Responsibilities
 
 * Store nodes (`std::map<std::string, shared_ptr<Node>>`)
 * Store links
 * Resolve and connect ports
 * Provide update/evaluation sequences
 
-#### Important methods
+### Important methods
 
 * `add_node<...>(...)`: add a new node of a specific type to the graph (template-based)
 * `new_link(from_id, out_port_idx, to_id, in_port_idx)` - connections from output to input it "one to many" 
@@ -335,11 +339,13 @@ The orchestrator.
 * `remove_node(id)`
 * `T* get_node_ref_by_id(id)`
 
-### Evaluation Strategy
+## Evaluation Strategy
 
-The graph **does implement a dependency solver and topological sorting**. The user can decide not to use the provided `update()` methods and define its own scheduling policy.
+The graph **does implement a dependency solver and topological
+sorting**. The user can decide not to use the provided `update()`
+methods and define its own scheduling policy.
 
-### Architecture Diagram
+## Architecture Diagram
 
 ```
        +--------------+     link     +--------------+
@@ -354,7 +360,7 @@ The graph **does implement a dependency solver and topological sorting**. The us
           InputPort references the same Data<T>
 ```
 
-### Dataflow Model
+## Dataflow Model
 
 * A node computes some output in `compute()`
 * All connected `InputPorts` see the same `Data<T>` pointer

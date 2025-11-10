@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GNode library (C++): GNode — Architecture and Overview</title>
+<title>GNode library (C++): Architecture</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -96,14 +96,401 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">GNode — Architecture and Overview </div></div>
+  <div class="headertitle"><div class="title">Architecture </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro"></a>
-Overview</h1>
-<div class="fragment"></div><!-- fragment --><h1><a class="anchor" id="api"></a>
-Public API</h1>
-<p>See the <a class="el" href="classgnode_1_1Graph.html">gnode::Graph</a> and <a class="el" href="classgnode_1_1Node.html">gnode::Node</a> classes. </p>
+<div class="textblock"><p><a class="anchor" id="md_docs_2architecture"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introduction</h1>
+<p><b>GNode</b> is a lightweight and extensible C++ framework for building node-based graphs. It allows you to define nodes, connect them through input/output ports, and process data through a directed graph structure. GNode is designed to be:</p>
+<ul>
+<li><b>Modular</b>: you create only the nodes you need</li>
+<li><b>Type-safe</b>: strong typing of ports and attributes <br  />
+</li>
+<li><b>Extensible</b>: supports custom types as long as they are copyable or movable <br  />
+</li>
+</ul>
+<p>A graph in GNode is composed of:</p>
+<ul>
+<li><b>Nodes</b>: units of logic or data <br  />
+</li>
+<li><b>Ports</b>: typed inputs/outputs on nodes <br  />
+</li>
+<li><b>Links</b>: connections between ports <br  />
+</li>
+<li><b>Graph (supervisor)</b>: manager for node creation, registration, and update <br  />
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Installation</h1>
+<p>See the README in the GitHub repository:</p>
+<p><a href="https://github.com/otto-link/GNode">https://github.com/otto-link/GNode</a></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Usage Example</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="gnode_8hpp.html">gnode.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// create a class to show that complex objects can be handled</span></div>
+<div class="line"><span class="keyword">struct </span>Vec2</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">float</span> x;</div>
+<div class="line">  <span class="keywordtype">float</span> y;</div>
+<div class="line">  Vec2() = <span class="keywordflow">default</span>;</div>
+<div class="line">  Vec2(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) : x(x), y(y) {}</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ----------------------------------------</span></div>
+<div class="line"><span class="comment">// Nodes definition, all derivates from gnode::Node</span></div>
+<div class="line"><span class="comment">// ----------------------------------------</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// holds a float value</span></div>
+<div class="line"><span class="keyword">class </span>Value : <span class="keyword">public</span> <a class="code hl_class" href="classgnode_1_1Node.html">gnode::Node</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">Value</a>() : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;Value&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// declare an output port of type float</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">Value</a>(<span class="keywordtype">float</span> value) : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;Value&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">    <span class="comment">// directly set initial value of the port</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">set_value&lt;float&gt;</a>(<span class="stringliteral">&quot;value&quot;</span>, value);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// leaf node: nothing to compute, only stores a value</span></div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">compute</a>() {}</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// holds a Vec2 value</span></div>
+<div class="line"><span class="keyword">class </span>ValueVec : <span class="keyword">public</span> <a class="code hl_class" href="classgnode_1_1Node.html">gnode::Node</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">ValueVec</a>() : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;ValueVec&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// declare an output port containing Vec2 objects</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;Vec2&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">ValueVec</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;ValueVec&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// option 1: pass constructor arguments for Vec2</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;Vec2&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;value&quot;</span>, x, y);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// option 2: set the value manually</span></div>
+<div class="line">    <span class="comment">// this-&gt;add_port&lt;Vec2&gt;(gnode::PortType::OUT, &quot;value&quot;);</span></div>
+<div class="line">    <span class="comment">// this-&gt;set_value&lt;Vec2&gt;(&quot;value&quot;, Vec2(x, y));</span></div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">compute</a>() {}</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// add two floats</span></div>
+<div class="line"><span class="keyword">class </span>Add : <span class="keyword">public</span> <a class="code hl_class" href="classgnode_1_1Node.html">gnode::Node</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">Add</a>() : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;Add&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// two float inputs</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424">gnode::PortType::IN</a>, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424">gnode::PortType::IN</a>, <span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// one float output</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;a + b&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">compute</a>()</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// access input/output values by reference</span></div>
+<div class="line">    <span class="keywordtype">float</span> *p_in1 = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;float&gt;</a>(<span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line">    <span class="keywordtype">float</span> *p_in2 = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;float&gt;</a>(<span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line">    <span class="keywordtype">float</span> *p_out = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;float&gt;</a>(<span class="stringliteral">&quot;a + b&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// compute only if both inputs are connected/valid</span></div>
+<div class="line">    <span class="keywordflow">if</span> (p_in1 &amp;&amp; p_in2) *p_out = *p_in1 + *<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">p_in2</a>;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// sum Vec2 components and returns a float</span></div>
+<div class="line"><span class="keyword">class </span>SumVec : <span class="keyword">public</span> <a class="code hl_class" href="classgnode_1_1Node.html">gnode::Node</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">SumVec</a>() : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;SumVec&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="comment">// Vec2 input</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;Vec2&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424">gnode::PortType::IN</a>, <span class="stringliteral">&quot;vec&quot;</span>);</div>
+<div class="line">    <span class="comment">// float output</span></div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::PortType::OUT</a>, <span class="stringliteral">&quot;sum&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">compute</a>()</div>
+<div class="line">  {</div>
+<div class="line">    Vec2  *p_vec = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;Vec2&gt;</a>(<span class="stringliteral">&quot;vec&quot;</span>);</div>
+<div class="line">    <span class="keywordtype">float</span> *p_sum = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;float&gt;</a>(<span class="stringliteral">&quot;sum&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// sum only if input exists</span></div>
+<div class="line">    <span class="keywordflow">if</span> (p_vec) *p_sum = p_vec-&gt;x + p_vec-&gt;y;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// print a float</span></div>
+<div class="line"><span class="keyword">class </span>Print : <span class="keyword">public</span> <a class="code hl_class" href="classgnode_1_1Node.html">gnode::Node</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">Print</a>() : <a class="code hl_namespace" href="namespacegnode.html">gnode</a>::Node(<span class="stringliteral">&quot;Print&quot;</span>)</div>
+<div class="line">  {</div>
+<div class="line">    this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">add_port&lt;float&gt;</a>(<a class="code hl_enumvalue" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424">gnode::PortType::IN</a>, <span class="stringliteral">&quot;in&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">compute</a>()</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordtype">float</span> *p_in = this-&gt;<a class="code hl_function" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref&lt;float&gt;</a>(<span class="stringliteral">&quot;in&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (p_in) std::cout &lt;&lt; <span class="stringliteral">&quot;PRINTING: &quot;</span> &lt;&lt; *p_in &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_class" href="classgnode_1_1Graph.html">gnode::Graph</a> g;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// NB - node constructor parameters are pass through when adding a node</span></div>
+<div class="line">  <span class="comment">// Create a Vec2 node with initial value (1, 2)</span></div>
+<div class="line">  <span class="keyword">auto</span> id_value_vec = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;ValueVec&gt;(1.f, 2.f);</div>
+<div class="line">  <span class="keyword">auto</span> id_sum_vec = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;SumVec&gt;();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// sum vector components</span></div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_value_vec, <span class="stringliteral">&quot;value&quot;</span>, id_sum_vec, <span class="stringliteral">&quot;vec&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// add the former sum to a float</span></div>
+<div class="line">  <span class="keyword">auto</span> id_value1 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Value&gt;(3.f);</div>
+<div class="line">  <span class="keyword">auto</span> id_add1 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Add&gt;();</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_sum_vec, <span class="stringliteral">&quot;sum&quot;</span>, id_add1, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_value1, <span class="stringliteral">&quot;value&quot;</span>, id_add1, <span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// print this intermediate value</span></div>
+<div class="line">  <span class="keyword">auto</span> id_print1 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Print&gt;();</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_add1, <span class="stringliteral">&quot;a + b&quot;</span>, id_print1, <span class="stringliteral">&quot;in&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// add the former sum to another float...</span></div>
+<div class="line">  <span class="keyword">auto</span> id_value2 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Value&gt;(4.f);</div>
+<div class="line">  <span class="keyword">auto</span> id_add2 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Add&gt;();</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_add1, <span class="stringliteral">&quot;a + b&quot;</span>, id_add2, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_value2, <span class="stringliteral">&quot;value&quot;</span>, id_add2, <span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// and print the results</span></div>
+<div class="line">  <span class="keyword">auto</span> id_print2 = g.<a class="code hl_function" href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">add_node</a>&lt;Print&gt;();</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">new_link</a>(id_add2, <span class="stringliteral">&quot;a + b&quot;</span>, id_print2, <span class="stringliteral">&quot;in&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// once the graph is defined, perform an overall update to ensure a</span></div>
+<div class="line">  <span class="comment">// clean initial graph state (topological greedy update)</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;\nOVERALL UPDATE\n&quot;</span>;</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a0c918aba38c03de51fe09ad40be0abb7">update</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// --- change one node state = only update from this node</span></div>
+<div class="line">  <span class="comment">// --- propagate changes only to nodes that depend on it</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;\nNODE UPDATE\n&quot;</span>;</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4">get_node_ref_by_id</a>&lt;Value&gt;(id_value1)-&gt;set_value&lt;float&gt;(<span class="stringliteral">&quot;value&quot;</span>, 10.f);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// incremental update from id_value1</span></div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a0c918aba38c03de51fe09ad40be0abb7">update</a>(id_value1);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// export for debugging/visualization</span></div>
+<div class="line">  <span class="comment">// dot export.dot -Tsvg &gt; output.svg</span></div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a9abff3825a189c650b83c47cff73ff33">export_to_graphviz</a>();</div>
+<div class="line">  g.<a class="code hl_function" href="classgnode_1_1Graph.html#a326a8ba323933a56fc37b1dd0f01da47">export_to_mermaid</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassgnode_1_1Graph_html"><div class="ttname"><a href="classgnode_1_1Graph.html">gnode::Graph</a></div><div class="ttdoc">The Graph class provides methods for manipulating nodes and connections in a directed graph structure...</div><div class="ttdef"><b>Definition</b> graph.hpp:35</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_a04a236017638d460d551ed5955c9751b"><div class="ttname"><a href="classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b">gnode::Graph::new_link</a></div><div class="ttdeci">bool new_link(const std::string &amp;from, int port_from, const std::string &amp;to, int port_to)</div><div class="ttdoc">Connect two nodes in the graph using port indices.</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_a0c918aba38c03de51fe09ad40be0abb7"><div class="ttname"><a href="classgnode_1_1Graph.html#a0c918aba38c03de51fe09ad40be0abb7">gnode::Graph::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Mark all nodes as dirty and update the entire graph.</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_a326a8ba323933a56fc37b1dd0f01da47"><div class="ttname"><a href="classgnode_1_1Graph.html#a326a8ba323933a56fc37b1dd0f01da47">gnode::Graph::export_to_mermaid</a></div><div class="ttdeci">void export_to_mermaid(const std::string &amp;fname=&quot;export.mmd&quot;, const std::string &amp;graph_label=&quot;graph&quot;)</div><div class="ttdoc">Export the graph to a Mermaid file.</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_a9abff3825a189c650b83c47cff73ff33"><div class="ttname"><a href="classgnode_1_1Graph.html#a9abff3825a189c650b83c47cff73ff33">gnode::Graph::export_to_graphviz</a></div><div class="ttdeci">void export_to_graphviz(const std::string &amp;fname=&quot;export.dot&quot;, const std::string &amp;graph_label=&quot;graph&quot;)</div><div class="ttdoc">Export the graph to a Graphviz DOT file.</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_aa949bad2fee1433256192a4512de3295"><div class="ttname"><a href="classgnode_1_1Graph.html#aa949bad2fee1433256192a4512de3295">gnode::Graph::add_node</a></div><div class="ttdeci">virtual std::string add_node(const std::shared_ptr&lt; Node &gt; &amp;p_node, const std::string &amp;id=&quot;&quot;)</div><div class="ttdoc">Add a new node to the graph.</div></div>
+<div class="ttc" id="aclassgnode_1_1Graph_html_abc8dbe305fa98e66d8d68a4eef03d8e4"><div class="ttname"><a href="classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4">gnode::Graph::get_node_ref_by_id</a></div><div class="ttdeci">T * get_node_ref_by_id(const std::string &amp;node_id) const</div><div class="ttdoc">Get a pointer to a node by its ID.</div><div class="ttdef"><b>Definition</b> graph.hpp:217</div></div>
+<div class="ttc" id="aclassgnode_1_1Node_html"><div class="ttname"><a href="classgnode_1_1Node.html">gnode::Node</a></div><div class="ttdoc">Abstract Node class that represents a basic building block in a graph-based system.</div><div class="ttdef"><b>Definition</b> node.hpp:34</div></div>
+<div class="ttc" id="aclassgnode_1_1Node_html_a7721091aabb595825d4cd702f02d148a"><div class="ttname"><a href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">gnode::Node::get_value_ref</a></div><div class="ttdeci">T * get_value_ref(const std::string &amp;port_label) const</div><div class="ttdoc">Get a reference to the value stored in a port by its label.</div><div class="ttdef"><b>Definition</b> node.hpp:223</div></div>
+<div class="ttc" id="aclassgnode_1_1Node_html_aa59d25aaaf07e3c471244aaddbff9d7c"><div class="ttname"><a href="classgnode_1_1Node.html#aa59d25aaaf07e3c471244aaddbff9d7c">gnode::Node::compute</a></div><div class="ttdeci">virtual void compute()=0</div><div class="ttdoc">Pure virtual function that forces derived classes to implement the compute method,...</div></div>
+<div class="ttc" id="agnode_8hpp_html"><div class="ttname"><a href="gnode_8hpp.html">gnode.hpp</a></div><div class="ttdoc">Main header aggregating the gnode library.</div></div>
+<div class="ttc" id="anamespacegnode_html"><div class="ttname"><a href="namespacegnode.html">gnode</a></div><div class="ttdef"><b>Definition</b> data.hpp:23</div></div>
+<div class="ttc" id="anamespacegnode_html_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424"><div class="ttname"><a href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424">gnode::IN</a></div><div class="ttdeci">@ IN</div><div class="ttdoc">Represents an input port.</div><div class="ttdef"><b>Definition</b> port.hpp:34</div></div>
+<div class="ttc" id="anamespacegnode_html_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164"><div class="ttname"><a href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164">gnode::OUT</a></div><div class="ttdeci">@ OUT</div><div class="ttdoc">Represents an output port.</div><div class="ttdef"><b>Definition</b> port.hpp:35</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Architecture</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Overview</h2>
+<ul>
+<li><b>Nodes</b> hold logic and expose typed <b>input/output ports</b></li>
+<li><b>Ports</b> transport typed <b>data objects</b></li>
+<li><b>Links</b> connect an output port of one node to an input port of another</li>
+<li><b>Graphs</b> manage nodes, links, evaluation order, and data propagation</li>
+</ul>
+<p>The library is minimal, dependency-free except for <code>&lt;memory&gt;</code>, <code>&lt;vector&gt;</code>, and optional <code>spdlog</code>.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Key Components</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+BaseData and Data&lt;T&gt; (in data.hpp)</h2>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Responsibility</h2>
+<p>Represent typed, mutable values transported through ports.</p>
+<h3><a class="anchor" id="autotoc_md9"></a>
+Structure</h3>
+<ul>
+<li><code>BaseData</code><ul>
+<li>Abstract interface:<ul>
+<li><code>get_type()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Data&lt;T&gt;</code><ul>
+<li>Stores a value of type <code>T</code></li>
+<li>Provides:<ul>
+<li><code>get_value_ref()</code></li>
+<li>Type-safe clone</li>
+<li>Access via <code>T*</code> for internal generic port-level handling</li>
+<li>Value set by the <code>GNode::Node</code> class: <code>GNode::Node::set_value</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Role in architecture</h2>
+<p><code>Data&lt;T&gt;</code> is the foundation of type-safety at the port level. Every output port owns its <code>Data&lt;T&gt;</code>, and input ports bind to the same instance when linked.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Ports - InputPort and OutputPort (in port.hpp)</h2>
+<p>Ports connect nodes.</p>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Port</h3>
+<ul>
+<li>Knows:<ul>
+<li>Port name</li>
+<li>Node ID</li>
+<li>Port ID inside the node</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md13"></a>
+OutputPort&lt;T&gt;</h3>
+<ul>
+<li>Owns a <code>shared_ptr&lt;Data&lt;T&gt;&gt;</code></li>
+<li>Always produces data</li>
+<li>Can be connected to any number of <code>InputPort</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md14"></a>
+InputPort&lt;T&gt;</h3>
+<ul>
+<li>Does <b>not own data</b></li>
+<li>Holds a pointer to a <code>Data&lt;T&gt;</code> owned by an <code>OutputPort</code></li>
+<li>If unconnected, the data pointer is <code>nullptr</code></li>
+<li>Can be disconnect to only one <code>OutputPort</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md15"></a>
+Role</h3>
+<p>Ports are the <b>typed interface</b> between nodes. <code>InputPorts</code> never store data, they alias data from the upstream <code>OutputPort</code>.</p>
+<h2><a class="anchor" id="autotoc_md16"></a>
+Link (in link.hpp)</h2>
+<p>A <b>Link</b> is a simple POD struct:</p>
+<ul>
+<li><code>std::string from_node_id</code></li>
+<li><code>std::string to_node_id</code></li>
+<li><code>int from_port_index</code></li>
+<li><code>int to_port_index</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md17"></a>
+Purpose</h3>
+<p>Represents a connection between two ports in a graph, used by <code>Graph</code> to physically link port objects.</p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Node (in node.hpp)</h2>
+<p>The most important unit.</p>
+<h3><a class="anchor" id="autotoc_md19"></a>
+Responsibilities</h3>
+<ul>
+<li>Represent a computational unit</li>
+<li>Own ports</li>
+<li>Implement specific logic</li>
+<li>Expose:<ul>
+<li>label</li>
+<li>id</li>
+<li>input ports list</li>
+<li>output ports list</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md20"></a>
+Important API</h3>
+<ul>
+<li><code>add_port&lt;T&gt;(port_type, label, ...)</code></li>
+<li><code>compute()</code> — pure virtual: each node defines its logic</li>
+<li><code>T *get_value_ref&lt;T&gt;(port_label)</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md21"></a>
+Design Pattern</h3>
+<p><b>Nodes use templates to declare typed ports</b>, but evaluation remains virtual (dynamic).</p>
+<h2><a class="anchor" id="autotoc_md22"></a>
+Graph (in graph.hpp)</h2>
+<p>The orchestrator.</p>
+<h3><a class="anchor" id="autotoc_md23"></a>
+Responsibilities</h3>
+<ul>
+<li>Store nodes (<code>std::map&lt;std::string, shared_ptr&lt;Node&gt;&gt;</code>)</li>
+<li>Store links</li>
+<li>Resolve and connect ports</li>
+<li>Provide update/evaluation sequences</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md24"></a>
+Important methods</h3>
+<ul>
+<li><code>add_node&lt;...&gt;(...)</code>: add a new node of a specific type to the graph (template-based)</li>
+<li><code>new_link(from_id, out_port_idx, to_id, in_port_idx)</code> - connections from output to input it "one to many"</li>
+<li><code>update()</code> - mark all nodes as dirty and update the entire graph</li>
+<li><code>update(node_id)</code> - update a specific node by its ID and propagate modifications to other nodes</li>
+<li><code>remove_link(...)</code></li>
+<li><code>remove_node(id)</code></li>
+<li><code>T* get_node_ref_by_id(id)</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Evaluation Strategy</h2>
+<p>The graph <b>does implement a dependency solver and topological sorting</b>. The user can decide not to use the provided <code>update()</code> methods and define its own scheduling policy.</p>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Architecture Diagram</h2>
+<div class="fragment"><div class="line">+--------------+     link     +--------------+</div>
+<div class="line">|   Node A     |------------&gt;|    Node B    |</div>
+<div class="line">|              |             |              |</div>
+<div class="line">|  [out:T]-----+             +-----[in:T]   |</div>
+<div class="line">+--------------+             +--------------+</div>
+<div class="line">         ^</div>
+<div class="line">         |</div>
+<div class="line">   Data&lt;T&gt; stored in OutputPort</div>
+<div class="line">         |</div>
+<div class="line">   InputPort references the same Data&lt;T&gt;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
+Dataflow Model</h2>
+<ul>
+<li>A node computes some output in <code>compute()</code></li>
+<li>All connected <code>InputPorts</code> see the same <code>Data&lt;T&gt;</code> pointer</li>
+<li>Downstream nodes read inputs during their own <code>compute()</code></li>
+<li>In the <code>compute()</code> node method, data are accessed by reference:</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> compute()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// access input/output values by reference</span></div>
+<div class="line">  <span class="keywordtype">float</span> *p_in1 = this-&gt;get_value_ref&lt;float&gt;(<span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line">  <span class="keywordtype">float</span> *p_in2 = this-&gt;get_value_ref&lt;float&gt;(<span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line">  <span class="keywordtype">float</span> *p_out = this-&gt;get_value_ref&lt;float&gt;(<span class="stringliteral">&quot;a + b&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// compute only if both inputs are connected/valid</span></div>
+<div class="line">  <span class="keywordflow">if</span> (p_in1 &amp;&amp; p_in2) *p_out = *p_in1 + *p_in2;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+Repository</h1>
+<ul>
+<li>GitHub: <a href="https://github.com/otto-link/GNode">https://github.com/otto-link/GNode</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

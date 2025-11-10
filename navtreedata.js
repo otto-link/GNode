@@ -25,44 +25,7 @@
 var NAVTREE =
 [
   [ "GNode library (C++)", "index.html", [
-    [ "GNode — Architecture and Overview", "index.html", "index" ],
-    [ "Introduction", "md_docs_2architecture.html", [
-      [ "Installation", "md_docs_2architecture.html#autotoc_md1", null ],
-      [ "Usage Example", "md_docs_2architecture.html#autotoc_md2", [
-        [ "Architecture", "md_docs_2architecture.html#autotoc_md3", [
-          [ "Overview", "md_docs_2architecture.html#autotoc_md4", null ]
-        ] ],
-        [ "Key Components", "md_docs_2architecture.html#autotoc_md5", [
-          [ "<tt>BaseData</tt> and <tt>Data<T></tt> (in <tt>data.hpp</tt>)", "md_docs_2architecture.html#autotoc_md6", [
-            [ "Responsibility", "md_docs_2architecture.html#autotoc_md7", null ],
-            [ "Structure", "md_docs_2architecture.html#autotoc_md8", null ]
-          ] ],
-          [ "Role in architecture", "md_docs_2architecture.html#autotoc_md9", null ],
-          [ "Ports - <tt>InputPort</tt> and <tt>OutputPort</tt> (in <tt>port.hpp</tt>)", "md_docs_2architecture.html#autotoc_md10", [
-            [ "<tt>Port</tt>", "md_docs_2architecture.html#autotoc_md11", null ],
-            [ "<tt>OutputPort<T></tt>", "md_docs_2architecture.html#autotoc_md12", null ],
-            [ "<tt>InputPort<T></tt>", "md_docs_2architecture.html#autotoc_md13", null ],
-            [ "Role", "md_docs_2architecture.html#autotoc_md14", null ]
-          ] ],
-          [ "<tt>Link</tt> (in <tt>link.hpp</tt>)", "md_docs_2architecture.html#autotoc_md15", [
-            [ "Purpose", "md_docs_2architecture.html#autotoc_md16", null ]
-          ] ],
-          [ "<tt>Node</tt> (in <tt>node.hpp</tt>)", "md_docs_2architecture.html#autotoc_md17", [
-            [ "Responsibilities", "md_docs_2architecture.html#autotoc_md18", null ],
-            [ "Important API", "md_docs_2architecture.html#autotoc_md19", null ],
-            [ "Design Pattern", "md_docs_2architecture.html#autotoc_md20", null ]
-          ] ],
-          [ "<tt>Graph</tt> (in <tt>graph.hpp</tt>)", "md_docs_2architecture.html#autotoc_md21", [
-            [ "Responsibilities", "md_docs_2architecture.html#autotoc_md22", null ],
-            [ "Important methods", "md_docs_2architecture.html#autotoc_md23", null ]
-          ] ],
-          [ "Evaluation Strategy", "md_docs_2architecture.html#autotoc_md24", null ],
-          [ "Architecture Diagram", "md_docs_2architecture.html#autotoc_md25", null ],
-          [ "Dataflow Model", "md_docs_2architecture.html#autotoc_md26", null ]
-        ] ]
-      ] ],
-      [ "Repository", "md_docs_2architecture.html#autotoc_md27", null ]
-    ] ],
+    [ "Architecture", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

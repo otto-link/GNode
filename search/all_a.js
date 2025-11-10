@@ -2,8 +2,8 @@ var searchData=
 [
   ['label_0',['label',['../classgnode_1_1Node.html#a9aa2aa1b14e2c933a99f1bc5e080dc7b',1,'gnode::Node::label'],['../classgnode_1_1Port.html#a295aa641f2b36907883051f4e4f1df26',1,'gnode::Port::label']]],
   ['link_1',['link',['../structgnode_1_1Link.html',1,'gnode::Link'],['../structgnode_1_1Link.html#a09386fc22bee12749c5223d08b4a320c',1,'gnode::Link::Link()']]],
-  ['link_20hpp_20tt_2',['&lt;tt&gt;Link&lt;/tt&gt; (in &lt;tt&gt;link.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md15',1,'']]],
-  ['link_20tt_20in_20tt_20link_20hpp_20tt_3',['&lt;tt&gt;Link&lt;/tt&gt; (in &lt;tt&gt;link.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md15',1,'']]],
+  ['link_20hpp_2',['Link (in link.hpp)',['../index.html#autotoc_md16',1,'']]],
+  ['link_20in_20link_20hpp_3',['Link (in link.hpp)',['../index.html#autotoc_md16',1,'']]],
   ['link_2ehpp_4',['link.hpp',['../link_8hpp.html',1,'']]],
   ['links_5',['links',['../classgnode_1_1Graph.html#a1b1d5550849d281c7001e5fdedb9b6e4',1,'gnode::Graph']]],
   ['log_6',['log',['../classgnode_1_1Logger.html#ab67dedd357837b107110708123c34fdc',1,'gnode::Logger']]],
