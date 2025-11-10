@@ -4,14 +4,6 @@
 /**
  * @file gnode.hpp
  * @brief Main header aggregating the gnode library.
- *
- * @mainpage GNode — Architecture and Overview
- *
- * @section intro Overview
- * @include architecture.md
- *
- * @section api Public API
- * See the @ref gnode::Graph and @ref gnode::Node classes.
  */
 
 #pragma once
