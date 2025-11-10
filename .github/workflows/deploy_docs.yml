@@ -17,11 +17,9 @@ jobs:
       - name: Generate Doxygen Documentation
         run: doxygen docs/Doxyfile
 
-      - name: Remove .nojekyll to enable Jekyll processing
-        run: rm -f ./docs/.nojekyll
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          nojekyll: true
+	  publish_dir: ./docs
