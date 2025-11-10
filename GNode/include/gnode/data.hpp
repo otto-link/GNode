@@ -60,6 +60,12 @@ public:
    */
   std::string get_type() const { return this->type; }
 
+  /**
+   * @brief Pure virtual method to retrieve a pointer to the stored value.
+   * @return A void pointer to the value.
+   */
+  virtual void *get_value_ptr() const = 0;
+
 private:
   std::string type; ///< A string representing the type of the data.
 };
@@ -99,6 +105,12 @@ public:
    * @return A pointer to the stored value.
    */
   T *get_value_ref() { return &value; }
+
+  /**
+   * @brief Retrieves a pointer to the stored value.
+   * @return A void pointer to the stored value.
+   */
+  void *get_value_ptr() const override { return const_cast<T *>(&value); }
 
 private:
   T value{}; ///< The value of type T stored in this object.

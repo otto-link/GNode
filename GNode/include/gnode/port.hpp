@@ -93,6 +93,13 @@ public:
   virtual PortType get_port_type() const = 0;
 
   /**
+   * @brief Retrieves a `void*` reference to the data value stored in this
+   * output port.
+   * @return A `void*` pointer to the data value.
+   */
+  virtual void *get_value_ref_void() const = 0;
+
+  /**
    * @brief Sets the data associated with the port.
    * @param data A shared pointer to the BaseData to set.
    */
@@ -150,6 +157,17 @@ public:
   T *get_value_ref() const
   {
     return this->data.lock() ? this->data.lock()->get_value_ref() : nullptr;
+  }
+
+  /**
+   * @brief Retrieves a `void*` reference to the data value stored in this
+   * output port.
+   * @return A `void*` pointer to the data value.
+   */
+  void *get_value_ref_void() const override
+  {
+    return this->data.lock() ? (void *)this->data.lock()->get_value_ref()
+                             : nullptr;
   }
 
   /**
@@ -241,6 +259,16 @@ public:
    * @return A pointer to the data value.
    */
   T *get_value_ref() const { return this->data->get_value_ref(); }
+
+  /**
+   * @brief Retrieves a `void*` reference to the data value stored in this
+   * output port.
+   * @return A `void*` pointer to the data value.
+   */
+  void *get_value_ref_void() const override
+  {
+    return (void *)this->data->get_value_ref();
+  }
 
 private:
   std::shared_ptr<Data<T>>
