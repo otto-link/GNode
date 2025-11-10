@@ -3,6 +3,7 @@ GENERATE_HTML         = YES
 OUTPUT_DIRECTORY      = docs
 HTML_OUTPUT           = .
 INPUT                 = GNode/include docs
+INCLUDE_PATH          = GNode/include docs
 IMAGE_PATH            = docs/images
 RECURSIVE             = YES
 FILE_PATTERNS         = *.hpp
