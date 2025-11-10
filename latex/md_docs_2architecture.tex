@@ -1,0 +1,366 @@
+\chapter{Introduction}
+\hypertarget{md_docs_2architecture}{}\label{md_docs_2architecture}\index{Introduction@{Introduction}}
+\label{md_docs_2architecture_autotoc_md0}%
+\Hypertarget{md_docs_2architecture_autotoc_md0}%
+ {\bfseries{GNode}} is a lightweight and extensible C++ framework for building node-\/based graphs. It allows you to define nodes, connect them through input/output ports, and process data through a directed graph structure.
+
+{\bfseries{GNode}} is designed to be\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Modular}}\+: you create only the nodes you need
+\item {\bfseries{Type-\/safe}}\+: strong typing of ports and attributes ~\newline
+
+\item {\bfseries{Extensible}}\+: supports custom types as long as they are copyable or movable ~\newline
+
+\end{DoxyItemize}
+
+A graph in GNode is composed of\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Nodes}}\+: units of logic or data ~\newline
+
+\item {\bfseries{Ports}}\+: typed inputs/outputs on nodes ~\newline
+
+\item {\bfseries{Links}}\+: connections between ports ~\newline
+
+\item {\bfseries{Graph (supervisor)}}\+: manager for node creation, registration, and update ~\newline
+
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md1}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_docs_2architecture_autotoc_md1}
+See the README in the Git\+Hub repository\+:
+
+\href{https://github.com/otto-link/GNode}{\texttt{ https\+://github.\+com/otto-\/link/\+GNode}}\hypertarget{md_docs_2architecture_autotoc_md2}{}\doxysection{\texorpdfstring{Usage Example}{Usage Example}}\label{md_docs_2architecture_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gnode_8hpp}{gnode.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ a\ class\ to\ show\ that\ complex\ objects\ can\ be\ handled}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }Vec2}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{\ \ Vec2()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\ \ Vec2(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ :\ x(x),\ y(y)\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{//\ Nodes\ definition,\ all\ derivates\ from\ gnode::Node}}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ holds\ a\ float\ value}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Value\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Node}{gnode::Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{Value}}()\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}Value"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ declare\ an\ output\ port\ of\ type\ float}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}value"{}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{Value}}(\textcolor{keywordtype}{float}\ value)\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}Value"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}value"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ directly\ set\ initial\ value\ of\ the\ port}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{set\_value<float>}}(\textcolor{stringliteral}{"{}value"{}},\ value);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ leaf\ node:\ nothing\ to\ compute,\ only\ stores\ a\ value}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_aa59d25aaaf07e3c471244aaddbff9d7c}{compute}}()\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ holds\ a\ Vec2\ value}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }ValueVec\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Node}{gnode::Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{ValueVec}}()\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}ValueVec"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ declare\ an\ output\ port\ containing\ Vec2\ objects}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<Vec2>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}value"{}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{ValueVec}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}ValueVec"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ option\ 1:\ pass\ constructor\ arguments\ for\ Vec2}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<Vec2>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}value"{}},\ x,\ y);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ option\ 2:\ set\ the\ value\ manually}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ this-\/>add\_port<Vec2>(gnode::PortType::OUT,\ "{}value"{});}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ this-\/>set\_value<Vec2>("{}value"{},\ Vec2(x,\ y));}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_aa59d25aaaf07e3c471244aaddbff9d7c}{compute}}()\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ add\ two\ floats}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Add\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Node}{gnode::Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{Add}}()\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}Add"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ two\ float\ inputs}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{gnode::PortType::IN}},\ \textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{gnode::PortType::IN}},\ \textcolor{stringliteral}{"{}b"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ one\ float\ output}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}a\ +\ b"{}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_aa59d25aaaf07e3c471244aaddbff9d7c}{compute}}()}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ access\ input/output\ values\ by\ reference}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ *p\_in1\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<float>}}(\textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ *p\_in2\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<float>}}(\textcolor{stringliteral}{"{}b"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ *p\_out\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<float>}}(\textcolor{stringliteral}{"{}a\ +\ b"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ compute\ only\ if\ both\ inputs\ are\ connected/valid}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (p\_in1\ \&\&\ p\_in2)\ *p\_out\ =\ *p\_in1\ +\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{p\_in2}};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ sum\ Vec2\ components\ and\ returns\ a\ float}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }SumVec\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Node}{gnode::Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{SumVec}}()\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}SumVec"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Vec2\ input}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<Vec2>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{gnode::PortType::IN}},\ \textcolor{stringliteral}{"{}vec"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ float\ output}}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{gnode::PortType::OUT}},\ \textcolor{stringliteral}{"{}sum"{}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_aa59d25aaaf07e3c471244aaddbff9d7c}{compute}}()}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ Vec2\ \ *p\_vec\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<Vec2>}}(\textcolor{stringliteral}{"{}vec"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ *p\_sum\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<float>}}(\textcolor{stringliteral}{"{}sum"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ sum\ only\ if\ input\ exists}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (p\_vec)\ *p\_sum\ =\ p\_vec-\/>x\ +\ p\_vec-\/>y;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ print\ a\ float}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Print\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Node}{gnode::Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{Print}}()\ :\ \mbox{\hyperlink{namespacegnode}{gnode}}::Node(\textcolor{stringliteral}{"{}Print"{}})}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{add\_port<float>}}(\mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{gnode::PortType::IN}},\ \textcolor{stringliteral}{"{}in"{}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_aa59d25aaaf07e3c471244aaddbff9d7c}{compute}}()}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ *p\_in\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<float>}}(\textcolor{stringliteral}{"{}in"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (p\_in)\ std::cout\ <<\ \textcolor{stringliteral}{"{}PRINTING:\ "{}}\ <<\ *p\_in\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classgnode_1_1Graph}{gnode::Graph}}\ g;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ NB\ -\/\ node\ constructor\ parameters\ are\ pass\ through\ when\ adding\ a\ node}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ a\ Vec2\ node\ with\ initial\ value\ (1,\ 2)}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_value\_vec\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<ValueVec>(1.f,\ 2.f);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_sum\_vec\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<SumVec>();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ sum\ vector\ components}}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_value\_vec,\ \textcolor{stringliteral}{"{}value"{}},\ id\_sum\_vec,\ \textcolor{stringliteral}{"{}vec"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ add\ the\ former\ sum\ to\ a\ float}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_value1\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Value>(3.f);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_add1\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Add>();}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_sum\_vec,\ \textcolor{stringliteral}{"{}sum"{}},\ id\_add1,\ \textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_value1,\ \textcolor{stringliteral}{"{}value"{}},\ id\_add1,\ \textcolor{stringliteral}{"{}b"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ print\ this\ intermediate\ value}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_print1\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Print>();}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_add1,\ \textcolor{stringliteral}{"{}a\ +\ b"{}},\ id\_print1,\ \textcolor{stringliteral}{"{}in"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ add\ the\ former\ sum\ to\ another\ float...}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_value2\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Value>(4.f);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_add2\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Add>();}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_add1,\ \textcolor{stringliteral}{"{}a\ +\ b"{}},\ id\_add2,\ \textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_value2,\ \textcolor{stringliteral}{"{}value"{}},\ id\_add2,\ \textcolor{stringliteral}{"{}b"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ and\ print\ the\ results}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ id\_print2\ =\ g.\mbox{\hyperlink{classgnode_1_1Graph_aa949bad2fee1433256192a4512de3295}{add\_node}}<Print>();}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a04a236017638d460d551ed5955c9751b}{new\_link}}(id\_add2,\ \textcolor{stringliteral}{"{}a\ +\ b"{}},\ id\_print2,\ \textcolor{stringliteral}{"{}in"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ once\ the\ graph\ is\ defined,\ perform\ an\ overall\ update\ to\ ensure\ a}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ clean\ initial\ graph\ state\ (topological\ greedy\ update)}}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nOVERALL\ UPDATE\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ change\ one\ node\ state\ =\ only\ update\ from\ this\ node}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ propagate\ changes\ only\ to\ nodes\ that\ depend\ on\ it}}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nNODE\ UPDATE\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_abc8dbe305fa98e66d8d68a4eef03d8e4}{get\_node\_ref\_by\_id}}<Value>(id\_value1)-\/>set\_value<float>(\textcolor{stringliteral}{"{}value"{}},\ 10.f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ incremental\ update\ from\ id\_value1}}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}}(id\_value1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ export\ for\ debugging/visualization}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ dot\ export.dot\ -\/Tsvg\ >\ output.svg}}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a9abff3825a189c650b83c47cff73ff33}{export\_to\_graphviz}}();}
+\DoxyCodeLine{\ \ g.\mbox{\hyperlink{classgnode_1_1Graph_a326a8ba323933a56fc37b1dd0f01da47}{export\_to\_mermaid}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2architecture_autotoc_md3}{}\doxysubsection{\texorpdfstring{Architecture}{Architecture}}\label{md_docs_2architecture_autotoc_md3}
+\hypertarget{md_docs_2architecture_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Overview}{Overview}}\label{md_docs_2architecture_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{Nodes}} hold logic and expose typed {\bfseries{input/output ports}}
+\item {\bfseries{Ports}} transport typed {\bfseries{data objects}}
+\item {\bfseries{Links}} connect an output port of one node to an input port of another
+\item {\bfseries{Graphs}} manage nodes, links, evaluation order, and data propagation
+\end{DoxyItemize}
+
+The library is minimal, dependency-\/free except for {\ttfamily \texorpdfstring{$<$}{<}memory\texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}vector\texorpdfstring{$>$}{>}}, and optional {\ttfamily spdlog}.\hypertarget{md_docs_2architecture_autotoc_md5}{}\doxysubsection{\texorpdfstring{Key Components}{Key Components}}\label{md_docs_2architecture_autotoc_md5}
+\hypertarget{md_docs_2architecture_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{$<$tt$>$\+Base\+Data$<$/tt$>$ and $<$tt$>$\+Data$<$\+T$>$$<$/tt$>$ (in $<$tt$>$data.\+hpp$<$/tt$>$)}{<tt>BaseData</tt> and <tt>Data<T></tt> (in <tt>data.hpp</tt>)}}\label{md_docs_2architecture_autotoc_md6}
+\hypertarget{md_docs_2architecture_autotoc_md7}{}\doxyparagraph{\texorpdfstring{Responsibility}{Responsibility}}\label{md_docs_2architecture_autotoc_md7}
+Represent typed, mutable values transported through ports.\hypertarget{md_docs_2architecture_autotoc_md8}{}\doxyparagraph{\texorpdfstring{Structure}{Structure}}\label{md_docs_2architecture_autotoc_md8}
+
+\begin{DoxyItemize}
+\item {\ttfamily Base\+Data}
+\begin{DoxyItemize}
+\item Abstract interface\+:
+\begin{DoxyItemize}
+\item {\ttfamily get\+\_\+type()}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\ttfamily Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}}
+\begin{DoxyItemize}
+\item Stores a value of type {\ttfamily T}
+\item Provides\+:
+\begin{DoxyItemize}
+\item {\ttfamily get\+\_\+value\+\_\+ref()}
+\item Type-\/safe clone
+\item Access via {\ttfamily T\texorpdfstring{$\ast$}{*}} for internal generic port-\/level handling
+\item Value set by the {\ttfamily GNode\+::\+Node} class\+: {\ttfamily GNode\+::\+Node\+::set\+\_\+value}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Role in architecture}{Role in architecture}}\label{md_docs_2architecture_autotoc_md9}
+{\ttfamily Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} is the foundation of type-\/safety at the port level. Every output port owns its {\ttfamily Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}}, and input ports bind to the same instance when linked.\hypertarget{md_docs_2architecture_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Ports -\/ $<$tt$>$\+Input\+Port$<$/tt$>$ and $<$tt$>$\+Output\+Port$<$/tt$>$ (in $<$tt$>$port.\+hpp$<$/tt$>$)}{Ports - <tt>InputPort</tt> and <tt>OutputPort</tt> (in <tt>port.hpp</tt>)}}\label{md_docs_2architecture_autotoc_md10}
+Ports connect nodes.\hypertarget{md_docs_2architecture_autotoc_md11}{}\doxyparagraph{\texorpdfstring{$<$tt$>$\+Port$<$/tt$>$}{<tt>Port</tt>}}\label{md_docs_2architecture_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Knows\+:
+\begin{DoxyItemize}
+\item Port name
+\item Node ID
+\item Port ID inside the node
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md12}{}\doxyparagraph{\texorpdfstring{$<$tt$>$\+Output\+Port$<$\+T$>$$<$/tt$>$}{<tt>OutputPort<T></tt>}}\label{md_docs_2architecture_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Owns a {\ttfamily shared\+\_\+ptr\texorpdfstring{$<$}{<}Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}
+\item Always produces data
+\item Can be connected to any number of {\ttfamily Input\+Port}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md13}{}\doxyparagraph{\texorpdfstring{$<$tt$>$\+Input\+Port$<$\+T$>$$<$/tt$>$}{<tt>InputPort<T></tt>}}\label{md_docs_2architecture_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Does {\bfseries{not own data}}
+\item Holds a pointer to a {\ttfamily Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} owned by an {\ttfamily Output\+Port}
+\item If unconnected, the data pointer is {\ttfamily nullptr}
+\item Can be disconnect to only one {\ttfamily Output\+Port}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md14}{}\doxyparagraph{\texorpdfstring{Role}{Role}}\label{md_docs_2architecture_autotoc_md14}
+Ports are the {\bfseries{typed interface}} between nodes. {\ttfamily Input\+Ports} never store data, they alias data from the upstream {\ttfamily Output\+Port}.\hypertarget{md_docs_2architecture_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{$<$tt$>$\+Link$<$/tt$>$ (in $<$tt$>$link.\+hpp$<$/tt$>$)}{<tt>Link</tt> (in <tt>link.hpp</tt>)}}\label{md_docs_2architecture_autotoc_md15}
+A {\bfseries{Link}} is a simple POD struct\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily std\+::string from\+\_\+node\+\_\+id}
+\item {\ttfamily std\+::string to\+\_\+node\+\_\+id}
+\item {\ttfamily int from\+\_\+port\+\_\+index}
+\item {\ttfamily int to\+\_\+port\+\_\+index}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md16}{}\doxyparagraph{\texorpdfstring{Purpose}{Purpose}}\label{md_docs_2architecture_autotoc_md16}
+Represents a connection between two ports in a graph, used by {\ttfamily Graph} to physically link port objects.\hypertarget{md_docs_2architecture_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{$<$tt$>$\+Node$<$/tt$>$ (in $<$tt$>$node.\+hpp$<$/tt$>$)}{<tt>Node</tt> (in <tt>node.hpp</tt>)}}\label{md_docs_2architecture_autotoc_md17}
+The most important unit.\hypertarget{md_docs_2architecture_autotoc_md18}{}\doxyparagraph{\texorpdfstring{Responsibilities}{Responsibilities}}\label{md_docs_2architecture_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Represent a computational unit
+\item Own ports
+\item Implement specific logic
+\item Expose\+:
+\begin{DoxyItemize}
+\item label
+\item id
+\item input ports list
+\item output ports list
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md19}{}\doxyparagraph{\texorpdfstring{Important API}{Important API}}\label{md_docs_2architecture_autotoc_md19}
+
+\begin{DoxyItemize}
+\item {\ttfamily add\+\_\+port\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}(port\+\_\+type, label, ...)}
+\item {\ttfamily compute()} — pure virtual\+: each node defines its logic
+\item {\ttfamily T \texorpdfstring{$\ast$}{*}get\+\_\+value\+\_\+ref\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}(port\+\_\+label)}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md20}{}\doxyparagraph{\texorpdfstring{Design Pattern}{Design Pattern}}\label{md_docs_2architecture_autotoc_md20}
+{\bfseries{Nodes use templates to declare typed ports}}, but evaluation remains virtual (dynamic).\hypertarget{md_docs_2architecture_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{$<$tt$>$\+Graph$<$/tt$>$ (in $<$tt$>$graph.\+hpp$<$/tt$>$)}{<tt>Graph</tt> (in <tt>graph.hpp</tt>)}}\label{md_docs_2architecture_autotoc_md21}
+The orchestrator.\hypertarget{md_docs_2architecture_autotoc_md22}{}\doxyparagraph{\texorpdfstring{Responsibilities}{Responsibilities}}\label{md_docs_2architecture_autotoc_md22}
+
+\begin{DoxyItemize}
+\item Store nodes ({\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, shared\+\_\+ptr\texorpdfstring{$<$}{<}Node\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}})
+\item Store links
+\item Resolve and connect ports
+\item Provide update/evaluation sequences
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md23}{}\doxyparagraph{\texorpdfstring{Important methods}{Important methods}}\label{md_docs_2architecture_autotoc_md23}
+
+\begin{DoxyItemize}
+\item {\ttfamily add\+\_\+node\texorpdfstring{$<$}{<}...\texorpdfstring{$>$}{>}(...)}\+: add a new node of a specific type to the graph (template-\/based)
+\item {\ttfamily new\+\_\+link(from\+\_\+id, out\+\_\+port\+\_\+idx, to\+\_\+id, in\+\_\+port\+\_\+idx)} -\/ connections from output to input it "{}one to many"{}
+\item {\ttfamily update()} -\/ mark all nodes as dirty and update the entire graph
+\item {\ttfamily update(node\+\_\+id)} -\/ update a specific node by its ID and propagate modifications to other nodes
+\item {\ttfamily remove\+\_\+link(...)}
+\item {\ttfamily remove\+\_\+node(id)}
+\item {\ttfamily T\texorpdfstring{$\ast$}{*} get\+\_\+node\+\_\+ref\+\_\+by\+\_\+id(id)}
+\end{DoxyItemize}\hypertarget{md_docs_2architecture_autotoc_md24}{}\doxysubsubsection{\texorpdfstring{Evaluation Strategy}{Evaluation Strategy}}\label{md_docs_2architecture_autotoc_md24}
+The graph {\bfseries{does implement a dependency solver and topological sorting}}. The user can decide not to use the provided {\ttfamily update()} methods and define its own scheduling policy.\hypertarget{md_docs_2architecture_autotoc_md25}{}\doxysubsubsection{\texorpdfstring{Architecture Diagram}{Architecture Diagram}}\label{md_docs_2architecture_autotoc_md25}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+\ \ \ \ \ link\ \ \ \ \ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}
+\DoxyCodeLine{|\ \ \ Node\ A\ \ \ \ \ |-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>|\ \ \ \ Node\ B\ \ \ \ |}
+\DoxyCodeLine{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{|\ \ [out:T]-\/-\/-\/-\/-\/+\ \ \ \ \ \ \ \ \ \ \ \ \ +-\/-\/-\/-\/-\/[in:T]\ \ \ |}
+\DoxyCodeLine{+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+\ \ \ \ \ \ \ \ \ \ \ \ \ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \string^}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ Data<T>\ stored\ in\ OutputPort}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ InputPort\ references\ the\ same\ Data<T>}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2architecture_autotoc_md26}{}\doxysubsubsection{\texorpdfstring{Dataflow Model}{Dataflow Model}}\label{md_docs_2architecture_autotoc_md26}
+
+\begin{DoxyItemize}
+\item A node computes some output in {\ttfamily compute()}
+\item All connected {\ttfamily Input\+Ports} see the same {\ttfamily Data\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} pointer
+\item Downstream nodes read inputs during their own {\ttfamily compute()}
+\item In the {\ttfamily compute()} node method, data are accessed by reference\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ compute()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ access\ input/output\ values\ by\ reference}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ *p\_in1\ =\ this-\/>get\_value\_ref<float>(\textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ *p\_in2\ =\ this-\/>get\_value\_ref<float>(\textcolor{stringliteral}{"{}b"{}});}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ *p\_out\ =\ this-\/>get\_value\_ref<float>(\textcolor{stringliteral}{"{}a\ +\ b"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ compute\ only\ if\ both\ inputs\ are\ connected/valid}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (p\_in1\ \&\&\ p\_in2)\ *p\_out\ =\ *p\_in1\ +\ *p\_in2;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2architecture_autotoc_md27}{}\doxysection{\texorpdfstring{Repository}{Repository}}\label{md_docs_2architecture_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Git\+Hub\+: \href{https://github.com/otto-link/GNode}{\texttt{ https\+://github.\+com/otto-\/link/\+GNode}} 
+\end{DoxyItemize}

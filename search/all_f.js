@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['uint_0',['uint',['../graph_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14',1,'graph.hpp']]],
-  ['update_1',['update',['../classgnode_1_1Graph.html#a0c918aba38c03de51fe09ad40be0abb7',1,'gnode::Graph::update()'],['../classgnode_1_1Graph.html#ad3626823555470989572329cb4a1a5eb',1,'gnode::Graph::update(const std::string &amp;node_id)'],['../classgnode_1_1Node.html#a545bc43adf5ec5e711a46c4d74f824d6',1,'gnode::Node::update()']]],
-  ['update_5fcallback_2',['update_callback',['../classgnode_1_1Graph.html#a932a3923d8c826ea30ce4eef061c68a7',1,'gnode::Graph']]]
+  ['remove_5flink_0',['remove_link',['../classgnode_1_1Graph.html#a6b49a9e91b7cbe30ca9bf48901ae1667',1,'gnode::Graph::remove_link(const std::string &amp;from, int port_from, const std::string &amp;to, int port_to)'],['../classgnode_1_1Graph.html#a9694658e81d6c9651e15f58fa89400a8',1,'gnode::Graph::remove_link(const std::string &amp;from, const std::string &amp;port_label_from, const std::string &amp;to, const std::string &amp;port_label_to)']]],
+  ['remove_5fnode_1',['remove_node',['../classgnode_1_1Graph.html#a50fd9fc67f99cce1dfbb7860a880c255',1,'gnode::Graph']]],
+  ['repository_2',['Repository',['../md_docs_2architecture.html#autotoc_md27',1,'']]],
+  ['responsibilities_3',['responsibilities',['../md_docs_2architecture.html#autotoc_md18',1,'Responsibilities'],['../md_docs_2architecture.html#autotoc_md22',1,'Responsibilities']]],
+  ['responsibility_4',['Responsibility',['../md_docs_2architecture.html#autotoc_md7',1,'']]],
+  ['role_5',['Role',['../md_docs_2architecture.html#autotoc_md14',1,'']]],
+  ['role_20in_20architecture_6',['Role in architecture',['../md_docs_2architecture.html#autotoc_md9',1,'']]]
 ];

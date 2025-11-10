@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classgnode_1_1Logger.html#ad5139f8ec52ec067d9682eaf7bdaf037',1,'gnode::Logger']]],
-  ['operator_3d_3d_1',['operator==',['../structgnode_1_1Link.html#a03cef12ed1d2b558dacd8fd0dab63421',1,'gnode::Link']]],
-  ['out_2',['OUT',['../namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164',1,'gnode']]],
-  ['output_3',['output',['../classgnode_1_1Output.html',1,'gnode::Output&lt; T &gt;'],['../classgnode_1_1Output.html#ac13fcb0d89a11e5331d902131f8407b0',1,'gnode::Output::Output()'],['../classgnode_1_1Output.html#a85cff283780f66ad8b963436ca60434c',1,'gnode::Output::Output(std::string label, Args &amp;&amp;...args)']]],
-  ['overview_4',['overview',['../index.html',1,'GNode — Architecture and Overview'],['../index.html#intro',1,'Overview']]]
+  ['label_0',['label',['../classgnode_1_1Node.html#a9aa2aa1b14e2c933a99f1bc5e080dc7b',1,'gnode::Node::label'],['../classgnode_1_1Port.html#a295aa641f2b36907883051f4e4f1df26',1,'gnode::Port::label']]],
+  ['link_1',['link',['../structgnode_1_1Link.html',1,'gnode::Link'],['../structgnode_1_1Link.html#a09386fc22bee12749c5223d08b4a320c',1,'gnode::Link::Link()']]],
+  ['link_20hpp_20tt_2',['&lt;tt&gt;Link&lt;/tt&gt; (in &lt;tt&gt;link.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md15',1,'']]],
+  ['link_20tt_20in_20tt_20link_20hpp_20tt_3',['&lt;tt&gt;Link&lt;/tt&gt; (in &lt;tt&gt;link.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md15',1,'']]],
+  ['link_2ehpp_4',['link.hpp',['../link_8hpp.html',1,'']]],
+  ['links_5',['links',['../classgnode_1_1Graph.html#a1b1d5550849d281c7001e5fdedb9b6e4',1,'gnode::Graph']]],
+  ['log_6',['log',['../classgnode_1_1Logger.html#ab67dedd357837b107110708123c34fdc',1,'gnode::Logger']]],
+  ['logger_7',['logger',['../classgnode_1_1Logger.html',1,'gnode::Logger'],['../classgnode_1_1Logger.html#a4ba03e5c0a0fa09f45117d53c648bf9b',1,'gnode::Logger::Logger()=default'],['../classgnode_1_1Logger.html#ab7fa8bd30a64dd5e088873f0e0b43511',1,'gnode::Logger::Logger(const Logger &amp;)=delete']]],
+  ['logger_2ehpp_8',['logger.hpp',['../logger_8hpp.html',1,'']]]
 ];

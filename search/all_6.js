@@ -27,5 +27,7 @@ var searchData=
   ['gnode_20—_20architecture_20and_20overview_24',['GNode — Architecture and Overview',['../index.html',1,'']]],
   ['gnode_2ehpp_25',['gnode.hpp',['../gnode_8hpp.html',1,'']]],
   ['graph_26',['graph',['../classgnode_1_1Graph.html',1,'gnode::Graph'],['../classgnode_1_1Graph.html#a9d5756eced83d05fd73f79f73a9f1317',1,'gnode::Graph::Graph()=default'],['../classgnode_1_1Graph.html#a7e9adbde847e933237163a5c87c009b3',1,'gnode::Graph::Graph(const std::string &amp;id)']]],
-  ['graph_2ehpp_27',['graph.hpp',['../graph_8hpp.html',1,'']]]
+  ['graph_20hpp_20tt_27',['&lt;tt&gt;Graph&lt;/tt&gt; (in &lt;tt&gt;graph.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md21',1,'']]],
+  ['graph_20tt_20in_20tt_20graph_20hpp_20tt_28',['&lt;tt&gt;Graph&lt;/tt&gt; (in &lt;tt&gt;graph.hpp&lt;/tt&gt;)',['../md_docs_2architecture.html#autotoc_md21',1,'']]],
+  ['graph_2ehpp_29',['graph.hpp',['../graph_8hpp.html',1,'']]]
 ];
