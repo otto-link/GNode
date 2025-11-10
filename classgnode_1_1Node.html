@@ -191,9 +191,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3b22ab4fdc71ee470ab691ae8cc7c7b1"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a3b22ab4fdc71ee470ab691ae8cc7c7b1">get_value_ref</a> (int port_index) const</td></tr>
 <tr class="memdesc:a3b22ab4fdc71ee470ab691ae8cc7c7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the value stored in a port by its index.  <br /></td></tr>
 <tr class="separator:a3b22ab4fdc71ee470ab691ae8cc7c7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac67b4498aa86268c3071b9bcb1e508a7" id="r_ac67b4498aa86268c3071b9bcb1e508a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#ac67b4498aa86268c3071b9bcb1e508a7">get_value_ref_void</a> (<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">int</a> <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">port_index</a>) <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
-<tr class="memdesc:ac67b4498aa86268c3071b9bcb1e508a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <code>void*</code> reference to the value stored in a port by its index.  <br /></td></tr>
-<tr class="separator:ac67b4498aa86268c3071b9bcb1e508a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf519ed32a97eabf3e1132f214be8ce" id="r_a9cf519ed32a97eabf3e1132f214be8ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a9cf519ed32a97eabf3e1132f214be8ce">set_id</a> (std::string <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">new_id</a>)</td></tr>
 <tr class="memdesc:a9cf519ed32a97eabf3e1132f214be8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new identifier for the node.  <br /></td></tr>
 <tr class="separator:a9cf519ed32a97eabf3e1132f214be8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -917,47 +914,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>T* A pointer to the value. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>If the port index is invalid. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac67b4498aa86268c3071b9bcb1e508a7" name="ac67b4498aa86268c3071b9bcb1e508a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac67b4498aa86268c3071b9bcb1e508a7">&#9670;&#160;</a></span>get_value_ref_void()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">void</a> * gnode::Node::get_value_ref_void </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">int</a>&#160;</td>
-          <td class="paramname"><em>port_index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a <code>void*</code> reference to the value stored in a port by its index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port_index</td><td>The index of the port. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A <code>void*</code> pointer to the value. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::out_of_range</td><td>If the port index is invalid. </td></tr>

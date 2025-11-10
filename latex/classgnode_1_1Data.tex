@@ -35,9 +35,7 @@ Collaboration diagram for gnode\+::Data\texorpdfstring{$<$}{<} T \texorpdfstring
 {\footnotesize template$<$typename... Args$>$ }\\\mbox{\hyperlink{classgnode_1_1Data_a86dd8589a154e70880df894179d9ca2b}{Data}} (\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{Args}} \&\&...\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{args}})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classgnode_1_1Data}{Data} object with the type name of T and initializes its value. \end{DoxyCompactList}\item 
 T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{get\+\_\+value\+\_\+ref}} ()
-\begin{DoxyCompactList}\small\item\em Retrieves a reference to the stored value. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa}{get\+\_\+value\+\_\+ptr}} () \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{const}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{override}}
-\begin{DoxyCompactList}\small\item\em Retrieves a pointer to the stored value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves a reference to the stored value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgnode_1_1BaseData}{gnode\+::\+Base\+Data}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -96,24 +94,6 @@ Constructs a \doxylink{classgnode_1_1Data}{Data} object with the type name of T 
 This constructor initializes the base class {\ttfamily \doxylink{classgnode_1_1BaseData}{Base\+Data}} with the type name of {\ttfamily T} using {\ttfamily typeid(\+T).\doxylink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{name()}}. It then constructs {\ttfamily this-\/\texorpdfstring{$>$}{>}value} of type {\ttfamily T} using the forwarded arguments {\ttfamily args}. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa}\label{classgnode_1_1Data_a24208113dc764b233756e6f7cd2cc4fa} 
-\index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!get\_value\_ptr@{get\_value\_ptr}}
-\index{get\_value\_ptr@{get\_value\_ptr}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{get\_value\_ptr()}{get\_value\_ptr()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{typename}} \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$ \\
-\mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Data}{gnode\+::\+Data}}$<$ \mbox{\hyperlink{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}{T}} $>$\+::get\+\_\+value\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Retrieves a pointer to the stored value. 
-
-\begin{DoxyReturn}{Returns}
-A void pointer to the stored value. 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgnode_1_1BaseData_a5de897e9fa844f73b123dc42b04dc6de}{gnode\+::\+Base\+Data}}.
-
 \Hypertarget{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915}\label{classgnode_1_1Data_adaa7e2fc25639065f135db8351d43915} 
 \index{gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}!get\_value\_ref@{get\_value\_ref}}
 \index{get\_value\_ref@{get\_value\_ref}!gnode::Data$<$ T $>$@{gnode::Data$<$ T $>$}}

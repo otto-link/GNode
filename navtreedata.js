@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "GNode library (C++)", "index.html", [
-    [ "GNode", "index.html", "index" ],
+    [ "GNode — Architecture and Overview", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -58,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"functions.html"
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

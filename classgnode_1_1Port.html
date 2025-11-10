@@ -145,9 +145,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d94a2c3a2a7f6b52b85d8216656d8ab" id="r_a9d94a2c3a2a7f6b52b85d8216656d8ab"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059">PortType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Port.html#a9d94a2c3a2a7f6b52b85d8216656d8ab">get_port_type</a> () const =0</td></tr>
 <tr class="memdesc:a9d94a2c3a2a7f6b52b85d8216656d8ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual function to get the type of the port (IN or OUT).  <br /></td></tr>
 <tr class="separator:a9d94a2c3a2a7f6b52b85d8216656d8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2a5166dcb5e28a84a5ce75bb9a73d85" id="r_aa2a5166dcb5e28a84a5ce75bb9a73d85"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Port.html#aa2a5166dcb5e28a84a5ce75bb9a73d85">get_value_ref_void</a> () const =0</td></tr>
-<tr class="memdesc:aa2a5166dcb5e28a84a5ce75bb9a73d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <code>void*</code> reference to the data value stored in this output port.  <br /></td></tr>
-<tr class="separator:aa2a5166dcb5e28a84a5ce75bb9a73d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94465a64441b1e5f0fccac851ac16f18" id="r_a94465a64441b1e5f0fccac851ac16f18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Port.html#a94465a64441b1e5f0fccac851ac16f18">set_data</a> (std::shared_ptr&lt; <a class="el" href="classgnode_1_1BaseData.html">BaseData</a> &gt;)</td></tr>
 <tr class="memdesc:a94465a64441b1e5f0fccac851ac16f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the data associated with the port.  <br /></td></tr>
 <tr class="separator:a94465a64441b1e5f0fccac851ac16f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -371,36 +368,6 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The port type (<code><a class="el" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424" title="Represents an input port.">PortType::IN</a></code> or <code><a class="el" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164" title="Represents an output port.">PortType::OUT</a></code>). </dd></dl>
 
 <p>Implemented in <a class="el" href="classgnode_1_1Input.html#aab10e3151eb06a482d0cb0c0f88c4830">gnode::Input&lt; T &gt;</a>, and <a class="el" href="classgnode_1_1Output.html#a0fb9f1979c0e401b04e4b66a6fd31343">gnode::Output&lt; T &gt;</a>.</p>
-
-</div>
-</div>
-<a id="aa2a5166dcb5e28a84a5ce75bb9a73d85" name="aa2a5166dcb5e28a84a5ce75bb9a73d85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2a5166dcb5e28a84a5ce75bb9a73d85">&#9670;&#160;</a></span>get_value_ref_void()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void * gnode::Port::get_value_ref_void </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Retrieves a <code>void*</code> reference to the data value stored in this output port. </p>
-<dl class="section return"><dt>Returns</dt><dd>A <code>void*</code> pointer to the data value. </dd></dl>
-
-<p>Implemented in <a class="el" href="classgnode_1_1Input.html#adc96cf2d63ab571aca3b7fe2c6498d6f">gnode::Input&lt; T &gt;</a>, and <a class="el" href="classgnode_1_1Output.html#ae1f3d68e4158156188fc48226b85c89c">gnode::Output&lt; T &gt;</a>.</p>
 
 </div>
 </div>
