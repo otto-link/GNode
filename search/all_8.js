@@ -19,5 +19,6 @@ var searchData=
   ['introduction_16',['Introduction',['../index.html#autotoc_md1',1,'']]],
   ['is_5fdirty_17',['is_dirty',['../classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474',1,'gnode::Node']]],
   ['is_5fnode_5fid_5favailable_18',['is_node_id_available',['../classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2',1,'gnode::Graph']]],
-  ['is_5fsame_5ftype_19',['is_same_type',['../classgnode_1_1BaseData.html#a4f018cf35bc2bcfa95532c47227e134d',1,'gnode::BaseData']]]
+  ['is_5fport_5fconnected_19',['is_port_connected',['../classgnode_1_1Node.html#adb9ca55b8a2d739ab63f71d93bef1b78',1,'gnode::Node::is_port_connected(const std::string &amp;port_label) const'],['../classgnode_1_1Node.html#ad50fc980ce93ff7ea49135ff24fa6230',1,'gnode::Node::is_port_connected(int port_index) const']]],
+  ['is_5fsame_5ftype_20',['is_same_type',['../classgnode_1_1BaseData.html#a4f018cf35bc2bcfa95532c47227e134d',1,'gnode::BaseData']]]
 ];

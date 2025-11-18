@@ -194,6 +194,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac67b4498aa86268c3071b9bcb1e508a7" id="r_ac67b4498aa86268c3071b9bcb1e508a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#ac67b4498aa86268c3071b9bcb1e508a7">get_value_ref_void</a> (<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">int</a> <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">port_index</a>) <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
 <tr class="memdesc:ac67b4498aa86268c3071b9bcb1e508a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <code>void*</code> reference to the value stored in a port by its index.  <br /></td></tr>
 <tr class="separator:ac67b4498aa86268c3071b9bcb1e508a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad50fc980ce93ff7ea49135ff24fa6230" id="r_ad50fc980ce93ff7ea49135ff24fa6230"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#ad50fc980ce93ff7ea49135ff24fa6230">is_port_connected</a> (<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">int</a> <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">port_index</a>) <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
+<tr class="memdesc:ad50fc980ce93ff7ea49135ff24fa6230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a port is connected by its index.  <br /></td></tr>
+<tr class="separator:ad50fc980ce93ff7ea49135ff24fa6230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9ca55b8a2d739ab63f71d93bef1b78" id="r_adb9ca55b8a2d739ab63f71d93bef1b78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#adb9ca55b8a2d739ab63f71d93bef1b78">is_port_connected</a> (<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::string &amp;<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">port_label</a>) <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
+<tr class="memdesc:adb9ca55b8a2d739ab63f71d93bef1b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a port is connected by its label.  <br /></td></tr>
+<tr class="separator:adb9ca55b8a2d739ab63f71d93bef1b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf519ed32a97eabf3e1132f214be8ce" id="r_a9cf519ed32a97eabf3e1132f214be8ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a9cf519ed32a97eabf3e1132f214be8ce">set_id</a> (std::string <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">new_id</a>)</td></tr>
 <tr class="memdesc:a9cf519ed32a97eabf3e1132f214be8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new identifier for the node.  <br /></td></tr>
 <tr class="separator:a9cf519ed32a97eabf3e1132f214be8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -964,6 +970,60 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="adb9ca55b8a2d739ab63f71d93bef1b78" name="adb9ca55b8a2d739ab63f71d93bef1b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb9ca55b8a2d739ab63f71d93bef1b78">&#9670;&#160;</a></span>is_port_connected() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">bool</a> gnode::Node::is_port_connected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::string &amp;&#160;</td>
+          <td class="paramname"><em>port_label</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a port is connected by its label. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_label</td><td>Label of the port. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if connected, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ad50fc980ce93ff7ea49135ff24fa6230" name="ad50fc980ce93ff7ea49135ff24fa6230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad50fc980ce93ff7ea49135ff24fa6230">&#9670;&#160;</a></span>is_port_connected() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">bool</a> gnode::Node::is_port_connected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">int</a>&#160;</td>
+          <td class="paramname"><em>port_index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a port is connected by its index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_index</td><td>Index of the port. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if connected, false otherwise. </dd></dl>
 
 </div>
 </div>

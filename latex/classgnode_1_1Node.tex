@@ -68,6 +68,10 @@ std\+::string \mbox{\hyperlink{classgnode_1_1Node_a3d01eaca73078eb9edddcf7763e91
 \begin{DoxyCompactList}\small\item\em Get a reference to the value stored in a port by its index. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7}{get\+\_\+value\+\_\+ref\+\_\+void}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+index}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
 \begin{DoxyCompactList}\small\item\em Get a {\ttfamily void\texorpdfstring{$\ast$}{*}} reference to the value stored in a port by its index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230}{is\+\_\+port\+\_\+connected}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+index}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
+\begin{DoxyCompactList}\small\item\em Check if a port is connected by its index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}{is\+\_\+port\+\_\+connected}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+label}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
+\begin{DoxyCompactList}\small\item\em Check if a port is connected by its label. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{void}} \mbox{\hyperlink{classgnode_1_1Node_a9cf519ed32a97eabf3e1132f214be8ce}{set\+\_\+id}} (std\+::string \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\+\_\+id}})
 \begin{DoxyCompactList}\small\item\em Set a new identifier for the node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{void}} \mbox{\hyperlink{classgnode_1_1Node_ab92a852a47ff14588e809c5f7c5a2995}{set\+\_\+input\+\_\+data}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1BaseData}{Base\+Data}} $>$ data, \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+index}})
@@ -496,6 +500,42 @@ A {\ttfamily void\texorpdfstring{$\ast$}{*}} pointer to the value.
 {\em std\+::out\+\_\+of\+\_\+range} & If the port index is invalid. \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}\label{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78} 
+\index{gnode::Node@{gnode::Node}!is\_port\_connected@{is\_port\_connected}}
+\index{is\_port\_connected@{is\_port\_connected}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{is\_port\_connected()}{is\_port\_connected()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} gnode\+::\+Node\+::is\+\_\+port\+\_\+connected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&}]{port\+\_\+label }\end{DoxyParamCaption}) const}
+
+
+
+Check if a port is connected by its label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+label} & Label of the port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if connected, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230}\label{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230} 
+\index{gnode::Node@{gnode::Node}!is\_port\_connected@{is\_port\_connected}}
+\index{is\_port\_connected@{is\_port\_connected}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{is\_port\_connected()}{is\_port\_connected()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} gnode\+::\+Node\+::is\+\_\+port\+\_\+connected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}}}]{port\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Check if a port is connected by its index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+index} & Index of the port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if connected, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{classgnode_1_1Node_a9cf519ed32a97eabf3e1132f214be8ce}\label{classgnode_1_1Node_a9cf519ed32a97eabf3e1132f214be8ce} 
 \index{gnode::Node@{gnode::Node}!set\_id@{set\_id}}
 \index{set\_id@{set\_id}!gnode::Node@{gnode::Node}}
