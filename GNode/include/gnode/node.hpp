@@ -286,6 +286,20 @@ public:
   }
 
   /**
+   * @brief Check if a port is connected by its index.
+   * @param port_index Index of the port.
+   * @return True if connected, false otherwise.
+   */
+  bool is_port_connected(int port_index) const;
+
+  /**
+   * @brief Check if a port is connected by its label.
+   * @param port_label Label of the port.
+   * @return True if connected, false otherwise.
+   */
+  bool is_port_connected(const std::string &port_label) const;
+
+  /**
    * @brief Set a new identifier for the node.
    *
    * @param new_id The new unique identifier to be assigned to the node.

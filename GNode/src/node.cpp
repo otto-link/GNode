@@ -85,6 +85,31 @@ PortType Node::get_port_type(const std::string &port_label) const
   return this->ports.at(this->get_port_index(port_label))->get_port_type();
 }
 
+bool Node::is_port_connected(int port_index) const
+{
+  // Range check for the port index
+  if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
+    throw std::out_of_range("Invalid port index");
+
+  // for an input, check if it points to some data
+  if (this->ports[port_index]->get_port_type() == PortType::IN)
+    return (this->ports[port_index]->get_value_ref_void() != nullptr);
+
+  // for an output we have to check if a link exists
+  if (!this->p_graph) return false;
+
+  for (const auto &link : this->p_graph->get_links())
+    if (link.from == this->get_id() && port_index == link.port_from)
+      return true;
+
+  return false;
+}
+
+bool Node::is_port_connected(const std::string &port_label) const
+{
+  return this->is_port_connected(this->get_port_index(port_label));
+}
+
 void Node::set_input_data(std::shared_ptr<BaseData> data, int port_index)
 {
   if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
