@@ -69,7 +69,7 @@ int Node::get_port_index(const std::string &port_label) const
   for (size_t i = 0; i < this->ports.size(); ++i)
     if (this->ports[i]->get_label() == port_label) return (int)i;
 
-  throw std::runtime_error("Port label '" + port_label + "' not found.");
+  return -1;
 }
 
 std::string Node::get_port_label(int port_index) const
