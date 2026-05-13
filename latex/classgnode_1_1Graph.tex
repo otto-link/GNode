@@ -56,8 +56,10 @@ std\+::vector$<$ \mbox{\hyperlink{structgnode_1_1LinkView}{Link\+View}} $>$ \mbo
 \begin{DoxyCompactList}\small\item\em Get a pointer to a node by its ID. \end{DoxyCompactList}\item 
 const std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Node}{Node}} $>$ $>$ \& \mbox{\hyperlink{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5}{get\+\_\+nodes}} ()
 \begin{DoxyCompactList}\small\item\em Get a reference to the nodes map. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\+\_\+nodes\+\_\+to\+\_\+update}} (const std\+::string \&node\+\_\+id)
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a654f078aa0282c8580d855f3990fe94d}{get\+\_\+nodes\+\_\+to\+\_\+update}} (const std\+::vector$<$ std\+::string $>$ \&node\+\_\+ids)
 \begin{DoxyCompactList}\small\item\em Get node list for update priority. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\+\_\+nodes\+\_\+to\+\_\+update}} (const std\+::string \&node\+\_\+id)
+\item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\+\_\+node\+\_\+id\+\_\+available}} (const std\+::string \&node\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Check if a node ID is available in the graph. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a8e9e53b7b9d9b972a55f1e248ca7d4ac}{post\+\_\+update}} ()
@@ -379,8 +381,14 @@ Nodes map.
 \Hypertarget{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}\label{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48} 
 \index{gnode::Graph@{gnode::Graph}!get\_nodes\_to\_update@{get\_nodes\_to\_update}}
 \index{get\_nodes\_to\_update@{get\_nodes\_to\_update}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{get\_nodes\_to\_update()}{get\_nodes\_to\_update()}}
+\doxysubsubsection{\texorpdfstring{get\_nodes\_to\_update()}{get\_nodes\_to\_update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::get\+\_\+nodes\+\_\+to\+\_\+update (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+id }\end{DoxyParamCaption})}
+
+\Hypertarget{classgnode_1_1Graph_a654f078aa0282c8580d855f3990fe94d}\label{classgnode_1_1Graph_a654f078aa0282c8580d855f3990fe94d} 
+\index{gnode::Graph@{gnode::Graph}!get\_nodes\_to\_update@{get\_nodes\_to\_update}}
+\index{get\_nodes\_to\_update@{get\_nodes\_to\_update}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{get\_nodes\_to\_update()}{get\_nodes\_to\_update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::get\+\_\+nodes\+\_\+to\+\_\+update (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{node\+\_\+ids }\end{DoxyParamCaption})}
 
 
 

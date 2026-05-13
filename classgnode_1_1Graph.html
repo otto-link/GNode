@@ -179,8 +179,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa021388dff616ad1bbbaec49da2048c5" id="r_aa021388dff616ad1bbbaec49da2048c5"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classgnode_1_1Node.html">Node</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#aa021388dff616ad1bbbaec49da2048c5">get_nodes</a> ()</td></tr>
 <tr class="memdesc:aa021388dff616ad1bbbaec49da2048c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the nodes map.  <br /></td></tr>
 <tr class="separator:aa021388dff616ad1bbbaec49da2048c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a654f078aa0282c8580d855f3990fe94d" id="r_a654f078aa0282c8580d855f3990fe94d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a654f078aa0282c8580d855f3990fe94d">get_nodes_to_update</a> (const std::vector&lt; std::string &gt; &amp;node_ids)</td></tr>
+<tr class="memdesc:a654f078aa0282c8580d855f3990fe94d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get node list for update priority.  <br /></td></tr>
+<tr class="separator:a654f078aa0282c8580d855f3990fe94d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f645009a273a3e6cf948ba971786b48" id="r_a3f645009a273a3e6cf948ba971786b48"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48">get_nodes_to_update</a> (const std::string &amp;node_id)</td></tr>
-<tr class="memdesc:a3f645009a273a3e6cf948ba971786b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get node list for update priority.  <br /></td></tr>
 <tr class="separator:a3f645009a273a3e6cf948ba971786b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49f904ceace75a70d58f8047a71c8cb2" id="r_a49f904ceace75a70d58f8047a71c8cb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2">is_node_id_available</a> (const std::string &amp;node_id)</td></tr>
 <tr class="memdesc:a49f904ceace75a70d58f8047a71c8cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a node ID is available in the graph.  <br /></td></tr>
@@ -783,7 +785,7 @@ template&lt;typename T  = Node&gt; </div>
 </div>
 </div>
 <a id="a3f645009a273a3e6cf948ba971786b48" name="a3f645009a273a3e6cf948ba971786b48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f645009a273a3e6cf948ba971786b48">&#9670;&#160;</a></span>get_nodes_to_update()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f645009a273a3e6cf948ba971786b48">&#9670;&#160;</a></span>get_nodes_to_update() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -793,6 +795,24 @@ template&lt;typename T  = Node&gt; </div>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a654f078aa0282c8580d855f3990fe94d" name="a654f078aa0282c8580d855f3990fe94d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a654f078aa0282c8580d855f3990fe94d">&#9670;&#160;</a></span>get_nodes_to_update() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; gnode::Graph::get_nodes_to_update </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>node_ids</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

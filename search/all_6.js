@@ -14,7 +14,7 @@ var searchData=
   ['get_5flinks_11',['get_links',['../classgnode_1_1Graph.html#a8d009b6c0567c919756e622d5301a272',1,'gnode::Graph']]],
   ['get_5fnode_5fref_5fby_5fid_12',['get_node_ref_by_id',['../classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4',1,'gnode::Graph']]],
   ['get_5fnodes_13',['get_nodes',['../classgnode_1_1Graph.html#aa021388dff616ad1bbbaec49da2048c5',1,'gnode::Graph']]],
-  ['get_5fnodes_5fto_5fupdate_14',['get_nodes_to_update',['../classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48',1,'gnode::Graph']]],
+  ['get_5fnodes_5fto_5fupdate_14',['get_nodes_to_update',['../classgnode_1_1Graph.html#a654f078aa0282c8580d855f3990fe94d',1,'gnode::Graph::get_nodes_to_update(const std::vector&lt; std::string &gt; &amp;node_ids)'],['../classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48',1,'gnode::Graph::get_nodes_to_update(const std::string &amp;node_id)']]],
   ['get_5fnports_15',['get_nports',['../classgnode_1_1Node.html#a40b7e76feac324815d7d94a87bb394b6',1,'gnode::Node::get_nports() const'],['../classgnode_1_1Node.html#ae72e796793b39d754ad0d56ec7d609c0',1,'gnode::Node::get_nports(PortType port_type) const']]],
   ['get_5foutput_5fdata_16',['get_output_data',['../classgnode_1_1Node.html#a5eb5e20351b7d1095950e7b7c2341d17',1,'gnode::Node']]],
   ['get_5fp_5fgraph_17',['get_p_graph',['../classgnode_1_1Node.html#a0150ec8eb871ada532b9e2d00a5b168a',1,'gnode::Node']]],

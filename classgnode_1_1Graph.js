@@ -19,6 +19,7 @@ var classgnode_1_1Graph =
     [ "get_node_ref_by_id", "classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4", null ],
     [ "get_nodes", "classgnode_1_1Graph.html#aa021388dff616ad1bbbaec49da2048c5", null ],
     [ "get_nodes_to_update", "classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48", null ],
+    [ "get_nodes_to_update", "classgnode_1_1Graph.html#a654f078aa0282c8580d855f3990fe94d", null ],
     [ "is_node_id_available", "classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2", null ],
     [ "new_link", "classgnode_1_1Graph.html#ad049a7ce59b6c17bb9b12bf4ce468094", null ],
     [ "new_link", "classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b", null ],
