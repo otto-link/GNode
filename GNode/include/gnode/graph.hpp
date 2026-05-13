@@ -252,6 +252,9 @@ public:
   }
 
   /** Get node list for update priority */
+  std::vector<std::string> get_nodes_to_update(
+      const std::vector<std::string> &node_ids);
+
   std::vector<std::string> get_nodes_to_update(const std::string &node_id);
 
   /**

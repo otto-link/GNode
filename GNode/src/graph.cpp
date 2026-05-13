@@ -124,36 +124,63 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
   return points;
 }
 
-std::vector<std::string> Graph::get_nodes_to_update(const std::string &node_id)
+std::vector<std::string> Graph::get_nodes_to_update(
+    const std::vector<std::string> &node_ids)
 {
-  if (this->is_node_id_available(node_id))
+  // --- validate input nodes
+
+  for (const auto &node_id : node_ids)
   {
-    Logger::log()->trace("Graph::update: unknown node id {}", node_id);
-    return {};
+    if (this->is_node_id_available(node_id))
+    {
+      Logger::log()->trace("Graph::update: unknown node id {}", node_id);
+      return {};
+    }
   }
 
-  // --- first check that all the nodes upstream the node to be
-  // --- updated are up to date (i.e. no 'dirty'), if not, no need to
-  // --- update the node
+  // --- check upstream dependencies
 
   auto connectivity_up = this->get_connectivity_upstream();
 
-  for (auto &id_up : connectivity_up[node_id])
-    if (this->get_node_ref_by_id(id_up)->is_dirty)
+  for (const auto &node_id : node_ids)
+  {
+    for (const auto &id_up : connectivity_up[node_id])
     {
-      Logger::log()->trace("Graph::update: no update of the graph");
-      return {};
-    }
+      Node *p_node = this->get_node_ref_by_id(id_up);
 
-  // --- actual update
+      if (p_node && p_node->is_dirty)
+      {
+        Logger::log()->trace("Graph::update: no update of the graph");
+        return {};
+      }
+    }
+  }
+
+  // --- collect downstream dirty nodes
 
   std::vector<std::string> dirty_node_ids = {};
+
   auto connectivity_dw = this->get_connectivity_downstream();
-  helper_mark_dirty(node_id, dirty_node_ids, connectivity_dw);
 
-  std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
+  for (const auto &node_id : node_ids)
+    helper_mark_dirty(node_id, dirty_node_ids, connectivity_dw);
 
-  return sorted_id;
+  // --- remove duplicates
+
+  std::sort(dirty_node_ids.begin(), dirty_node_ids.end());
+
+  dirty_node_ids.erase(
+      std::unique(dirty_node_ids.begin(), dirty_node_ids.end()),
+      dirty_node_ids.end());
+
+  // --- topological ordering
+
+  return topological_sort(dirty_node_ids);
+}
+
+std::vector<std::string> Graph::get_nodes_to_update(const std::string &node_id)
+{
+  return this->get_nodes_to_update(std::vector<std::string>{node_id});
 }
 
 // connect two nodes, note that data types are not verified
