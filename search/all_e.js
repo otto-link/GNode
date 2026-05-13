@@ -7,12 +7,14 @@ var searchData=
   ['port_4',['port',['../classgnode_1_1Port.html',1,'gnode::Port'],['../index.html#autotoc_md12',1,'Port'],['../classgnode_1_1Port.html#aa81243dcac9dcc93eafa982c0f517fd0',1,'gnode::Port::Port(std::string label)'],['../classgnode_1_1Port.html#ac809ab0ca7bb9d4ab0a43be36a2a1fa8',1,'gnode::Port::Port()=default']]],
   ['port_20hpp_5',['Ports - InputPort and OutputPort (in port.hpp)',['../index.html#autotoc_md11',1,'']]],
   ['port_2ehpp_6',['port.hpp',['../port_8hpp.html',1,'']]],
-  ['port_5ffrom_7',['port_from',['../structgnode_1_1Link.html#a386c1991e1a73e3835e66288b6d214a7',1,'gnode::Link']]],
-  ['port_5fto_8',['port_to',['../structgnode_1_1Link.html#ae8ad3ff231cf88756b5eade7b42a5f29',1,'gnode::Link']]],
-  ['ports_9',['ports',['../classgnode_1_1Node.html#a0ebbeed454c9ca2b3b3f15d87ce83981',1,'gnode::Node']]],
-  ['ports_20inputport_20and_20outputport_20in_20port_20hpp_10',['Ports - InputPort and OutputPort (in port.hpp)',['../index.html#autotoc_md11',1,'']]],
-  ['porttype_11',['PortType',['../namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059',1,'gnode']]],
-  ['post_5fupdate_12',['post_update',['../classgnode_1_1Graph.html#a8e9e53b7b9d9b972a55f1e248ca7d4ac',1,'gnode::Graph']]],
-  ['print_13',['print',['../classgnode_1_1Graph.html#a31d979ddee434a4ff4b21d6c5dccfb0e',1,'gnode::Graph::print()'],['../structgnode_1_1Link.html#ab621eaac5f89019016232fc35f94bc15',1,'gnode::Link::print()']]],
-  ['purpose_14',['Purpose',['../index.html#autotoc_md17',1,'']]]
+  ['port_5ffrom_7',['port_from',['../structgnode_1_1Link.html#a386c1991e1a73e3835e66288b6d214a7',1,'gnode::Link::port_from'],['../structgnode_1_1LinkView.html#a68292ad68923b8661bedd80ebaea4a6d',1,'gnode::LinkView::port_from']]],
+  ['port_5flabel_5ffrom_8',['port_label_from',['../structgnode_1_1LinkView.html#ab479bb8bfbc2c6cca56b3c9e7a51ec85',1,'gnode::LinkView']]],
+  ['port_5flabel_5fto_9',['port_label_to',['../structgnode_1_1LinkView.html#aeee3c286671b1df50be0a9abcf3ed033',1,'gnode::LinkView']]],
+  ['port_5fto_10',['port_to',['../structgnode_1_1Link.html#ae8ad3ff231cf88756b5eade7b42a5f29',1,'gnode::Link::port_to'],['../structgnode_1_1LinkView.html#a9ad2e4a3abfc15e3ef1dc9ab1142acac',1,'gnode::LinkView::port_to']]],
+  ['ports_11',['ports',['../classgnode_1_1Node.html#a0ebbeed454c9ca2b3b3f15d87ce83981',1,'gnode::Node']]],
+  ['ports_20inputport_20and_20outputport_20in_20port_20hpp_12',['Ports - InputPort and OutputPort (in port.hpp)',['../index.html#autotoc_md11',1,'']]],
+  ['porttype_13',['PortType',['../namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059',1,'gnode']]],
+  ['post_5fupdate_14',['post_update',['../classgnode_1_1Graph.html#a8e9e53b7b9d9b972a55f1e248ca7d4ac',1,'gnode::Graph']]],
+  ['print_15',['print',['../classgnode_1_1Graph.html#a31d979ddee434a4ff4b21d6c5dccfb0e',1,'gnode::Graph::print()'],['../structgnode_1_1Link.html#ab621eaac5f89019016232fc35f94bc15',1,'gnode::Link::print()']]],
+  ['purpose_16',['Purpose',['../index.html#autotoc_md17',1,'']]]
 ];

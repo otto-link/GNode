@@ -6,7 +6,8 @@ var searchData=
   ['link_20in_20link_20hpp_3',['Link (in link.hpp)',['../index.html#autotoc_md16',1,'']]],
   ['link_2ehpp_4',['link.hpp',['../link_8hpp.html',1,'']]],
   ['links_5',['links',['../classgnode_1_1Graph.html#a1b1d5550849d281c7001e5fdedb9b6e4',1,'gnode::Graph']]],
-  ['log_6',['log',['../classgnode_1_1Logger.html#ab67dedd357837b107110708123c34fdc',1,'gnode::Logger']]],
-  ['logger_7',['logger',['../classgnode_1_1Logger.html',1,'gnode::Logger'],['../classgnode_1_1Logger.html#a4ba03e5c0a0fa09f45117d53c648bf9b',1,'gnode::Logger::Logger()=default'],['../classgnode_1_1Logger.html#ab7fa8bd30a64dd5e088873f0e0b43511',1,'gnode::Logger::Logger(const Logger &amp;)=delete']]],
-  ['logger_2ehpp_8',['logger.hpp',['../logger_8hpp.html',1,'']]]
+  ['linkview_6',['linkview',['../structgnode_1_1LinkView.html',1,'gnode::LinkView'],['../structgnode_1_1LinkView.html#adefbde10dfa6faa1246ad1b3ffda9f68',1,'gnode::LinkView::LinkView()']]],
+  ['log_7',['log',['../classgnode_1_1Logger.html#ab67dedd357837b107110708123c34fdc',1,'gnode::Logger']]],
+  ['logger_8',['logger',['../classgnode_1_1Logger.html',1,'gnode::Logger'],['../classgnode_1_1Logger.html#a4ba03e5c0a0fa09f45117d53c648bf9b',1,'gnode::Logger::Logger()=default'],['../classgnode_1_1Logger.html#ab7fa8bd30a64dd5e088873f0e0b43511',1,'gnode::Logger::Logger(const Logger &amp;)=delete']]],
+  ['logger_2ehpp_9',['logger.hpp',['../logger_8hpp.html',1,'']]]
 ];

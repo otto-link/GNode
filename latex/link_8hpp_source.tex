@@ -13,23 +13,37 @@
 \DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegnode}{gnode}}}
 \DoxyCodeLine{00025\ \{}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgnode_1_1Link}{Link}}}
-\DoxyCodeLine{00037\ \{}
-\DoxyCodeLine{00038\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}};\ \ \ \ \ \ }
-\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}};\ }
-\DoxyCodeLine{00040\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}};\ \ \ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{structgnode_1_1Link_a09386fc22bee12749c5223d08b4a320c}{Link}}(std::string\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}},\ std::string\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}})}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ :\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}(\mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}),\ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}}(\mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}}),\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}(\mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}),\ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}}(\mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}})}
-\DoxyCodeLine{00052\ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgnode_1_1Link_a03cef12ed1d2b558dacd8fd0dab63421}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structgnode_1_1Link}{Link}}\ \&other\_link)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structgnode_1_1Link_ab621eaac5f89019016232fc35f94bc15}{print}}();}
-\DoxyCodeLine{00068\ \};}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }Node;\ \textcolor{comment}{//\ forward}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgnode_1_1Link}{Link}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}};\ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}};\ }
+\DoxyCodeLine{00042\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}};\ \ \ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{structgnode_1_1Link_a09386fc22bee12749c5223d08b4a320c}{Link}}(std::string\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}},\ std::string\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ :\ \mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}(\mbox{\hyperlink{structgnode_1_1Link_af166573f85c51abe35e73c24ad008f7c}{from}}),\ \mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}}(\mbox{\hyperlink{structgnode_1_1Link_a386c1991e1a73e3835e66288b6d214a7}{port\_from}}),\ \mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}(\mbox{\hyperlink{structgnode_1_1Link_a47ec34944510712d9a86b736a4fff842}{to}}),\ \mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}}(\mbox{\hyperlink{structgnode_1_1Link_ae8ad3ff231cf88756b5eade7b42a5f29}{port\_to}})}
+\DoxyCodeLine{00054\ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgnode_1_1Link_a03cef12ed1d2b558dacd8fd0dab63421}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structgnode_1_1Link}{Link}}\ \&other\_link)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structgnode_1_1Link_ab621eaac5f89019016232fc35f94bc15}{print}}();}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgnode_1_1LinkView}{LinkView}}}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00085\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1LinkView_ae3b5028fe7fa7ab0ad21b62d1fe8327b}{from}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1LinkView_a712f4fa87b63a10dc88ebecfc6a0d4fa}{to}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1LinkView_a68292ad68923b8661bedd80ebaea4a6d}{port\_from}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structgnode_1_1LinkView_a9ad2e4a3abfc15e3ef1dc9ab1142acac}{port\_to}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1LinkView_ab479bb8bfbc2c6cca56b3c9e7a51ec85}{port\_label\_from}};\ }
+\DoxyCodeLine{00090\ \ \ std::string\ \mbox{\hyperlink{structgnode_1_1LinkView_aeee3c286671b1df50be0a9abcf3ed033}{port\_label\_to}};\ \ \ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{structgnode_1_1LinkView_adefbde10dfa6faa1246ad1b3ffda9f68}{LinkView}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structgnode_1_1Link}{Link}}\ \&link,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classgnode_1_1Node}{Node}}\ \&node\_from,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classgnode_1_1Node}{Node}}\ \&node\_to);}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
 
 \end{DoxyCode}

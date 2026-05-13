@@ -50,6 +50,8 @@ std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyper
 \item 
 const std\+::vector$<$ \mbox{\hyperlink{structgnode_1_1Link}{Link}} $>$ \& \mbox{\hyperlink{classgnode_1_1Graph_a8d009b6c0567c919756e622d5301a272}{get\+\_\+links}} () const
 \begin{DoxyCompactList}\small\item\em Get the link storage. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structgnode_1_1LinkView}{Link\+View}} $>$ \mbox{\hyperlink{classgnode_1_1Graph_a06f10897b0d1987ba7180a6af14aa6dd}{get\+\_\+link\+\_\+views}} (const std\+::string \&node\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Returns the link views connected to a node. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T  = Node$>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Graph_abc8dbe305fa98e66d8d68a4eef03d8e4}{get\+\_\+node\+\_\+ref\+\_\+by\+\_\+id}} (const std\+::string \&node\+\_\+id) const
 \begin{DoxyCompactList}\small\item\em Get a pointer to a node by its ID. \end{DoxyCompactList}\item 
 const std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Node}{Node}} $>$ $>$ \& \mbox{\hyperlink{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5}{get\+\_\+nodes}} ()
@@ -297,6 +299,28 @@ An available unique identifier.
 \doxysubsubsection{\texorpdfstring{get\_id\_count\_ref()}{get\_id\_count\_ref()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \texorpdfstring{$\ast$}{*} gnode\+::\+Graph\+::get\+\_\+id\+\_\+count\+\_\+ref (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classgnode_1_1Graph_a06f10897b0d1987ba7180a6af14aa6dd}\label{classgnode_1_1Graph_a06f10897b0d1987ba7180a6af14aa6dd} 
+\index{gnode::Graph@{gnode::Graph}!get\_link\_views@{get\_link\_views}}
+\index{get\_link\_views@{get\_link\_views}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{get\_link\_views()}{get\_link\_views()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structgnode_1_1LinkView}{Link\+View}} $>$ gnode\+::\+Graph\+::get\+\_\+link\+\_\+views (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+id }\end{DoxyParamCaption}) const}
+
+
+
+Returns the link views connected to a node. 
+
+This function collects all links where the specified node is either the source or destination node and converts them into {\ttfamily \doxylink{structgnode_1_1LinkView}{Link\+View}} objects enriched with node and port information.
+
+Invalid links referencing missing nodes are ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+\_\+id} & Identifier of the target node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of connected {\ttfamily \doxylink{structgnode_1_1LinkView}{Link\+View}} objects. 
+\end{DoxyReturn}
 \Hypertarget{classgnode_1_1Graph_a8d009b6c0567c919756e622d5301a272}\label{classgnode_1_1Graph_a8d009b6c0567c919756e622d5301a272} 
 \index{gnode::Graph@{gnode::Graph}!get\_links@{get\_links}}
 \index{get\_links@{get\_links}!gnode::Graph@{gnode::Graph}}

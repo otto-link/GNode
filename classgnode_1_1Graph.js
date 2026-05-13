@@ -14,6 +14,7 @@ var classgnode_1_1Graph =
     [ "get_id", "classgnode_1_1Graph.html#a6d416e8a1728e1b85d2eef3f6c658a1d", null ],
     [ "get_id_count", "classgnode_1_1Graph.html#a287f22f5e9d40464a9949ece2c3feab7", null ],
     [ "get_id_count_ref", "classgnode_1_1Graph.html#a22c1c44fb8515712ba23cb5e40f50525", null ],
+    [ "get_link_views", "classgnode_1_1Graph.html#a06f10897b0d1987ba7180a6af14aa6dd", null ],
     [ "get_links", "classgnode_1_1Graph.html#a8d009b6c0567c919756e622d5301a272", null ],
     [ "get_node_ref_by_id", "classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4", null ],
     [ "get_nodes", "classgnode_1_1Graph.html#aa021388dff616ad1bbbaec49da2048c5", null ],

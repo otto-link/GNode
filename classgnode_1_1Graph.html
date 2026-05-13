@@ -169,6 +169,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d009b6c0567c919756e622d5301a272" id="r_a8d009b6c0567c919756e622d5301a272"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structgnode_1_1Link.html">Link</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a8d009b6c0567c919756e622d5301a272">get_links</a> () const</td></tr>
 <tr class="memdesc:a8d009b6c0567c919756e622d5301a272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the link storage.  <br /></td></tr>
 <tr class="separator:a8d009b6c0567c919756e622d5301a272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f10897b0d1987ba7180a6af14aa6dd" id="r_a06f10897b0d1987ba7180a6af14aa6dd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgnode_1_1LinkView.html">LinkView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a06f10897b0d1987ba7180a6af14aa6dd">get_link_views</a> (const std::string &amp;node_id) const</td></tr>
+<tr class="memdesc:a06f10897b0d1987ba7180a6af14aa6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the link views connected to a node.  <br /></td></tr>
+<tr class="separator:a06f10897b0d1987ba7180a6af14aa6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc8dbe305fa98e66d8d68a4eef03d8e4" id="r_abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="memTemplParams" colspan="2">template&lt;typename T  = Node&gt; </td></tr>
 <tr class="memitem:abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4">get_node_ref_by_id</a> (const std::string &amp;node_id) const</td></tr>
 <tr class="memdesc:abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to a node by its ID.  <br /></td></tr>
@@ -642,6 +645,35 @@ template&lt;typename U , typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06f10897b0d1987ba7180a6af14aa6dd" name="a06f10897b0d1987ba7180a6af14aa6dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f10897b0d1987ba7180a6af14aa6dd">&#9670;&#160;</a></span>get_link_views()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structgnode_1_1LinkView.html">LinkView</a> &gt; gnode::Graph::get_link_views </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the link views connected to a node. </p>
+<p>This function collects all links where the specified node is either the source or destination node and converts them into <code><a class="el" href="structgnode_1_1LinkView.html" title="Provides a resolved and enriched view of a graph link.">LinkView</a></code> objects enriched with node and port information.</p>
+<p>Invalid links referencing missing nodes are ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>Identifier of the target node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of connected <code><a class="el" href="structgnode_1_1LinkView.html" title="Provides a resolved and enriched view of a graph link.">LinkView</a></code> objects. </dd></dl>
 
 </div>
 </div>

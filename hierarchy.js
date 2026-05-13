@@ -5,6 +5,7 @@ var hierarchy =
     ] ],
     [ "gnode::Graph", "classgnode_1_1Graph.html", null ],
     [ "gnode::Link", "structgnode_1_1Link.html", null ],
+    [ "gnode::LinkView", "structgnode_1_1LinkView.html", null ],
     [ "gnode::Logger", "classgnode_1_1Logger.html", null ],
     [ "gnode::Node", "classgnode_1_1Node.html", null ],
     [ "gnode::Point", "structgnode_1_1Point.html", null ],
