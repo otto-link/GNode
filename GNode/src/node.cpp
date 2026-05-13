@@ -85,6 +85,11 @@ PortType Node::get_port_type(const std::string &port_label) const
   return this->ports.at(this->get_port_index(port_label))->get_port_type();
 }
 
+bool Node::has_port(const std::string &port_label) const
+{
+  return this->get_port_index(port_label) == -1 ? false : true;
+}
+
 bool Node::is_port_connected(int port_index) const
 {
   // Range check for the port index

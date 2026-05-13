@@ -74,5 +74,19 @@ int main()
   // g.print();
   // g.export_to_graphviz();
 
+  // port checking
+  std::cout << (g.get_node_ref_by_id(id_value3)->has_port("value") ? "True"
+                                                                   : "False")
+            << "\n";
+
+  std::cout << (g.get_node_ref_by_id(id_value3)->has_port<int>("value")
+                    ? "True"
+                    : "False")
+            << "\n";
+
+  std::cout << (g.get_node_ref_by_id(id_value3)->has_port("a") ? "True"
+                                                               : "False")
+            << "\n";
+
   return 0;
 }

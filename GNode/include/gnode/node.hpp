@@ -238,8 +238,7 @@ public:
         }
       }
 
-    // If no matching port is found, throw an exception
-    throw std::runtime_error("Port with label '" + port_label + "' not found.");
+    return nullptr;
   }
 
   /**
@@ -283,6 +282,26 @@ public:
       throw std::out_of_range("Invalid port index");
 
     return this->ports[port_index]->get_value_ref_void();
+  }
+
+  /**
+   * @brief Checks whether a port with the given label exists.
+   * @param port_label Label of the port to search for.
+   * @return `true` if the port exists, otherwise `false`.
+   */
+  bool has_port(const std::string &port_label) const;
+
+  /**
+   * @brief Checks whether a port exists and matches the requested type.
+   * @tparam T Expected port value type.
+   * @param port_label Label of the port to search for.
+   * @return `true` if the port exists and can be accessed as type `T`,
+   * otherwise `false`.
+   */
+  template <typename T> bool has_port(const std::string &port_label) const
+  {
+    if (!this->has_port(port_label)) return false;
+    return this->get_value_ref<T>(port_label) ? true : false;
   }
 
   /**

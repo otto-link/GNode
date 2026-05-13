@@ -6,8 +6,14 @@
 #include <iostream>
 #include <queue>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wrange-loop-construct"
+
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
+
+#pragma GCC diagnostic pop
 
 #include "gnode/graph.hpp"
 #include "gnode/logger.hpp"
