@@ -9,6 +9,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wrange-loop-construct"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wreturn-type"
 
 #include "demekgraph/updated/include/graph.hpp"
 #include "demekgraph/updated/include/layout.hpp"
