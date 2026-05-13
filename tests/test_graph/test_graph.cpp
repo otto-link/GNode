@@ -44,6 +44,13 @@ public:
   void compute() {}
 };
 
+static void check(const std::string &label, bool result, bool expected)
+{
+  const char *mark = (result == expected) ? "✓" : "✗";
+  const char *val = result ? "true" : "false";
+  std::cout << "  " << mark << "  " << label << ": " << val << "\n";
+}
+
 int main()
 {
   gnode::Graph g;
@@ -74,19 +81,31 @@ int main()
   // g.print();
   // g.export_to_graphviz();
 
-  // port checking
-  std::cout << (g.get_node_ref_by_id(id_value3)->has_port("value") ? "True"
-                                                                   : "False")
-            << "\n";
+  // --- Cycle checking
 
-  std::cout << (g.get_node_ref_by_id(id_value3)->has_port<int>("value")
-                    ? "True"
-                    : "False")
-            << "\n";
+  std::cout << "cycle detection:\n";
+  check("is_reachable(value3 → value3)  [self-loop]",
+        g.is_reachable(id_value3, id_value3),
+        true);
+  check("is_reachable(add1   → value3)  [no path]",
+        g.is_reachable(id_add1, id_value3),
+        false);
+  check("is_reachable(add1   → add2)    [valid path]",
+        g.is_reachable(id_add1, id_add2),
+        true);
 
-  std::cout << (g.get_node_ref_by_id(id_value3)->has_port("a") ? "True"
-                                                               : "False")
-            << "\n";
+  // Port checking
+
+  auto *value3 = g.get_node_ref_by_id(id_value3);
+
+  std::cout << "\nport checks on Value node:\n";
+  check(R"(has_port("value")         [exists])",
+        value3->has_port("value"),
+        true);
+  check(R"(has_port<int>("value")    [wrong type])",
+        value3->has_port<int>("value"),
+        false);
+  check(R"(has_port("a")             [absent])", value3->has_port("a"), false);
 
   return 0;
 }

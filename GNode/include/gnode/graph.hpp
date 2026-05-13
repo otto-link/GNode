@@ -17,6 +17,7 @@
 #include <functional>
 #include <map>
 #include <memory>
+#include <unordered_set>
 
 #include "gnode/link.hpp"
 #include "gnode/node.hpp"
@@ -265,6 +266,23 @@ public:
    * @return false If the ID is already taken.
    */
   bool is_node_id_available(const std::string &node_id);
+
+  /**
+   * @brief Checks whether a target node is reachable from a start node.
+   *
+   * This function recursively traverses downstream connections to determine
+   * whether a path exists between two nodes. It can also be used to detect
+   * graph cycles (using start = node_to and target = node_from, i.e.
+   * "backwards").
+   *
+   * @param start Identifier of the starting node.
+   * @param target Identifier of the target node.
+   * @param visited Set of already visited node identifiers.
+   * @return `true` if the target node is reachable, otherwise `false`.
+   */
+  bool is_reachable(const std::string              &start,
+                    const std::string              &target,
+                    std::unordered_set<std::string> visited = {}) const;
 
   /**
    * @brief Method called after the graph update process is completed.

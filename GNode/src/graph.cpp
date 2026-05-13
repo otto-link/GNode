@@ -189,6 +189,24 @@ std::vector<std::string> Graph::get_nodes_to_update(const std::string &node_id)
   return this->get_nodes_to_update(std::vector<std::string>{node_id});
 }
 
+bool Graph::is_reachable(const std::string              &start,
+                         const std::string              &target,
+                         std::unordered_set<std::string> visited) const
+{
+  if (start == target) return true;
+  if (visited.count(start)) return false;
+  visited.insert(start);
+
+  for (const auto &link : this->links)
+  {
+    if (link.from == start)
+    {
+      if (is_reachable(link.to, target, visited)) return true;
+    }
+  }
+  return false;
+}
+
 // connect two nodes, note that data types are not verified
 bool Graph::new_link(const std::string &from,
                      int                port_from,
