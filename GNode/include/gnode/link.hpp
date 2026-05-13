@@ -24,6 +24,8 @@
 namespace gnode
 {
 
+class Node; // forward
+
 /**
  * @struct Link
  * @brief Represents a connection between two nodes in a graph.
@@ -65,6 +67,40 @@ struct Link
    * This function outputs the details of the `Link` to the standard output.
    */
   void print();
+};
+
+/**
+ * @struct LinkView
+ * @brief Provides a resolved and enriched view of a graph link.
+ *
+ * `LinkView` extends the raw `Link` information with additional contextual
+ * data extracted from the connected nodes, such as human-readable port labels.
+ *
+ * This structure is intended for runtime querying, visualization, debugging,
+ * or user interface purposes, while keeping the original `Link` structure
+ * lightweight and focused on graph topology representation.
+ */
+struct LinkView
+{
+  std::string from;            ///< Identifier of the source node.
+  std::string to;              ///< Identifier of the destination node.
+  int         port_from;       ///< Port number on the source node.
+  int         port_to;         ///< Port number on the destination node.
+  std::string port_label_from; ///< Label of the source port.
+  std::string port_label_to;   ///< Label of the destination port.
+
+  /**
+   * @brief Constructs a `LinkView` from a raw link and its associated nodes.
+   *
+   * This constructor extracts additional contextual information from the
+   * provided nodes, such as port labels, while preserving the original
+   * link connectivity information.
+   *
+   * @param link Raw link definition.
+   * @param node_from Source node associated with the link.
+   * @param node_to Destination node associated with the link.
+   */
+  LinkView(const Link &link, const Node &node_from, const Node &node_to);
 };
 
 } // namespace gnode

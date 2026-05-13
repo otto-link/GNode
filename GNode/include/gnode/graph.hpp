@@ -205,6 +205,20 @@ public:
   const std::vector<Link> &get_links() const { return this->links; }
 
   /**
+   * @brief Returns the link views connected to a node.
+   *
+   * This function collects all links where the specified node is either
+   * the source or destination node and converts them into `LinkView`
+   * objects enriched with node and port information.
+   *
+   * Invalid links referencing missing nodes are ignored.
+   *
+   * @param node_id Identifier of the target node.
+   * @return Vector of connected `LinkView` objects.
+   */
+  std::vector<LinkView> get_link_views(const std::string &node_id) const;
+
+  /**
    * @brief Get a pointer to a node by its ID.
    *
    * @tparam T Node type, default is Node.

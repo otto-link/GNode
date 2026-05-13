@@ -346,6 +346,27 @@ std::map<std::string, std::vector<std::string>> Graph::
   return connectivity;
 }
 
+std::vector<LinkView> Graph::get_link_views(const std::string &node_id) const
+{
+  std::vector<gnode::LinkView> link_views = {};
+
+  for (const auto &link : this->get_links())
+  {
+    if (link.from == node_id || link.to == node_id)
+    {
+      Node *p_from = this->get_node_ref_by_id(link.from);
+      Node *p_to = this->get_node_ref_by_id(link.to);
+
+      if (!p_from || !p_to) continue;
+
+      LinkView data(link, *p_from, *p_to);
+      link_views.push_back(data);
+    }
+  }
+
+  return link_views;
+}
+
 bool Graph::is_node_id_available(const std::string &node_id)
 {
   return !this->nodes.contains(node_id);

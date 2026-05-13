@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "gnode/link.hpp"
+#include "gnode/node.hpp"
 
 namespace gnode
 {
@@ -19,6 +20,18 @@ void Link::print()
 {
   std::cout << "from: " << from << "(" << port_from << ") to: " << to << "("
             << port_to << ")" << std::endl;
+}
+
+LinkView::LinkView(const Link &link, const Node &node_from, const Node &node_to)
+{
+  this->from = link.from;
+  this->to = link.to;
+
+  this->port_from = link.port_from;
+  this->port_to = link.port_to;
+
+  this->port_label_from = node_from.get_port_label(this->port_from);
+  this->port_label_to = node_to.get_port_label(this->port_to);
 }
 
 } // namespace gnode
