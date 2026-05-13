@@ -7,7 +7,7 @@ A generic node-based data structure for node graph programming in C++.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0.
+This project is licensed under the GNU Lesser General Public License v3.0.
 
 ## Getting started
 
