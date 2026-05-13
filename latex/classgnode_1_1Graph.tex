@@ -62,6 +62,8 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a3f64500
 \item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\+\_\+node\+\_\+id\+\_\+available}} (const std\+::string \&node\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Check if a node ID is available in the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}{is\+\_\+reachable}} (const std\+::string \&start, const std\+::string \&target, std\+::unordered\+\_\+set$<$ std\+::string $>$ visited=\{\}) const
+\begin{DoxyCompactList}\small\item\em Checks whether a target node is reachable from a start node. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a8e9e53b7b9d9b972a55f1e248ca7d4ac}{post\+\_\+update}} ()
 \begin{DoxyCompactList}\small\item\em Method called after the graph update process is completed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classgnode_1_1Graph_a31d979ddee434a4ff4b21d6c5dccfb0e}{print}} ()
@@ -413,6 +415,30 @@ Check if a node ID is available in the graph.
 true If the ID is available. 
 
 false If the ID is already taken. 
+\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}\label{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e} 
+\index{gnode::Graph@{gnode::Graph}!is\_reachable@{is\_reachable}}
+\index{is\_reachable@{is\_reachable}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{is\_reachable()}{is\_reachable()}}
+{\footnotesize\ttfamily bool gnode\+::\+Graph\+::is\+\_\+reachable (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start,  }\item[{const std\+::string \&}]{target,  }\item[{std\+::unordered\+\_\+set$<$ std\+::string $>$}]{visited = {\ttfamily \{\}} }\end{DoxyParamCaption}) const}
+
+
+
+Checks whether a target node is reachable from a start node. 
+
+This function recursively traverses downstream connections to determine whether a path exists between two nodes. It can also be used to detect graph cycles (using start = node\+\_\+to and target = node\+\_\+from, i.\+e. "{}backwards"{}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Identifier of the starting node. \\
+\hline
+{\em target} & Identifier of the target node. \\
+\hline
+{\em visited} & Set of already visited node identifiers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the target node is reachable, otherwise {\ttfamily false}. 
 \end{DoxyReturn}
 \Hypertarget{classgnode_1_1Graph_ad049a7ce59b6c17bb9b12bf4ce468094}\label{classgnode_1_1Graph_ad049a7ce59b6c17bb9b12bf4ce468094} 
 \index{gnode::Graph@{gnode::Graph}!new\_link@{new\_link}}

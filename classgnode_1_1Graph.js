@@ -21,6 +21,7 @@ var classgnode_1_1Graph =
     [ "get_nodes_to_update", "classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48", null ],
     [ "get_nodes_to_update", "classgnode_1_1Graph.html#a654f078aa0282c8580d855f3990fe94d", null ],
     [ "is_node_id_available", "classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2", null ],
+    [ "is_reachable", "classgnode_1_1Graph.html#acc097cff980d014a25b7cc0cd4f06a4e", null ],
     [ "new_link", "classgnode_1_1Graph.html#ad049a7ce59b6c17bb9b12bf4ce468094", null ],
     [ "new_link", "classgnode_1_1Graph.html#a04a236017638d460d551ed5955c9751b", null ],
     [ "post_update", "classgnode_1_1Graph.html#a8e9e53b7b9d9b972a55f1e248ca7d4ac", null ],

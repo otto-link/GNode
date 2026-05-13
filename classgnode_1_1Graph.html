@@ -187,6 +187,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a49f904ceace75a70d58f8047a71c8cb2" id="r_a49f904ceace75a70d58f8047a71c8cb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2">is_node_id_available</a> (const std::string &amp;node_id)</td></tr>
 <tr class="memdesc:a49f904ceace75a70d58f8047a71c8cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a node ID is available in the graph.  <br /></td></tr>
 <tr class="separator:a49f904ceace75a70d58f8047a71c8cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc097cff980d014a25b7cc0cd4f06a4e" id="r_acc097cff980d014a25b7cc0cd4f06a4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#acc097cff980d014a25b7cc0cd4f06a4e">is_reachable</a> (const std::string &amp;start, const std::string &amp;target, std::unordered_set&lt; std::string &gt; visited={}) const</td></tr>
+<tr class="memdesc:acc097cff980d014a25b7cc0cd4f06a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a target node is reachable from a start node.  <br /></td></tr>
+<tr class="separator:acc097cff980d014a25b7cc0cd4f06a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e9e53b7b9d9b972a55f1e248ca7d4ac" id="r_a8e9e53b7b9d9b972a55f1e248ca7d4ac"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a8e9e53b7b9d9b972a55f1e248ca7d4ac">post_update</a> ()</td></tr>
 <tr class="memdesc:a8e9e53b7b9d9b972a55f1e248ca7d4ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method called after the graph update process is completed.  <br /></td></tr>
 <tr class="separator:a8e9e53b7b9d9b972a55f1e248ca7d4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -848,6 +851,52 @@ template&lt;typename T  = Node&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>true If the ID is available. </dd>
 <dd>
 false If the ID is already taken. </dd></dl>
+
+</div>
+</div>
+<a id="acc097cff980d014a25b7cc0cd4f06a4e" name="acc097cff980d014a25b7cc0cd4f06a4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc097cff980d014a25b7cc0cd4f06a4e">&#9670;&#160;</a></span>is_reachable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gnode::Graph::is_reachable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_set&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>visited</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks whether a target node is reachable from a start node. </p>
+<p>This function recursively traverses downstream connections to determine whether a path exists between two nodes. It can also be used to detect graph cycles (using start = node_to and target = node_from, i.e. "backwards").</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Identifier of the starting node. </td></tr>
+    <tr><td class="paramname">target</td><td>Identifier of the target node. </td></tr>
+    <tr><td class="paramname">visited</td><td>Set of already visited node identifiers. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the target node is reachable, otherwise <code>false</code>. </dd></dl>
 
 </div>
 </div>

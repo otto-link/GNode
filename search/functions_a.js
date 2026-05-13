@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['point_0',['point',['../structgnode_1_1Point.html#a635374c311bbb0a26f2a115154c841cc',1,'gnode::Point::Point()'],['../structgnode_1_1Point.html#a48d36bd0da55ea1beb3518c098f2abf9',1,'gnode::Point::Point(float x, float y)']]],
-  ['port_1',['port',['../classgnode_1_1Port.html#ac809ab0ca7bb9d4ab0a43be36a2a1fa8',1,'gnode::Port::Port()=default'],['../classgnode_1_1Port.html#aa81243dcac9dcc93eafa982c0f517fd0',1,'gnode::Port::Port(std::string label)']]],
-  ['post_5fupdate_2',['post_update',['../classgnode_1_1Graph.html#a8e9e53b7b9d9b972a55f1e248ca7d4ac',1,'gnode::Graph']]],
-  ['print_3',['print',['../classgnode_1_1Graph.html#a31d979ddee434a4ff4b21d6c5dccfb0e',1,'gnode::Graph::print()'],['../structgnode_1_1Link.html#ab621eaac5f89019016232fc35f94bc15',1,'gnode::Link::print()']]]
+  ['operator_3d_0',['operator=',['../classgnode_1_1Logger.html#ad5139f8ec52ec067d9682eaf7bdaf037',1,'gnode::Logger']]],
+  ['operator_3d_3d_1',['operator==',['../structgnode_1_1Link.html#a03cef12ed1d2b558dacd8fd0dab63421',1,'gnode::Link']]],
+  ['output_2',['output',['../classgnode_1_1Output.html#ac13fcb0d89a11e5331d902131f8407b0',1,'gnode::Output::Output()'],['../classgnode_1_1Output.html#a85cff283780f66ad8b963436ca60434c',1,'gnode::Output::Output(std::string label, Args &amp;&amp;...args)']]]
 ];

@@ -68,6 +68,10 @@ std\+::string \mbox{\hyperlink{classgnode_1_1Node_a3d01eaca73078eb9edddcf7763e91
 \begin{DoxyCompactList}\small\item\em Get a reference to the value stored in a port by its index. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7}{get\+\_\+value\+\_\+ref\+\_\+void}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+index}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
 \begin{DoxyCompactList}\small\item\em Get a {\ttfamily void\texorpdfstring{$\ast$}{*}} reference to the value stored in a port by its index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}{has\+\_\+port}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+label}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
+\begin{DoxyCompactList}\small\item\em Checks whether a port with the given label exists. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{typename}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}} $>$ }\\\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_abec4fbaa8df4ddfb64e69721badb7127}{has\+\_\+port}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+label}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
+\begin{DoxyCompactList}\small\item\em Checks whether a port exists and matches the requested type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230}{is\+\_\+port\+\_\+connected}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{int}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+index}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
 \begin{DoxyCompactList}\small\item\em Check if a port is connected by its index. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}{is\+\_\+port\+\_\+connected}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+label}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
@@ -500,6 +504,48 @@ A {\ttfamily void\texorpdfstring{$\ast$}{*}} pointer to the value.
 {\em std\+::out\+\_\+of\+\_\+range} & If the port index is invalid. \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}\label{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b} 
+\index{gnode::Node@{gnode::Node}!has\_port@{has\_port}}
+\index{has\_port@{has\_port}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{has\_port()}{has\_port()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} gnode\+::\+Node\+::has\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&}]{port\+\_\+label }\end{DoxyParamCaption}) const}
+
+
+
+Checks whether a port with the given label exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+label} & Label of the port to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the port exists, otherwise {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Node_abec4fbaa8df4ddfb64e69721badb7127}\label{classgnode_1_1Node_abec4fbaa8df4ddfb64e69721badb7127} 
+\index{gnode::Node@{gnode::Node}!has\_port@{has\_port}}
+\index{has\_port@{has\_port}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{has\_port()}{has\_port()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{typename}} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}} $>$ \\
+\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} gnode\+::\+Node\+::has\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&}]{port\+\_\+label }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks whether a port exists and matches the requested type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Expected port value type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+label} & Label of the port to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the port exists and can be accessed as type {\ttfamily T}, otherwise {\ttfamily false}. 
+\end{DoxyReturn}
 \Hypertarget{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}\label{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78} 
 \index{gnode::Node@{gnode::Node}!is\_port\_connected@{is\_port\_connected}}
 \index{is\_port\_connected@{is\_port\_connected}!gnode::Node@{gnode::Node}}

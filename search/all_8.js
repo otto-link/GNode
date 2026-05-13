@@ -11,7 +11,7 @@ var searchData=
   ['in_20link_20hpp_8',['Link (in link.hpp)',['../index.html#autotoc_md16',1,'']]],
   ['in_20node_20hpp_9',['Node (in node.hpp)',['../index.html#autotoc_md18',1,'']]],
   ['in_20port_20hpp_10',['Ports - InputPort and OutputPort (in port.hpp)',['../index.html#autotoc_md11',1,'']]],
-  ['input_11',['input',['../classgnode_1_1Input.html',1,'gnode::Input&lt; T &gt;'],['../classgnode_1_1Input.html#ae4705a89ca7e5379f20ed4a18386a3b7',1,'gnode::Input::Input(std::string label)'],['../classgnode_1_1Input.html#a58c38c4a290ad0ddb3a8f2ee5208517e',1,'gnode::Input::Input()=default']]],
+  ['input_11',['input',['../classgnode_1_1Input.html',1,'gnode::Input&lt; T &gt;'],['../classgnode_1_1Input.html#a58c38c4a290ad0ddb3a8f2ee5208517e',1,'gnode::Input::Input()=default'],['../classgnode_1_1Input.html#ae4705a89ca7e5379f20ed4a18386a3b7',1,'gnode::Input::Input(std::string label)']]],
   ['inputport_20and_20outputport_20in_20port_20hpp_12',['Ports - InputPort and OutputPort (in port.hpp)',['../index.html#autotoc_md11',1,'']]],
   ['inputport_20t_13',['InputPort&lt;T&gt;',['../index.html#autotoc_md14',1,'']]],
   ['installation_14',['Installation',['../index.html#autotoc_md2',1,'']]],
@@ -20,5 +20,6 @@ var searchData=
   ['is_5fdirty_17',['is_dirty',['../classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474',1,'gnode::Node']]],
   ['is_5fnode_5fid_5favailable_18',['is_node_id_available',['../classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2',1,'gnode::Graph']]],
   ['is_5fport_5fconnected_19',['is_port_connected',['../classgnode_1_1Node.html#adb9ca55b8a2d739ab63f71d93bef1b78',1,'gnode::Node::is_port_connected(const std::string &amp;port_label) const'],['../classgnode_1_1Node.html#ad50fc980ce93ff7ea49135ff24fa6230',1,'gnode::Node::is_port_connected(int port_index) const']]],
-  ['is_5fsame_5ftype_20',['is_same_type',['../classgnode_1_1BaseData.html#a4f018cf35bc2bcfa95532c47227e134d',1,'gnode::BaseData']]]
+  ['is_5freachable_20',['is_reachable',['../classgnode_1_1Graph.html#acc097cff980d014a25b7cc0cd4f06a4e',1,'gnode::Graph']]],
+  ['is_5fsame_5ftype_21',['is_same_type',['../classgnode_1_1BaseData.html#a4f018cf35bc2bcfa95532c47227e134d',1,'gnode::BaseData']]]
 ];
