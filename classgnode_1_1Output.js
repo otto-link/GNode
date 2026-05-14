@@ -6,7 +6,9 @@ var classgnode_1_1Output =
     [ "get_data_shared_ptr_downcasted", "classgnode_1_1Output.html#a4c934d41aaff9bd61decca57b757ae21", null ],
     [ "get_data_type", "classgnode_1_1Output.html#a0bff81edf672afacaa6fe29ef0d1eb55", null ],
     [ "get_port_type", "classgnode_1_1Output.html#a0fb9f1979c0e401b04e4b66a6fd31343", null ],
-    [ "get_value_ref", "classgnode_1_1Output.html#ac6f413b765812495a7fbf6c2da289e1b", null ],
-    [ "get_value_ref_void", "classgnode_1_1Output.html#ae1f3d68e4158156188fc48226b85c89c", null ],
+    [ "get_value_ref", "classgnode_1_1Output.html#a2d8e80a3b9a62110f0bfbb0fb20f962b", null ],
+    [ "get_value_ref", "classgnode_1_1Output.html#ac56caf26c63d221561a36dff524b3d67", null ],
+    [ "get_value_ref_void", "classgnode_1_1Output.html#a2eb769f2e72167ce3b9abc1dbc890adf", null ],
+    [ "get_value_ref_void", "classgnode_1_1Output.html#a43e539862d49cc2f45c603b9dbc34a8a", null ],
     [ "data", "classgnode_1_1Output.html#aa145f3ac53985b605d0572255cff8f2a", null ]
 ];

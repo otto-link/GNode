@@ -42,88 +42,108 @@
 \DoxyCodeLine{00084\ }
 \DoxyCodeLine{00093\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Port_a9d94a2c3a2a7f6b52b85d8216656d8ab}{get\_port\_type}}()\ \textcolor{keyword}{const}\ =\ 0;}
 \DoxyCodeLine{00094\ }
-\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Port_aa2a5166dcb5e28a84a5ce75bb9a73d85}{get\_value\_ref\_void}}()\ \textcolor{keyword}{const}\ =\ 0;}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Port_a94465a64441b1e5f0fccac851ac16f18}{set\_data}}(std::shared\_ptr<BaseData>\ \textcolor{comment}{/*\ data\ */})\ \{\}}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00109\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}};\ }
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00112\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}}\ =\ \textcolor{stringliteral}{"{}no\ label"{}};\ }
-\DoxyCodeLine{00113\ \};}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00123\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1Input}{Input}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}}
-\DoxyCodeLine{00124\ \{}
-\DoxyCodeLine{00125\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00129\ \ \ \mbox{\hyperlink{classgnode_1_1Input_a58c38c4a290ad0ddb3a8f2ee5208517e}{Input}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00135\ \ \ \mbox{\hyperlink{classgnode_1_1Input_ae4705a89ca7e5379f20ed4a18386a3b7}{Input}}(std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})\ :\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}(\mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}}).\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{name}}();\ \}}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00140\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgnode_1_1Input_a7712dfa10d5afc87222c6e2e5ddff95d}{\string~Input}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00150\ \ \ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Input_aab10e3151eb06a482d0cb0c0f88c4830}{get\_port\_type}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}};\ \}}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00157\ \ \ \mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{T}}\ *\mbox{\hyperlink{classgnode_1_1Input_a1f4c3fb9230c4a1fd6fbd202a2d85dfb}{get\_value\_ref}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00158\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock()\ ?\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock()-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00160\ \ \ \}}
-\DoxyCodeLine{00161\ }
-\DoxyCodeLine{00167\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Input_adc96cf2d63ab571aca3b7fe2c6498d6f}{get\_value\_ref\_void}}()\textcolor{keyword}{\ const\ override}}
-\DoxyCodeLine{00168\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock()\ ?\ (\textcolor{keywordtype}{void}\ *)this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock()-\/>get\_value\_ref()}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00171\ \ \ \}}
-\DoxyCodeLine{00172\ }
-\DoxyCodeLine{00177\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Input_a24e25b8af8a9f2be182518f3588fa0c6}{set\_data}}(std::shared\_ptr<BaseData>\ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}})\textcolor{keyword}{\ override}}
-\DoxyCodeLine{00178\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00179\ \ \ \ \ this-\/>data\ =\ std::dynamic\_pointer\_cast<Data<T>>(std::move(\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}));}
-\DoxyCodeLine{00180\ \ \ \}}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00182\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00183\ \ \ std::weak\_ptr<Data<T>>}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}};\ }
-\DoxyCodeLine{00185\ \};}
+\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Port_a937fc00053a4ff55ca9e416d222866ff}{get\_value\_ref\_void}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00101\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ *\mbox{\hyperlink{classgnode_1_1Port_a918c5af16b408d234936299d26ea9626}{get\_value\_ref\_void}}()\ =\ 0;\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Port_a94465a64441b1e5f0fccac851ac16f18}{set\_data}}(std::shared\_ptr<BaseData>\ \textcolor{comment}{/*\ data\ */})\ \{\}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00110\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}};\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00113\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}}\ =\ \textcolor{stringliteral}{"{}no\ label"{}};\ }
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1Input}{Input}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}}
+\DoxyCodeLine{00125\ \{}
+\DoxyCodeLine{00126\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00130\ \ \ \mbox{\hyperlink{classgnode_1_1Input_a58c38c4a290ad0ddb3a8f2ee5208517e}{Input}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \mbox{\hyperlink{classgnode_1_1Input_ae4705a89ca7e5379f20ed4a18386a3b7}{Input}}(std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})\ :\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}(\mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}})\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{T}}).\mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{name}}();\ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00141\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgnode_1_1Input_a7712dfa10d5afc87222c6e2e5ddff95d}{\string~Input}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00151\ \ \ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Input_aab10e3151eb06a482d0cb0c0f88c4830}{get\_port\_type}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}};\ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{T}}\ *\mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{get\_value\_ref}}()}
+\DoxyCodeLine{00159\ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock();}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ ?\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00162\ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{T}}\ *\mbox{\hyperlink{classgnode_1_1Input_a6a2d0e0071791926ff66030a12e1b0fc}{get\_value\_ref}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00165\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock();}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ ?\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00168\ \ \ \}\ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Input_a89618dc67f36e2105b7d15f5a9d22490}{get\_value\_ref\_void}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00176\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock();}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}-\/>get\_value\_ref());}
+\DoxyCodeLine{00179\ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Input_a457b576b0665ef7910a6a9aa0fadf5b3}{get\_value\_ref\_void}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00182\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}.lock();}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\mbox{\hyperlink{classgnode_1_1Input_acb1fca297db05a418d408ee41fd17ca2}{locked}}-\/>get\_value\_ref());}
+\DoxyCodeLine{00185\ \ \ \}\ }
 \DoxyCodeLine{00186\ }
-\DoxyCodeLine{00195\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1Output}{Output}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}}
-\DoxyCodeLine{00196\ \{}
-\DoxyCodeLine{00197\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00201\ \ \ \mbox{\hyperlink{classgnode_1_1Output_ac13fcb0d89a11e5331d902131f8407b0}{Output}}()\ :\ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{make\_shared}}<\mbox{\hyperlink{classgnode_1_1Data}{Data}}<\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}>>())}
-\DoxyCodeLine{00202\ \ \ \{}
-\DoxyCodeLine{00203\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{name}}();}
-\DoxyCodeLine{00204\ \ \ \}}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00218\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ \mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{Args}}>}
-\DoxyCodeLine{00219\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classgnode_1_1Output_a85cff283780f66ad8b963436ca60434c}{Output}}(std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}},\ \mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{Args}}\ \&\&...\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{args}})}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}(\mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}}),}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{make\_shared}}<\mbox{\hyperlink{classgnode_1_1Data}{Data}}<\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}>>(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{forward}}<\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{Args}}>(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{args}})...))}
-\DoxyCodeLine{00222\ \ \ \{}
-\DoxyCodeLine{00223\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{name}}();}
-\DoxyCodeLine{00224\ \ \ \}}
-\DoxyCodeLine{00225\ }
-\DoxyCodeLine{00229\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgnode_1_1Output_a6dab5e6a5050d4c59c4172844c646f42}{\string~Output}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00230\ }
-\DoxyCodeLine{00236\ \ \ std::shared\_ptr<BaseData>\ \mbox{\hyperlink{classgnode_1_1Output_a4c934d41aaff9bd61decca57b757ae21}{get\_data\_shared\_ptr\_downcasted}}()\textcolor{keyword}{\ const\ override}}
-\DoxyCodeLine{00237\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordflow}{return}\ std::static\_pointer\_cast<BaseData>(this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}});}
-\DoxyCodeLine{00239\ \ \ \}}
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00245\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Output_a0bff81edf672afacaa6fe29ef0d1eb55}{get\_data\_type}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{name}}();\ \}}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00255\ \ \ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Output_a0fb9f1979c0e401b04e4b66a6fd31343}{get\_port\_type}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{PortType::OUT}};\ \}}
-\DoxyCodeLine{00256\ }
-\DoxyCodeLine{00261\ \ \ \mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{T}}\ *\mbox{\hyperlink{classgnode_1_1Output_ac6f413b765812495a7fbf6c2da289e1b}{get\_value\_ref}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref();\ \}}
-\DoxyCodeLine{00262\ }
-\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Output_ae1f3d68e4158156188fc48226b85c89c}{get\_value\_ref\_void}}()\textcolor{keyword}{\ const\ override}}
-\DoxyCodeLine{00269\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{void}\ *)this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref();}
-\DoxyCodeLine{00271\ \ \ \}}
-\DoxyCodeLine{00272\ }
-\DoxyCodeLine{00273\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00274\ \ \ std::shared\_ptr<Data<T>>}
-\DoxyCodeLine{00275\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}};\ }
-\DoxyCodeLine{00276\ \};}
+\DoxyCodeLine{00191\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Input_a24e25b8af8a9f2be182518f3588fa0c6}{set\_data}}(std::shared\_ptr<BaseData>\ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}})\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00192\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00193\ \ \ \ \ this-\/>data\ =\ std::dynamic\_pointer\_cast<Data<T>>(std::move(\mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}}));}
+\DoxyCodeLine{00194\ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00197\ \ \ std::weak\_ptr<Data<T>>}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Input_a396f51e9c50554bd8d755cb0e740d1d4}{data}};\ }
+\DoxyCodeLine{00199\ \};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00209\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgnode_1_1Output}{Output}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}}
+\DoxyCodeLine{00210\ \{}
+\DoxyCodeLine{00211\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{classgnode_1_1Output_ac13fcb0d89a11e5331d902131f8407b0}{Output}}()\ :\ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{make\_shared}}<\mbox{\hyperlink{classgnode_1_1Data}{Data}}<\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}>>())}
+\DoxyCodeLine{00216\ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{name}}();}
+\DoxyCodeLine{00218\ \ \ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00232\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ \mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{Args}}>}
+\DoxyCodeLine{00233\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classgnode_1_1Output_a85cff283780f66ad8b963436ca60434c}{Output}}(std::string\ \mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}},\ \mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{Args}}\ \&\&...\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{args}})}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classgnode_1_1Port}{Port}}(\mbox{\hyperlink{classgnode_1_1Port_a295aa641f2b36907883051f4e4f1df26}{label}}),}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{make\_shared}}<\mbox{\hyperlink{classgnode_1_1Data}{Data}}<\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}>>(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{std}}::\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{forward}}<\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{Args}}>(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{args}})...))}
+\DoxyCodeLine{00236\ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Port_a4590c8988d628d562064e8ea3876ce37}{data\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{name}}();}
+\DoxyCodeLine{00238\ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00243\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgnode_1_1Output_a6dab5e6a5050d4c59c4172844c646f42}{\string~Output}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00250\ \ \ std::shared\_ptr<BaseData>\ \mbox{\hyperlink{classgnode_1_1Output_a4c934d41aaff9bd61decca57b757ae21}{get\_data\_shared\_ptr\_downcasted}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00251\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{return}\ std::static\_pointer\_cast<BaseData>(this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}});}
+\DoxyCodeLine{00253\ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00259\ \ \ std::string\ \mbox{\hyperlink{classgnode_1_1Output_a0bff81edf672afacaa6fe29ef0d1eb55}{get\_data\_type}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}).\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{name}}();\ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00269\ \ \ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Output_a0fb9f1979c0e401b04e4b66a6fd31343}{get\_port\_type}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a6d71f7f2c3371efee0d1372482563164}{PortType::OUT}};\ \}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00275\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}\ *\mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{get\_value\_ref}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref();\ \}}
+\DoxyCodeLine{00276\ \ \ \mbox{\hyperlink{classgnode_1_1Output_ac56caf26c63d221561a36dff524b3d67}{T}}\ *\mbox{\hyperlink{classgnode_1_1Output_a2d8e80a3b9a62110f0bfbb0fb20f962b}{get\_value\_ref}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref();\ \}\ }
 \DoxyCodeLine{00277\ }
-\DoxyCodeLine{00278\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
+\DoxyCodeLine{00283\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Output_a2eb769f2e72167ce3b9abc1dbc890adf}{get\_value\_ref\_void}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00284\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref());}
+\DoxyCodeLine{00286\ \ \ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Output_a43e539862d49cc2f45c603b9dbc34a8a}{get\_value\_ref\_void}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00289\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}}-\/>get\_value\_ref());}
+\DoxyCodeLine{00291\ \ \ \}\ }
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00294\ \ \ std::shared\_ptr<Data<T>>}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Output_aa145f3ac53985b605d0572255cff8f2a}{data}};\ }
+\DoxyCodeLine{00296\ \};}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
 
 \end{DoxyCode}
