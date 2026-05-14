@@ -58,13 +58,14 @@ public:
    * @brief Retrieves the type of the data as a string.
    * @return A string representing the type of the data.
    */
-  std::string get_type() const { return this->type; }
+  const std::string &get_type() const { return this->type; }
 
   /**
    * @brief Pure virtual method to retrieve a pointer to the stored value.
    * @return A void pointer to the value.
    */
-  virtual void *get_value_ptr() const = 0;
+  virtual void       *get_value_ptr() = 0;
+  virtual const void *get_value_ptr() const = 0;
 
 private:
   std::string type; ///< A string representing the type of the data.
@@ -95,22 +96,23 @@ public:
    * `T` using the forwarded arguments `args`.
    */
   template <typename... Args>
-  explicit Data(Args &&...args) : BaseData(typeid(T).name())
+  explicit Data(Args &&...args)
+      : BaseData(typeid(T).name()), value(std::forward<Args>(args)...)
   {
-    this->value = T(std::forward<Args>(args)...);
   }
 
   /**
    * @brief Retrieves a reference to the stored value.
    * @return A pointer to the stored value.
    */
-  T *get_value_ref() { return &value; }
+  T *get_value_ref() { return &this->value; }
 
   /**
    * @brief Retrieves a pointer to the stored value.
    * @return A void pointer to the stored value.
    */
-  void *get_value_ptr() const override { return const_cast<T *>(&value); }
+  const void *get_value_ptr() const override { return &this->value; }
+  void       *get_value_ptr() { return &this->value; } ///< @overload
 
 private:
   T value{}; ///< The value of type T stored in this object.
