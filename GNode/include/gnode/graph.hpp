@@ -341,9 +341,15 @@ public:
    * @brief Update a specific node by its ID.
    *
    * @param id ID of the node to update.
-   * @return true If the update was successful.
    */
   virtual void update(const std::string &node_id);
+
+  /**
+   * @brief Update a specific list of node IDs.
+   *
+   * @param id IDs of the nodes to update.
+   */
+  virtual void update(const std::vector<std::string> &node_ids);
 
 protected:
   /**

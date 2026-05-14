@@ -566,15 +566,18 @@ void Graph::update()
   this->post_update();
 }
 
-void Graph::update(const std::string &node_id)
+void Graph::update(const std::vector<std::string> &node_ids)
 {
-  if (this->is_node_id_available(node_id))
+  for (const auto &node_id : node_ids)
   {
-    Logger::log()->trace("Graph::update: unknown node id {}", node_id);
-    return;
+    if (this->is_node_id_available(node_id))
+    {
+      Logger::log()->trace("Graph::update: unknown node id {}", node_id);
+      return;
+    }
   }
 
-  std::vector<std::string> sorted_id = this->get_nodes_to_update(node_id);
+  std::vector<std::string> sorted_id = this->get_nodes_to_update(node_ids);
 
   for (auto nid : sorted_id)
   {
@@ -590,6 +593,11 @@ void Graph::update(const std::string &node_id)
   }
 
   this->post_update();
+}
+
+void Graph::update(const std::string &node_id)
+{
+  this->update(std::vector<std::string>{node_id});
 }
 
 } // namespace gnode
