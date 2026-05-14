@@ -19,7 +19,7 @@ var classgnode_1_1Node =
     [ "get_port_index", "classgnode_1_1Node.html#a62474ac1647029a40cf2e85fbe689275", null ],
     [ "get_port_label", "classgnode_1_1Node.html#a3d01eaca73078eb9edddcf7763e91d7b", null ],
     [ "get_port_type", "classgnode_1_1Node.html#a8d01f4ca1b40f01c776fcebab4840cd1", null ],
-    [ "get_ports", "classgnode_1_1Node.html#ac17a639be1f17938df8f58864c0f50cc", null ],
+    [ "get_ports", "classgnode_1_1Node.html#acad097d54a67fa75ce86f0c5d03beed6", null ],
     [ "get_value_ref", "classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a", null ],
     [ "get_value_ref", "classgnode_1_1Node.html#a3b22ab4fdc71ee470ab691ae8cc7c7b1", null ],
     [ "get_value_ref_void", "classgnode_1_1Node.html#ac67b4498aa86268c3071b9bcb1e508a7", null ],

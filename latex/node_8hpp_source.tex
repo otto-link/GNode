@@ -73,79 +73,83 @@
 \DoxyCodeLine{00200\ }
 \DoxyCodeLine{00207\ \ \ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{PortType}}\ \mbox{\hyperlink{classgnode_1_1Node_a8d01f4ca1b40f01c776fcebab4840cd1}{get\_port\_type}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00208\ }
-\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{const}\ std::vector<std::shared\_ptr<Port>>\ \&\mbox{\hyperlink{classgnode_1_1Node_ac17a639be1f17938df8f58864c0f50cc}{get\_ports}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}};\ \};}
-\DoxyCodeLine{00213\ }
-\DoxyCodeLine{00223\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ T\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00224\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//\ Search\ for\ the\ port\ in\ the\ inputs\ vector}}
-\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&port\ :\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}})}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (port-\/>get\_label()\ ==\ port\_label)}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (port-\/>get\_port\_type()\ ==\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}})}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ inputPort\ =\ std::dynamic\_pointer\_cast<Input<T>>(port);}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPort)\ \textcolor{keywordflow}{return}\ inputPort-\/>get\_value\_ref();}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ outputPort\ =\ std::dynamic\_pointer\_cast<Output<T>>(port);}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (outputPort)\ \textcolor{keywordflow}{return}\ outputPort-\/>get\_value\_ref();}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00242\ \ \ \}}
-\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{const}\ std::vector<std::shared\_ptr<Port>>\ \&\mbox{\hyperlink{classgnode_1_1Node_acad097d54a67fa75ce86f0c5d03beed6}{get\_ports}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00213\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}};}
+\DoxyCodeLine{00215\ \ \ \};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00224\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ T\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00225\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ Search\ for\ the\ port\ in\ the\ inputs\ vector}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&port\ :\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}})}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (port-\/>get\_label()\ ==\ port\_label)}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (port-\/>get\_port\_type()\ ==\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}})}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ inputPort\ =\ std::dynamic\_pointer\_cast<Input<T>>(port);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPort)\ \textcolor{keywordflow}{return}\ inputPort-\/>get\_value\_ref();}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ outputPort\ =\ std::dynamic\_pointer\_cast<Output<T>>(port);}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (outputPort)\ \textcolor{keywordflow}{return}\ outputPort-\/>get\_value\_ref();}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00243\ \ \ \}}
+\DoxyCodeLine{00244\ }
 \DoxyCodeLine{00252\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ T\ *\mbox{\hyperlink{classgnode_1_1Node_a3b22ab4fdc71ee470ab691ae8cc7c7b1}{get\_value\_ref}}(\textcolor{keywordtype}{int}\ port\_index)\textcolor{keyword}{\ const}}
 \DoxyCodeLine{00253\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ Range\ check\ for\ the\ port\ index}}
-\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{if}\ (port\_index\ <\ 0\ ||\ port\_index\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}.size()))}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ port\ index"{}});}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//\ Dynamic\ cast\ to\ the\ appropriate\ port\ type\ (Input\ or\ Output)\ and\ return}}
-\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//\ the\ value\ reference\ if\ the\ port\ is\ valid,\ otherwise\ return\ nullptr}}
-\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]-\/>\mbox{\hyperlink{classgnode_1_1Node_a8d01f4ca1b40f01c776fcebab4840cd1}{get\_port\_type}}()\ ==\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}})}
-\DoxyCodeLine{00261\ \ \ \ \ \{}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ port\ =\ std::dynamic\_pointer\_cast<Input<T>>(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]);}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ port\ ?\ port-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00264\ \ \ \ \ \}}
-\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00266\ \ \ \ \ \{}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ port\ =\ std::dynamic\_pointer\_cast<Output<T>>(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]);}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ port\ ?\ port-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00269\ \ \ \ \ \}}
-\DoxyCodeLine{00270\ \ \ \}}
-\DoxyCodeLine{00271\ }
-\DoxyCodeLine{00279\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7}{get\_value\_ref\_void}}(\textcolor{keywordtype}{int}\ port\_index)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00280\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (port\_index\ <\ 0\ ||\ port\_index\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}.size()))}
-\DoxyCodeLine{00282\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ port\ index"{}});}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ Dynamic\ cast\ to\ the\ appropriate\ port\ type\ (Input\ or\ Output)\ and\ return}}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{comment}{//\ the\ value\ reference\ if\ the\ port\ is\ valid,\ otherwise\ return\ nullptr}}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]-\/>\mbox{\hyperlink{classgnode_1_1Node_a8d01f4ca1b40f01c776fcebab4840cd1}{get\_port\_type}}()\ ==\ \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059a404e5c57d02467e8b5f134b6b6db7424}{PortType::IN}})}
+\DoxyCodeLine{00257\ \ \ \ \ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ port\ =\ std::dynamic\_pointer\_cast<Input<T>>(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ port\ ?\ port-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00262\ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ port\ =\ std::dynamic\_pointer\_cast<Output<T>>(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]);}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ port\ ?\ port-\/>get\_value\_ref()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00265\ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00268\ \ \ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00276\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7}{get\_value\_ref\_void}}(\textcolor{keywordtype}{int}\ port\_index)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00277\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{if}\ (port\_index\ <\ 0\ ||\ port\_index\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}.size()))}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]-\/>get\_value\_ref\_void();}
+\DoxyCodeLine{00282\ \ \ \}}
 \DoxyCodeLine{00283\ }
-\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a0ebbeed454c9ca2b3b3f15d87ce83981}{ports}}[port\_index]-\/>get\_value\_ref\_void();}
-\DoxyCodeLine{00285\ \ \ \}}
-\DoxyCodeLine{00286\ }
-\DoxyCodeLine{00292\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}{has\_port}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00293\ }
-\DoxyCodeLine{00301\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_abec4fbaa8df4ddfb64e69721badb7127}{has\_port}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00302\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}{has\_port}}(port\_label))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<T>}}(port\_label)\ ?\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{true}}\ :\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00305\ \ \ \}}
-\DoxyCodeLine{00306\ }
-\DoxyCodeLine{00312\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230}{is\_port\_connected}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_index}})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00313\ }
-\DoxyCodeLine{00319\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}{is\_port\_connected}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_label}})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00320\ }
-\DoxyCodeLine{00330\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a9cf519ed32a97eabf3e1132f214be8ce}{set\_id}}(std::string\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_id}})\ \{\ this-\/>\textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_id}};\ \}}
-\DoxyCodeLine{00331\ }
-\DoxyCodeLine{00338\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_ab92a852a47ff14588e809c5f7c5a2995}{set\_input\_data}}(std::shared\_ptr<BaseData>\ data,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_index}});}
-\DoxyCodeLine{00339\ }
-\DoxyCodeLine{00345\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a94eb4880c6bc6ca18bedc64fedc17b48}{set\_p\_graph}}(\mbox{\hyperlink{classgnode_1_1Graph}{Graph}}\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_p\_graph}})\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a458f91c8f2ec4ad21a100dddf1d79b2a}{p\_graph}}\ =\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_p\_graph}};\ \}}
-\DoxyCodeLine{00346\ }
-\DoxyCodeLine{00354\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00355\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a4754f6c8454eb65d77108ed39a3f232d}{set\_value}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_label}},\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_value}})}
-\DoxyCodeLine{00356\ \ \ \{}
-\DoxyCodeLine{00357\ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}}\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{p\_value}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<T>}}(port\_label);}
+\DoxyCodeLine{00289\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}{has\_port}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00298\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_abec4fbaa8df4ddfb64e69721badb7127}{has\_port}}(\textcolor{keyword}{const}\ std::string\ \&port\_label)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00299\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}{has\_port}}(port\_label))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<T>}}(port\_label)\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00302\ \ \ \}}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00309\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_ad50fc980ce93ff7ea49135ff24fa6230}{is\_port\_connected}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_index}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00316\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Node_adb9ca55b8a2d739ab63f71d93bef1b78}{is\_port\_connected}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_label}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00327\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a9cf519ed32a97eabf3e1132f214be8ce}{set\_id}}(std::string\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_id}})\ \{\ this-\/>\textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_id}};\ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00335\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_ab92a852a47ff14588e809c5f7c5a2995}{set\_input\_data}}(std::shared\_ptr<BaseData>\ data,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_index}});}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00342\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a94eb4880c6bc6ca18bedc64fedc17b48}{set\_p\_graph}}(\mbox{\hyperlink{classgnode_1_1Graph}{Graph}}\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_p\_graph}})\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a458f91c8f2ec4ad21a100dddf1d79b2a}{p\_graph}}\ =\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_p\_graph}};\ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00351\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00352\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Node_a4754f6c8454eb65d77108ed39a3f232d}{set\_value}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_label}},\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}}\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_value}})}
+\DoxyCodeLine{00353\ \ \ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{T}}\ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{p\_value}}\ =\ this-\/>\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\_value\_ref<T>}}(port\_label);}
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{p\_value}})}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}set\_value:\ port\ not\ found\ or\ type\ mismatch:\ "{}}\ +}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\_label}});}
 \DoxyCodeLine{00358\ \ \ \ \ *\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{p\_value}}\ =\ \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{new\_value}};}
 \DoxyCodeLine{00359\ \ \ \}}
 \DoxyCodeLine{00360\ }

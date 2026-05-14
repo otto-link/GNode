@@ -180,9 +180,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d01f4ca1b40f01c776fcebab4840cd1" id="r_a8d01f4ca1b40f01c776fcebab4840cd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegnode.html#a14d9d7d98707d0fafaf543221beb0059">PortType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a8d01f4ca1b40f01c776fcebab4840cd1">get_port_type</a> (<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::string &amp;<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">port_label</a>) <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
 <tr class="memdesc:a8d01f4ca1b40f01c776fcebab4840cd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of a port (input or output) by its label.  <br /></td></tr>
 <tr class="separator:a8d01f4ca1b40f01c776fcebab4840cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac17a639be1f17938df8f58864c0f50cc" id="r_ac17a639be1f17938df8f58864c0f50cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::vector&lt; std::shared_ptr&lt; <a class="el" href="classgnode_1_1Port.html">Port</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#ac17a639be1f17938df8f58864c0f50cc">get_ports</a> ()</td></tr>
-<tr class="memdesc:ac17a639be1f17938df8f58864c0f50cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ports.  <br /></td></tr>
-<tr class="separator:ac17a639be1f17938df8f58864c0f50cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad097d54a67fa75ce86f0c5d03beed6" id="r_acad097d54a67fa75ce86f0c5d03beed6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::vector&lt; std::shared_ptr&lt; <a class="el" href="classgnode_1_1Port.html">Port</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#acad097d54a67fa75ce86f0c5d03beed6">get_ports</a> () <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a></td></tr>
+<tr class="memdesc:acad097d54a67fa75ce86f0c5d03beed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ports.  <br /></td></tr>
+<tr class="separator:acad097d54a67fa75ce86f0c5d03beed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7721091aabb595825d4cd702f02d148a" id="r_a7721091aabb595825d4cd702f02d148a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a7721091aabb595825d4cd702f02d148a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">get_value_ref</a> (const std::string &amp;port_label) const</td></tr>
 <tr class="memdesc:a7721091aabb595825d4cd702f02d148a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the value stored in a port by its label.  <br /></td></tr>
@@ -814,8 +814,8 @@ template&lt;<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd70
 
 </div>
 </div>
-<a id="ac17a639be1f17938df8f58864c0f50cc" name="ac17a639be1f17938df8f58864c0f50cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac17a639be1f17938df8f58864c0f50cc">&#9670;&#160;</a></span>get_ports()</h2>
+<a id="acad097d54a67fa75ce86f0c5d03beed6" name="acad097d54a67fa75ce86f0c5d03beed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad097d54a67fa75ce86f0c5d03beed6">&#9670;&#160;</a></span>get_ports()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -827,7 +827,7 @@ template&lt;<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd70
           <td class="memname"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">const</a> std::vector&lt; std::shared_ptr&lt; <a class="el" href="classgnode_1_1Port.html">Port</a> &gt; &gt; &amp; gnode::Node::get_ports </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -881,12 +881,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>T* A pointer to the value. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the port with the given label is not found, or if casting the port to the appropriate type fails. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -930,12 +924,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>T* A pointer to the value. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>If the port index is invalid. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -971,12 +959,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code>void*</code> pointer to the value. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>If the port index is invalid. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

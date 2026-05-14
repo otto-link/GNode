@@ -60,7 +60,7 @@ std\+::string \mbox{\hyperlink{classgnode_1_1Node_a3d01eaca73078eb9edddcf7763e91
 \begin{DoxyCompactList}\small\item\em Get the label of a port by its index. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacegnode_a14d9d7d98707d0fafaf543221beb0059}{Port\+Type}} \mbox{\hyperlink{classgnode_1_1Node_a8d01f4ca1b40f01c776fcebab4840cd1}{get\+\_\+port\+\_\+type}} (\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::string \&\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{port\+\_\+label}}) \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
 \begin{DoxyCompactList}\small\item\em Get the type of a port (input or output) by its label. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Port}{Port}} $>$ $>$ \& \mbox{\hyperlink{classgnode_1_1Node_ac17a639be1f17938df8f58864c0f50cc}{get\+\_\+ports}} ()
+\mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Port}{Port}} $>$ $>$ \& \mbox{\hyperlink{classgnode_1_1Node_acad097d54a67fa75ce86f0c5d03beed6}{get\+\_\+ports}} () \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}}
 \begin{DoxyCompactList}\small\item\em Get the ports. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{get\+\_\+value\+\_\+ref}} (const std\+::string \&port\+\_\+label) const
 \begin{DoxyCompactList}\small\item\em Get a reference to the value stored in a port by its label. \end{DoxyCompactList}\item 
@@ -413,11 +413,11 @@ Get the type of a port (input or output) by its label.
 \begin{DoxyReturn}{Returns}
 Port\+Type The type of the port. 
 \end{DoxyReturn}
-\Hypertarget{classgnode_1_1Node_ac17a639be1f17938df8f58864c0f50cc}\label{classgnode_1_1Node_ac17a639be1f17938df8f58864c0f50cc} 
+\Hypertarget{classgnode_1_1Node_acad097d54a67fa75ce86f0c5d03beed6}\label{classgnode_1_1Node_acad097d54a67fa75ce86f0c5d03beed6} 
 \index{gnode::Node@{gnode::Node}!get\_ports@{get\_ports}}
 \index{get\_ports@{get\_ports}!gnode::Node@{gnode::Node}}
 \doxysubsubsection{\texorpdfstring{get\_ports()}{get\_ports()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Port}{Port}} $>$ $>$ \& gnode\+::\+Node\+::get\+\_\+ports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{const}} std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classgnode_1_1Port}{Port}} $>$ $>$ \& gnode\+::\+Node\+::get\+\_\+ports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -447,11 +447,6 @@ Get a reference to the value stored in a port by its label.
 \begin{DoxyReturn}{Returns}
 T\texorpdfstring{$\ast$}{*} A pointer to the value. 
 \end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::runtime\+\_\+error} & If the port with the given label is not found, or if casting the port to the appropriate type fails. \\
-\hline
-\end{DoxyExceptions}
 \Hypertarget{classgnode_1_1Node_a3b22ab4fdc71ee470ab691ae8cc7c7b1}\label{classgnode_1_1Node_a3b22ab4fdc71ee470ab691ae8cc7c7b1} 
 \index{gnode::Node@{gnode::Node}!get\_value\_ref@{get\_value\_ref}}
 \index{get\_value\_ref@{get\_value\_ref}!gnode::Node@{gnode::Node}}
@@ -476,11 +471,6 @@ Get a reference to the value stored in a port by its index.
 \begin{DoxyReturn}{Returns}
 T\texorpdfstring{$\ast$}{*} A pointer to the value. 
 \end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & If the port index is invalid. \\
-\hline
-\end{DoxyExceptions}
 \Hypertarget{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7}\label{classgnode_1_1Node_ac67b4498aa86268c3071b9bcb1e508a7} 
 \index{gnode::Node@{gnode::Node}!get\_value\_ref\_void@{get\_value\_ref\_void}}
 \index{get\_value\_ref\_void@{get\_value\_ref\_void}!gnode::Node@{gnode::Node}}
@@ -499,11 +489,6 @@ Get a {\ttfamily void\texorpdfstring{$\ast$}{*}} reference to the value stored i
 \begin{DoxyReturn}{Returns}
 A {\ttfamily void\texorpdfstring{$\ast$}{*}} pointer to the value. 
 \end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & If the port index is invalid. \\
-\hline
-\end{DoxyExceptions}
 \Hypertarget{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b}\label{classgnode_1_1Node_a76b5308439e3086189011c428a3df32b} 
 \index{gnode::Node@{gnode::Node}!has\_port@{has\_port}}
 \index{has\_port@{has\_port}!gnode::Node@{gnode::Node}}
