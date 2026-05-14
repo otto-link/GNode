@@ -384,6 +384,19 @@ std::map<std::string, std::vector<std::string>> Graph::
   return connectivity;
 }
 
+std::vector<std::string> Graph::get_connectivity_downstream(
+    const std::string &node_id) const
+{
+  std::vector<std::string> connectivity = {};
+
+  for (const auto &link : this->links)
+  {
+    if (link.from == node_id) connectivity.push_back(link.to);
+  }
+
+  return connectivity;
+}
+
 std::map<std::string, std::vector<std::string>> Graph::
     get_connectivity_upstream()
 {
@@ -396,6 +409,19 @@ std::map<std::string, std::vector<std::string>> Graph::
 
   for (auto &link : this->links)
     connectivity[link.to].push_back(link.from);
+
+  return connectivity;
+}
+
+std::vector<std::string> Graph::get_connectivity_upstream(
+    const std::string &node_id) const
+{
+  std::vector<std::string> connectivity = {};
+
+  for (const auto &link : this->links)
+  {
+    if (link.to == node_id) connectivity.push_back(link.from);
+  }
 
   return connectivity;
 }

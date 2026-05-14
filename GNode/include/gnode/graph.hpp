@@ -182,12 +182,28 @@ public:
   std::map<std::string, std::vector<std::string>> get_connectivity_downstream();
 
   /**
+   * @brief Returns the downstream nodes connected to a node.
+   * @param node_id Identifier of the source node.
+   * @return List of downstream node identifiers.
+   */
+  std::vector<std::string> get_connectivity_downstream(
+      const std::string &node_id) const;
+
+  /**
    * @brief Get the upstream connectivity of the graph.
    *
    * @return std::map<std::string, std::vector<std::string>> A map of node IDs
    *         and their upstream connections.
    */
   std::map<std::string, std::vector<std::string>> get_connectivity_upstream();
+
+  /**
+   * @brief Returns the upstream nodes connected to a node.
+   * @param node_id Identifier of the destination node.
+   * @return List of upstream node identifiers.
+   */
+  std::vector<std::string> get_connectivity_upstream(
+      const std::string &node_id) const;
 
   /**
    * @brief Get the current count of unique identifiers.
