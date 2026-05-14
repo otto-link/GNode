@@ -66,7 +66,7 @@ struct Link
    *
    * This function outputs the details of the `Link` to the standard output.
    */
-  void print();
+  void print() const;
 };
 
 /**
@@ -88,6 +88,8 @@ struct LinkView
   int         port_to;         ///< Port number on the destination node.
   std::string port_label_from; ///< Label of the source port.
   std::string port_label_to;   ///< Label of the destination port.
+  std::string data_type_from;  ///< Data type of the source port.
+  std::string data_type_to;    ///< Data type of the destination port.
 
   /**
    * @brief Constructs a `LinkView` from a raw link and its associated nodes.
@@ -101,6 +103,16 @@ struct LinkView
    * @param node_to Destination node associated with the link.
    */
   LinkView(const Link &link, const Node &node_from, const Node &node_to);
+
+  /**
+   * @brief Print the details of the `Link`.
+   */
+  void print(int indent = 0) const;
+
+  /**
+   * @brief Export to a string the details of the `Link`.
+   */
+  std::string to_string(int indent = 0) const;
 };
 
 } // namespace gnode

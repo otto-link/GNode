@@ -3,6 +3,7 @@
  * this software. */
 #include <algorithm>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <queue>
 
@@ -427,17 +428,37 @@ bool Graph::is_node_id_available(const std::string &node_id)
 
 void Graph::print()
 {
-  std::cout << "Nodes:" << std::endl;
+  std::cout << "Graph layout\n";
+
+  // --- Nodes
+
+  std::size_t max_id = 2;
+  std::size_t max_label = 5;
   for (auto &[id, p_node] : this->nodes)
   {
-    std::cout << std::boolalpha;
-    std::cout << "id: " << id << ", label: " << p_node->get_label()
-              << ", is_dirty: " << p_node->is_dirty << std::endl;
+    max_id = std::max(max_id, id.size());
+    max_label = std::max(max_label, p_node->get_label().size());
   }
 
-  std::cout << "Links:" << std::endl;
+  std::cout << "\n  " << std::left << std::setw(max_id) << "id" << "   "
+            << std::left << std::setw(max_label) << "label" << "   "
+            << "dirty\n";
+  std::cout << "  " << std::string(max_id + max_label + 13, '-') << "\n";
+
+  for (auto &[id, p_node] : this->nodes)
+    std::cout << "  " << std::left << std::setw(max_id) << id << "   "
+              << std::left << std::setw(max_label) << p_node->get_label()
+              << "   " << std::boolalpha << p_node->is_dirty << "\n";
+  std::cout << "\n";
+
+  // --- Links
+
   for (auto &link : this->links)
-    link.print();
+  {
+    LinkView view(link, *this->nodes.at(link.from), *this->nodes.at(link.to));
+    view.print(/* indent */ 2);
+  }
+  std::cout << "\n";
 }
 
 void Graph::remove_node(const std::string &id)

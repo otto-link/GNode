@@ -78,10 +78,15 @@ int main()
   g.get_node_ref_by_id<Value>(id_value3)->set_value<float>("value", 10.f);
   g.update(id_value3);
 
-  // g.print();
-  // g.export_to_graphviz();
+  // --- Export
+
+  g.print();
+  g.export_to_graphviz("graph.dot");
 
   // --- Cycle checking
+
+  // for instance, if is_reachable(add1, add2) is true, then
+  // connecting add2 (output) -> add1 (input) will create a cycle
 
   std::cout << "cycle detection:\n";
   check("is_reachable(value3 → value3)  [self-loop]",
