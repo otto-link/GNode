@@ -97,7 +97,8 @@ public:
    * output port.
    * @return A `void*` pointer to the data value.
    */
-  virtual void *get_value_ref_void() const = 0;
+  virtual const void *get_value_ref_void() const = 0;
+  virtual void       *get_value_ref_void() = 0; ///< @overload
 
   /**
    * @brief Sets the data associated with the port.
@@ -154,21 +155,34 @@ public:
    * @return A pointer to the data value, or nullptr if the data is not
    * available.
    */
-  T *get_value_ref() const
+  T *get_value_ref()
   {
-    return this->data.lock() ? this->data.lock()->get_value_ref() : nullptr;
+    auto locked = this->data.lock();
+    return locked ? locked->get_value_ref() : nullptr;
   }
+
+  const T *get_value_ref() const
+  {
+    auto locked = this->data.lock();
+    return locked ? locked->get_value_ref() : nullptr;
+  } ///< @overload
 
   /**
    * @brief Retrieves a `void*` reference to the data value stored in this
    * output port.
    * @return A `void*` pointer to the data value.
    */
-  void *get_value_ref_void() const override
+  void *get_value_ref_void() override
   {
-    return this->data.lock() ? (void *)this->data.lock()->get_value_ref()
-                             : nullptr;
+    auto locked = this->data.lock();
+    return static_cast<void *>(locked->get_value_ref());
   }
+
+  const void *get_value_ref_void() const override
+  {
+    auto locked = this->data.lock();
+    return static_cast<void *>(locked->get_value_ref());
+  } ///< @overload
 
   /**
    * @brief Sets the data associated with this input port.
@@ -258,17 +272,23 @@ public:
    * @brief Retrieves a reference to the data value stored in this output port.
    * @return A pointer to the data value.
    */
-  T *get_value_ref() const { return this->data->get_value_ref(); }
+  const T *get_value_ref() const { return this->data->get_value_ref(); }
+  T *get_value_ref() { return this->data->get_value_ref(); } ///< @overload
 
   /**
    * @brief Retrieves a `void*` reference to the data value stored in this
    * output port.
    * @return A `void*` pointer to the data value.
    */
-  void *get_value_ref_void() const override
+  const void *get_value_ref_void() const override
   {
-    return (void *)this->data->get_value_ref();
+    return static_cast<void *>(this->data->get_value_ref());
   }
+
+  void *get_value_ref_void() override
+  {
+    return static_cast<void *>(this->data->get_value_ref());
+  } ///< @overload
 
 private:
   std::shared_ptr<Data<T>>

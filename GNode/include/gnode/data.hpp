@@ -64,8 +64,8 @@ public:
    * @brief Pure virtual method to retrieve a pointer to the stored value.
    * @return A void pointer to the value.
    */
-  virtual void       *get_value_ptr() = 0;
   virtual const void *get_value_ptr() const = 0;
+  virtual void       *get_value_ptr() = 0; ///< @overload
 
 private:
   std::string type; ///< A string representing the type of the data.
