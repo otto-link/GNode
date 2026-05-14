@@ -130,12 +130,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f018cf35bc2bcfa95532c47227e134d" id="r_a4f018cf35bc2bcfa95532c47227e134d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#a4f018cf35bc2bcfa95532c47227e134d">is_same_type</a> (const <a class="el" href="classgnode_1_1BaseData.html">BaseData</a> &amp;data) const</td></tr>
 <tr class="memdesc:a4f018cf35bc2bcfa95532c47227e134d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the type of this data matches the type of another <a class="el" href="classgnode_1_1BaseData.html" title="Abstract base class representing generic data with type information.">BaseData</a> object.  <br /></td></tr>
 <tr class="separator:a4f018cf35bc2bcfa95532c47227e134d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3345678604977a07843f5cad1123c88" id="r_aa3345678604977a07843f5cad1123c88"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#aa3345678604977a07843f5cad1123c88">get_type</a> () const</td></tr>
-<tr class="memdesc:aa3345678604977a07843f5cad1123c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the type of the data as a string.  <br /></td></tr>
-<tr class="separator:aa3345678604977a07843f5cad1123c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5de897e9fa844f73b123dc42b04dc6de" id="r_a5de897e9fa844f73b123dc42b04dc6de"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#a5de897e9fa844f73b123dc42b04dc6de">get_value_ptr</a> () const =0</td></tr>
-<tr class="memdesc:a5de897e9fa844f73b123dc42b04dc6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual method to retrieve a pointer to the stored value.  <br /></td></tr>
-<tr class="separator:a5de897e9fa844f73b123dc42b04dc6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d98bed549efc3e34217de3d94dc8f80" id="r_a9d98bed549efc3e34217de3d94dc8f80"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#a9d98bed549efc3e34217de3d94dc8f80">get_type</a> () const</td></tr>
+<tr class="memdesc:a9d98bed549efc3e34217de3d94dc8f80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the type of the data as a string.  <br /></td></tr>
+<tr class="separator:a9d98bed549efc3e34217de3d94dc8f80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f3e393bb3cafbdc332a09e73918a9c" id="r_a83f3e393bb3cafbdc332a09e73918a9c"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#a83f3e393bb3cafbdc332a09e73918a9c">get_value_ptr</a> ()=0</td></tr>
+<tr class="memdesc:a83f3e393bb3cafbdc332a09e73918a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual method to retrieve a pointer to the stored value.  <br /></td></tr>
+<tr class="separator:a83f3e393bb3cafbdc332a09e73918a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82b51db3b30c25c09a87fa525058edd" id="r_af82b51db3b30c25c09a87fa525058edd"><td class="memItemLeft" align="right" valign="top">virtual const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1BaseData.html#af82b51db3b30c25c09a87fa525058edd">get_value_ptr</a> () const =0</td></tr>
+<tr class="separator:af82b51db3b30c25c09a87fa525058edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -209,8 +211,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa3345678604977a07843f5cad1123c88" name="aa3345678604977a07843f5cad1123c88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3345678604977a07843f5cad1123c88">&#9670;&#160;</a></span>get_type()</h2>
+<a id="a9d98bed549efc3e34217de3d94dc8f80" name="a9d98bed549efc3e34217de3d94dc8f80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d98bed549efc3e34217de3d94dc8f80">&#9670;&#160;</a></span>get_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +221,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string gnode::BaseData::get_type </td>
+          <td class="memname">const std::string &amp; gnode::BaseData::get_type </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -237,8 +239,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5de897e9fa844f73b123dc42b04dc6de" name="a5de897e9fa844f73b123dc42b04dc6de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5de897e9fa844f73b123dc42b04dc6de">&#9670;&#160;</a></span>get_value_ptr()</h2>
+<a id="af82b51db3b30c25c09a87fa525058edd" name="af82b51db3b30c25c09a87fa525058edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82b51db3b30c25c09a87fa525058edd">&#9670;&#160;</a></span>get_value_ptr() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +249,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void * gnode::BaseData::get_value_ptr </td>
+          <td class="memname">virtual const void * gnode::BaseData::get_value_ptr </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -260,10 +262,37 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="classgnode_1_1Data.html#a712675a6f289ae6f12da89da4235a187">gnode::Data&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a83f3e393bb3cafbdc332a09e73918a9c" name="a83f3e393bb3cafbdc332a09e73918a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f3e393bb3cafbdc332a09e73918a9c">&#9670;&#160;</a></span>get_value_ptr() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void * gnode::BaseData::get_value_ptr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p>Pure virtual method to retrieve a pointer to the stored value. </p>
 <dl class="section return"><dt>Returns</dt><dd>A void pointer to the value. </dd></dl>
 
-<p>Implemented in <a class="el" href="classgnode_1_1Data.html#a24208113dc764b233756e6f7cd2cc4fa">gnode::Data&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classgnode_1_1Data.html#ac0709df931243bb45b04b9642142e315">gnode::Data&lt; T &gt;</a>.</p>
 
 </div>
 </div>
