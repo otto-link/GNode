@@ -81,7 +81,9 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_aaf78d06
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}} ()
 \begin{DoxyCompactList}\small\item\em Mark all nodes as dirty and update the entire graph. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_ad3626823555470989572329cb4a1a5eb}{update}} (const std\+::string \&node\+\_\+id)
-\begin{DoxyCompactList}\small\item\em Update a specific node by its ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Update a specific node by its ID. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69}{update}} (const std\+::vector$<$ std\+::string $>$ \&node\+\_\+ids)
+\begin{DoxyCompactList}\small\item\em Update a specific list of node IDs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -628,7 +630,7 @@ Kahn\textquotesingle{}s algorithm for node sorting for update priority.
 \Hypertarget{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}\label{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7} 
 \index{gnode::Graph@{gnode::Graph}!update@{update}}
 \index{update@{update}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily virtual void gnode\+::\+Graph\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
@@ -638,7 +640,7 @@ Mark all nodes as dirty and update the entire graph.
 This method forces a complete update of the graph, which may be inefficient for large graphs. \Hypertarget{classgnode_1_1Graph_ad3626823555470989572329cb4a1a5eb}\label{classgnode_1_1Graph_ad3626823555470989572329cb4a1a5eb} 
 \index{gnode::Graph@{gnode::Graph}!update@{update}}
 \index{update@{update}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily virtual void gnode\+::\+Graph\+::update (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
@@ -650,9 +652,21 @@ Update a specific node by its ID.
 {\em id} & ID of the node to update. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true If the update was successful. 
-\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69}\label{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69} 
+\index{gnode::Graph@{gnode::Graph}!update@{update}}
+\index{update@{update}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily virtual void gnode\+::\+Graph\+::update (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{node\+\_\+ids }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update a specific list of node IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & IDs of the nodes to update. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
