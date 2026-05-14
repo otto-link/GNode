@@ -1,8 +1,8 @@
 var searchData=
 [
   ['get_5fbase_5fdata_0',['get_base_data',['../classgnode_1_1Node.html#a7f48c6793eecd1cf78bd2dea30f8f01c',1,'gnode::Node::get_base_data(int port_index)'],['../classgnode_1_1Node.html#a582d127a3e79f64bd9836e6b298cd9f7',1,'gnode::Node::get_base_data(const std::string &amp;port_label)']]],
-  ['get_5fconnectivity_5fdownstream_1',['get_connectivity_downstream',['../classgnode_1_1Graph.html#a1d5118b2102a79347cef3fa97fdb7d25',1,'gnode::Graph']]],
-  ['get_5fconnectivity_5fupstream_2',['get_connectivity_upstream',['../classgnode_1_1Graph.html#af72d8a582a8d939a945d6d85fa791048',1,'gnode::Graph']]],
+  ['get_5fconnectivity_5fdownstream_1',['get_connectivity_downstream',['../classgnode_1_1Graph.html#a1d5118b2102a79347cef3fa97fdb7d25',1,'gnode::Graph::get_connectivity_downstream()'],['../classgnode_1_1Graph.html#a318491819750d116a280d0024b40799a',1,'gnode::Graph::get_connectivity_downstream(const std::string &amp;node_id) const']]],
+  ['get_5fconnectivity_5fupstream_2',['get_connectivity_upstream',['../classgnode_1_1Graph.html#af72d8a582a8d939a945d6d85fa791048',1,'gnode::Graph::get_connectivity_upstream()'],['../classgnode_1_1Graph.html#ad28ca6b8ca33aa670fafbab4fe90a01a',1,'gnode::Graph::get_connectivity_upstream(const std::string &amp;node_id) const']]],
   ['get_5fdata_5fshared_5fptr_5fdowncasted_3',['get_data_shared_ptr_downcasted',['../classgnode_1_1Port.html#a34fec20ba62b47cb48574a5eb204dcf4',1,'gnode::Port::get_data_shared_ptr_downcasted()'],['../classgnode_1_1Output.html#a4c934d41aaff9bd61decca57b757ae21',1,'gnode::Output::get_data_shared_ptr_downcasted()']]],
   ['get_5fdata_5ftype_4',['get_data_type',['../classgnode_1_1Node.html#a535d1f7b28b979f0a2dbf6a3996e513b',1,'gnode::Node::get_data_type()'],['../classgnode_1_1Port.html#aedc8d27f2f06ef21483f27574b56983f',1,'gnode::Port::get_data_type()'],['../classgnode_1_1Output.html#a0bff81edf672afacaa6fe29ef0d1eb55',1,'gnode::Output::get_data_type()']]],
   ['get_5fgraph_5fid_5',['get_graph_id',['../classgnode_1_1Node.html#a14449ec736e414b2d43d7715bed6f37b',1,'gnode::Node']]],

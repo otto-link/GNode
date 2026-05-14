@@ -158,9 +158,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d5118b2102a79347cef3fa97fdb7d25" id="r_a1d5118b2102a79347cef3fa97fdb7d25"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a1d5118b2102a79347cef3fa97fdb7d25">get_connectivity_downstream</a> ()</td></tr>
 <tr class="memdesc:a1d5118b2102a79347cef3fa97fdb7d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the downstream connectivity of the graph.  <br /></td></tr>
 <tr class="separator:a1d5118b2102a79347cef3fa97fdb7d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a318491819750d116a280d0024b40799a" id="r_a318491819750d116a280d0024b40799a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a318491819750d116a280d0024b40799a">get_connectivity_downstream</a> (const std::string &amp;node_id) const</td></tr>
+<tr class="memdesc:a318491819750d116a280d0024b40799a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the downstream nodes connected to a node.  <br /></td></tr>
+<tr class="separator:a318491819750d116a280d0024b40799a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af72d8a582a8d939a945d6d85fa791048" id="r_af72d8a582a8d939a945d6d85fa791048"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#af72d8a582a8d939a945d6d85fa791048">get_connectivity_upstream</a> ()</td></tr>
 <tr class="memdesc:af72d8a582a8d939a945d6d85fa791048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the upstream connectivity of the graph.  <br /></td></tr>
 <tr class="separator:af72d8a582a8d939a945d6d85fa791048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28ca6b8ca33aa670fafbab4fe90a01a" id="r_ad28ca6b8ca33aa670fafbab4fe90a01a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#ad28ca6b8ca33aa670fafbab4fe90a01a">get_connectivity_upstream</a> (const std::string &amp;node_id) const</td></tr>
+<tr class="memdesc:ad28ca6b8ca33aa670fafbab4fe90a01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the upstream nodes connected to a node.  <br /></td></tr>
+<tr class="separator:ad28ca6b8ca33aa670fafbab4fe90a01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287f22f5e9d40464a9949ece2c3feab7" id="r_a287f22f5e9d40464a9949ece2c3feab7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="graph_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a287f22f5e9d40464a9949ece2c3feab7">get_id_count</a> () const</td></tr>
 <tr class="memdesc:a287f22f5e9d40464a9949ece2c3feab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current count of unique identifiers.  <br /></td></tr>
 <tr class="separator:a287f22f5e9d40464a9949ece2c3feab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -536,7 +542,7 @@ template&lt;typename U , typename... Args&gt; </div>
 </div>
 </div>
 <a id="a1d5118b2102a79347cef3fa97fdb7d25" name="a1d5118b2102a79347cef3fa97fdb7d25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d5118b2102a79347cef3fa97fdb7d25">&#9670;&#160;</a></span>get_connectivity_downstream()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5118b2102a79347cef3fa97fdb7d25">&#9670;&#160;</a></span>get_connectivity_downstream() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -555,8 +561,35 @@ template&lt;typename U , typename... Args&gt; </div>
 
 </div>
 </div>
+<a id="a318491819750d116a280d0024b40799a" name="a318491819750d116a280d0024b40799a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a318491819750d116a280d0024b40799a">&#9670;&#160;</a></span>get_connectivity_downstream() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; gnode::Graph::get_connectivity_downstream </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the downstream nodes connected to a node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>Identifier of the source node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List of downstream node identifiers. </dd></dl>
+
+</div>
+</div>
 <a id="af72d8a582a8d939a945d6d85fa791048" name="af72d8a582a8d939a945d6d85fa791048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af72d8a582a8d939a945d6d85fa791048">&#9670;&#160;</a></span>get_connectivity_upstream()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af72d8a582a8d939a945d6d85fa791048">&#9670;&#160;</a></span>get_connectivity_upstream() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,6 +605,33 @@ template&lt;typename U , typename... Args&gt; </div>
 
 <p>Get the upstream connectivity of the graph. </p>
 <dl class="section return"><dt>Returns</dt><dd>std::map&lt;std::string, std::vector&lt;std::string&gt;&gt; A map of node IDs and their upstream connections. </dd></dl>
+
+</div>
+</div>
+<a id="ad28ca6b8ca33aa670fafbab4fe90a01a" name="ad28ca6b8ca33aa670fafbab4fe90a01a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28ca6b8ca33aa670fafbab4fe90a01a">&#9670;&#160;</a></span>get_connectivity_upstream() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; gnode::Graph::get_connectivity_upstream </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the upstream nodes connected to a node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_id</td><td>Identifier of the destination node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List of upstream node identifiers. </dd></dl>
 
 </div>
 </div>

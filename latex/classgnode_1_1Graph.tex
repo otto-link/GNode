@@ -42,8 +42,12 @@ void \mbox{\hyperlink{classgnode_1_1Graph_a326a8ba323933a56fc37b1dd0f01da47}{exp
 \begin{DoxyCompactList}\small\item\em Export the graph to a Mermaid file. \end{DoxyCompactList}\item 
 std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25}{get\+\_\+connectivity\+\_\+downstream}} ()
 \begin{DoxyCompactList}\small\item\em Get the downstream connectivity of the graph. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a318491819750d116a280d0024b40799a}{get\+\_\+connectivity\+\_\+downstream}} (const std\+::string \&node\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Returns the downstream nodes connected to a node. \end{DoxyCompactList}\item 
 std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048}{get\+\_\+connectivity\+\_\+upstream}} ()
 \begin{DoxyCompactList}\small\item\em Get the upstream connectivity of the graph. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a}{get\+\_\+connectivity\+\_\+upstream}} (const std\+::string \&node\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Returns the upstream nodes connected to a node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classgnode_1_1Graph_a287f22f5e9d40464a9949ece2c3feab7}{get\+\_\+id\+\_\+count}} () const
 \begin{DoxyCompactList}\small\item\em Get the current count of unique identifiers. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classgnode_1_1Graph_a22c1c44fb8515712ba23cb5e40f50525}{get\+\_\+id\+\_\+count\+\_\+ref}} ()
@@ -250,7 +254,7 @@ Export the graph to a Mermaid file.
 \Hypertarget{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25}\label{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25} 
 \index{gnode::Graph@{gnode::Graph}!get\_connectivity\_downstream@{get\_connectivity\_downstream}}
 \index{get\_connectivity\_downstream@{get\_connectivity\_downstream}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{get\_connectivity\_downstream()}{get\_connectivity\_downstream()}}
+\doxysubsubsection{\texorpdfstring{get\_connectivity\_downstream()}{get\_connectivity\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+downstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -260,10 +264,28 @@ Get the downstream connectivity of the graph.
 \begin{DoxyReturn}{Returns}
 std\+::map$<$std\+::string, std\+::vector$<$std\+::string$>$$>$ A map of node IDs and their downstream connections. 
 \end{DoxyReturn}
+\Hypertarget{classgnode_1_1Graph_a318491819750d116a280d0024b40799a}\label{classgnode_1_1Graph_a318491819750d116a280d0024b40799a} 
+\index{gnode::Graph@{gnode::Graph}!get\_connectivity\_downstream@{get\_connectivity\_downstream}}
+\index{get\_connectivity\_downstream@{get\_connectivity\_downstream}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{get\_connectivity\_downstream()}{get\_connectivity\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+downstream (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+id }\end{DoxyParamCaption}) const}
+
+
+
+Returns the downstream nodes connected to a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+\_\+id} & Identifier of the source node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of downstream node identifiers. 
+\end{DoxyReturn}
 \Hypertarget{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048}\label{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048} 
 \index{gnode::Graph@{gnode::Graph}!get\_connectivity\_upstream@{get\_connectivity\_upstream}}
 \index{get\_connectivity\_upstream@{get\_connectivity\_upstream}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{get\_connectivity\_upstream()}{get\_connectivity\_upstream()}}
+\doxysubsubsection{\texorpdfstring{get\_connectivity\_upstream()}{get\_connectivity\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+upstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -272,6 +294,24 @@ Get the upstream connectivity of the graph.
 
 \begin{DoxyReturn}{Returns}
 std\+::map$<$std\+::string, std\+::vector$<$std\+::string$>$$>$ A map of node IDs and their upstream connections. 
+\end{DoxyReturn}
+\Hypertarget{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a}\label{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a} 
+\index{gnode::Graph@{gnode::Graph}!get\_connectivity\_upstream@{get\_connectivity\_upstream}}
+\index{get\_connectivity\_upstream@{get\_connectivity\_upstream}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{get\_connectivity\_upstream()}{get\_connectivity\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+upstream (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+id }\end{DoxyParamCaption}) const}
+
+
+
+Returns the upstream nodes connected to a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+\_\+id} & Identifier of the destination node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of upstream node identifiers. 
 \end{DoxyReturn}
 \Hypertarget{classgnode_1_1Graph_a6d416e8a1728e1b85d2eef3f6c658a1d}\label{classgnode_1_1Graph_a6d416e8a1728e1b85d2eef3f6c658a1d} 
 \index{gnode::Graph@{gnode::Graph}!get\_id@{get\_id}}
