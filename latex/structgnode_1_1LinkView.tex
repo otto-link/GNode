@@ -13,7 +13,11 @@ Provides a resolved and enriched view of a graph link.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structgnode_1_1LinkView_adefbde10dfa6faa1246ad1b3ffda9f68}{Link\+View}} (const \mbox{\hyperlink{structgnode_1_1Link}{Link}} \&link, const \mbox{\hyperlink{classgnode_1_1Node}{Node}} \&node\+\_\+from, const \mbox{\hyperlink{classgnode_1_1Node}{Node}} \&node\+\_\+to)
-\begin{DoxyCompactList}\small\item\em Constructs a {\ttfamily \doxylink{structgnode_1_1LinkView}{Link\+View}} from a raw link and its associated nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructs a {\ttfamily \doxylink{structgnode_1_1LinkView}{Link\+View}} from a raw link and its associated nodes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structgnode_1_1LinkView_aa7ab4356e02eba7e3be2227be6e9af5b}{print}} (int indent=0) const
+\begin{DoxyCompactList}\small\item\em Print the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structgnode_1_1LinkView_a607cd072721db94129d371fe5ae69aa0}{to\+\_\+string}} (int indent=0) const
+\begin{DoxyCompactList}\small\item\em Export to a string the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,7 +32,11 @@ int \mbox{\hyperlink{structgnode_1_1LinkView_a9ad2e4a3abfc15e3ef1dc9ab1142acac}{
 std\+::string \mbox{\hyperlink{structgnode_1_1LinkView_ab479bb8bfbc2c6cca56b3c9e7a51ec85}{port\+\_\+label\+\_\+from}}
 \begin{DoxyCompactList}\small\item\em Label of the source port. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{structgnode_1_1LinkView_aeee3c286671b1df50be0a9abcf3ed033}{port\+\_\+label\+\_\+to}}
-\begin{DoxyCompactList}\small\item\em Label of the destination port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Label of the destination port. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structgnode_1_1LinkView_a45c1ddd215d8f2180714c4388b707fd7}{data\+\_\+type\+\_\+from}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Data}{Data} type of the source port. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structgnode_1_1LinkView_a526bb6c3c0e75ceeecd93ef0f8f4049f}{data\+\_\+type\+\_\+to}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Data}{Data} type of the destination port. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -62,7 +70,50 @@ This constructor extracts additional contextual information from the provided no
 \end{DoxyParams}
 
 
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structgnode_1_1LinkView_aa7ab4356e02eba7e3be2227be6e9af5b}\label{structgnode_1_1LinkView_aa7ab4356e02eba7e3be2227be6e9af5b} 
+\index{gnode::LinkView@{gnode::LinkView}!print@{print}}
+\index{print@{print}!gnode::LinkView@{gnode::LinkView}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void gnode\+::\+Link\+View\+::print (\begin{DoxyParamCaption}\item[{int}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Print the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. 
+
+\Hypertarget{structgnode_1_1LinkView_a607cd072721db94129d371fe5ae69aa0}\label{structgnode_1_1LinkView_a607cd072721db94129d371fe5ae69aa0} 
+\index{gnode::LinkView@{gnode::LinkView}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!gnode::LinkView@{gnode::LinkView}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string gnode\+::\+Link\+View\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Export to a string the details of the {\ttfamily \doxylink{structgnode_1_1Link}{Link}}. 
+
+
+
 \doxysubsection{Member Data Documentation}
+\Hypertarget{structgnode_1_1LinkView_a45c1ddd215d8f2180714c4388b707fd7}\label{structgnode_1_1LinkView_a45c1ddd215d8f2180714c4388b707fd7} 
+\index{gnode::LinkView@{gnode::LinkView}!data\_type\_from@{data\_type\_from}}
+\index{data\_type\_from@{data\_type\_from}!gnode::LinkView@{gnode::LinkView}}
+\doxysubsubsection{\texorpdfstring{data\_type\_from}{data\_type\_from}}
+{\footnotesize\ttfamily std\+::string gnode\+::\+Link\+View\+::data\+\_\+type\+\_\+from}
+
+
+
+\doxylink{classgnode_1_1Data}{Data} type of the source port. 
+
+\Hypertarget{structgnode_1_1LinkView_a526bb6c3c0e75ceeecd93ef0f8f4049f}\label{structgnode_1_1LinkView_a526bb6c3c0e75ceeecd93ef0f8f4049f} 
+\index{gnode::LinkView@{gnode::LinkView}!data\_type\_to@{data\_type\_to}}
+\index{data\_type\_to@{data\_type\_to}!gnode::LinkView@{gnode::LinkView}}
+\doxysubsubsection{\texorpdfstring{data\_type\_to}{data\_type\_to}}
+{\footnotesize\ttfamily std\+::string gnode\+::\+Link\+View\+::data\+\_\+type\+\_\+to}
+
+
+
+\doxylink{classgnode_1_1Data}{Data} type of the destination port. 
+
 \Hypertarget{structgnode_1_1LinkView_ae3b5028fe7fa7ab0ad21b62d1fe8327b}\label{structgnode_1_1LinkView_ae3b5028fe7fa7ab0ad21b62d1fe8327b} 
 \index{gnode::LinkView@{gnode::LinkView}!from@{from}}
 \index{from@{from}!gnode::LinkView@{gnode::LinkView}}
