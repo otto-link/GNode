@@ -32,7 +32,7 @@ void helper_mark_dirty(
   if (contains(visited, node_id)) return;
 
   visited.push_back(node_id);
-  for (auto dw_id : connectivity_dw.at(node_id))
+  for (const auto &dw_id : connectivity_dw.at(node_id))
     helper_mark_dirty(dw_id, visited, connectivity_dw);
 }
 
@@ -118,7 +118,7 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
   float min_x = std::numeric_limits<float>::max();
   float min_y = std::numeric_limits<float>::max();
 
-  for (auto &p : points)
+  for (const auto &p : points)
   {
     min_x = std::min(min_x, p.x);
     min_y = std::min(min_y, p.y);
@@ -355,7 +355,7 @@ void Graph::export_to_mermaid(const std::string &fname,
   f << "flowchart LR" << std::endl;
 
   // nodes
-  for (auto &[id, p_node] : this->nodes)
+  for (const auto &[id, p_node] : this->nodes)
     f << "    " << id << "([" << p_node->get_label() << "])\n";
 
   // Output edges
@@ -375,10 +375,10 @@ std::map<std::string, std::vector<std::string>> Graph::
 
   // to get all the nodes in the mapping, even if they have no node
   // downstream
-  for (auto &[nid, _] : this->nodes)
+  for (const auto &[nid, _] : this->nodes)
     connectivity[nid] = {};
 
-  for (auto &link : this->links)
+  for (const auto &link : this->links)
     connectivity[link.from].push_back(link.to);
 
   return connectivity;
@@ -404,10 +404,10 @@ std::map<std::string, std::vector<std::string>> Graph::
 
   // to get all the nodes in the mapping, even if they have no node
   // upstream
-  for (auto &[nid, _] : this->nodes)
+  for (const auto &[nid, _] : this->nodes)
     connectivity[nid] = {};
 
-  for (auto &link : this->links)
+  for (const auto &link : this->links)
     connectivity[link.to].push_back(link.from);
 
   return connectivity;
@@ -460,7 +460,7 @@ void Graph::print()
 
   std::size_t max_id = 2;
   std::size_t max_label = 5;
-  for (auto &[id, p_node] : this->nodes)
+  for (const auto &[id, p_node] : this->nodes)
   {
     max_id = std::max(max_id, id.size());
     max_label = std::max(max_label, p_node->get_label().size());
@@ -471,7 +471,7 @@ void Graph::print()
             << "dirty\n";
   std::cout << "  " << std::string(max_id + max_label + 13, '-') << "\n";
 
-  for (auto &[id, p_node] : this->nodes)
+  for (const auto &[id, p_node] : this->nodes)
     std::cout << "  " << std::left << std::setw(max_id) << id << "   "
               << std::left << std::setw(max_label) << p_node->get_label()
               << "   " << std::boolalpha << p_node->is_dirty << "\n";
@@ -479,7 +479,7 @@ void Graph::print()
 
   // --- Links
 
-  for (auto &link : this->links)
+  for (const auto &link : this->links)
   {
     LinkView view(link, *this->nodes.at(link.from), *this->nodes.at(link.to));
     view.print(/* indent */ 2);
@@ -520,7 +520,7 @@ std::vector<std::string> Graph::topological_sort(
 {
   // init
   std::unordered_map<std::string, int> in_degree;
-  for (auto node_id : dirty_node_ids)
+  for (const auto &node_id : dirty_node_ids)
     in_degree[node_id] = 0;
 
   // node links
@@ -528,13 +528,13 @@ std::vector<std::string> Graph::topological_sort(
   const auto connectivity_dw = this->get_connectivity_downstream();
 
   // count number of inputs that are also dirty
-  for (auto node_id : dirty_node_ids)
-    for (auto up_id : connectivity_up.at(node_id))
+  for (const auto &node_id : dirty_node_ids)
+    for (const auto &up_id : connectivity_up.at(node_id))
       if (contains(dirty_node_ids, up_id)) in_degree[node_id]++;
 
   // collect nodes with no dirty dependencies
   std::queue<std::string> ready;
-  for (auto &[node_id, deg] : in_degree)
+  for (const auto &[node_id, deg] : in_degree)
     if (deg == 0) ready.push(node_id);
 
   std::vector<std::string> sorted;
@@ -545,7 +545,7 @@ std::vector<std::string> Graph::topological_sort(
     ready.pop();
     sorted.push_back(node_id);
 
-    for (auto dw_id : connectivity_dw.at(node_id))
+    for (const auto &dw_id : connectivity_dw.at(node_id))
     {
       if (!in_degree.contains(dw_id)) continue;
 
@@ -564,7 +564,7 @@ void Graph::update()
   // set all nodes to a "dirty" state
   std::vector<std::string> dirty_node_ids = {};
 
-  for (auto &[nid, _] : this->nodes)
+  for (const auto &[nid, _] : this->nodes)
   {
     this->get_node_ref_by_id(nid)->is_dirty = true;
     dirty_node_ids.push_back(nid);
@@ -574,10 +574,10 @@ void Graph::update()
   std::vector<std::string> sorted_id = topological_sort(dirty_node_ids);
 
   Logger::log()->trace("Graph::update: update queue:");
-  for (auto &s : sorted_id)
+  for (const auto &s : sorted_id)
     Logger::log()->trace("Graph::update: node id: {}", s);
 
-  for (auto nid : sorted_id)
+  for (const auto &nid : sorted_id)
   {
     if (this->update_callback) this->update_callback(nid, sorted_id, true);
 
@@ -605,7 +605,7 @@ void Graph::update(const std::vector<std::string> &node_ids)
 
   std::vector<std::string> sorted_id = this->get_nodes_to_update(node_ids);
 
-  for (auto nid : sorted_id)
+  for (const auto &nid : sorted_id)
   {
     if (this->update_callback) this->update_callback(nid, sorted_id, true);
 
