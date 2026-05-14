@@ -48,7 +48,7 @@ int Node::get_nports() const { return static_cast<int>(this->ports.size()); }
 int Node::get_nports(PortType port_type) const
 {
   int count = 0;
-  for (auto &port : this->ports)
+  for (const auto &port : this->ports)
     if (port->get_port_type() == port_type) count++;
   return count;
 }
@@ -67,7 +67,7 @@ std::shared_ptr<BaseData> Node::get_output_data(int port_index) const
 int Node::get_port_index(const std::string &port_label) const
 {
   for (size_t i = 0; i < this->ports.size(); ++i)
-    if (this->ports[i]->get_label() == port_label) return (int)i;
+    if (this->ports[i]->get_label() == port_label) return static_cast<int>(i);
 
   return -1;
 }
@@ -82,12 +82,14 @@ std::string Node::get_port_label(int port_index) const
 
 PortType Node::get_port_type(const std::string &port_label) const
 {
-  return this->ports.at(this->get_port_index(port_label))->get_port_type();
+  int index = this->get_port_index(port_label);
+  if (index == -1) throw std::runtime_error("Port not found: " + port_label);
+  return this->ports[index]->get_port_type();
 }
 
 bool Node::has_port(const std::string &port_label) const
 {
-  return this->get_port_index(port_label) == -1 ? false : true;
+  return this->get_port_index(port_label) != -1;
 }
 
 bool Node::is_port_connected(int port_index) const
@@ -112,6 +114,8 @@ bool Node::is_port_connected(int port_index) const
 
 bool Node::is_port_connected(const std::string &port_label) const
 {
+  int index = this->get_port_index(port_label);
+  if (index == -1) throw std::runtime_error("Port not found: " + port_label);
   return this->is_port_connected(this->get_port_index(port_label));
 }
 

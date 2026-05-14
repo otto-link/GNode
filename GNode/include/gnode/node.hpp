@@ -209,7 +209,10 @@ public:
   /**
    * @brief Get the ports.
    */
-  const std::vector<std::shared_ptr<Port>> &get_ports() { return this->ports; };
+  const std::vector<std::shared_ptr<Port>> &get_ports() const
+  {
+    return this->ports;
+  };
 
   /**
    * @brief Get a reference to the value stored in a port by its label.
@@ -217,8 +220,6 @@ public:
    * @tparam T The type of the value.
    * @param port_label The label of the port.
    * @return T* A pointer to the value.
-   * @throws std::runtime_error If the port with the given label is not found,
-   * or if casting the port to the appropriate type fails.
    */
   template <typename T> T *get_value_ref(const std::string &port_label) const
   {
@@ -247,14 +248,9 @@ public:
    * @tparam T The type of the value.
    * @param port_index The index of the port.
    * @return T* A pointer to the value.
-   * @throws std::out_of_range If the port index is invalid.
    */
   template <typename T> T *get_value_ref(int port_index) const
   {
-    // Range check for the port index
-    if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
-      throw std::out_of_range("Invalid port index");
-
     // Dynamic cast to the appropriate port type (Input or Output) and return
     // the value reference if the port is valid, otherwise return nullptr
     if (this->ports[port_index]->get_port_type() == PortType::IN)
@@ -267,6 +263,8 @@ public:
       auto port = std::dynamic_pointer_cast<Output<T>>(this->ports[port_index]);
       return port ? port->get_value_ref() : nullptr;
     }
+
+    return nullptr;
   }
 
   /**
@@ -274,12 +272,11 @@ public:
    *
    * @param port_index The index of the port.
    * @return A `void*` pointer to the value.
-   * @throws std::out_of_range If the port index is invalid.
    */
   void *get_value_ref_void(int port_index) const
   {
     if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
-      throw std::out_of_range("Invalid port index");
+      return nullptr;
 
     return this->ports[port_index]->get_value_ref_void();
   }
@@ -301,7 +298,7 @@ public:
   template <typename T> bool has_port(const std::string &port_label) const
   {
     if (!this->has_port(port_label)) return false;
-    return this->get_value_ref<T>(port_label) ? true : false;
+    return this->get_value_ref<T>(port_label) != nullptr;
   }
 
   /**
@@ -355,6 +352,9 @@ public:
   void set_value(const std::string &port_label, T new_value)
   {
     T *p_value = this->get_value_ref<T>(port_label);
+    if (!p_value)
+      throw std::runtime_error("set_value: port not found or type mismatch: " +
+                               port_label);
     *p_value = new_value;
   }
 
