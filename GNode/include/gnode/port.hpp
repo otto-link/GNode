@@ -175,13 +175,14 @@ public:
   void *get_value_ref_void() override
   {
     auto locked = this->data.lock();
-    return static_cast<void *>(locked->get_value_ref());
+    return locked ? static_cast<void *>(locked->get_value_ref()) : nullptr;
   }
 
   const void *get_value_ref_void() const override
   {
     auto locked = this->data.lock();
-    return static_cast<void *>(locked->get_value_ref());
+    return locked ? static_cast<const void *>(locked->get_value_ref())
+                  : nullptr;
   } ///< @overload
 
   /**
