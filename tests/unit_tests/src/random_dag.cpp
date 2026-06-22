@@ -22,7 +22,7 @@ TEST(GraphStress, RandomDAG_Correctness)
   // create initial values
   for (int i = 0; i < N; ++i)
   {
-    if (i < 20)
+    if (i < NV)
     {
       float v = (float)dist(rng);
       ids[i] = g.add_node<Value>(v);

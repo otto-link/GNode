@@ -179,7 +179,8 @@ public:
    * @return std::map<std::string, std::vector<std::string>> A map of node IDs
    *         and their downstream connections.
    */
-  std::map<std::string, std::vector<std::string>> get_connectivity_downstream();
+  std::map<std::string, std::vector<std::string>> get_connectivity_downstream()
+      const;
 
   /**
    * @brief Returns the downstream nodes connected to a node.
@@ -195,7 +196,8 @@ public:
    * @return std::map<std::string, std::vector<std::string>> A map of node IDs
    *         and their upstream connections.
    */
-  std::map<std::string, std::vector<std::string>> get_connectivity_upstream();
+  std::map<std::string, std::vector<std::string>> get_connectivity_upstream()
+      const;
 
   /**
    * @brief Returns the upstream nodes connected to a node.
@@ -274,6 +276,8 @@ public:
 
   std::vector<std::string> get_nodes_to_update(const std::string &node_id);
 
+  bool has_cycle() const;
+
   /**
    * @brief Check if a node ID is available in the graph.
    *
@@ -343,7 +347,7 @@ public:
 
   /** Kahn's algorithm for node sorting for update priority */
   std::vector<std::string> topological_sort(
-      const std::vector<std::string> &dirty_node_ids);
+      const std::vector<std::string> &dirty_node_ids) const;
 
   /**
    * @brief Mark all nodes as dirty and update the entire graph.

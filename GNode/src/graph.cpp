@@ -133,6 +133,139 @@ std::vector<Point> Graph::compute_graph_layout_sugiyama()
   return points;
 }
 
+void Graph::export_to_graphviz(const std::string &fname,
+                               const std::string &graph_label)
+{
+  std::ofstream file(fname);
+
+  if (!file.is_open())
+    throw std::runtime_error("Failed to open file: " + fname);
+
+  file << "digraph root {\n";
+  file << "label=\"" << graph_label << "\";\n";
+  file << "labelloc=\"t\";\n";
+  file << "rankdir=TD;\n";
+  file << "ranksep=0.5;\n";
+  file << "node [shape=record];\n";
+
+  // Output nodes with their labels
+  for (const auto &[id, p_node] : this->nodes)
+    file << id << " [label=\"" << p_node->get_label() << "\"];\n";
+
+  // Output edges
+  const auto connectivity = this->get_connectivity_downstream();
+
+  for (const auto &[from_id, to_ids] : connectivity)
+    for (const auto &to_id : to_ids)
+      file << from_id << " -> " << to_id << ";\n";
+
+  file << "}\n";
+}
+
+void Graph::export_to_mermaid(const std::string &fname,
+                              const std::string &graph_label)
+{
+  std::fstream f;
+  f.open(fname, std::ios::out);
+
+  f << "---" << std::endl;
+  f << "title: " << graph_label << std::endl;
+  f << "---" << std::endl;
+  f << "flowchart LR" << std::endl;
+
+  // nodes
+  for (const auto &[id, p_node] : this->nodes)
+    f << "    " << id << "([" << p_node->get_label() << "])\n";
+
+  // Output edges
+  const auto connectivity = this->get_connectivity_downstream();
+
+  for (const auto &[from_id, to_ids] : connectivity)
+    for (const auto &to_id : to_ids)
+      f << from_id << " --> " << to_id << ";\n";
+
+  f.close();
+}
+
+std::map<std::string, std::vector<std::string>> Graph::
+    get_connectivity_downstream() const
+{
+  std::map<std::string, std::vector<std::string>> connectivity;
+
+  // to get all the nodes in the mapping, even if they have no node
+  // downstream
+  for (const auto &[nid, _] : this->nodes)
+    connectivity[nid] = {};
+
+  for (const auto &link : this->links)
+    connectivity[link.from].push_back(link.to);
+
+  return connectivity;
+}
+
+std::vector<std::string> Graph::get_connectivity_downstream(
+    const std::string &node_id) const
+{
+  std::vector<std::string> connectivity = {};
+
+  for (const auto &link : this->links)
+  {
+    if (link.from == node_id) connectivity.push_back(link.to);
+  }
+
+  return connectivity;
+}
+
+std::map<std::string, std::vector<std::string>> Graph::
+    get_connectivity_upstream() const
+{
+  std::map<std::string, std::vector<std::string>> connectivity;
+
+  // to get all the nodes in the mapping, even if they have no node
+  // upstream
+  for (const auto &[nid, _] : this->nodes)
+    connectivity[nid] = {};
+
+  for (const auto &link : this->links)
+    connectivity[link.to].push_back(link.from);
+
+  return connectivity;
+}
+
+std::vector<std::string> Graph::get_connectivity_upstream(
+    const std::string &node_id) const
+{
+  std::vector<std::string> connectivity = {};
+
+  for (const auto &link : this->links)
+  {
+    if (link.to == node_id) connectivity.push_back(link.from);
+  }
+
+  return connectivity;
+}
+
+std::vector<LinkView> Graph::get_link_views(const std::string &node_id) const
+{
+  std::vector<gnode::LinkView> link_views = {};
+
+  for (const auto &link : this->get_links())
+  {
+    if (link.from == node_id || link.to == node_id)
+    {
+      Node *p_from = this->get_node_ref_by_id(link.from);
+      Node *p_to = this->get_node_ref_by_id(link.to);
+
+      if (!p_from || !p_to) continue;
+
+      LinkView data(link, *p_from, *p_to);
+      link_views.push_back(data);
+    }
+  }
+
+  return link_views;
+}
+
 std::vector<std::string> Graph::get_nodes_to_update(
     const std::vector<std::string> &node_ids)
 {
@@ -190,6 +323,23 @@ std::vector<std::string> Graph::get_nodes_to_update(
 std::vector<std::string> Graph::get_nodes_to_update(const std::string &node_id)
 {
   return this->get_nodes_to_update(std::vector<std::string>{node_id});
+}
+
+bool Graph::has_cycle() const
+{
+  std::vector<std::string> all_nodes;
+
+  for (const auto &[id, _] : nodes)
+    all_nodes.push_back(id);
+
+  auto sorted = topological_sort(all_nodes);
+
+  return sorted.size() != all_nodes.size();
+}
+
+bool Graph::is_node_id_available(const std::string &node_id)
+{
+  return !this->nodes.contains(node_id);
 }
 
 bool Graph::is_reachable(const std::string              &start,
@@ -266,6 +416,41 @@ bool Graph::new_link(const std::string &from,
                         this->nodes.at(to)->get_port_index(port_label_to));
 }
 
+void Graph::print()
+{
+  std::cout << "Graph layout\n";
+
+  // --- Nodes
+
+  std::size_t max_id = 2;
+  std::size_t max_label = 5;
+  for (const auto &[id, p_node] : this->nodes)
+  {
+    max_id = std::max(max_id, id.size());
+    max_label = std::max(max_label, p_node->get_label().size());
+  }
+
+  std::cout << "\n  " << std::left << std::setw(max_id) << "id" << "   "
+            << std::left << std::setw(max_label) << "label" << "   "
+            << "dirty\n";
+  std::cout << "  " << std::string(max_id + max_label + 13, '-') << "\n";
+
+  for (const auto &[id, p_node] : this->nodes)
+    std::cout << "  " << std::left << std::setw(max_id) << id << "   "
+              << std::left << std::setw(max_label) << p_node->get_label()
+              << "   " << std::boolalpha << p_node->is_dirty << "\n";
+  std::cout << "\n";
+
+  // --- Links
+
+  for (const auto &link : this->links)
+  {
+    LinkView view(link, *this->nodes.at(link.from), *this->nodes.at(link.to));
+    view.print(/* indent */ 2);
+  }
+  std::cout << "\n";
+}
+
 bool Graph::remove_link(const std::string &from,
                         int                port_from,
                         const std::string &to,
@@ -314,179 +499,6 @@ bool Graph::remove_link(const std::string &from,
       this->nodes.at(to)->get_port_index(port_label_to));
 }
 
-void Graph::export_to_graphviz(const std::string &fname,
-                               const std::string &graph_label)
-{
-  std::ofstream file(fname);
-
-  if (!file.is_open())
-    throw std::runtime_error("Failed to open file: " + fname);
-
-  file << "digraph root {\n";
-  file << "label=\"" << graph_label << "\";\n";
-  file << "labelloc=\"t\";\n";
-  file << "rankdir=TD;\n";
-  file << "ranksep=0.5;\n";
-  file << "node [shape=record];\n";
-
-  // Output nodes with their labels
-  for (const auto &[id, p_node] : this->nodes)
-    file << id << " [label=\"" << p_node->get_label() << "\"];\n";
-
-  // Output edges
-  const auto connectivity = this->get_connectivity_downstream();
-
-  for (const auto &[from_id, to_ids] : connectivity)
-    for (const auto &to_id : to_ids)
-      file << from_id << " -> " << to_id << ";\n";
-
-  file << "}\n";
-}
-
-void Graph::export_to_mermaid(const std::string &fname,
-                              const std::string &graph_label)
-{
-  std::fstream f;
-  f.open(fname, std::ios::out);
-
-  f << "---" << std::endl;
-  f << "title: " << graph_label << std::endl;
-  f << "---" << std::endl;
-  f << "flowchart LR" << std::endl;
-
-  // nodes
-  for (const auto &[id, p_node] : this->nodes)
-    f << "    " << id << "([" << p_node->get_label() << "])\n";
-
-  // Output edges
-  const auto connectivity = this->get_connectivity_downstream();
-
-  for (const auto &[from_id, to_ids] : connectivity)
-    for (const auto &to_id : to_ids)
-      f << from_id << " --> " << to_id << ";\n";
-
-  f.close();
-}
-
-std::map<std::string, std::vector<std::string>> Graph::
-    get_connectivity_downstream()
-{
-  std::map<std::string, std::vector<std::string>> connectivity;
-
-  // to get all the nodes in the mapping, even if they have no node
-  // downstream
-  for (const auto &[nid, _] : this->nodes)
-    connectivity[nid] = {};
-
-  for (const auto &link : this->links)
-    connectivity[link.from].push_back(link.to);
-
-  return connectivity;
-}
-
-std::vector<std::string> Graph::get_connectivity_downstream(
-    const std::string &node_id) const
-{
-  std::vector<std::string> connectivity = {};
-
-  for (const auto &link : this->links)
-  {
-    if (link.from == node_id) connectivity.push_back(link.to);
-  }
-
-  return connectivity;
-}
-
-std::map<std::string, std::vector<std::string>> Graph::
-    get_connectivity_upstream()
-{
-  std::map<std::string, std::vector<std::string>> connectivity;
-
-  // to get all the nodes in the mapping, even if they have no node
-  // upstream
-  for (const auto &[nid, _] : this->nodes)
-    connectivity[nid] = {};
-
-  for (const auto &link : this->links)
-    connectivity[link.to].push_back(link.from);
-
-  return connectivity;
-}
-
-std::vector<std::string> Graph::get_connectivity_upstream(
-    const std::string &node_id) const
-{
-  std::vector<std::string> connectivity = {};
-
-  for (const auto &link : this->links)
-  {
-    if (link.to == node_id) connectivity.push_back(link.from);
-  }
-
-  return connectivity;
-}
-
-std::vector<LinkView> Graph::get_link_views(const std::string &node_id) const
-{
-  std::vector<gnode::LinkView> link_views = {};
-
-  for (const auto &link : this->get_links())
-  {
-    if (link.from == node_id || link.to == node_id)
-    {
-      Node *p_from = this->get_node_ref_by_id(link.from);
-      Node *p_to = this->get_node_ref_by_id(link.to);
-
-      if (!p_from || !p_to) continue;
-
-      LinkView data(link, *p_from, *p_to);
-      link_views.push_back(data);
-    }
-  }
-
-  return link_views;
-}
-
-bool Graph::is_node_id_available(const std::string &node_id)
-{
-  return !this->nodes.contains(node_id);
-}
-
-void Graph::print()
-{
-  std::cout << "Graph layout\n";
-
-  // --- Nodes
-
-  std::size_t max_id = 2;
-  std::size_t max_label = 5;
-  for (const auto &[id, p_node] : this->nodes)
-  {
-    max_id = std::max(max_id, id.size());
-    max_label = std::max(max_label, p_node->get_label().size());
-  }
-
-  std::cout << "\n  " << std::left << std::setw(max_id) << "id" << "   "
-            << std::left << std::setw(max_label) << "label" << "   "
-            << "dirty\n";
-  std::cout << "  " << std::string(max_id + max_label + 13, '-') << "\n";
-
-  for (const auto &[id, p_node] : this->nodes)
-    std::cout << "  " << std::left << std::setw(max_id) << id << "   "
-              << std::left << std::setw(max_label) << p_node->get_label()
-              << "   " << std::boolalpha << p_node->is_dirty << "\n";
-  std::cout << "\n";
-
-  // --- Links
-
-  for (const auto &link : this->links)
-  {
-    LinkView view(link, *this->nodes.at(link.from), *this->nodes.at(link.to));
-    view.print(/* indent */ 2);
-  }
-  std::cout << "\n";
-}
-
 void Graph::remove_node(const std::string &id)
 {
   if (this->is_node_id_available(id))
@@ -516,7 +528,7 @@ void Graph::remove_node(const std::string &id)
 }
 
 std::vector<std::string> Graph::topological_sort(
-    const std::vector<std::string> &dirty_node_ids)
+    const std::vector<std::string> &dirty_node_ids) const
 {
   // init
   std::unordered_map<std::string, int> in_degree;
