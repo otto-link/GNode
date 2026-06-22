@@ -40,11 +40,11 @@ void \mbox{\hyperlink{classgnode_1_1Graph_a9abff3825a189c650b83c47cff73ff33}{exp
 \begin{DoxyCompactList}\small\item\em Export the graph to a Graphviz DOT file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classgnode_1_1Graph_a326a8ba323933a56fc37b1dd0f01da47}{export\+\_\+to\+\_\+mermaid}} (const std\+::string \&fname="{}export.\+mmd"{}, const std\+::string \&graph\+\_\+label="{}graph"{})
 \begin{DoxyCompactList}\small\item\em Export the graph to a Mermaid file. \end{DoxyCompactList}\item 
-std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25}{get\+\_\+connectivity\+\_\+downstream}} ()
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_ad99380c3209128fd0b9ff0231c378ef3}{get\+\_\+connectivity\+\_\+downstream}} () const
 \begin{DoxyCompactList}\small\item\em Get the downstream connectivity of the graph. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a318491819750d116a280d0024b40799a}{get\+\_\+connectivity\+\_\+downstream}} (const std\+::string \&node\+\_\+id) const
 \begin{DoxyCompactList}\small\item\em Returns the downstream nodes connected to a node. \end{DoxyCompactList}\item 
-std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048}{get\+\_\+connectivity\+\_\+upstream}} ()
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classgnode_1_1Graph_abd7c3e273a80cda765e94205b6825273}{get\+\_\+connectivity\+\_\+upstream}} () const
 \begin{DoxyCompactList}\small\item\em Get the upstream connectivity of the graph. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a}{get\+\_\+connectivity\+\_\+upstream}} (const std\+::string \&node\+\_\+id) const
 \begin{DoxyCompactList}\small\item\em Returns the upstream nodes connected to a node. \end{DoxyCompactList}\item 
@@ -64,6 +64,8 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a654f078
 \begin{DoxyCompactList}\small\item\em Get node list for update priority. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\+\_\+nodes\+\_\+to\+\_\+update}} (const std\+::string \&node\+\_\+id)
 \item 
+bool \mbox{\hyperlink{classgnode_1_1Graph_a446d54e7429fd4e8250be625aa98d0e2}{has\+\_\+cycle}} () const
+\item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\+\_\+node\+\_\+id\+\_\+available}} (const std\+::string \&node\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Check if a node ID is available in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}{is\+\_\+reachable}} (const std\+::string \&start, const std\+::string \&target, std\+::unordered\+\_\+set$<$ std\+::string $>$ visited=\{\}) const
@@ -80,7 +82,7 @@ void \mbox{\hyperlink{classgnode_1_1Graph_ae5cc97cc65c4db92ceae28d3e5228d3b}{set
 \begin{DoxyCompactList}\small\item\em Set the current count of unique identifiers. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5}{set\+\_\+update\+\_\+callback}} (std\+::function$<$ void(const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&, bool)$>$ new\+\_\+callback)
 \item 
-std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_aaf78d061f432b30e7b150ca10fb2c7a5}{topological\+\_\+sort}} (const std\+::vector$<$ std\+::string $>$ \&dirty\+\_\+node\+\_\+ids)
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94}{topological\+\_\+sort}} (const std\+::vector$<$ std\+::string $>$ \&dirty\+\_\+node\+\_\+ids) const
 \begin{DoxyCompactList}\small\item\em Kahn\textquotesingle{}s algorithm for node sorting for update priority. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}} ()
 \begin{DoxyCompactList}\small\item\em Mark all nodes as dirty and update the entire graph. \end{DoxyCompactList}\item 
@@ -251,11 +253,11 @@ Export the graph to a Mermaid file.
 {\em graph\+\_\+label} & Label for the graph. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25}\label{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25} 
+\Hypertarget{classgnode_1_1Graph_ad99380c3209128fd0b9ff0231c378ef3}\label{classgnode_1_1Graph_ad99380c3209128fd0b9ff0231c378ef3} 
 \index{gnode::Graph@{gnode::Graph}!get\_connectivity\_downstream@{get\_connectivity\_downstream}}
 \index{get\_connectivity\_downstream@{get\_connectivity\_downstream}!gnode::Graph@{gnode::Graph}}
 \doxysubsubsection{\texorpdfstring{get\_connectivity\_downstream()}{get\_connectivity\_downstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+downstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+downstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -282,11 +284,11 @@ Returns the downstream nodes connected to a node.
 \begin{DoxyReturn}{Returns}
 List of downstream node identifiers. 
 \end{DoxyReturn}
-\Hypertarget{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048}\label{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048} 
+\Hypertarget{classgnode_1_1Graph_abd7c3e273a80cda765e94205b6825273}\label{classgnode_1_1Graph_abd7c3e273a80cda765e94205b6825273} 
 \index{gnode::Graph@{gnode::Graph}!get\_connectivity\_upstream@{get\_connectivity\_upstream}}
 \index{get\_connectivity\_upstream@{get\_connectivity\_upstream}!gnode::Graph@{gnode::Graph}}
 \doxysubsubsection{\texorpdfstring{get\_connectivity\_upstream()}{get\_connectivity\_upstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+upstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ gnode\+::\+Graph\+::get\+\_\+connectivity\+\_\+upstream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -437,6 +439,12 @@ Nodes map.
 
 
 Get node list for update priority. 
+
+\Hypertarget{classgnode_1_1Graph_a446d54e7429fd4e8250be625aa98d0e2}\label{classgnode_1_1Graph_a446d54e7429fd4e8250be625aa98d0e2} 
+\index{gnode::Graph@{gnode::Graph}!has\_cycle@{has\_cycle}}
+\index{has\_cycle@{has\_cycle}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{has\_cycle()}{has\_cycle()}}
+{\footnotesize\ttfamily bool gnode\+::\+Graph\+::has\+\_\+cycle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}\label{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2} 
 \index{gnode::Graph@{gnode::Graph}!is\_node\_id\_available@{is\_node\_id\_available}}
@@ -657,11 +665,11 @@ Set the current count of unique identifiers.
 \doxysubsubsection{\texorpdfstring{set\_update\_callback()}{set\_update\_callback()}}
 {\footnotesize\ttfamily void gnode\+::\+Graph\+::set\+\_\+update\+\_\+callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&, bool)$>$}]{new\+\_\+callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classgnode_1_1Graph_aaf78d061f432b30e7b150ca10fb2c7a5}\label{classgnode_1_1Graph_aaf78d061f432b30e7b150ca10fb2c7a5} 
+\Hypertarget{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94}\label{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94} 
 \index{gnode::Graph@{gnode::Graph}!topological\_sort@{topological\_sort}}
 \index{topological\_sort@{topological\_sort}!gnode::Graph@{gnode::Graph}}
 \doxysubsubsection{\texorpdfstring{topological\_sort()}{topological\_sort()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::topological\+\_\+sort (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dirty\+\_\+node\+\_\+ids }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ gnode\+::\+Graph\+::topological\+\_\+sort (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dirty\+\_\+node\+\_\+ids }\end{DoxyParamCaption}) const}
 
 
 

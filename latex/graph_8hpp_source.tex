@@ -70,103 +70,107 @@
 \DoxyCodeLine{00173\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a326a8ba323933a56fc37b1dd0f01da47}{export\_to\_mermaid}}(\textcolor{keyword}{const}\ std::string\ \&fname\ =\ \textcolor{stringliteral}{"{}export.mmd"{}},}
 \DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&graph\_label\ =\ \textcolor{stringliteral}{"{}graph"{}});}
 \DoxyCodeLine{00175\ }
-\DoxyCodeLine{00182\ \ \ std::map<std::string,\ std::vector<std::string>>\ \mbox{\hyperlink{classgnode_1_1Graph_a1d5118b2102a79347cef3fa97fdb7d25}{get\_connectivity\_downstream}}();}
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00189\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a318491819750d116a280d0024b40799a}{get\_connectivity\_downstream}}(}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00191\ }
-\DoxyCodeLine{00198\ \ \ std::map<std::string,\ std::vector<std::string>>\ \mbox{\hyperlink{classgnode_1_1Graph_af72d8a582a8d939a945d6d85fa791048}{get\_connectivity\_upstream}}();}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00205\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a}{get\_connectivity\_upstream}}(}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00213\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \mbox{\hyperlink{classgnode_1_1Graph_a287f22f5e9d40464a9949ece2c3feab7}{get\_id\_count}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}};\ \}}
-\DoxyCodeLine{00214\ }
-\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ *\mbox{\hyperlink{classgnode_1_1Graph_a22c1c44fb8515712ba23cb5e40f50525}{get\_id\_count\_ref}}()\ \{\ \textcolor{keywordflow}{return}\ \&this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}};\ \}}
+\DoxyCodeLine{00182\ \ \ std::map<std::string,\ std::vector<std::string>>\ \mbox{\hyperlink{classgnode_1_1Graph_ad99380c3209128fd0b9ff0231c378ef3}{get\_connectivity\_downstream}}()}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \textcolor{keyword}{const};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00190\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a318491819750d116a280d0024b40799a}{get\_connectivity\_downstream}}(}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00199\ \ \ std::map<std::string,\ std::vector<std::string>>\ \mbox{\hyperlink{classgnode_1_1Graph_abd7c3e273a80cda765e94205b6825273}{get\_connectivity\_upstream}}()}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \textcolor{keyword}{const};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00207\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_ad28ca6b8ca33aa670fafbab4fe90a01a}{get\_connectivity\_upstream}}(}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \mbox{\hyperlink{classgnode_1_1Graph_a287f22f5e9d40464a9949ece2c3feab7}{get\_id\_count}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}};\ \}}
 \DoxyCodeLine{00216\ }
-\DoxyCodeLine{00222\ \ \ \textcolor{keyword}{const}\ std::vector<Link>\ \&\mbox{\hyperlink{classgnode_1_1Graph_a8d009b6c0567c919756e622d5301a272}{get\_links}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a1b1d5550849d281c7001e5fdedb9b6e4}{links}};\ \}}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00236\ \ \ std::vector<LinkView>\ \mbox{\hyperlink{classgnode_1_1Graph_a06f10897b0d1987ba7180a6af14aa6dd}{get\_link\_views}}(\textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00237\ }
-\DoxyCodeLine{00247\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ Node>}
-\DoxyCodeLine{00248\ \ \ T\ *\mbox{\hyperlink{classgnode_1_1Graph_abc8dbe305fa98e66d8d68a4eef03d8e4}{get\_node\_ref\_by\_id}}(\textcolor{keyword}{const}\ std::string\ \&node\_id)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00249\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}}.find(node\_id);}
-\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}}.end())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00252\ }
-\DoxyCodeLine{00253\ \ \ \ \ T\ *ptr\ =\ \textcolor{keyword}{dynamic\_cast<}T\ *\textcolor{keyword}{>}(it-\/>second.get());}
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptr)}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ cast\ node\ with\ ID:\ "{}}\ +\ node\_id\ +}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ to\ the\ specified\ type."{}});}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{return}\ ptr;}
-\DoxyCodeLine{00259\ \ \ \}}
-\DoxyCodeLine{00260\ }
-\DoxyCodeLine{00266\ \ \ \textcolor{keyword}{const}\ std::map<std::string,\ std::shared\_ptr<Node>>\ \&\mbox{\hyperlink{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5}{get\_nodes}}()}
-\DoxyCodeLine{00267\ \ \ \{}
-\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}};}
-\DoxyCodeLine{00269\ \ \ \}}
-\DoxyCodeLine{00270\ }
-\DoxyCodeLine{00272\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a654f078aa0282c8580d855f3990fe94d}{get\_nodes\_to\_update}}(}
-\DoxyCodeLine{00273\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&node\_ids);}
-\DoxyCodeLine{00274\ }
-\DoxyCodeLine{00275\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\_nodes\_to\_update}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
+\DoxyCodeLine{00217\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ *\mbox{\hyperlink{classgnode_1_1Graph_a22c1c44fb8515712ba23cb5e40f50525}{get\_id\_count\_ref}}()\ \{\ \textcolor{keywordflow}{return}\ \&this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}};\ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00224\ \ \ \textcolor{keyword}{const}\ std::vector<Link>\ \&\mbox{\hyperlink{classgnode_1_1Graph_a8d009b6c0567c919756e622d5301a272}{get\_links}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a1b1d5550849d281c7001e5fdedb9b6e4}{links}};\ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00238\ \ \ std::vector<LinkView>\ \mbox{\hyperlink{classgnode_1_1Graph_a06f10897b0d1987ba7180a6af14aa6dd}{get\_link\_views}}(\textcolor{keyword}{const}\ std::string\ \&node\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00249\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ Node>}
+\DoxyCodeLine{00250\ \ \ T\ *\mbox{\hyperlink{classgnode_1_1Graph_abc8dbe305fa98e66d8d68a4eef03d8e4}{get\_node\_ref\_by\_id}}(\textcolor{keyword}{const}\ std::string\ \&node\_id)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00251\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}}.find(node\_id);}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}}.end())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ T\ *ptr\ =\ \textcolor{keyword}{dynamic\_cast<}T\ *\textcolor{keyword}{>}(it-\/>second.get());}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptr)}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ cast\ node\ with\ ID:\ "{}}\ +\ node\_id\ +}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ to\ the\ specified\ type."{}});}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{return}\ ptr;}
+\DoxyCodeLine{00261\ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00268\ \ \ \textcolor{keyword}{const}\ std::map<std::string,\ std::shared\_ptr<Node>>\ \&\mbox{\hyperlink{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5}{get\_nodes}}()}
+\DoxyCodeLine{00269\ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}};}
+\DoxyCodeLine{00271\ \ \ \}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00274\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a654f078aa0282c8580d855f3990fe94d}{get\_nodes\_to\_update}}(}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&node\_ids);}
 \DoxyCodeLine{00276\ }
-\DoxyCodeLine{00284\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\_node\_id\_available}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00299\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}{is\_reachable}}(\textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&start,}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&target,}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_set<std::string>\ visited\ =\ \{\})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00302\ }
-\DoxyCodeLine{00309\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a8e9e53b7b9d9b972a55f1e248ca7d4ac}{post\_update}}()\ \{\}}
-\DoxyCodeLine{00310\ }
-\DoxyCodeLine{00314\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a31d979ddee434a4ff4b21d6c5dccfb0e}{print}}();}
-\DoxyCodeLine{00315\ }
-\DoxyCodeLine{00321\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a50fd9fc67f99cce1dfbb7860a880c255}{remove\_node}}(\textcolor{keyword}{const}\ std::string\ \&\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00322\ }
-\DoxyCodeLine{00328\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a1265ce7c6cfcf3ded45e7be3a52a33d4}{set\_id}}(\textcolor{keyword}{const}\ std::string\ \&new\_id)\ \{\ this-\/>\textcolor{keywordtype}{id}\ =\ new\_id;\ \};}
-\DoxyCodeLine{00329\ }
-\DoxyCodeLine{00335\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_ae5cc97cc65c4db92ceae28d3e5228d3b}{set\_id\_count}}(\mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ new\_id\_count)\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}}\ =\ new\_id\_count;\ \}}
-\DoxyCodeLine{00336\ }
-\DoxyCodeLine{00337\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5}{set\_update\_callback}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\ \&,}
-\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&,}
-\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool})>\ new\_callback)}
-\DoxyCodeLine{00340\ \ \ \{}
-\DoxyCodeLine{00341\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}{update\_callback}}\ =\ new\_callback;}
-\DoxyCodeLine{00342\ \ \ \}}
-\DoxyCodeLine{00343\ }
-\DoxyCodeLine{00345\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_aaf78d061f432b30e7b150ca10fb2c7a5}{topological\_sort}}(}
-\DoxyCodeLine{00346\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&dirty\_node\_ids);}
+\DoxyCodeLine{00277\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\_nodes\_to\_update}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Graph_a446d54e7429fd4e8250be625aa98d0e2}{has\_cycle}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\_node\_id\_available}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00303\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}{is\_reachable}}(\textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&start,}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&target,}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_set<std::string>\ visited\ =\ \{\})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00313\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a8e9e53b7b9d9b972a55f1e248ca7d4ac}{post\_update}}()\ \{\}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00318\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a31d979ddee434a4ff4b21d6c5dccfb0e}{print}}();}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00325\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a50fd9fc67f99cce1dfbb7860a880c255}{remove\_node}}(\textcolor{keyword}{const}\ std::string\ \&\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00332\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a1265ce7c6cfcf3ded45e7be3a52a33d4}{set\_id}}(\textcolor{keyword}{const}\ std::string\ \&new\_id)\ \{\ this-\/>\textcolor{keywordtype}{id}\ =\ new\_id;\ \};}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00339\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_ae5cc97cc65c4db92ceae28d3e5228d3b}{set\_id\_count}}(\mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ new\_id\_count)\ \{\ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}}\ =\ new\_id\_count;\ \}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5}{set\_update\_callback}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\ \&,}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&,}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool})>\ new\_callback)}
+\DoxyCodeLine{00344\ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ this-\/>\mbox{\hyperlink{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}{update\_callback}}\ =\ new\_callback;}
+\DoxyCodeLine{00346\ \ \ \}}
 \DoxyCodeLine{00347\ }
-\DoxyCodeLine{00354\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}}();}
-\DoxyCodeLine{00355\ }
-\DoxyCodeLine{00361\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_ad3626823555470989572329cb4a1a5eb}{update}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
-\DoxyCodeLine{00362\ }
-\DoxyCodeLine{00368\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69}{update}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&node\_ids);}
-\DoxyCodeLine{00369\ }
-\DoxyCodeLine{00370\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00374\ \ \ std::map<std::string,\ std::shared\_ptr<Node>>\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}};}
-\DoxyCodeLine{00375\ }
-\DoxyCodeLine{00379\ \ \ std::vector<Link>\ \mbox{\hyperlink{classgnode_1_1Graph_a1b1d5550849d281c7001e5fdedb9b6e4}{links}};}
-\DoxyCodeLine{00380\ }
-\DoxyCodeLine{00381\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00385\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}}\ =\ 0;}
-\DoxyCodeLine{00386\ }
-\DoxyCodeLine{00390\ \ \ std::string\ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00391\ }
-\DoxyCodeLine{00392\ \ \ std::function<void(\textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&current\_id,}
-\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&sorted\_ids,}
-\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ before\_update)>}
-\DoxyCodeLine{00395\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}{update\_callback}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00396\ \};}
-\DoxyCodeLine{00397\ }
-\DoxyCodeLine{00398\ \textcolor{comment}{//\ helper}}
-\DoxyCodeLine{00399\ }
-\DoxyCodeLine{00400\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacegnode_a2146300a69e85fafafd9f597220ca443}{contains}}(\textcolor{keyword}{const}\ std::vector<T>\ \&vec,\ \textcolor{keyword}{const}\ T\ \&value)}
-\DoxyCodeLine{00401\ \{}
-\DoxyCodeLine{00402\ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
-\DoxyCodeLine{00403\ \}}
-\DoxyCodeLine{00404\ }
-\DoxyCodeLine{00405\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
+\DoxyCodeLine{00349\ \ \ std::vector<std::string>\ \mbox{\hyperlink{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94}{topological\_sort}}(}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&dirty\_node\_ids)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00358\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}}();}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00365\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_ad3626823555470989572329cb4a1a5eb}{update}}(\textcolor{keyword}{const}\ std::string\ \&node\_id);}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00372\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69}{update}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&node\_ids);}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00378\ \ \ std::map<std::string,\ std::shared\_ptr<Node>>\ \mbox{\hyperlink{classgnode_1_1Graph_a5226972d60609aa3068a4cdac7a611cc}{nodes}};}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00383\ \ \ std::vector<Link>\ \mbox{\hyperlink{classgnode_1_1Graph_a1b1d5550849d281c7001e5fdedb9b6e4}{links}};}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00389\ \ \ \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\_count}}\ =\ 0;}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00394\ \ \ std::string\ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ std::function<void(\textcolor{keyword}{const}\ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \&current\_id,}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&sorted\_ids,}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ before\_update)>}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \mbox{\hyperlink{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}{update\_callback}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00400\ \};}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \textcolor{comment}{//\ helper}}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacegnode_a2146300a69e85fafafd9f597220ca443}{contains}}(\textcolor{keyword}{const}\ std::vector<T>\ \&vec,\ \textcolor{keyword}{const}\ T\ \&value)}
+\DoxyCodeLine{00405\ \{}
+\DoxyCodeLine{00406\ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
+\DoxyCodeLine{00407\ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \}\ \textcolor{comment}{//\ namespace\ gnode}}
 
 \end{DoxyCode}
