@@ -191,6 +191,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f645009a273a3e6cf948ba971786b48" id="r_a3f645009a273a3e6cf948ba971786b48"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a3f645009a273a3e6cf948ba971786b48">get_nodes_to_update</a> (const std::string &amp;node_id)</td></tr>
 <tr class="separator:a3f645009a273a3e6cf948ba971786b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a446d54e7429fd4e8250be625aa98d0e2" id="r_a446d54e7429fd4e8250be625aa98d0e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a446d54e7429fd4e8250be625aa98d0e2">has_cycle</a> () const</td></tr>
+<tr class="memdesc:a446d54e7429fd4e8250be625aa98d0e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the graph contains a cycle.  <br /></td></tr>
 <tr class="separator:a446d54e7429fd4e8250be625aa98d0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49f904ceace75a70d58f8047a71c8cb2" id="r_a49f904ceace75a70d58f8047a71c8cb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a49f904ceace75a70d58f8047a71c8cb2">is_node_id_available</a> (const std::string &amp;node_id)</td></tr>
 <tr class="memdesc:a49f904ceace75a70d58f8047a71c8cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a node ID is available in the graph.  <br /></td></tr>
@@ -904,6 +905,12 @@ template&lt;typename T  = Node&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks whether the graph contains a cycle. </p>
+<p>This function performs a topological sort on all nodes and compares the result size with the number of nodes in the graph.</p>
+<p>If the sizes differ, it means that at least one cycle exists in the dependency graph (i.e., some nodes cannot be topologically ordered).</p>
+<dl class="section warning"><dt>Warning</dt><dd>This check is purely informational. It is NOT used as a strict execution guard in the current update pipeline, since the graph evaluation system executes nodes in a single-pass topologically ordered schedule and does not rely on reactive or recursive propagation. Therefore, cycles will not cause infinite execution loops, but they may still indicate an invalid or non-deterministic graph structure.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a cycle is detected, false otherwise. </dd></dl>
 
 </div>
 </div>

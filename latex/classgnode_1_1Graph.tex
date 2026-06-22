@@ -65,7 +65,7 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a654f078
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_a3f645009a273a3e6cf948ba971786b48}{get\+\_\+nodes\+\_\+to\+\_\+update}} (const std\+::string \&node\+\_\+id)
 \item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_a446d54e7429fd4e8250be625aa98d0e2}{has\+\_\+cycle}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Checks whether the graph contains a cycle. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}{is\+\_\+node\+\_\+id\+\_\+available}} (const std\+::string \&node\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Check if a node ID is available in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classgnode_1_1Graph_acc097cff980d014a25b7cc0cd4f06a4e}{is\+\_\+reachable}} (const std\+::string \&start, const std\+::string \&target, std\+::unordered\+\_\+set$<$ std\+::string $>$ visited=\{\}) const
@@ -446,6 +446,20 @@ Get node list for update priority.
 \doxysubsubsection{\texorpdfstring{has\_cycle()}{has\_cycle()}}
 {\footnotesize\ttfamily bool gnode\+::\+Graph\+::has\+\_\+cycle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Checks whether the graph contains a cycle. 
+
+This function performs a topological sort on all nodes and compares the result size with the number of nodes in the graph.
+
+If the sizes differ, it means that at least one cycle exists in the dependency graph (i.\+e., some nodes cannot be topologically ordered).
+
+\begin{DoxyWarning}{Warning}
+This check is purely informational. It is NOT used as a strict execution guard in the current update pipeline, since the graph evaluation system executes nodes in a single-\/pass topologically ordered schedule and does not rely on reactive or recursive propagation. Therefore, cycles will not cause infinite execution loops, but they may still indicate an invalid or non-\/deterministic graph structure.
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+true if a cycle is detected, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2}\label{classgnode_1_1Graph_a49f904ceace75a70d58f8047a71c8cb2} 
 \index{gnode::Graph@{gnode::Graph}!is\_node\_id\_available@{is\_node\_id\_available}}
 \index{is\_node\_id\_available@{is\_node\_id\_available}!gnode::Graph@{gnode::Graph}}
