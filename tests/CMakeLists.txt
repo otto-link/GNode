@@ -1,4 +1,4 @@
-file(GLOB TESTS LIST_DIRECTORIES true "*")
+file(GLOB TESTS LIST_DIRECTORIES true "test_*")
 foreach(item ${TESTS})
 	if(IS_DIRECTORY ${item})
 		add_subdirectory(${item})

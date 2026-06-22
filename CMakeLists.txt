@@ -2,8 +2,19 @@ cmake_minimum_required(VERSION 3.22)
 
 project(gnode-root)
 
-option(GNODE_ENABLE_EXAMPLES "" ON)
-option(GNODE_ENABLE_TESTS "" ON)
+option(GNODE_ENABLE_EXAMPLES "" OFF)
+option(GNODE_ENABLE_TESTS "" OFF)
+option(GNODE_ENABLE_UNIT_TESTS "" OFF)
+
+# -----------------------------------------------------------------------------
+# Status output
+# -----------------------------------------------------------------------------
+
+message(STATUS "┌─ GNode configuration ────────────────")
+message(STATUS "│ GNODE_ENABLE_EXAMPLES:   ${GNODE_ENABLE_EXAMPLES}")
+message(STATUS "│ GNODE_ENABLE_TESTS:      ${GNODE_ENABLE_TESTS}")
+message(STATUS "│ GNODE_ENABLE_UNIT_TESTS: ${GNODE_ENABLE_UNIT_TESTS}")
+message(STATUS "└─────────────────────────────────────")
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -36,3 +47,7 @@ endif(GNODE_ENABLE_EXAMPLES)
 if(GNODE_ENABLE_TESTS)
   add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 endif(GNODE_ENABLE_TESTS)
+
+if(GNODE_ENABLE_UNIT_TESTS)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/tests/unit_tests)
+endif(GNODE_ENABLE_UNIT_TESTS)
