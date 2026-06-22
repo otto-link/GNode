@@ -276,6 +276,25 @@ public:
 
   std::vector<std::string> get_nodes_to_update(const std::string &node_id);
 
+  /**
+   * @brief Checks whether the graph contains a cycle.
+   *
+   * This function performs a topological sort on all nodes and compares the
+   * result size with the number of nodes in the graph.
+   *
+   * If the sizes differ, it means that at least one cycle exists in the
+   * dependency graph (i.e., some nodes cannot be topologically ordered).
+   *
+   * @warning This check is purely informational.
+   * It is NOT used as a strict execution guard in the current update pipeline,
+   * since the graph evaluation system executes nodes in a single-pass
+   * topologically ordered schedule and does not rely on reactive or recursive
+   * propagation. Therefore, cycles will not cause infinite execution loops,
+   * but they may still indicate an invalid or non-deterministic graph
+   * structure.
+   *
+   * @return true if a cycle is detected, false otherwise.
+   */
   bool has_cycle() const;
 
   /**

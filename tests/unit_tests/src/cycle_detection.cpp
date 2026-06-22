@@ -25,6 +25,7 @@ TEST(GraphCycle, DetectSimpleCycle)
   auto a = g.add_node<Add>();
 
   g.new_link(a, "a + b", a, "a");
+  g.new_link(a, "a + b", a, "b");
 
   EXPECT_TRUE(g.has_cycle());
 }
@@ -40,7 +41,7 @@ TEST(GraphCycle, DetectIndirectCycle)
   g.new_link(a, "value", b, "a");
   g.new_link(b, "a + b", c, "a");
 
-  // create indirect cycle: c -> a
+  // create indirect cycle: c -> b
   g.new_link(c, "a + b", b, "a");
 
   EXPECT_TRUE(g.has_cycle());
