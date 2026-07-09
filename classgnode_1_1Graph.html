@@ -178,6 +178,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a06f10897b0d1987ba7180a6af14aa6dd" id="r_a06f10897b0d1987ba7180a6af14aa6dd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgnode_1_1LinkView.html">LinkView</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a06f10897b0d1987ba7180a6af14aa6dd">get_link_views</a> (const std::string &amp;node_id) const</td></tr>
 <tr class="memdesc:a06f10897b0d1987ba7180a6af14aa6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the link views connected to a node.  <br /></td></tr>
 <tr class="separator:a06f10897b0d1987ba7180a6af14aa6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4bc8005fd12bbaf098195646a26104" id="r_a4e4bc8005fd12bbaf098195646a26104"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#a4e4bc8005fd12bbaf098195646a26104">get_node</a> (const std::string &amp;node_id) const</td></tr>
+<tr class="memdesc:a4e4bc8005fd12bbaf098195646a26104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to a node by its ID.  <br /></td></tr>
+<tr class="separator:a4e4bc8005fd12bbaf098195646a26104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc8dbe305fa98e66d8d68a4eef03d8e4" id="r_abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="memTemplParams" colspan="2">template&lt;typename T  = Node&gt; </td></tr>
 <tr class="memitem:abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgnode_1_1Graph.html#abc8dbe305fa98e66d8d68a4eef03d8e4">get_node_ref_by_id</a> (const std::string &amp;node_id) const</td></tr>
 <tr class="memdesc:abc8dbe305fa98e66d8d68a4eef03d8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to a node by its ID.  <br /></td></tr>
@@ -776,6 +779,35 @@ template&lt;typename U , typename... Args&gt; </div>
 
 </div>
 </div>
+<a id="a4e4bc8005fd12bbaf098195646a26104" name="a4e4bc8005fd12bbaf098195646a26104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4bc8005fd12bbaf098195646a26104">&#9670;&#160;</a></span>get_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgnode_1_1Node.html">Node</a> * gnode::Graph::get_node </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a pointer to a node by its ID. </p>
+<p>Non-throwing, returns nullptr if not found. </p>
+
+</div>
+</div>
 <a id="abc8dbe305fa98e66d8d68a4eef03d8e4" name="abc8dbe305fa98e66d8d68a4eef03d8e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abc8dbe305fa98e66d8d68a4eef03d8e4">&#9670;&#160;</a></span>get_node_ref_by_id()</h2>
 
@@ -815,10 +847,10 @@ template&lt;typename T  = Node&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the node (returns <code>nullptr</code> if the node ID is not found). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If casting the node to the specified type fails. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>If node is not found, or casting the node to the specified type fails. </td></tr>
   </table>
   </dd>
 </dl>
