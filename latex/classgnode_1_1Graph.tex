@@ -416,11 +416,11 @@ Get a pointer to a node by its ID.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-T\texorpdfstring{$\ast$}{*} Pointer to the node. 
+T\texorpdfstring{$\ast$}{*} Pointer to the node (nullptr is the node is not found). 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::runtime\+\_\+error} & If node is not found, or casting the node to the specified type fails. \\
+{\em std\+::runtime\+\_\+error} & If casting the node to the specified type fails. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5}\label{classgnode_1_1Graph_aa021388dff616ad1bbbaec49da2048c5} 

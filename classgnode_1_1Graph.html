@@ -847,10 +847,10 @@ template&lt;typename T  = Node&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the node. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the node (nullptr is the node is not found). </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If node is not found, or casting the node to the specified type fails. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>If casting the node to the specified type fails. </td></tr>
   </table>
   </dd>
 </dl>
