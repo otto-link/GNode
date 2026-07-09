@@ -252,16 +252,15 @@ public:
    *
    * @tparam T Node type, default is Node.
    * @param node_id ID of the node.
-   * @return T* Pointer to the node.
-   * @throws std::runtime_error If node is not found, or casting the node to the
+   * @return T* Pointer to the node (nullptr is the node is not found).
+   * @throws std::runtime_error If casting the node to the
    * specified type fails.
    */
   template <typename T = Node>
   T *get_node_ref_by_id(const std::string &node_id) const
   {
     auto it = nodes.find(node_id);
-    if (it == nodes.end())
-      throw std::runtime_error("Node not found with ID: " + node_id);
+    if (it == nodes.end()) return nullptr;
 
     T *ptr = dynamic_cast<T *>(it->second.get());
     if (!ptr)

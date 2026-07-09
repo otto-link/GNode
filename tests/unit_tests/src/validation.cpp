@@ -28,7 +28,7 @@ TEST(GraphLinks, InvalidPorts)
 TEST(GraphExceptions, GetNodeRefMissing)
 {
   gnode::Graph g;
-  EXPECT_THROW(g.get_node_ref_by_id("does_not_exist"), std::runtime_error);
+  EXPECT_TRUE(g.get_node_ref_by_id("does_not_exist") == nullptr);
 }
 
 TEST(NodeExceptions, GetValueRefExceptions)
