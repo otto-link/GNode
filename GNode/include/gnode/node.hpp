@@ -223,23 +223,27 @@ public:
    */
   template <typename T> T *get_value_ref(const std::string &port_label) const
   {
-    // Search for the port in the inputs vector
     for (const auto &port : this->ports)
+    {
       if (port->get_label() == port_label)
       {
         if (port->get_port_type() == PortType::IN)
         {
           auto inputPort = std::dynamic_pointer_cast<Input<T>>(port);
-          if (inputPort) return inputPort->get_value_ref();
+          if (!inputPort)
+            throw std::runtime_error("Type mismatch for port: " + port_label);
+          return inputPort->get_value_ref();
         }
         else
         {
           auto outputPort = std::dynamic_pointer_cast<Output<T>>(port);
-          if (outputPort) return outputPort->get_value_ref();
+          if (!outputPort)
+            throw std::runtime_error("Type mismatch for port: " + port_label);
+          return outputPort->get_value_ref();
         }
       }
-
-    return nullptr;
+    }
+    throw std::runtime_error("Port not found: " + port_label);
   }
 
   /**
@@ -251,20 +255,26 @@ public:
    */
   template <typename T> T *get_value_ref(int port_index) const
   {
-    // Dynamic cast to the appropriate port type (Input or Output) and return
-    // the value reference if the port is valid, otherwise return nullptr
+    if (port_index < 0 || port_index >= static_cast<int>(this->ports.size()))
+      throw std::out_of_range("Port index is out of range: " +
+                              std::to_string(port_index));
+
     if (this->ports[port_index]->get_port_type() == PortType::IN)
     {
       auto port = std::dynamic_pointer_cast<Input<T>>(this->ports[port_index]);
-      return port ? port->get_value_ref() : nullptr;
+      if (!port)
+        throw std::runtime_error("Type mismatch for port index: " +
+                                 std::to_string(port_index));
+      return port->get_value_ref();
     }
     else
     {
       auto port = std::dynamic_pointer_cast<Output<T>>(this->ports[port_index]);
-      return port ? port->get_value_ref() : nullptr;
+      if (!port)
+        throw std::runtime_error("Type mismatch for port index: " +
+                                 std::to_string(port_index));
+      return port->get_value_ref();
     }
-
-    return nullptr;
   }
 
   /**
@@ -297,8 +307,9 @@ public:
    */
   template <typename T> bool has_port(const std::string &port_label) const
   {
-    if (!this->has_port(port_label)) return false;
-    return this->get_value_ref<T>(port_label) != nullptr;
+    int index = this->get_port_index(port_label);
+    if (index == -1) return false;
+    return this->ports[index]->get_data_type() == typeid(T).name();
   }
 
   /**
@@ -353,8 +364,7 @@ public:
   {
     T *p_value = this->get_value_ref<T>(port_label);
     if (!p_value)
-      throw std::runtime_error("set_value: port not found or type mismatch: " +
-                               port_label);
+      throw std::runtime_error("set_value: cannot set value: " + port_label);
     *p_value = new_value;
   }
 

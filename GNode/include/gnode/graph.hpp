@@ -238,19 +238,30 @@ public:
   std::vector<LinkView> get_link_views(const std::string &node_id) const;
 
   /**
+   * @brief Get a pointer to a node by its ID. Non-throwing, returns nullptr if
+   * not found.
+   */
+  Node *get_node(const std::string &node_id) const
+  {
+    auto it = nodes.find(node_id);
+    return (it != nodes.end()) ? it->second.get() : nullptr;
+  }
+
+  /**
    * @brief Get a pointer to a node by its ID.
    *
    * @tparam T Node type, default is Node.
    * @param node_id ID of the node.
-   * @return T* Pointer to the node (returns `nullptr` if the node ID is not
-   * found).
-   * @throws std::runtime_error If casting the node to the specified type fails.
+   * @return T* Pointer to the node.
+   * @throws std::runtime_error If node is not found, or casting the node to the
+   * specified type fails.
    */
   template <typename T = Node>
   T *get_node_ref_by_id(const std::string &node_id) const
   {
     auto it = nodes.find(node_id);
-    if (it == nodes.end()) return nullptr;
+    if (it == nodes.end())
+      throw std::runtime_error("Node not found with ID: " + node_id);
 
     T *ptr = dynamic_cast<T *>(it->second.get());
     if (!ptr)

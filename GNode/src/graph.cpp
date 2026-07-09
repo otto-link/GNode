@@ -253,8 +253,8 @@ std::vector<LinkView> Graph::get_link_views(const std::string &node_id) const
   {
     if (link.from == node_id || link.to == node_id)
     {
-      Node *p_from = this->get_node_ref_by_id(link.from);
-      Node *p_to = this->get_node_ref_by_id(link.to);
+      Node *p_from = this->get_node(link.from);
+      Node *p_to = this->get_node(link.to);
 
       if (!p_from || !p_to) continue;
 
@@ -274,10 +274,8 @@ std::vector<std::string> Graph::get_nodes_to_update(
   for (const auto &node_id : node_ids)
   {
     if (this->is_node_id_available(node_id))
-    {
-      Logger::log()->trace("Graph::update: unknown node id {}", node_id);
-      return {};
-    }
+      throw std::runtime_error("Graph::get_nodes_to_update: unknown node id: " +
+                               node_id);
   }
 
   // --- check upstream dependencies
@@ -288,7 +286,7 @@ std::vector<std::string> Graph::get_nodes_to_update(
   {
     for (const auto &id_up : connectivity_up[node_id])
     {
-      Node *p_node = this->get_node_ref_by_id(id_up);
+      Node *p_node = this->get_node(id_up);
 
       if (p_node && p_node->is_dirty)
       {
@@ -399,21 +397,29 @@ bool Graph::new_link(const std::string &from,
                      const std::string &to,
                      const std::string &port_label_to)
 {
+  auto from_node_it = this->nodes.find(from);
+  if (from_node_it == this->nodes.end())
+    throw std::runtime_error("Source node not found: " + from);
+
+  auto to_node_it = this->nodes.find(to);
+  if (to_node_it == this->nodes.end())
+    throw std::runtime_error("Destination node not found: " + to);
+
   // Check that the 'from' port is an output port
-  if (this->nodes.at(from)->get_port_type(port_label_from) != PortType::OUT)
+  if (from_node_it->second->get_port_type(port_label_from) != PortType::OUT)
     throw std::invalid_argument("Port '" + port_label_from + "' on node '" +
                                 from + "' must be an output port.");
 
   // Check that the 'to' port is an input port
-  if (this->nodes.at(to)->get_port_type(port_label_to) != PortType::IN)
+  if (to_node_it->second->get_port_type(port_label_to) != PortType::IN)
     throw std::invalid_argument("Port '" + port_label_to + "' on node '" + to +
                                 "' must be an input port.");
 
   // Call the existing connect method using the port indices
   return this->new_link(from,
-                        this->nodes.at(from)->get_port_index(port_label_from),
+                        from_node_it->second->get_port_index(port_label_from),
                         to,
-                        this->nodes.at(to)->get_port_index(port_label_to));
+                        to_node_it->second->get_port_index(port_label_to));
 }
 
 void Graph::print()
@@ -481,22 +487,16 @@ bool Graph::remove_link(const std::string &from,
                         const std::string &to,
                         const std::string &port_label_to)
 {
-  // Check that the 'from' port is an output port
-  if (this->nodes.at(from)->get_port_type(port_label_from) != PortType::OUT)
-    throw std::invalid_argument("Port '" + port_label_from + "' on node '" +
-                                from + "' must be an output port.");
+  auto from_node_it = this->nodes.find(from);
+  auto to_node_it = this->nodes.find(to);
+  if (from_node_it == this->nodes.end() || to_node_it == this->nodes.end())
+    return false;
 
-  // Check that the 'to' port is an input port
-  if (this->nodes.at(to)->get_port_type(port_label_to) != PortType::IN)
-    throw std::invalid_argument("Port '" + port_label_to + "' on node '" + to +
-                                "' must be an input port.");
+  int port_from = from_node_it->second->get_port_index(port_label_from);
+  int port_to = to_node_it->second->get_port_index(port_label_to);
+  if (port_from == -1 || port_to == -1) return false;
 
-  // Call the existing connect method using the port indices
-  return this->remove_link(
-      from,
-      this->nodes.at(from)->get_port_index(port_label_from),
-      to,
-      this->nodes.at(to)->get_port_index(port_label_to));
+  return this->remove_link(from, port_from, to, port_to);
 }
 
 void Graph::remove_node(const std::string &id)
@@ -609,10 +609,7 @@ void Graph::update(const std::vector<std::string> &node_ids)
   for (const auto &node_id : node_ids)
   {
     if (this->is_node_id_available(node_id))
-    {
-      Logger::log()->trace("Graph::update: unknown node id {}", node_id);
-      return;
-    }
+      throw std::runtime_error("Graph::update: unknown node id: " + node_id);
   }
 
   std::vector<std::string> sorted_id = this->get_nodes_to_update(node_ids);
