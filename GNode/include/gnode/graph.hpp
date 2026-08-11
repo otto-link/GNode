@@ -376,7 +376,7 @@ public:
    * 2. The full sorted list of node IDs scheduled for this update pass.
    * 3. A boolean: true if triggered before the node's update, false if after.
    */
-  Event<const std::string &, const std::vector<std::string> &, bool> node_update_event;
+  Event<const std::string &, const std::vector<std::string> &, bool> graph_progress_event;
 
   /** Kahn's algorithm for node sorting for update priority */
   std::vector<std::string> topological_sort(

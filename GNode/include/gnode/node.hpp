@@ -43,12 +43,12 @@ public:
   /**
    * @brief Event triggered before node computation starts.
    */
-  Event<Node &> update_before_event;
+  Event<Node &> pre_update_event;
 
   /**
    * @brief Event triggered after node computation finishes.
    */
-  Event<Node &> update_after_event;
+  Event<Node &> post_update_event;
 
   /**
    * @brief Default constructor for Node.

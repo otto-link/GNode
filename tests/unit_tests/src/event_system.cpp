@@ -100,14 +100,14 @@ TEST(EventSystem, NodeEvents)
   int before_calls = 0;
   int after_calls = 0;
 
-  auto conn_before = node.update_before_event.subscribe(
+  auto conn_before = node.pre_update_event.subscribe(
       [&before_calls](gnode::Node &n)
       {
         before_calls++;
         EXPECT_EQ(n.get_label(), "Add");
       });
 
-  auto conn_after = node.update_after_event.subscribe(
+  auto conn_after = node.post_update_event.subscribe(
       [&after_calls](gnode::Node &n)
       {
         after_calls++;
@@ -142,7 +142,7 @@ TEST(EventSystem, GraphEvents)
 
   std::vector<std::pair<std::string, bool>> update_sequence;
 
-  auto conn = graph.node_update_event.subscribe(
+  auto conn = graph.graph_progress_event.subscribe(
       [&update_sequence](const std::string &node_id,
                          const std::vector<std::string> &/*sorted_ids*/,
                          bool before_update)
