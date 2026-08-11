@@ -19,6 +19,7 @@
 
 #include "gnode/data.hpp"
 #include "gnode/port.hpp"
+#include "gnode/event.hpp"
 
 namespace gnode
 {
@@ -38,6 +39,16 @@ public:
    * update).
    */
   bool is_dirty = false;
+
+  /**
+   * @brief Event triggered before node computation starts.
+   */
+  Event<Node &> update_before_event;
+
+  /**
+   * @brief Event triggered after node computation finishes.
+   */
+  Event<Node &> update_after_event;
 
   /**
    * @brief Default constructor for Node.

@@ -22,6 +22,7 @@
 #include "gnode/link.hpp"
 #include "gnode/node.hpp"
 #include "gnode/point.hpp"
+#include "gnode/event.hpp"
 
 typedef unsigned int uint;
 
@@ -367,12 +368,15 @@ public:
    * */
   void set_id_count(uint new_id_count) { this->id_count = new_id_count; }
 
-  void set_update_callback(std::function<void(const std::string &,
-                                              const std::vector<std::string> &,
-                                              bool)> new_callback)
-  {
-    this->update_callback = new_callback;
-  }
+  /**
+   * @brief Event triggered before and after a node is updated.
+   *
+   * Subscribed callbacks receive:
+   * 1. The ID of the node currently being updated.
+   * 2. The full sorted list of node IDs scheduled for this update pass.
+   * 3. A boolean: true if triggered before the node's update, false if after.
+   */
+  Event<const std::string &, const std::vector<std::string> &, bool> node_update_event;
 
   /** Kahn's algorithm for node sorting for update priority */
   std::vector<std::string> topological_sort(
@@ -421,11 +425,6 @@ private:
    * @brief Graph id
    */
   std::string id = "";
-
-  std::function<void(const std::string              &current_id,
-                     const std::vector<std::string> &sorted_ids,
-                     bool                            before_update)>
-      update_callback = nullptr;
 };
 
 // helper

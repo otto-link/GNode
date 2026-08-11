@@ -134,7 +134,9 @@ void Node::update()
 {
   if (this->is_dirty)
   {
+    this->update_before_event.notify(*this);
     this->compute();
+    this->update_after_event.notify(*this);
     this->is_dirty = false;
   }
 }
