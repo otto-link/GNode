@@ -9,6 +9,16 @@ The \doxylink{classgnode_1_1Graph}{Graph} class provides methods for manipulatin
 
 {\ttfamily \#include $<$graph.\+hpp$>$}
 
+
+
+Collaboration diagram for gnode\+::Graph\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classgnode_1_1Graph__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,8 +92,6 @@ void \mbox{\hyperlink{classgnode_1_1Graph_a1265ce7c6cfcf3ded45e7be3a52a33d4}{set
 \begin{DoxyCompactList}\small\item\em Set the graph ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classgnode_1_1Graph_ae5cc97cc65c4db92ceae28d3e5228d3b}{set\+\_\+id\+\_\+count}} (\mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} new\+\_\+id\+\_\+count)
 \begin{DoxyCompactList}\small\item\em Set the current count of unique identifiers. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5}{set\+\_\+update\+\_\+callback}} (std\+::function$<$ void(const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&, bool)$>$ new\+\_\+callback)
-\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94}{topological\+\_\+sort}} (const std\+::vector$<$ std\+::string $>$ \&dirty\+\_\+node\+\_\+ids) const
 \begin{DoxyCompactList}\small\item\em Kahn\textquotesingle{}s algorithm for node sorting for update priority. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a0c918aba38c03de51fe09ad40be0abb7}{update}} ()
@@ -92,6 +100,11 @@ virtual void \mbox{\hyperlink{classgnode_1_1Graph_ad3626823555470989572329cb4a1a
 \begin{DoxyCompactList}\small\item\em Update a specific node by its ID. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classgnode_1_1Graph_a5ca59add6ada27ab7669763add345b69}{update}} (const std\+::vector$<$ std\+::string $>$ \&node\+\_\+ids)
 \begin{DoxyCompactList}\small\item\em Update a specific list of node IDs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$ const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&, bool $>$ \mbox{\hyperlink{classgnode_1_1Graph_a552fd8d5cc5e12035670deefd7de6f05}{graph\+\_\+progress\+\_\+event}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Event}{Event} triggered before and after a node is updated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -105,9 +118,7 @@ std\+::vector$<$ \mbox{\hyperlink{structgnode_1_1Link}{Link}} $>$ \mbox{\hyperli
 \mbox{\hyperlink{graph_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classgnode_1_1Graph_a3bf5b371263e4debf0c53f9f389d70b9}{id\+\_\+count}} = 0
 \begin{DoxyCompactList}\small\item\em Keep track of unique identifiers. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classgnode_1_1Graph_a2dcc4d5e3f8ba7f5ecadfb92f2c36e34}{id}} = "{}"{}
-\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Graph}{Graph} id. \end{DoxyCompactList}\item 
-std\+::function$<$ void(const std\+::string \&current\+\_\+id, const std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+ids, bool before\+\_\+update)$>$ \mbox{\hyperlink{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}{update\+\_\+callback}} = nullptr
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Graph}{Graph} id. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -685,12 +696,6 @@ Set the current count of unique identifiers.
 {\em new\+\_\+id} & An available unique identifier. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5}\label{classgnode_1_1Graph_a291d7cbdeb778712b92fb9b2131ec3d5} 
-\index{gnode::Graph@{gnode::Graph}!set\_update\_callback@{set\_update\_callback}}
-\index{set\_update\_callback@{set\_update\_callback}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{set\_update\_callback()}{set\_update\_callback()}}
-{\footnotesize\ttfamily void gnode\+::\+Graph\+::set\+\_\+update\+\_\+callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&, bool)$>$}]{new\+\_\+callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \Hypertarget{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94}\label{classgnode_1_1Graph_ad2494bad4848457bebe27132d55f4b94} 
 \index{gnode::Graph@{gnode::Graph}!topological\_sort@{topological\_sort}}
 \index{topological\_sort@{topological\_sort}!gnode::Graph@{gnode::Graph}}
@@ -744,7 +749,22 @@ Update a specific list of node IDs.
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classgnode_1_1Graph_a2dcc4d5e3f8ba7f5ecadfb92f2c36e34}\label{classgnode_1_1Graph_a2dcc4d5e3f8ba7f5ecadfb92f2c36e34} 
+\Hypertarget{classgnode_1_1Graph_a552fd8d5cc5e12035670deefd7de6f05}\label{classgnode_1_1Graph_a552fd8d5cc5e12035670deefd7de6f05} 
+\index{gnode::Graph@{gnode::Graph}!graph\_progress\_event@{graph\_progress\_event}}
+\index{graph\_progress\_event@{graph\_progress\_event}!gnode::Graph@{gnode::Graph}}
+\doxysubsubsection{\texorpdfstring{graph\_progress\_event}{graph\_progress\_event}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$const std\+::string \&, const std\+::vector$<$std\+::string$>$ \&, bool$>$ gnode\+::\+Graph\+::graph\+\_\+progress\+\_\+event}
+
+
+
+\doxylink{classgnode_1_1Event}{Event} triggered before and after a node is updated. 
+
+Subscribed callbacks receive\+:
+\begin{DoxyEnumerate}
+\item The ID of the node currently being updated.
+\item The full sorted list of node IDs scheduled for this update pass.
+\item A boolean\+: true if triggered before the node\textquotesingle{}s update, false if after. 
+\end{DoxyEnumerate}\Hypertarget{classgnode_1_1Graph_a2dcc4d5e3f8ba7f5ecadfb92f2c36e34}\label{classgnode_1_1Graph_a2dcc4d5e3f8ba7f5ecadfb92f2c36e34} 
 \index{gnode::Graph@{gnode::Graph}!id@{id}}
 \index{id@{id}!gnode::Graph@{gnode::Graph}}
 \doxysubsubsection{\texorpdfstring{id}{id}}
@@ -783,12 +803,6 @@ A list of links between nodes in the graph.
 
 
 A map of node IDs to shared pointers of \doxylink{classgnode_1_1Node}{Node} objects. 
-
-\Hypertarget{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7}\label{classgnode_1_1Graph_a932a3923d8c826ea30ce4eef061c68a7} 
-\index{gnode::Graph@{gnode::Graph}!update\_callback@{update\_callback}}
-\index{update\_callback@{update\_callback}!gnode::Graph@{gnode::Graph}}
-\doxysubsubsection{\texorpdfstring{update\_callback}{update\_callback}}
-{\footnotesize\ttfamily std\+::function$<$void(const std\+::string \&current\+\_\+id, const std\+::vector$<$std\+::string$>$ \&sorted\+\_\+ids, bool before\+\_\+update)$>$ gnode\+::\+Graph\+::update\+\_\+callback = nullptr\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

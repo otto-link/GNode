@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['to_0',['to',['../structgnode_1_1Link.html#a47ec34944510712d9a86b736a4fff842',1,'gnode::Link::to'],['../structgnode_1_1LinkView.html#a712f4fa87b63a10dc88ebecfc6a0d4fa',1,'gnode::LinkView::to']]],
-  ['type_1',['type',['../classgnode_1_1BaseData.html#a40012d7fe5dcb3d09b1e56c0310e4d96',1,'gnode::BaseData']]]
+  ['label_0',['label',['../classgnode_1_1Node.html#a9aa2aa1b14e2c933a99f1bc5e080dc7b',1,'gnode::Node::label'],['../classgnode_1_1Port.html#a295aa641f2b36907883051f4e4f1df26',1,'gnode::Port::label']]],
+  ['links_1',['links',['../classgnode_1_1Graph.html#a1b1d5550849d281c7001e5fdedb9b6e4',1,'gnode::Graph']]],
+  ['listeners_5f_2',['listeners_',['../classgnode_1_1Event.html#aa1c35b640564b551e0141d3cf6f22f00',1,'gnode::Event']]]
 ];

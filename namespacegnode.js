@@ -2,6 +2,8 @@ var namespacegnode =
 [
     [ "BaseData", "classgnode_1_1BaseData.html", "classgnode_1_1BaseData" ],
     [ "Data", "classgnode_1_1Data.html", "classgnode_1_1Data" ],
+    [ "Event", "classgnode_1_1Event.html", "classgnode_1_1Event" ],
+    [ "EventConnection", "classgnode_1_1EventConnection.html", "classgnode_1_1EventConnection" ],
     [ "Graph", "classgnode_1_1Graph.html", "classgnode_1_1Graph" ],
     [ "Input", "classgnode_1_1Input.html", "classgnode_1_1Input" ],
     [ "Link", "structgnode_1_1Link.html", "structgnode_1_1Link" ],

@@ -6,10 +6,10 @@ var searchData=
   ['get_5fdata_5fshared_5fptr_5fdowncasted_3',['get_data_shared_ptr_downcasted',['../classgnode_1_1Port.html#a34fec20ba62b47cb48574a5eb204dcf4',1,'gnode::Port::get_data_shared_ptr_downcasted()'],['../classgnode_1_1Output.html#a4c934d41aaff9bd61decca57b757ae21',1,'gnode::Output::get_data_shared_ptr_downcasted()']]],
   ['get_5fdata_5ftype_4',['get_data_type',['../classgnode_1_1Node.html#a535d1f7b28b979f0a2dbf6a3996e513b',1,'gnode::Node::get_data_type()'],['../classgnode_1_1Port.html#aedc8d27f2f06ef21483f27574b56983f',1,'gnode::Port::get_data_type()'],['../classgnode_1_1Output.html#a0bff81edf672afacaa6fe29ef0d1eb55',1,'gnode::Output::get_data_type()']]],
   ['get_5fgraph_5fid_5',['get_graph_id',['../classgnode_1_1Node.html#a14449ec736e414b2d43d7715bed6f37b',1,'gnode::Node']]],
-  ['get_5fid_6',['get_id',['../classgnode_1_1Graph.html#a6d416e8a1728e1b85d2eef3f6c658a1d',1,'gnode::Graph::get_id()'],['../classgnode_1_1Node.html#a8c0c4345e3b4aa41164afc7879904941',1,'gnode::Node::get_id()']]],
+  ['get_5fid_6',['get_id',['../classgnode_1_1Node.html#a8c0c4345e3b4aa41164afc7879904941',1,'gnode::Node::get_id()'],['../classgnode_1_1Graph.html#a6d416e8a1728e1b85d2eef3f6c658a1d',1,'gnode::Graph::get_id() const']]],
   ['get_5fid_5fcount_7',['get_id_count',['../classgnode_1_1Graph.html#a287f22f5e9d40464a9949ece2c3feab7',1,'gnode::Graph']]],
   ['get_5fid_5fcount_5fref_8',['get_id_count_ref',['../classgnode_1_1Graph.html#a22c1c44fb8515712ba23cb5e40f50525',1,'gnode::Graph']]],
-  ['get_5flabel_9',['get_label',['../classgnode_1_1Port.html#ae9d9e4bc60a1f388f804a28046f456b9',1,'gnode::Port::get_label()'],['../classgnode_1_1Node.html#a9749aa3c7c72f11d2a11c63b2272162b',1,'gnode::Node::get_label()']]],
+  ['get_5flabel_9',['get_label',['../classgnode_1_1Node.html#a9749aa3c7c72f11d2a11c63b2272162b',1,'gnode::Node::get_label()'],['../classgnode_1_1Port.html#ae9d9e4bc60a1f388f804a28046f456b9',1,'gnode::Port::get_label()']]],
   ['get_5flink_5fviews_10',['get_link_views',['../classgnode_1_1Graph.html#a06f10897b0d1987ba7180a6af14aa6dd',1,'gnode::Graph']]],
   ['get_5flinks_11',['get_links',['../classgnode_1_1Graph.html#a8d009b6c0567c919756e622d5301a272',1,'gnode::Graph']]],
   ['get_5fnode_12',['get_node',['../classgnode_1_1Graph.html#a4e4bc8005fd12bbaf098195646a26104',1,'gnode::Graph']]],
@@ -32,5 +32,6 @@ var searchData=
   ['graph_29',['graph',['../classgnode_1_1Graph.html',1,'gnode::Graph'],['../classgnode_1_1Graph.html#a9d5756eced83d05fd73f79f73a9f1317',1,'gnode::Graph::Graph()=default'],['../classgnode_1_1Graph.html#a7e9adbde847e933237163a5c87c009b3',1,'gnode::Graph::Graph(const std::string &amp;id)']]],
   ['graph_20hpp_30',['Graph (in graph.hpp)',['../index.html#autotoc_md22',1,'']]],
   ['graph_20in_20graph_20hpp_31',['Graph (in graph.hpp)',['../index.html#autotoc_md22',1,'']]],
-  ['graph_2ehpp_32',['graph.hpp',['../graph_8hpp.html',1,'']]]
+  ['graph_2ehpp_32',['graph.hpp',['../graph_8hpp.html',1,'']]],
+  ['graph_5fprogress_5fevent_33',['graph_progress_event',['../classgnode_1_1Graph.html#a552fd8d5cc5e12035670deefd7de6f05',1,'gnode::Graph']]]
 ];

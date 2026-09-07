@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['id_0',['id',['../classgnode_1_1Graph.html#a2dcc4d5e3f8ba7f5ecadfb92f2c36e34',1,'gnode::Graph::id'],['../classgnode_1_1Node.html#a3e41a3733f18c826ea536284295e44ba',1,'gnode::Node::id']]],
-  ['id_5fcount_1',['id_count',['../classgnode_1_1Graph.html#a3bf5b371263e4debf0c53f9f389d70b9',1,'gnode::Graph']]],
-  ['instance_2',['instance',['../classgnode_1_1Logger.html#a49018a60cb90359ad2f9a073b0af11c7',1,'gnode::Logger']]],
-  ['is_5fdirty_3',['is_dirty',['../classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474',1,'gnode::Node']]]
+  ['data_0',['data',['../classgnode_1_1Input.html#a396f51e9c50554bd8d755cb0e740d1d4',1,'gnode::Input::data'],['../classgnode_1_1Output.html#aa145f3ac53985b605d0572255cff8f2a',1,'gnode::Output::data']]],
+  ['data_5ftype_1',['data_type',['../classgnode_1_1Port.html#a4590c8988d628d562064e8ea3876ce37',1,'gnode::Port']]],
+  ['data_5ftype_5ffrom_2',['data_type_from',['../structgnode_1_1LinkView.html#a45c1ddd215d8f2180714c4388b707fd7',1,'gnode::LinkView']]],
+  ['data_5ftype_5fto_3',['data_type_to',['../structgnode_1_1LinkView.html#a526bb6c3c0e75ceeecd93ef0f8f4049f',1,'gnode::LinkView']]],
+  ['disconnect_5f_4',['disconnect_',['../classgnode_1_1EventConnection.html#a3048517149a89ec6fad10179770f47e9',1,'gnode::EventConnection']]]
 ];

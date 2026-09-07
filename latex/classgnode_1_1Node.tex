@@ -16,7 +16,7 @@ Collaboration diagram for gnode\+::Node\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=164pt]{classgnode_1_1Node__coll__graph}
+\includegraphics[width=350pt]{classgnode_1_1Node__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -90,7 +90,11 @@ std\+::string \mbox{\hyperlink{classgnode_1_1Node_a3d01eaca73078eb9edddcf7763e91
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{bool}} \mbox{\hyperlink{classgnode_1_1Node_aa513335727b2cf9d7562b19577373474}{is\+\_\+dirty}} = \mbox{\hyperlink{classgnode_1_1Node_a7721091aabb595825d4cd702f02d148a}{false}}
-\begin{DoxyCompactList}\small\item\em Flag indicating whether the node is marked as dirty (requiring an update). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the node is marked as dirty (requiring an update). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$ \mbox{\hyperlink{classgnode_1_1Node}{Node}} \& $>$ \mbox{\hyperlink{classgnode_1_1Node_a429d27874f2775d9372b8491ef4b1505}{pre\+\_\+update\+\_\+event}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Event}{Event} triggered before node computation starts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$ \mbox{\hyperlink{classgnode_1_1Node}{Node}} \& $>$ \mbox{\hyperlink{classgnode_1_1Node_a1d07858e6ce8ea432cec8509324a7f90}{post\+\_\+update\+\_\+event}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classgnode_1_1Event}{Event} triggered after node computation finishes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -699,6 +703,26 @@ Reference to the graph the node belong to, if any.
 
 
 A vector of shared pointers to the node\textquotesingle{}s ports. 
+
+\Hypertarget{classgnode_1_1Node_a1d07858e6ce8ea432cec8509324a7f90}\label{classgnode_1_1Node_a1d07858e6ce8ea432cec8509324a7f90} 
+\index{gnode::Node@{gnode::Node}!post\_update\_event@{post\_update\_event}}
+\index{post\_update\_event@{post\_update\_event}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{post\_update\_event}{post\_update\_event}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$\mbox{\hyperlink{classgnode_1_1Node}{Node}} \&$>$ gnode\+::\+Node\+::post\+\_\+update\+\_\+event}
+
+
+
+\doxylink{classgnode_1_1Event}{Event} triggered after node computation finishes. 
+
+\Hypertarget{classgnode_1_1Node_a429d27874f2775d9372b8491ef4b1505}\label{classgnode_1_1Node_a429d27874f2775d9372b8491ef4b1505} 
+\index{gnode::Node@{gnode::Node}!pre\_update\_event@{pre\_update\_event}}
+\index{pre\_update\_event@{pre\_update\_event}!gnode::Node@{gnode::Node}}
+\doxysubsubsection{\texorpdfstring{pre\_update\_event}{pre\_update\_event}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgnode_1_1Event}{Event}}$<$\mbox{\hyperlink{classgnode_1_1Node}{Node}} \&$>$ gnode\+::\+Node\+::pre\+\_\+update\+\_\+event}
+
+
+
+\doxylink{classgnode_1_1Event}{Event} triggered before node computation starts. 
 
 
 

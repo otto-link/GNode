@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_0',['Input',['../classgnode_1_1Input.html',1,'gnode']]]
+  ['graph_0',['Graph',['../classgnode_1_1Graph.html',1,'gnode']]]
 ];

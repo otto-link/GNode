@@ -35,14 +35,13 @@ var classgnode_1_1Graph =
     [ "remove_node", "classgnode_1_1Graph.html#a50fd9fc67f99cce1dfbb7860a880c255", null ],
     [ "set_id", "classgnode_1_1Graph.html#a1265ce7c6cfcf3ded45e7be3a52a33d4", null ],
     [ "set_id_count", "classgnode_1_1Graph.html#ae5cc97cc65c4db92ceae28d3e5228d3b", null ],
-    [ "set_update_callback", "classgnode_1_1Graph.html#a291d7cbdeb778712b92fb9b2131ec3d5", null ],
     [ "topological_sort", "classgnode_1_1Graph.html#ad2494bad4848457bebe27132d55f4b94", null ],
     [ "update", "classgnode_1_1Graph.html#a0c918aba38c03de51fe09ad40be0abb7", null ],
     [ "update", "classgnode_1_1Graph.html#ad3626823555470989572329cb4a1a5eb", null ],
     [ "update", "classgnode_1_1Graph.html#a5ca59add6ada27ab7669763add345b69", null ],
+    [ "graph_progress_event", "classgnode_1_1Graph.html#a552fd8d5cc5e12035670deefd7de6f05", null ],
     [ "id", "classgnode_1_1Graph.html#a2dcc4d5e3f8ba7f5ecadfb92f2c36e34", null ],
     [ "id_count", "classgnode_1_1Graph.html#a3bf5b371263e4debf0c53f9f389d70b9", null ],
     [ "links", "classgnode_1_1Graph.html#a1b1d5550849d281c7001e5fdedb9b6e4", null ],
-    [ "nodes", "classgnode_1_1Graph.html#a5226972d60609aa3068a4cdac7a611cc", null ],
-    [ "update_callback", "classgnode_1_1Graph.html#a932a3923d8c826ea30ce4eef061c68a7", null ]
+    [ "nodes", "classgnode_1_1Graph.html#a5226972d60609aa3068a4cdac7a611cc", null ]
 ];

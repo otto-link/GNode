@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['from_0',['from',['../structgnode_1_1Link.html#af166573f85c51abe35e73c24ad008f7c',1,'gnode::Link::from'],['../structgnode_1_1LinkView.html#ae3b5028fe7fa7ab0ad21b62d1fe8327b',1,'gnode::LinkView::from']]]
+  ['callback_0',['callback',['../structgnode_1_1Event_1_1Listener.html#a1857072136b6e7a67488a8268486c179',1,'gnode::Event::Listener']]]
 ];

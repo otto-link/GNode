@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nodes_0',['nodes',['../classgnode_1_1Graph.html#a5226972d60609aa3068a4cdac7a611cc',1,'gnode::Graph']]]
+  ['graph_5fprogress_5fevent_0',['graph_progress_event',['../classgnode_1_1Graph.html#a552fd8d5cc5e12035670deefd7de6f05',1,'gnode::Graph']]]
 ];

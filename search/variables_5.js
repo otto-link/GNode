@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['p_5fgraph_0',['p_graph',['../classgnode_1_1Node.html#a458f91c8f2ec4ad21a100dddf1d79b2a',1,'gnode::Node']]],
-  ['port_5ffrom_1',['port_from',['../structgnode_1_1Link.html#a386c1991e1a73e3835e66288b6d214a7',1,'gnode::Link::port_from'],['../structgnode_1_1LinkView.html#a68292ad68923b8661bedd80ebaea4a6d',1,'gnode::LinkView::port_from']]],
-  ['port_5flabel_5ffrom_2',['port_label_from',['../structgnode_1_1LinkView.html#ab479bb8bfbc2c6cca56b3c9e7a51ec85',1,'gnode::LinkView']]],
-  ['port_5flabel_5fto_3',['port_label_to',['../structgnode_1_1LinkView.html#aeee3c286671b1df50be0a9abcf3ed033',1,'gnode::LinkView']]],
-  ['port_5fto_4',['port_to',['../structgnode_1_1Link.html#ae8ad3ff231cf88756b5eade7b42a5f29',1,'gnode::Link::port_to'],['../structgnode_1_1LinkView.html#a9ad2e4a3abfc15e3ef1dc9ab1142acac',1,'gnode::LinkView::port_to']]],
-  ['ports_5',['ports',['../classgnode_1_1Node.html#a0ebbeed454c9ca2b3b3f15d87ce83981',1,'gnode::Node']]]
+  ['id_0',['id',['../structgnode_1_1Event_1_1Listener.html#aa44a2bbcad242f6eaddcb2bff1479330',1,'gnode::Event::Listener::id'],['../classgnode_1_1Graph.html#a2dcc4d5e3f8ba7f5ecadfb92f2c36e34',1,'gnode::Graph::id'],['../classgnode_1_1Node.html#a3e41a3733f18c826ea536284295e44ba',1,'gnode::Node::id']]],
+  ['id_5fcount_1',['id_count',['../classgnode_1_1Graph.html#a3bf5b371263e4debf0c53f9f389d70b9',1,'gnode::Graph']]],
+  ['instance_2',['instance',['../classgnode_1_1Logger.html#a49018a60cb90359ad2f9a073b0af11c7',1,'gnode::Logger']]],
+  ['is_5fdirty_3',['is_dirty',['../classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474',1,'gnode::Node']]]
 ];

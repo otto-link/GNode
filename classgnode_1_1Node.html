@@ -114,9 +114,13 @@ Collaboration diagram for gnode::Node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgnode_1_1Node__coll__graph.png" border="0" usemap="#agnode_1_1Node_coll__map" alt="Collaboration graph"/></div>
 <map name="agnode_1_1Node_coll__map" id="agnode_1_1Node_coll__map">
-<area shape="rect" title="Abstract Node class that represents a basic building block in a graph&#45;based system." alt="" coords="8,93,112,119"/>
-<area shape="rect" href="classgnode_1_1Graph.html" title="The Graph class provides methods for manipulating nodes and connections in a directed graph structure..." alt="" coords="5,5,115,31"/>
-<area shape="poly" title=" " alt="" coords="63,45,63,93,57,93,57,45"/>
+<area shape="rect" title="Abstract Node class that represents a basic building block in a graph&#45;based system." alt="" coords="115,255,219,280"/>
+<area shape="rect" href="classgnode_1_1Event.html" title=" " alt="" coords="5,137,168,177"/>
+<area shape="poly" title=" " alt="" coords="83,191,83,211,90,229,103,243,120,252,118,257,100,247,86,232,78,212,77,191"/>
+<area shape="rect" href="classgnode_1_1Graph.html" title="The Graph class provides methods for manipulating nodes and connections in a directed graph structure..." alt="" coords="192,145,301,170"/>
+<area shape="poly" title=" " alt="" coords="243,185,234,209,219,232,190,257,187,253,215,229,229,206,238,183"/>
+<area shape="rect" href="classgnode_1_1Event.html" title=" " alt="" coords="159,5,334,75"/>
+<area shape="poly" title=" " alt="" coords="249,89,249,145,244,145,244,89"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -229,6 +233,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa513335727b2cf9d7562b19577373474" id="r_aa513335727b2cf9d7562b19577373474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474">is_dirty</a> = <a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd702f02d148a">false</a></td></tr>
 <tr class="memdesc:aa513335727b2cf9d7562b19577373474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the node is marked as dirty (requiring an update).  <br /></td></tr>
 <tr class="separator:aa513335727b2cf9d7562b19577373474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429d27874f2775d9372b8491ef4b1505" id="r_a429d27874f2775d9372b8491ef4b1505"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Event.html">Event</a>&lt; <a class="el" href="classgnode_1_1Node.html">Node</a> &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a429d27874f2775d9372b8491ef4b1505">pre_update_event</a></td></tr>
+<tr class="memdesc:a429d27874f2775d9372b8491ef4b1505"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgnode_1_1Event.html" title="Thread-unsafe publisher-subscriber event stream.">Event</a> triggered before node computation starts.  <br /></td></tr>
+<tr class="separator:a429d27874f2775d9372b8491ef4b1505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d07858e6ce8ea432cec8509324a7f90" id="r_a1d07858e6ce8ea432cec8509324a7f90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgnode_1_1Event.html">Event</a>&lt; <a class="el" href="classgnode_1_1Node.html">Node</a> &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgnode_1_1Node.html#a1d07858e6ce8ea432cec8509324a7f90">post_update_event</a></td></tr>
+<tr class="memdesc:a1d07858e6ce8ea432cec8509324a7f90"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgnode_1_1Event.html" title="Thread-unsafe publisher-subscriber event stream.">Event</a> triggered after node computation finishes.  <br /></td></tr>
+<tr class="separator:a1d07858e6ce8ea432cec8509324a7f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -1374,6 +1384,38 @@ template&lt;<a class="el" href="classgnode_1_1Node.html#a7721091aabb595825d4cd70
 </div><div class="memdoc">
 
 <p>A vector of shared pointers to the node's ports. </p>
+
+</div>
+</div>
+<a id="a1d07858e6ce8ea432cec8509324a7f90" name="a1d07858e6ce8ea432cec8509324a7f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d07858e6ce8ea432cec8509324a7f90">&#9670;&#160;</a></span>post_update_event</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgnode_1_1Event.html">Event</a>&lt;<a class="el" href="classgnode_1_1Node.html">Node</a> &amp;&gt; gnode::Node::post_update_event</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classgnode_1_1Event.html" title="Thread-unsafe publisher-subscriber event stream.">Event</a> triggered after node computation finishes. </p>
+
+</div>
+</div>
+<a id="a429d27874f2775d9372b8491ef4b1505" name="a429d27874f2775d9372b8491ef4b1505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a429d27874f2775d9372b8491ef4b1505">&#9670;&#160;</a></span>pre_update_event</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgnode_1_1Event.html">Event</a>&lt;<a class="el" href="classgnode_1_1Node.html">Node</a> &amp;&gt; gnode::Node::pre_update_event</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classgnode_1_1Event.html" title="Thread-unsafe publisher-subscriber event stream.">Event</a> triggered before node computation starts. </p>
 
 </div>
 </div>

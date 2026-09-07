@@ -36,5 +36,7 @@ var classgnode_1_1Node =
     [ "is_dirty", "classgnode_1_1Node.html#aa513335727b2cf9d7562b19577373474", null ],
     [ "label", "classgnode_1_1Node.html#a9aa2aa1b14e2c933a99f1bc5e080dc7b", null ],
     [ "p_graph", "classgnode_1_1Node.html#a458f91c8f2ec4ad21a100dddf1d79b2a", null ],
-    [ "ports", "classgnode_1_1Node.html#a0ebbeed454c9ca2b3b3f15d87ce83981", null ]
+    [ "ports", "classgnode_1_1Node.html#a0ebbeed454c9ca2b3b3f15d87ce83981", null ],
+    [ "post_update_event", "classgnode_1_1Node.html#a1d07858e6ce8ea432cec8509324a7f90", null ],
+    [ "pre_update_event", "classgnode_1_1Node.html#a429d27874f2775d9372b8491ef4b1505", null ]
 ];
