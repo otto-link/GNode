@@ -591,14 +591,14 @@ void Graph::update()
 
   for (const auto &nid : sorted_id)
   {
-    if (this->update_callback) this->update_callback(nid, sorted_id, true);
+    this->graph_progress_event.notify(nid, sorted_id, true);
 
     Logger::log()->trace("Updating node: {}({})",
                          this->get_node_ref_by_id(nid)->get_label(),
                          nid);
     this->get_node_ref_by_id(nid)->update();
 
-    if (this->update_callback) this->update_callback(nid, sorted_id, false);
+    this->graph_progress_event.notify(nid, sorted_id, false);
   }
 
   this->post_update();
@@ -616,7 +616,7 @@ void Graph::update(const std::vector<std::string> &node_ids)
 
   for (const auto &nid : sorted_id)
   {
-    if (this->update_callback) this->update_callback(nid, sorted_id, true);
+    this->graph_progress_event.notify(nid, sorted_id, true);
 
     Logger::log()->trace("Graph::update: updating node: {}({})",
                          this->get_node_ref_by_id(nid)->get_label(),
@@ -624,7 +624,7 @@ void Graph::update(const std::vector<std::string> &node_ids)
     this->get_node_ref_by_id(nid)->is_dirty = true;
     this->get_node_ref_by_id(nid)->update();
 
-    if (this->update_callback) this->update_callback(nid, sorted_id, false);
+    this->graph_progress_event.notify(nid, sorted_id, false);
   }
 
   this->post_update();
